@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/Projet6_Escalade.iml" filepath="$PROJECT_DIR$/Projet6_Escalade.iml" />
+      <module fileurl="file://$PROJECT_DIR$/escalade/escalade.iml" filepath="$PROJECT_DIR$/escalade/escalade.iml" />
+      <module fileurl="file://$PROJECT_DIR$/escalade/escalade-batch/escalade-batch.iml" filepath="$PROJECT_DIR$/escalade/escalade-batch/escalade-batch.iml" />
+      <module fileurl="file://$PROJECT_DIR$/escalade/escalade-business/escalade-business.iml" filepath="$PROJECT_DIR$/escalade/escalade-business/escalade-business.iml" />
+      <module fileurl="file://$PROJECT_DIR$/escalade/escalade-consumer/escalade-consumer.iml" filepath="$PROJECT_DIR$/escalade/escalade-consumer/escalade-consumer.iml" />
+      <module fileurl="file://$PROJECT_DIR$/escalade/escalade-model/escalade-model.iml" filepath="$PROJECT_DIR$/escalade/escalade-model/escalade-model.iml" />
+      <module fileurl="file://$PROJECT_DIR$/escalade/escalade-technical/escalade-technical.iml" filepath="$PROJECT_DIR$/escalade/escalade-technical/escalade-technical.iml" />
+      <module fileurl="file://$PROJECT_DIR$/escalade/escalade-webapp/escalade-webapp.iml" filepath="$PROJECT_DIR$/escalade/escalade-webapp/escalade-webapp.iml" />
+    </modules>
+  </component>
+</project>

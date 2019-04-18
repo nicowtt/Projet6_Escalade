@@ -1,0 +1,31 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="escalade-webapp:war exploded">
+    <output-path>$PROJECT_DIR$/escalade/escalade-webapp/target/escalade-webapp</output-path>
+    <root id="root">
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="escalade-webapp" />
+        </element>
+        <element id="directory" name="lib">
+          <element id="archive" name="escalade-business-1.0-SNAPSHOT.jar">
+            <element id="module-output" name="escalade-business" />
+          </element>
+          <element id="archive" name="escalade-consumer-1.0-SNAPSHOT.jar">
+            <element id="module-output" name="escalade-consumer" />
+          </element>
+          <element id="archive" name="escalade-model-1.0-SNAPSHOT.jar">
+            <element id="module-output" name="escalade-model" />
+          </element>
+          <element id="archive" name="escalade-technical-1.0-SNAPSHOT.jar">
+            <element id="module-output" name="escalade-technical" />
+          </element>
+          <element id="library" level="project" name="Maven: org.postgresql:postgresql:42.2.5" />
+        </element>
+      </element>
+      <element id="directory" name="META-INF">
+        <element id="file-copy" path="$PROJECT_DIR$/escalade/escalade-webapp/target/escalade-webapp/META-INF/MANIFEST.MF" />
+      </element>
+      <element id="javaee-facet-resources" facet="escalade-webapp/web/Web" />
+    </root>
+  </artifact>
+</component>
