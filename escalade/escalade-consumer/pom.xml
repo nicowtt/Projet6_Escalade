@@ -68,5 +68,12 @@
             <artifactId>junit</artifactId>
         </dependency>
 
+        <!-- ===== validation ===== -->
+        <dependency>
+            <groupId>javax.validation</groupId>
+            <artifactId>validation-api</artifactId>
+        </dependency>
+
+
     </dependencies>
 </project>

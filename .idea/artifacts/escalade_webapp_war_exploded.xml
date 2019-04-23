@@ -7,6 +7,9 @@
           <element id="module-output" name="escalade-webapp" />
         </element>
         <element id="directory" name="lib">
+          <element id="archive" name="escalade-webapp-1.0-SNAPSHOT.jar">
+            <element id="module-output" name="escalade-webapp" />
+          </element>
           <element id="archive" name="escalade-business-1.0-SNAPSHOT.jar">
             <element id="module-output" name="escalade-business" />
           </element>
@@ -21,13 +24,13 @@
           <element id="archive" name="escalade-model-1.0-SNAPSHOT.jar">
             <element id="module-output" name="escalade-model" />
           </element>
+          <element id="library" level="project" name="Maven: javax.validation:validation-api:2.0.1.Final" />
           <element id="archive" name="escalade-technical-1.0-SNAPSHOT.jar">
             <element id="module-output" name="escalade-technical" />
           </element>
           <element id="library" level="project" name="Maven: org.postgresql:postgresql:42.2.5" />
           <element id="library" level="project" name="Maven: javax.servlet:jstl:1.2" />
           <element id="library" level="project" name="Maven: org.hibernate.validator:hibernate-validator:6.0.10.Final" />
-          <element id="library" level="project" name="Maven: javax.validation:validation-api:2.0.1.Final" />
           <element id="library" level="project" name="Maven: org.jboss.logging:jboss-logging:3.3.2.Final" />
           <element id="library" level="project" name="Maven: com.fasterxml:classmate:1.3.4" />
           <element id="library" level="project" name="Maven: org.springframework:spring-core:4.3.18.RELEASE" />

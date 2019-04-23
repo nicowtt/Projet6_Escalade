@@ -38,6 +38,7 @@
             <artifactId>${project.parent.artifactId}-technical</artifactId>
         </dependency>
 
+
         <!-- ===== Bibliothèques tierces ===== -->
         <!-- Bibliothèques pour la gestion des logs -->
         <dependency>

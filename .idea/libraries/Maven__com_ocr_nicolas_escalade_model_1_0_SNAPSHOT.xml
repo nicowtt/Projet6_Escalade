@@ -4,11 +4,9 @@
       <root url="jar://$MAVEN_REPOSITORY$/com/ocr/nicolas/escalade-model/1.0-SNAPSHOT/escalade-model-1.0-SNAPSHOT.jar!/" />
     </CLASSES>
     <JAVADOC>
-      <root url="jar://$PROJECT_DIR$/escalade/escalade-model/escalade-model-1.0-SNAPSHOT-javadoc.jar!/" />
       <root url="jar://$MAVEN_REPOSITORY$/com/ocr/nicolas/escalade-model/1.0-SNAPSHOT/escalade-model-1.0-SNAPSHOT-javadoc.jar!/" />
     </JAVADOC>
     <SOURCES>
-      <root url="jar://$PROJECT_DIR$/escalade/escalade-model/escalade-model-1.0-SNAPSHOT-sources.jar!/" />
       <root url="jar://$MAVEN_REPOSITORY$/com/ocr/nicolas/escalade-model/1.0-SNAPSHOT/escalade-model-1.0-SNAPSHOT-sources.jar!/" />
     </SOURCES>
   </library>

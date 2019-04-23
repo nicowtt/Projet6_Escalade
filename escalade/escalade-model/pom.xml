@@ -51,6 +51,11 @@
             <artifactId>log4j-web</artifactId>
         </dependency>
 
+        <!-- ===== validation ===== -->
+        <dependency>
+            <groupId>javax.validation</groupId>
+            <artifactId>validation-api</artifactId>
+        </dependency>
         <!-- ===== Tests ===== -->
         <dependency>
             <groupId>junit</groupId>
