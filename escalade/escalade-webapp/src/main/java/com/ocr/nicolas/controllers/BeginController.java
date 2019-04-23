@@ -14,6 +14,6 @@ public class BeginController {
 
     @RequestMapping(value="/index")
     public String index(Model model) {
-        return "home_Escalade";
+        return "page2";
     }
 }

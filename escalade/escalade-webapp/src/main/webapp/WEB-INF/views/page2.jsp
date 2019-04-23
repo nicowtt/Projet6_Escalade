@@ -1,4 +1,3 @@
-
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
@@ -32,7 +31,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand page-top" href="/index">Acceuil Grimpez.com</a>
+      <a class="navbar-brand page-top" href="/index">Accueil Grimpez.com</a>
     </div>
     <!-- Tous les éléments qui peuvent aller dans la barre du haut -->
     <div class="collapse navbar-collapse">
@@ -61,7 +60,7 @@
 
   </header>
 
-  <h1>Test css</h1>
+  <h1>Vous êtes sur la page 2</h1>
 
   <!-- jQuery -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
