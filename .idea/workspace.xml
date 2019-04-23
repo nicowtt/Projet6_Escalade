@@ -6,7 +6,12 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6bfa6f30-7709-4a3c-8b97-16f7f5336bf6" name="Default" comment="" />
+    <list default="true" id="6bfa6f30-7709-4a3c-8b97-16f7f5336bf6" name="Default" comment="">
+      <change afterPath="$PROJECT_DIR$/escalade/escalade-webapp/src/main/java/com/ocr/nicolas/controllers/BeginController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/escalade/escalade-webapp/src/main/webapp/WEB-INF/views/toRename.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/escalade/escalade-webapp/src/main/webapp/WEB-INF/views/home_Escalade.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/escalade/escalade-webapp/src/main/webapp/resources/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/escalade/escalade-webapp/src/main/webapp/resources/css/style.css" afterDir="false" />
+    </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/Escalade/target/" />
     <ignored path="$PROJECT_DIR$/escalade/escalade-batch/target/" />
@@ -38,11 +43,25 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="index.jsp" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/escalade/escalade-webapp/src/main/webapp/index.jsp">
+      <file leaf-file-name="home_Escalade.jsp" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/escalade/escalade-webapp/src/main/webapp/WEB-INF/views/home_Escalade.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="104">
-              <caret line="8" column="7" selection-start-line="8" selection-start-column="7" selection-end-line="8" selection-end-column="7" />
+            <state relative-caret-position="62">
+              <caret line="27" column="4" selection-start-line="27" selection-start-column="4" selection-end-line="27" selection-end-column="4" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Logs.log" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Logs.log">
+          <provider selected="true" editor-type-id="LogFileEditorProvider" />
+        </entry>
+      </file>
+      <file leaf-file-name="style.css" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/escalade/escalade-webapp/src/main/webapp/resources/css/style.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="156">
+              <caret line="12" column="18" selection-start-line="12" selection-start-column="18" selection-end-line="12" selection-end-column="18" />
             </state>
           </provider>
         </entry>
@@ -54,6 +73,7 @@
       <list>
         <option value="spring-beans.schema" />
         <option value="FxmlFile" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -82,11 +102,9 @@
         <option value="$PROJECT_DIR$/escalade/escalade-technical/src/main/resources/com/ocr/nicolas/escalade/technical/technicalContext.xml" />
         <option value="$PROJECT_DIR$/escalade/escalade-model/src/main/resources/com/ocr/nicolas/escalade/model/modelContext.xml" />
         <option value="$PROJECT_DIR$/escalade/escalade-batch/src/main/resources/BootstrapContext.xml" />
-        <option value="$PROJECT_DIR$/escalade/escalade-consumer/src/main/resources/com/ocr/nicolas/escalade/consumer/consumerContext.xml" />
         <option value="$PROJECT_DIR$/escalade/escalade-webapp/src/main/resources/com.ocr.nicolas.escalade.webapp/webappContext.xml" />
         <option value="$PROJECT_DIR$/escalade/escalade-webapp/pom.xml" />
         <option value="$PROJECT_DIR$/escalade/escalade-business/pom.xml" />
-        <option value="$PROJECT_DIR$/escalade/escalade-business/src/main/resources/com/ocr/nicolas/escalade/business/businessContext.xml" />
         <option value="$PROJECT_DIR$/escalade/escalade-webapp/src/main/java/com/ocr/nicolas/controllers/CatalogueController.java" />
         <option value="$PROJECT_DIR$/escalade/escalade-webapp/src/main/resources/BootstrapContext.xml" />
         <option value="$PROJECT_DIR$/escalade/escalade-consumer/src/main/java/com/ocr/nicolas/dao/Produit.java" />
@@ -96,6 +114,11 @@
         <option value="$PROJECT_DIR$/escalade/escalade-consumer/pom.xml" />
         <option value="$PROJECT_DIR$/escalade/escalade-consumer/src/main/java/com/ocr/nicolas/dao/CatalogueDaoImpl.java" />
         <option value="$PROJECT_DIR$/escalade/escalade-webapp/src/main/webapp/WEB-INF/views/produit.jsp" />
+        <option value="$PROJECT_DIR$/escalade/escalade-business/src/main/resources/com/ocr/nicolas/escalade/business/businessContext.xml" />
+        <option value="$PROJECT_DIR$/escalade/escalade-consumer/src/main/resources/com/ocr/nicolas/escalade/consumer/consumerContext.xml" />
+        <option value="$PROJECT_DIR$/escalade/escalade-webapp/src/main/java/com/ocr/nicolas/controllers/BeginController.java" />
+        <option value="$PROJECT_DIR$/escalade/escalade-webapp/src/main/webapp/resources/css/style.css" />
+        <option value="$PROJECT_DIR$/escalade/escalade-webapp/src/main/webapp/WEB-INF/views/home_Escalade.jsp" />
       </list>
     </option>
   </component>
@@ -194,7 +217,68 @@
               <item name="escalade-webapp" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Projet6_Escalade" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Projet6_Escalade" type="462c0819:PsiDirectoryNode" />
+              <item name="escalade" type="462c0819:PsiDirectoryNode" />
+              <item name="escalade-webapp" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="controllers" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Projet6_Escalade" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Projet6_Escalade" type="462c0819:PsiDirectoryNode" />
+              <item name="escalade" type="462c0819:PsiDirectoryNode" />
+              <item name="escalade-webapp" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="webapp" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Projet6_Escalade" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Projet6_Escalade" type="462c0819:PsiDirectoryNode" />
+              <item name="escalade" type="462c0819:PsiDirectoryNode" />
+              <item name="escalade-webapp" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="webapp" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Projet6_Escalade" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Projet6_Escalade" type="462c0819:PsiDirectoryNode" />
+              <item name="escalade" type="462c0819:PsiDirectoryNode" />
+              <item name="escalade-webapp" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="webapp" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="css" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Projet6_Escalade" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Projet6_Escalade" type="462c0819:PsiDirectoryNode" />
+              <item name="escalade" type="462c0819:PsiDirectoryNode" />
+              <item name="escalade-webapp" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="webapp" type="462c0819:PsiDirectoryNode" />
+              <item name="WEB-INF" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Projet6_Escalade" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Projet6_Escalade" type="462c0819:PsiDirectoryNode" />
+              <item name="escalade" type="462c0819:PsiDirectoryNode" />
+              <item name="escalade-webapp" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="webapp" type="462c0819:PsiDirectoryNode" />
+              <item name="WEB-INF" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -289,7 +373,6 @@
       <listeners />
     </configuration>
     <configuration name="Tomcat 9.0.16" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 9.0.16" ALTERNATIVE_JRE_ENABLED="false">
-      <option name="UPDATING_POLICY" value="restart-server" />
       <deployment>
         <artifact name="escalade-webapp:war exploded">
           <settings>
@@ -302,9 +385,9 @@
       </server-settings>
       <predefined_log_file id="Tomcat" enabled="true" />
       <predefined_log_file id="Tomcat Catalina" enabled="true" />
-      <predefined_log_file id="Tomcat Manager" enabled="false" />
-      <predefined_log_file id="Tomcat Host Manager" enabled="false" />
-      <predefined_log_file id="Tomcat Localhost Access" enabled="false" />
+      <predefined_log_file id="Tomcat Host Manager" enabled="true" />
+      <predefined_log_file id="Tomcat Localhost Access" enabled="true" />
+      <log_file alias="Tomcat Manager Log" path="%IDEA_RUN:CATALINA_BASE%/logs/manager.*" />
       <RunnerSettings RunnerId="Debug">
         <option name="DEBUG_PORT" value="49849" />
       </RunnerSettings>
@@ -373,12 +456,12 @@
       <workItem from="1555595034503" duration="6443000" />
       <workItem from="1555601520455" duration="9322000" />
       <workItem from="1555919570021" duration="14788000" />
-      <workItem from="1556005217474" duration="1173000" />
+      <workItem from="1556005217474" duration="8550000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="31726000" />
+    <option name="totallyTimeSpent" value="39103000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1295" height="735" extended-state="6" />
@@ -403,10 +486,10 @@
       <window_info anchor="bottom" id="Java Enterprise" order="7" />
       <window_info anchor="right" id="Capture Analysis" order="3" />
       <window_info anchor="bottom" id="Version Control" order="7" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.6694491" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.6093489" />
       <window_info anchor="bottom" id="Spring" order="7" />
       <window_info anchor="bottom" id="Terminal" order="7" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2834008" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2834008" />
       <window_info anchor="right" id="Bean Validation" order="3" weight="0.32955465" />
       <window_info id="Web" order="2" side_tool="true" />
       <window_info anchor="right" id="Theme Preview" order="3" />
@@ -428,17 +511,10 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="3" />
+      <option name="time" value="4" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/escalade/escalade-webapp/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2808">
-          <caret line="216" column="46" selection-start-line="216" selection-start-column="46" selection-end-line="216" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/escalade/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3666">
@@ -490,13 +566,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/escalade/escalade-webapp/src/main/resources/BootstrapContext.xml" />
-    <entry file="file://$PROJECT_DIR$/escalade/escalade-webapp/src/main/webapp/resources/css/style.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="286">
-          <caret line="22" column="1" selection-start-line="22" selection-start-column="1" selection-end-line="22" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/escalade/escalade-webapp/src/main/webapp/resources/log4j2.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="104">
@@ -506,9 +575,6 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/escalade/escalade-webapp/src/main/resources/css/style.css" />
     <entry file="file://$PROJECT_DIR$/escalade/escalade-webapp/resources/css/style.css" />
-    <entry file="file://$PROJECT_DIR$/Logs.log">
-      <provider selected="true" editor-type-id="LogFileEditorProvider" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/escalade/escalade-webapp/src/main/resources/css/style.css" />
     <entry file="file://$PROJECT_DIR$/escalade/escalade-webapp/src/main/webapp/WEB-INF/resources/css/style.css" />
     <entry file="file://$PROJECT_DIR$/escalade/escalade-business/src/main/resources/BootstrapContext.xml" />
@@ -557,13 +623,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/escalade/escalade-consumer/src/main/resources/com/ocr/nicolas/escalade/consumer/consumerContext.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="78">
-          <caret line="6" column="4" selection-start-line="6" selection-start-column="4" selection-end-line="6" selection-end-column="84" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/escalade/escalade-consumer/src/main/java/com/ocr/nicolas/dao/ICatalogueDAO.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="52">
@@ -589,27 +648,6 @@
             <Category>Show filesets as groups</Category>
           </Categories>
           <SCOPE>All</SCOPE>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/escalade/escalade-business/src/main/resources/com/ocr/nicolas/escalade/business/businessContext.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="91">
-          <caret line="7" column="33" selection-start-line="7" selection-start-column="30" selection-end-line="7" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/escalade/escalade-webapp/src/main/resources/com.ocr.nicolas.escalade.webapp/webappContext.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="130">
-          <caret line="10" selection-start-line="10" selection-start-column="4" selection-end-line="10" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/escalade/escalade-webapp/src/main/resources/BootstrapContext.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="169">
-          <caret line="13" column="8" lean-forward="true" selection-start-line="13" selection-start-column="8" selection-end-line="13" selection-end-column="8" />
         </state>
       </provider>
     </entry>
@@ -698,20 +736,70 @@
     <entry file="file://$PROJECT_DIR$/escalade/escalade-webapp/src/main/webapp/WEB-INF/views/produits.jsp">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/escalade/escalade-webapp/src/main/webapp/WEB-INF/views/toRename.jsp">
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/escalade/escalade-business/src/main/resources/com/ocr/nicolas/escalade/business/businessContext.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="143">
-          <caret line="11" column="4" selection-start-line="11" selection-start-column="8" selection-end-line="11" selection-end-column="52" />
+        <state relative-caret-position="52">
+          <caret line="4" column="69" selection-start-line="4" selection-start-column="69" selection-end-line="4" selection-end-column="69" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor" />
+    <entry file="file://$PROJECT_DIR$/escalade/escalade-webapp/src/main/java/com/ocr/nicolas/controllers/BeginController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="247">
+          <caret line="19" lean-forward="true" selection-start-line="19" selection-end-line="19" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#374#375#0" expanded="true" />
+            <element signature="e#395#396#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/escalade/escalade-webapp/src/main/resources/com.ocr.nicolas.escalade.webapp/webappContext.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="130">
+          <caret line="10" selection-start-line="10" selection-start-column="4" selection-end-line="10" selection-end-column="11" />
+        </state>
+      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/escalade/escalade-webapp/src/main/webapp/index.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="104">
           <caret line="8" column="7" selection-start-line="8" selection-start-column="7" selection-end-line="8" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/escalade/escalade-webapp/src/main/resources/BootstrapContext.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="169">
+          <caret line="13" column="8" lean-forward="true" selection-start-line="13" selection-start-column="8" selection-end-line="13" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/escalade/escalade-consumer/src/main/resources/com/ocr/nicolas/escalade/consumer/consumerContext.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="78">
+          <caret line="6" column="8" lean-forward="true" selection-start-line="6" selection-start-column="8" selection-end-line="6" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Logs.log">
+      <provider selected="true" editor-type-id="LogFileEditorProvider" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/escalade/escalade-webapp/src/main/webapp/resources/css/style.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="156">
+          <caret line="12" column="18" selection-start-line="12" selection-start-column="18" selection-end-line="12" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/escalade/escalade-webapp/src/main/webapp/WEB-INF/views/home_Escalade.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="62">
+          <caret line="27" column="4" selection-start-line="27" selection-start-column="4" selection-end-line="27" selection-end-column="4" />
         </state>
       </provider>
     </entry>
