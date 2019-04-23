@@ -6,45 +6,7 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6bfa6f30-7709-4a3c-8b97-16f7f5336bf6" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/escalade/escalade-batch/src/main/resources/BootstrapContext.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/escalade/escalade-business/src/main/resources/com/ocr/nicolas/escalade/business/businessContext.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/escalade/escalade-consumer/src/main/resources/com/ocr/nicolas/escalade/consumer/consumerContext.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/escalade/escalade-model/src/main/resources/com/ocr/nicolas/escalade/model/modelContext.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/escalade/escalade-technical/src/main/resources/com/ocr/nicolas/escalade/technical/technicalContext.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/escalade/escalade-webapp/src/main/resources/BootstrapContext.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/escalade/escalade-webapp/src/main/resources/com.ocr.nicolas.escalade.webapp/webappContext.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/escalade/escalade-webapp/src/main/webapp/WEB-INF/views/toRename.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/escalade/escalade-webapp/src/main/webapp/resources/css/style.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/escalade/escalade-webapp/src/main/webapp/resources/log4j2.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/artifacts/escalade_webapp_war_exploded.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/escalade_webapp_war_exploded.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_ocr_nicolas_escalade_business_1_0_SNAPSHOT.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_ocr_nicolas_escalade_business_1_0_SNAPSHOT.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_ocr_nicolas_escalade_model_1_0_SNAPSHOT.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_ocr_nicolas_escalade_model_1_0_SNAPSHOT.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Spring_4_3_18_RELEASE.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Spring_MVC_4_3_18_RELEASE.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/escalade/escalade-batch/escalade-batch.iml" beforeDir="false" afterPath="$PROJECT_DIR$/escalade/escalade-batch/escalade-batch.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/escalade/escalade-business/escalade-business.iml" beforeDir="false" afterPath="$PROJECT_DIR$/escalade/escalade-business/escalade-business.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/escalade/escalade-business/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/escalade/escalade-business/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/escalade/escalade-business/src/main/java/com/ocr/nicolas/App.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/escalade/escalade-consumer/escalade-consumer.iml" beforeDir="false" afterPath="$PROJECT_DIR$/escalade/escalade-consumer/escalade-consumer.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/escalade/escalade-consumer/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/escalade/escalade-consumer/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/escalade/escalade-consumer/src/main/java/com/ocr/nicolas/App.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/escalade/escalade-model/escalade-model.iml" beforeDir="false" afterPath="$PROJECT_DIR$/escalade/escalade-model/escalade-model.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/escalade/escalade-model/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/escalade/escalade-model/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/escalade/escalade-model/src/main/java/com/ocr/nicolas/App.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/escalade/escalade-technical/escalade-technical.iml" beforeDir="false" afterPath="$PROJECT_DIR$/escalade/escalade-technical/escalade-technical.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/escalade/escalade-webapp/escalade-webapp.iml" beforeDir="false" afterPath="$PROJECT_DIR$/escalade/escalade-webapp/escalade-webapp.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/escalade/escalade-webapp/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/escalade/escalade-webapp/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/escalade/escalade-webapp/src/main/webapp/WEB-INF/applicationContext.xml" beforeDir="false" afterPath="$PROJECT_DIR$/escalade/escalade-batch/src/main/resources/com.ocr.nicolas.escalade.batch/batchContext.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/escalade/escalade-webapp/src/main/webapp/WEB-INF/dispatcher-servlet.xml" beforeDir="false" afterPath="$PROJECT_DIR$/escalade/escalade-webapp/src/main/webapp/WEB-INF/dispatcher-servlet.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/escalade/escalade-webapp/src/main/webapp/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/escalade/escalade-webapp/src/main/webapp/WEB-INF/web.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/escalade/escalade-webapp/src/main/webapp/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/escalade/escalade-webapp/src/main/webapp/index.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/escalade/escalade.iml" beforeDir="false" afterPath="$PROJECT_DIR$/escalade/escalade.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/escalade/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/escalade/pom.xml" afterDir="false" />
-    </list>
+    <list default="true" id="6bfa6f30-7709-4a3c-8b97-16f7f5336bf6" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/Escalade/target/" />
     <ignored path="$PROJECT_DIR$/escalade/escalade-batch/target/" />
@@ -76,65 +38,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="pom.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/escalade/escalade-consumer/pom.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="407">
-              <caret line="75" selection-start-line="75" selection-end-line="75" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="web.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/escalade/escalade-webapp/src/main/webapp/WEB-INF/web.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="377">
-              <caret line="29" column="10" selection-start-line="29" selection-start-column="10" selection-end-line="29" selection-end-column="10" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="dispatcher-servlet.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/escalade/escalade-webapp/src/main/webapp/WEB-INF/dispatcher-servlet.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="247">
-              <caret line="19" column="64" selection-start-line="19" selection-start-column="64" selection-end-line="19" selection-end-column="64" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="index.jsp" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/escalade/escalade-webapp/src/main/webapp/index.jsp">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="104">
               <caret line="8" column="7" selection-start-line="8" selection-start-column="7" selection-end-line="8" selection-end-column="7" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="toRename.jsp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/escalade/escalade-webapp/src/main/webapp/WEB-INF/views/toRename.jsp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="143">
-              <caret line="11" column="4" selection-start-line="11" selection-start-column="8" selection-end-line="11" selection-end-column="52" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="pom.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/escalade/pom.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2041">
-              <caret line="157" selection-start-line="157" selection-end-line="157" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="pom.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/escalade/escalade-model/pom.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="676">
-              <caret line="52" selection-start-line="52" selection-end-line="52" />
             </state>
           </provider>
         </entry>
@@ -257,6 +165,36 @@
               <item name="Projet6_Escalade" type="b2602c69:ProjectViewProjectNode" />
               <item name="Projet6_Escalade" type="462c0819:PsiDirectoryNode" />
               <item name="escalade" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Projet6_Escalade" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Projet6_Escalade" type="462c0819:PsiDirectoryNode" />
+              <item name="escalade" type="462c0819:PsiDirectoryNode" />
+              <item name="escalade-webapp" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Projet6_Escalade" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Projet6_Escalade" type="462c0819:PsiDirectoryNode" />
+              <item name="escalade" type="462c0819:PsiDirectoryNode" />
+              <item name="escalade-webapp" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Projet6_Escalade" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Projet6_Escalade" type="462c0819:PsiDirectoryNode" />
+              <item name="escalade" type="462c0819:PsiDirectoryNode" />
+              <item name="escalade-webapp" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Projet6_Escalade" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Projet6_Escalade" type="462c0819:PsiDirectoryNode" />
+              <item name="escalade" type="462c0819:PsiDirectoryNode" />
+              <item name="escalade-webapp" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="webapp" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -435,12 +373,12 @@
       <workItem from="1555595034503" duration="6443000" />
       <workItem from="1555601520455" duration="9322000" />
       <workItem from="1555919570021" duration="14788000" />
-      <workItem from="1556005217474" duration="805000" />
+      <workItem from="1556005217474" duration="1173000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="31358000" />
+    <option name="totallyTimeSpent" value="31726000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1295" height="735" extended-state="6" />

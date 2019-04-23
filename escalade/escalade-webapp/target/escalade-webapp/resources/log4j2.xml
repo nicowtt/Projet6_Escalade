@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration>
+    <Appenders>
+        <Console name="Console" target="SYSTEM_OUT" >
+            <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n" />
+        </Console>
+
+        <!-- Async Loggers will auto-flush in batches, so switch off immediateFlush. -->
+        <RandomAccessFile name="RandomAccessFile" fileName="C:\Users\nicob\Documents\GitHub\Projet6_Escalade\Logs.log" immediateFlush="false" append="false">
+            <PatternLayout>
+                <Pattern>%d %p %c{1.} [%t] %m %ex%n</Pattern>
+            </PatternLayout>
+        </RandomAccessFile>
+
+    </Appenders>
+    <Loggers>
+        <Logger name="catalogueMVC" level="info">
+            <AppenderRef ref="MyFile"/>
+        </Logger>
+        <Logger name="catalogueMVC" level="debug">
+            <AppenderRef ref="Console"/>
+        </Logger>
+        <Root level="debug">
+            <AppenderRef ref="Console" level="info"/>
+            <AppenderRef ref="RandomAccessFile" level="info"/>
+        </Root>
+    </Loggers>
+</Configuration>
