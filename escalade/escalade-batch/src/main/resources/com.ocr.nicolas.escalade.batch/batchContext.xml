@@ -4,4 +4,17 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans
        http://www.springframework.org/schema/beans/spring-beans.xsd">
 
+    <!-- Chargement du fichier conf/localhost_p6.properties contenant
+    la configuration de la datasource vers localhost_p6 -->
+    <bean id="dataSourceEscaladeConfiguration" class="org.springframework.beans.factory.config.PropertiesFactoryBean" >
+        <property name="location" value="file:${application.home}/conf/localhost-p6.properties" />
+    </bean>
+
+    <!-- Création de la datasource "dataSourceEscalade" -->
+    <bean id="datasourceEscalade"
+          class="org.apache.commons.dbcp2.BasicDataSourceFactory"
+          factory-method="createDataSource"
+          destroy-method="close">
+        <constructor-arg ref="dataSourceEscaladeConfiguration" />
+    </bean>
 </beans>

@@ -19,7 +19,7 @@ public class Voie {
     private Integer hauteur;
     private String precisionEquipement;
     private String ouvertureEtEquipement;
-    private Date dateOuverture;
+    private String dateOuverture;
     private String statut;
     private Integer element_id;
     private Integer secteur_id;
@@ -98,10 +98,10 @@ public class Voie {
     public void setOuvertureEtEquipement(String ouvertureEtEquipement) {
         this.ouvertureEtEquipement = ouvertureEtEquipement;
     }
-    public Date getDateOuverture() {
+    public String getDateOuverture() {
         return dateOuverture;
     }
-    public void setDateOuverture(Date dateOuverture) {
+    public void setDateOuverture(String dateOuverture) {
         this.dateOuverture = dateOuverture;
     }
     public String getStatut() {

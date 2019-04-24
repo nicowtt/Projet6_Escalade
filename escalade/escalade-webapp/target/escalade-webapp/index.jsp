@@ -61,7 +61,7 @@
 </header>
 
 <h1>Test css</h1>
-<a href="/index">aller à la page 2</a>
+<a href="/index">aller à la page du site En Bays</a>
 
 <!-- jQuery -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
