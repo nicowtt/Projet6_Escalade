@@ -4,4 +4,7 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans
        http://www.springframework.org/schema/beans/spring-beans.xsd">
 
+    <!-- ==== Déclaration des DAO ===== -->
+    <bean id="escaladeDao" class="com.ocr.nicolas.escalade.consumer.impl.dao.EscaladeDaoImpl" />
+
 </beans>

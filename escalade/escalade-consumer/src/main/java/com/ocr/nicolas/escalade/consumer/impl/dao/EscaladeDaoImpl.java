@@ -1,6 +1,6 @@
 package com.ocr.nicolas.escalade.consumer.impl.dao;
 
-import com.ocr.nicolas.escalade.consumer.contract.dao.EscaladeDao;
+import com.ocr.nicolas.escalade.consumer.dao.EscaladeDao;
 
 import javax.inject.Named;
 
