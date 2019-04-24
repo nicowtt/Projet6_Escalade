@@ -1,4 +1,4 @@
-package com.ocr.nicolas.controllers;
+package com.ocr.nicolas.escalade.controllers;
 
 
 import org.apache.commons.logging.Log;
