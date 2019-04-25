@@ -22,8 +22,9 @@ public class BeginController {
 
     @RequestMapping(value="/index")
     public String index(Model model) {
-        int nbrVoie = escaladeDao.getCountVoie();
-        logger.info(nbrVoie);
+//        int nbrVoie = escaladeDao.getCountVoie();
+//        logger.info(nbrVoie);
+        model.addAttribute("voie", escaladeDao.getListVoie( 1));
 
         return "enbays";
     }

@@ -66,23 +66,23 @@
       <tr>
         <th>Numero</th><th>Nom</th><th>Temp d'escalade</th><th>description</th><th>longueur</th><th>cotation</th>
         <th>hauteur</th><th>Precision equipement</th><th>Ouverture</th><th>Date ouverture</th><th>status</th>
-        <th>Element_id</th><th>Secteur_id</th>
+        <%--<th>Element_id</th><th>Secteur_id</th>--%>
       </tr>
       <c:forEach items="${voie}" var="p">
         <tr>
           <td>${p.numero}</td>
           <td>${p.nom}</td>
-          <td>${p.tempdescalade}</td>
+          <td>${p.tempDescalade}h</td>
           <td>${p.description}</td>
           <td>${p.longueur}</td>
           <td>${p.cotation}</td>
-          <td>${p.hauteur}</td>
-          <td>${p.precisionequipement}</td>
-          <td>${p.ouvertureetequipement}</td>
-          <td>${p.dateouverture}</td>
+          <td>${p.hauteur}m</td>
+          <td>${p.precisionEquipement}</td>
+          <td>${p.ouvertureEtEquipement}</td>
+          <td>${p.dateOuverture}</td>
           <td>${p.statut}</td>
-          <td>${p.element_id}</td>
-          <td>${p.secteur_id}</td>
+          <%--<td>${p.element_id}</td>--%>
+          <%--<td>${p.secteur_id}</td>--%>
           <%--<td><a href="editProduit?ref=${p.reference}">Editer</a></td>--%>
           <%--<td><a href="deleteProduit?ref=${p.reference}">Supprimer</a></td>--%>
         </tr>
