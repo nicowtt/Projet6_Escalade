@@ -23,7 +23,7 @@
     <!--</bean>-->
 
 
-    <!-- === initialisation dataSource ???? ===== -->
+    <!-- === initialisation dataSource ===== -->
     <jee:jndi-lookup id="dataSource" jndi-name="jdbc/escalade" expected-type="javax.sql.DataSource"/>
     <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
         <constructor-arg ref="dataSource"/>
