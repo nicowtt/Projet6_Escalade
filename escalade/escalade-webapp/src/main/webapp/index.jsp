@@ -62,7 +62,7 @@
 
 </header>
 
-<h1>Test css</h1>
+<h3>In progress...</h3>
 <a href="/index">aller à la page du site En Bays</a>
 
 <!-- jQuery -->

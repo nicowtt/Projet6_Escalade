@@ -24,7 +24,8 @@ public class BeginController {
     public String index(Model model) {
 //        int nbrVoie = escaladeDao.getCountVoie();
 //        logger.info(nbrVoie);
-        model.addAttribute("voie", escaladeDao.getListVoie( 1));
+        model.addAttribute("voie", escaladeDao.getListVoie( 2));
+        model.addAttribute("secteur", escaladeDao.getListSecteur(1));
 
         return "enbays";
     }

@@ -7,6 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class VoieRowMapper implements RowMapper<Voie> {
+
     @Override
     public Voie mapRow(ResultSet resultSet, int i) throws SQLException {
         Voie vVoie = new Voie(resultSet.getInt("id"));

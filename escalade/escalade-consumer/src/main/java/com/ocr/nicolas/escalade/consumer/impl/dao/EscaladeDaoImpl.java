@@ -2,7 +2,9 @@ package com.ocr.nicolas.escalade.consumer.impl.dao;
 
 
 import com.ocr.nicolas.escalade.consumer.contract.dao.EscaladeDao;
+import com.ocr.nicolas.escalade.consumer.impl.rowmapper.SecteurRowMapper;
 import com.ocr.nicolas.escalade.consumer.impl.rowmapper.VoieRowMapper;
+import com.ocr.nicolas.escalade.model.bean.secteur.Secteur;
 import com.ocr.nicolas.escalade.model.bean.voie.Voie;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -22,29 +24,33 @@ public class EscaladeDaoImpl extends AbstractDAoImpl implements EscaladeDao {
     static final Log logger = LogFactory.getLog(EscaladeDaoImpl.class);
 
 
-    //methode test BDD
-
+    /**
+     * Pour savoir combien il y a de Site d'escalade dans le site
+     * @return
+     */
     @Override
-    public int getCountVoie() {
+    public int getNombreSite() {
 
         // remplir une List avec les infos de la bdd
         JdbcTemplate vJdbcTemplate = new JdbcTemplate(getDatasource());
 
-        int vNbrVoie =(int) vJdbcTemplate.queryForObject("SELECT COUNT (*) FROM public.voie",
+        int vNbrSite =(int) vJdbcTemplate.queryForObject("SELECT COUNT (*) FROM public.site",
                 Integer.class);
 
-        return vNbrVoie;
+        return vNbrSite;
 
     }
 
 
     /**
-     * pour aller chercher toutes les voie d'un secteur
+     * pour aller chercher dans la BDD la liste (bean) des voies d'un secteur.
      *
-     * @pSecteur numero du secteur
+     * @param pSecteur -> numero du secteur
+     * @return liste de voies
      */
     @Override
     public List<Voie> getListVoie(int pSecteur) {
+
         String vSQL = "SELECT * FROM voie WHERE secteur_id = :secteur_id";
 
         NamedParameterJdbcTemplate vJdbcTemplate = new NamedParameterJdbcTemplate(getDatasource());
@@ -54,10 +60,32 @@ public class EscaladeDaoImpl extends AbstractDAoImpl implements EscaladeDao {
 
         RowMapper<Voie> vRowMapper = new VoieRowMapper();
 
-        List<Voie> vList = vJdbcTemplate.query(vSQL, vParams, vRowMapper);
+        List<Voie> vListVoie = vJdbcTemplate.query(vSQL, vParams, vRowMapper);
 
-        return vList;
+        return vListVoie;
 
     }
 
+    /**
+     * Pour aller chercher dans la BDD la liste (bean) des secteurs d'un site.
+     *
+     * @param pSite -> numero de site
+     * @return liste de secteur
+     */
+    @Override
+    public List<Secteur> getListSecteur(int pSite) {
+
+        String vSQL = "SELECT * FROM secteur WHERE site_id = :site_id";
+
+        NamedParameterJdbcTemplate vJdbcTemplate = new NamedParameterJdbcTemplate(getDatasource());
+
+        MapSqlParameterSource vParams = new MapSqlParameterSource();
+        vParams.addValue("site_id", pSite, Types.INTEGER);
+
+        RowMapper<Secteur> vRowMapper = new SecteurRowMapper();
+
+        List<Secteur> vListSecteur = vJdbcTemplate.query(vSQL, vParams, vRowMapper);
+
+        return vListSecteur;
+    }
 }

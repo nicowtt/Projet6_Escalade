@@ -24,7 +24,8 @@
 
     <!-- Navigation
     ================================================== -->
-    <nav class="navbar navbar-inverse role="navigation">
+    <nav class="navbar navbar-inverse" role="navigation">
+    <div class="container">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
         <span class="icon-bar"></span>
@@ -56,13 +57,49 @@
       </ul>
 
     </div>
+    </div>
     </nav>
 
   </header>
+  <div class="container">
 
-  <h1>Vous êtes sur la page du Site: En bays</h1>
+  <h1>En bays</h1>
+
+    <h3>Les Secteurs :</h3>
+
+  <div id="listerSecteur">
+    <table class="table">
+      <tr>
+        <th>Nom</th><th>Description</th><th>Accés</th><th>Altitude base</th><th>orientation</th><th>Type de roche</th>
+        <th>Nombre de voies</th><th>cotation</th><th>Coordonnés GPS</th>
+        <%--<th>Element_id</th><th>Secteur_id</th>--%>
+      </tr>
+      <c:forEach items="${secteur}" var="p">
+        <tr>
+          <td>${p.nom}</td>
+          <td>${p.description}</td>
+          <td>${p.acces}h</td>
+          <td>${p.altitudeBase}m</td>
+          <td>${p.orientation}</td>
+          <td>${p.typeRoche}</td>
+          <td>${p.nombreDeVoies}</td>
+          <td>${p.cotation}</td>
+          <td>${p.coordonneGps}</td>
+
+            <%--<td>${p.element_id}</td>--%>
+            <%--<td>${p.secteur_id}</td>--%>
+            <%--<td><a href="editProduit?ref=${p.reference}">Editer</a></td>--%>
+            <%--<td><a href="deleteProduit?ref=${p.reference}">Supprimer</a></td>--%>
+        </tr>
+      </c:forEach>
+
+    </table>
+  </div>
+
+    <h3>Voies secteur : aiguilles d'en beys</h3>
+
   <div id="listerVoie">
-    <table class="table1">
+    <table class="table">
       <tr>
         <th>Numero</th><th>Nom</th><th>Temp d'escalade</th><th>description</th><th>longueur</th><th>cotation</th>
         <th>hauteur</th><th>Precision equipement</th><th>Ouverture</th><th>Date ouverture</th><th>status</th>
@@ -90,6 +127,7 @@
 
     </table>
 
+  </div>
   </div>
 
   <!-- jQuery -->
