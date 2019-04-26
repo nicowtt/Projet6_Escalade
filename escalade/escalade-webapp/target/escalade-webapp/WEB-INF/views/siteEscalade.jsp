@@ -63,31 +63,32 @@
   </header>
   <div class="container">
 
-  <h1>En bays</h1>
+  <h1>Site d'En beys</h1>
 
-    <h3>Les Secteurs :</h3>
+    <h3>Les Secteurs:</h3>
 
   <div id="listerSecteur">
     <table class="table">
       <tr>
-        <th>Nom</th><th>Description</th><th>Accés</th><th>Altitude base</th><th>orientation</th><th>Type de roche</th>
+        <th>Numero de secteur</th><th>Nom</th><th>Description</th><th>Accés</th><th>Altitude base</th><th>orientation</th><th>Type de roche</th>
         <th>Nombre de voies</th><th>cotation</th><th>Coordonnés GPS</th>
         <%--<th>Element_id</th><th>Secteur_id</th>--%>
       </tr>
-      <c:forEach items="${secteur}" var="p">
+      <c:forEach items="${secteur}" var="s">
         <tr>
-          <td>${p.nom}</td>
-          <td>${p.description}</td>
-          <td>${p.acces}h</td>
-          <td>${p.altitudeBase}m</td>
-          <td>${p.orientation}</td>
-          <td>${p.typeRoche}</td>
-          <td>${p.nombreDeVoies}</td>
-          <td>${p.cotation}</td>
-          <td>${p.coordonneGps}</td>
+          <td>${s.id}</td>
+          <td>${s.nom}</td>
+          <td>${s.description}</td>
+          <td>${s.acces}h</td>
+          <td>${s.altitudeBase}m</td>
+          <td>${s.orientation}</td>
+          <td>${s.typeRoche}</td>
+          <td>${s.nombreDeVoies}</td>
+          <td>${s.cotation}</td>
+          <td>${s.coordonneGps}</td>
 
             <%--<td>${p.element_id}</td>--%>
-            <%--<td>${p.secteur_id}</td>--%>
+
             <%--<td><a href="editProduit?ref=${p.reference}">Editer</a></td>--%>
             <%--<td><a href="deleteProduit?ref=${p.reference}">Supprimer</a></td>--%>
         </tr>
@@ -96,17 +97,20 @@
     </table>
   </div>
 
-    <h3>Voies secteur : aiguilles d'en beys</h3>
+    <h3>Les voies:</h3>
 
   <div id="listerVoie">
     <table class="table">
       <tr>
-        <th>Numero</th><th>Nom</th><th>Temp d'escalade</th><th>description</th><th>longueur</th><th>cotation</th>
+        <th>Numero de secteur</th><th>Numero de voie</th><th>Nom</th><th>Temp d'escalade</th><th>description</th><th>longueur</th><th>cotation</th>
         <th>hauteur</th><th>Precision equipement</th><th>Ouverture</th><th>Date ouverture</th><th>status</th>
         <%--<th>Element_id</th><th>Secteur_id</th>--%>
       </tr>
+
+
       <c:forEach items="${voie}" var="p">
         <tr>
+          <td>${p.secteur_id}</td>
           <td>${p.numero}</td>
           <td>${p.nom}</td>
           <td>${p.tempDescalade}h</td>
@@ -118,14 +122,15 @@
           <td>${p.ouvertureEtEquipement}</td>
           <td>${p.dateOuverture}</td>
           <td>${p.statut}</td>
-          <%--<td>${p.element_id}</td>--%>
-          <%--<td>${p.secteur_id}</td>--%>
-          <%--<td><a href="editProduit?ref=${p.reference}">Editer</a></td>--%>
-          <%--<td><a href="deleteProduit?ref=${p.reference}">Supprimer</a></td>--%>
+            <%--<td>${p.element_id}</td>--%>
+
+            <%--<td><a href="editProduit?ref=${p.reference}">Editer</a></td>--%>
+            <%--<td><a href="deleteProduit?ref=${p.reference}">Supprimer</a></td>--%>
         </tr>
       </c:forEach>
 
     </table>
+
 
   </div>
   </div>

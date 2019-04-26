@@ -5,6 +5,7 @@ import com.ocr.nicolas.escalade.consumer.contract.dao.EscaladeDao;
 import com.ocr.nicolas.escalade.consumer.impl.rowmapper.SecteurRowMapper;
 import com.ocr.nicolas.escalade.consumer.impl.rowmapper.VoieRowMapper;
 import com.ocr.nicolas.escalade.model.bean.secteur.Secteur;
+import com.ocr.nicolas.escalade.model.bean.site.Site;
 import com.ocr.nicolas.escalade.model.bean.voie.Voie;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -87,5 +88,55 @@ public class EscaladeDaoImpl extends AbstractDAoImpl implements EscaladeDao {
         List<Secteur> vListSecteur = vJdbcTemplate.query(vSQL, vParams, vRowMapper);
 
         return vListSecteur;
+    }
+
+    /**
+     * pour trouver le nombre de secteur sur un site d'escalade
+     *
+     * @param pNom nom du site d'escalade
+     * @return nombre de secteur
+     */
+    public int getNbrSecteur(String pNom) {
+
+        String vSQL
+                = "SELECT nombredesecteur FROM site"
+                + " WHERE nom = ?";
+
+        JdbcTemplate vJdbcTemplate = new JdbcTemplate(getDatasource());
+
+        int vNbrSite = vJdbcTemplate.queryForObject(
+                vSQL,
+                Integer.class,
+                pNom);
+
+        return vNbrSite;
+    }
+
+
+    /**
+     *  pour afficher une liste de voie d'un site entier
+     *
+     * @param pSite
+     * @return
+     */
+    public List<Voie> getListVoieAllSite(int pSite) {
+
+        String vSQL
+                = "SELECT * FROM voie"
+                + " WHERE secteur_id IN ("
+                + " SELECT secteur.id FROM secteur"
+                + " WHERE site_id = :site_id)";
+
+        NamedParameterJdbcTemplate vJdbcTemplate = new NamedParameterJdbcTemplate(getDatasource());
+
+        MapSqlParameterSource vParams = new MapSqlParameterSource();
+        vParams.addValue("site_id", pSite, Types.INTEGER);
+
+        RowMapper<Voie> vRowMapper = new VoieRowMapper();
+
+        List<Voie> vListSecteur = vJdbcTemplate.query(vSQL, vParams, vRowMapper);
+
+        return vListSecteur;
+
     }
 }

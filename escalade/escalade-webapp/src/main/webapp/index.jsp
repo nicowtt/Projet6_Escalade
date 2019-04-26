@@ -39,7 +39,8 @@
     <div class="collapse navbar-collapse">
         <ul class="nav navbar-nav">
             <li><a href="/recherche">Recherche</a></li>
-            <li><a href="/echangeTopo">Echange Topo</a></li>
+            <li><a href="/creationTopo">Creation de Topo</a></li>
+            <li><a href="/echangeTopo">Echange de Topo</a></li>
         </ul>
 
         <!-- identification -->
@@ -63,7 +64,7 @@
 </header>
 
 <h3>In progress...</h3>
-<a href="/index">aller à la page du site En Bays</a>
+<a href="/siteEscalade">aller à la page du site En Bays</a>
 
 <!-- jQuery -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>

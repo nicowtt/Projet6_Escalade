@@ -12,6 +12,7 @@ public class Site {
     private String localisationDepartement;
     private String localisationPays;
     private String nomPhoto;
+    private Integer nombreDeSecteur;
     private Integer element_id;
 
     // ==================== Constructeurs ====================
@@ -64,6 +65,12 @@ public class Site {
     }
     public void setNomPhoto(String nomPhoto) {
         this.nomPhoto = nomPhoto;
+    }
+    public Integer getNombreDeSecteur() {
+        return nombreDeSecteur;
+    }
+    public void setNombreDeSecteur(Integer nombreDeSecteur) {
+        this.nombreDeSecteur = nombreDeSecteur;
     }
     public Integer getElement_id() {
         return element_id;
