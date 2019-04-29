@@ -19,7 +19,7 @@ public class Site {
     /**
      * Constructeur par défaut.
      */
-    protected Site() {
+    public Site() {
     }
 
     /**
@@ -27,7 +27,7 @@ public class Site {
      *
      * @param pId
      */
-    protected Site(Integer pId) { id = pId;}
+    public Site(Integer pId) { id = pId;}
 
     // ==================== Getters/Setters ====================
     public Integer getId() {

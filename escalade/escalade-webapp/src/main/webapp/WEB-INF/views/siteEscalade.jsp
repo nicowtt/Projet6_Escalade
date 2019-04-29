@@ -63,8 +63,24 @@
   </header>
   <div class="container">
 
-  <h1>Site d'En beys</h1>
+    <!-- Corps
+    ================================================== -->
 
+    <!-- Titre du site -->
+    <h1><c:forEach items="${site}" var="si">
+      <c:out value="${si.nom}" />
+    </c:forEach></h1>
+
+    <!-- Description-->
+    <p><c:forEach items="${site}" var="si">
+      <c:out value="Description: ${si.description}" />
+    </c:forEach></p>
+
+    <!-- image base-->
+    <c:forEach items="${site}" var="si"><img src="../../resources/pictures/${si.nomPhoto}" alt="${si.nomPhoto}" style="width:500px;height:500px;border:0;"></c:forEach>
+
+    <!-- Tableau des Secteurs
+    ================================================== -->
     <h3>Les Secteurs:</h3>
 
   <div id="listerSecteur">
@@ -86,27 +102,26 @@
           <td>${s.nombreDeVoies}</td>
           <td>${s.cotation}</td>
           <td>${s.coordonneGps}</td>
-
-            <%--<td>${p.element_id}</td>--%>
-
             <%--<td><a href="editProduit?ref=${p.reference}">Editer</a></td>--%>
             <%--<td><a href="deleteProduit?ref=${p.reference}">Supprimer</a></td>--%>
         </tr>
       </c:forEach>
-
     </table>
   </div>
 
     <h3>Les voies:</h3>
 
+    <!-- Images des secteur (pour les voies) -->
+    <c:forEach items="${secteur}" var="s"><img src="../../resources/pictures/${s.nomPhoto}" alt="${s.nomPhoto}"></c:forEach>
+
+    <!-- Tableau des voies
+    ================================================== -->
   <div id="listerVoie">
     <table class="table">
       <tr>
         <th>Numero de secteur</th><th>Numero de voie</th><th>Nom</th><th>Temp d'escalade</th><th>description</th><th>longueur</th><th>cotation</th>
         <th>hauteur</th><th>Precision equipement</th><th>Ouverture</th><th>Date ouverture</th><th>status</th>
-        <%--<th>Element_id</th><th>Secteur_id</th>--%>
       </tr>
-
 
       <c:forEach items="${voie}" var="p">
         <tr>
@@ -123,15 +138,11 @@
           <td>${p.dateOuverture}</td>
           <td>${p.statut}</td>
             <%--<td>${p.element_id}</td>--%>
-
             <%--<td><a href="editProduit?ref=${p.reference}">Editer</a></td>--%>
             <%--<td><a href="deleteProduit?ref=${p.reference}">Supprimer</a></td>--%>
         </tr>
       </c:forEach>
-
     </table>
-
-
   </div>
   </div>
 

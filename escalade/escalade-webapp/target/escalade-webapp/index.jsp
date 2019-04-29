@@ -33,7 +33,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand page-top" href="/index">Accueil Grimpez.com</a>
+        <a class="navbar-brand page-top" href="/index">Les amis de l'escalade</a>
     </div>
     <!-- Tous les éléments qui peuvent aller dans la barre du haut -->
     <div class="collapse navbar-collapse">
@@ -62,9 +62,19 @@
     </nav>
 
 </header>
+<div class="container">
 
-<h3>In progress...</h3>
-<a href="/siteEscalade">aller à la page du site En Bays</a>
+    <!-- Corps
+    ================================================== -->
+
+    <p></p>
+    <a href="/siteEscalade">
+        <img src="../../resources/pictures/enbeys_base.jpg" alt="enbeys_base.jpg" style="width:200px;height:200px;border:0;">
+        <p> Site d'En beys </p>
+    </a>
+
+</div>
+
 
 <!-- jQuery -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>

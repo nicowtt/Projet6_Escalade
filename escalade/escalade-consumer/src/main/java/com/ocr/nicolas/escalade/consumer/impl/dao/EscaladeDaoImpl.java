@@ -3,6 +3,7 @@ package com.ocr.nicolas.escalade.consumer.impl.dao;
 
 import com.ocr.nicolas.escalade.consumer.contract.dao.EscaladeDao;
 import com.ocr.nicolas.escalade.consumer.impl.rowmapper.SecteurRowMapper;
+import com.ocr.nicolas.escalade.consumer.impl.rowmapper.SiteRowMapper;
 import com.ocr.nicolas.escalade.consumer.impl.rowmapper.VoieRowMapper;
 import com.ocr.nicolas.escalade.model.bean.secteur.Secteur;
 import com.ocr.nicolas.escalade.model.bean.site.Site;
@@ -138,5 +139,28 @@ public class EscaladeDaoImpl extends AbstractDAoImpl implements EscaladeDao {
 
         return vListSecteur;
 
+    }
+
+    /**
+     * Pour aller chercher dans la BDD la liste (bean) des sites.
+     *
+     * @param pSite -> numero de site
+     * @return liste de site
+     */
+    @Override
+    public List<Site> getListSite(int pSite) {
+
+        String vSQL = "SELECT * FROM site WHERE id = :site_id";
+
+        NamedParameterJdbcTemplate vJdbcTemplate = new NamedParameterJdbcTemplate(getDatasource());
+
+        MapSqlParameterSource vParams = new MapSqlParameterSource();
+        vParams.addValue("site_id", pSite, Types.INTEGER);
+
+        RowMapper<Site> vRowMapper = new SiteRowMapper();
+
+        List<Site> vListSite = vJdbcTemplate.query(vSQL, vParams, vRowMapper);
+
+        return vListSite;
     }
 }

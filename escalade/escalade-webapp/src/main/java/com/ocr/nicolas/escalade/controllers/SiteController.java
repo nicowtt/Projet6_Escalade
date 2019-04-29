@@ -22,15 +22,16 @@ public class SiteController {
 
     @RequestMapping(value="/siteEscalade")
     public String index(Model model) {
+        String site = "";
 
         // je vais chercher mes tableaux pour le site 1 -> En beys:
 
+        // les sites:
+        model.addAttribute("site", escaladeDao.getListSite(1));
         // les secteurs:
         model.addAttribute("secteur", escaladeDao.getListSecteur(1));
         // les voies:
         model.addAttribute("voie", escaladeDao.getListVoieAllSite( 1));
-
-
 
         return "siteEscalade";
     }

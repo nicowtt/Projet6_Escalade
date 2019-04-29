@@ -13,4 +13,5 @@ public interface EscaladeDao {
     List<Secteur> getListSecteur(int pSite);
     int getNbrSecteur(String pNom);
     List<Voie> getListVoieAllSite (int pSite);
+    List<Site> getListSite(int pSite);
 }
