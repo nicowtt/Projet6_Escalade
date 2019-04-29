@@ -1,5 +1,7 @@
 C:\Users\nicob\Documents\GitHub\Projet6_Escalade\escalade\escalade-consumer\src\main\java\com\ocr\nicolas\escalade\consumer\impl\dao\EscaladeDaoImpl.java
+C:\Users\nicob\Documents\GitHub\Projet6_Escalade\escalade\escalade-consumer\src\main\java\com\ocr\nicolas\escalade\consumer\impl\rowmapper\SecteurRowMapper.java
 C:\Users\nicob\Documents\GitHub\Projet6_Escalade\escalade\escalade-consumer\src\main\java\com\ocr\nicolas\escalade\consumer\contract\dao\EscaladeDao.java
-C:\Users\nicob\Documents\GitHub\Projet6_Escalade\escalade\escalade-consumer\src\main\java\com\ocr\nicolas\escalade\consumer\impl\dao\UtilisateurDaoImpl.java
+C:\Users\nicob\Documents\GitHub\Projet6_Escalade\escalade\escalade-consumer\src\main\java\com\ocr\nicolas\escalade\consumer\impl\rowmapper\VoieRowMapper.java
+C:\Users\nicob\Documents\GitHub\Projet6_Escalade\escalade\escalade-consumer\src\main\java\com\ocr\nicolas\escalade\consumer\impl\rowmapper\SiteRowMapper.java
 C:\Users\nicob\Documents\GitHub\Projet6_Escalade\escalade\escalade-consumer\src\main\java\com\ocr\nicolas\escalade\consumer\impl\dao\AbstractDAoImpl.java
 C:\Users\nicob\Documents\GitHub\Projet6_Escalade\escalade\escalade-consumer\src\main\java\com\ocr\nicolas\escalade\consumer\impl\DaoException.java

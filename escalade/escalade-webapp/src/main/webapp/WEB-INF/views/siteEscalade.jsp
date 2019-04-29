@@ -9,14 +9,16 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Grimpez</title>
+    <title>Les amis de l'escalade</title>
     <meta name="description" content="Le site de partage pour fan d'escalade">
 
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
 
-    <spring:url value="/resources/css/style.css " var="styleCss" />
-    <link href="${styleCss}" rel="stylesheet" />
+    <spring:url value="/resources/css/style.css " var="stylecss" />
+    <link href="${stylecss}" rel="stylesheet" />
+
+    <%--<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>resources/css/style.css">--%>
 
   </head>
 
@@ -32,7 +34,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand page-top" href="/index">Accueil Grimpez.com</a>
+      <a class="navbar-brand page-top" href="/index">Les amis de l'escalade</a>
     </div>
     <!-- Tous les éléments qui peuvent aller dans la barre du haut -->
     <div class="collapse navbar-collapse">
@@ -73,7 +75,7 @@
 
     <!-- Description-->
     <p><c:forEach items="${site}" var="si">
-      <c:out value="Description: ${si.description}" />
+      <c:out value="${si.description}" />
     </c:forEach></p>
 
     <!-- image base-->
@@ -95,7 +97,7 @@
           <td>${s.id}</td>
           <td>${s.nom}</td>
           <td>${s.description}</td>
-          <td>${s.acces}h</td>
+          <td>${s.acces}</td>
           <td>${s.altitudeBase}m</td>
           <td>${s.orientation}</td>
           <td>${s.typeRoche}</td>
