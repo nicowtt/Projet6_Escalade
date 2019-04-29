@@ -17,6 +17,7 @@ public class Utilisateur {
     private String pays;
     private String numeroTelephone;
     private String email;
+    private String membreAssociation;
     private String autre;
 
     // ============ Constructeurs ======
@@ -99,6 +100,12 @@ public class Utilisateur {
     }
     public void setEmail(String email) {
         this.email = email;
+    }
+    public String getMembreAssociation() {
+        return membreAssociation;
+    }
+    public void setMembreAssociation(String membreAssociation) {
+        this.membreAssociation = membreAssociation;
     }
     public String getAutre() {
         return autre;

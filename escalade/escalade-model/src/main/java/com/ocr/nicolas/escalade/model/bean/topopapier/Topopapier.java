@@ -13,6 +13,7 @@ public class Topopapier {
     private String nomCreateur;
     private Date dateCreation;
     private Date dateMaj;
+    private String disponibilite;
     private Integer site_id;
     private Integer element_id;
 
@@ -60,6 +61,12 @@ public class Topopapier {
     }
     public void setDateMaj(Date dateMaj) {
         this.dateMaj = dateMaj;
+    }
+    public String getDisponibilite() {
+        return disponibilite;
+    }
+    public void setDisponibilite(String disponibilite) {
+        this.disponibilite = disponibilite;
     }
     public Integer getSite_id() {
         return site_id;
