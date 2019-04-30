@@ -1,7 +1,0 @@
-com\ocr\nicolas\escalade\consumer\impl\dao\AbstractDAoImpl.class
-com\ocr\nicolas\escalade\consumer\impl\dao\EscaladeDaoImpl.class
-com\ocr\nicolas\escalade\consumer\impl\DaoException.class
-com\ocr\nicolas\escalade\consumer\impl\rowmapper\SecteurRowMapper.class
-com\ocr\nicolas\escalade\consumer\contract\dao\EscaladeDao.class
-com\ocr\nicolas\escalade\consumer\impl\rowmapper\SiteRowMapper.class
-com\ocr\nicolas\escalade\consumer\impl\rowmapper\VoieRowMapper.class
