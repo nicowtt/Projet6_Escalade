@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="com.ocr.nicolas.AppTest" time="0.046" tests="1" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="com.ocr.nicolas.AppTest" time="0.029" tests="1" errors="0" skipped="0" failures="0">
   <properties>
     <property name="sun.desktop" value="windows"/>
     <property name="awt.toolkit" value="sun.awt.windows.WToolkit"/>
@@ -18,7 +18,7 @@
     <property name="user.country" value="FR"/>
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk1.8.0_191\jre\bin"/>
-    <property name="sun.java.command" value="C:\Users\nicob\AppData\Local\Temp\surefire3884836718245359893\surefirebooter2876238201855706963.jar C:\Users\nicob\AppData\Local\Temp\surefire3884836718245359893 2019-04-29T20-29-51_770-jvmRun1 surefire336342227271416855tmp surefire_04041348313867865725tmp"/>
+    <property name="sun.java.command" value="C:\Users\nicob\AppData\Local\Temp\surefire4061642571288087337\surefirebooter7199895088567186487.jar C:\Users\nicob\AppData\Local\Temp\surefire4061642571288087337 2019-04-30T09-56-14_433-jvmRun1 surefire3308888974090433519tmp surefire_08382808153823831951tmp"/>
     <property name="surefire.test.class.path" value="C:\Users\nicob\Documents\GitHub\Projet6_Escalade\escalade\escalade-model\target\test-classes;C:\Users\nicob\Documents\GitHub\Projet6_Escalade\escalade\escalade-model\target\classes;C:\Users\nicob\.m2\repository\commons-logging\commons-logging\1.2\commons-logging-1.2.jar;C:\Users\nicob\.m2\repository\org\apache\logging\log4j\log4j-api\2.6.2\log4j-api-2.6.2.jar;C:\Users\nicob\.m2\repository\org\apache\logging\log4j\log4j-core\2.6.2\log4j-core-2.6.2.jar;C:\Users\nicob\.m2\repository\org\apache\logging\log4j\log4j-jcl\2.6.2\log4j-jcl-2.6.2.jar;C:\Users\nicob\.m2\repository\org\apache\logging\log4j\log4j-web\2.11.0\log4j-web-2.11.0.jar;C:\Users\nicob\.m2\repository\javax\validation\validation-api\2.0.1.Final\validation-api-2.0.1.Final.jar;C:\Users\nicob\.m2\repository\junit\junit\4.11\junit-4.11.jar;C:\Users\nicob\.m2\repository\org\hamcrest\hamcrest-core\1.3\hamcrest-core-1.3.jar;"/>
     <property name="sun.cpu.endian" value="little"/>
     <property name="user.home" value="C:\Users\nicob"/>
@@ -31,7 +31,7 @@
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
     <property name="java.awt.graphicsenv" value="sun.awt.Win32GraphicsEnvironment"/>
-    <property name="surefire.real.class.path" value="C:\Users\nicob\AppData\Local\Temp\surefire3884836718245359893\surefirebooter2876238201855706963.jar"/>
+    <property name="surefire.real.class.path" value="C:\Users\nicob\AppData\Local\Temp\surefire4061642571288087337\surefirebooter7199895088567186487.jar"/>
     <property name="sun.boot.class.path" value="C:\Program Files\Java\jdk1.8.0_191\jre\lib\resources.jar;C:\Program Files\Java\jdk1.8.0_191\jre\lib\rt.jar;C:\Program Files\Java\jdk1.8.0_191\jre\lib\sunrsasign.jar;C:\Program Files\Java\jdk1.8.0_191\jre\lib\jsse.jar;C:\Program Files\Java\jdk1.8.0_191\jre\lib\jce.jar;C:\Program Files\Java\jdk1.8.0_191\jre\lib\charsets.jar;C:\Program Files\Java\jdk1.8.0_191\jre\lib\jfr.jar;C:\Program Files\Java\jdk1.8.0_191\jre\classes"/>
     <property name="user.script" value=""/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>

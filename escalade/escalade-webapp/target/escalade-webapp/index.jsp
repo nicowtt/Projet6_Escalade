@@ -20,13 +20,16 @@
 
     <%--<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>resources/css/style.css">--%>
 
+    <%--<link rel="stylesheet" media="screen" type="text/css" title="main_css"--%>
+          <%--href="resources/css/style.css" />--%>
+
 </head>
 
 <header class="raw">
 
     <!-- Navigation
     ================================================== -->
-    <nav class="navbar navbar-inverse role="navigation">
+    <nav class="navbar navbar-inverse" role="navigation">
     <div class="navbar-header">
         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
             <span class="icon-bar"></span>
@@ -72,7 +75,7 @@
         <img src="../../resources/pictures/enbeys_base.jpg" alt="enbeys_base.jpg" style="width:200px;height:200px;border:0;">
         <p> Site d'En beys </p>
     </a>
-
+    <h3>test CSS</h3>
 </div>
 
 
