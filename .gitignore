@@ -65,3 +65,7 @@ cmake-build-*/
 
 # IntelliJ
 out/
+*.iml
+
+# Maven
+target/

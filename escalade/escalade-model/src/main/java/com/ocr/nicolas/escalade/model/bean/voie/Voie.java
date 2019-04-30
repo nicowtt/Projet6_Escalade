@@ -1,8 +1,6 @@
 package com.ocr.nicolas.escalade.model.bean.voie;
 
 
-import java.sql.Date;
-
 /**
  * Bean representant une Voie d'escalade
  */

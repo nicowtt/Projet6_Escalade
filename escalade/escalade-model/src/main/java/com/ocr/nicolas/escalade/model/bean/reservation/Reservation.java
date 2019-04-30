@@ -1,7 +1,5 @@
 package com.ocr.nicolas.escalade.model.bean.reservation;
 
-import java.sql.Date;
-
 /**
  * Bean representant une Reservation
  */

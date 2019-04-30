@@ -8,6 +8,7 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -21,19 +22,27 @@ public class SiteController {
     @Inject
     private EscaladeDao escaladeDao;
 
-    @RequestMapping(value="/siteEscalade", method = RequestMethod.GET )
-    public String index(Model model) {
-        String site = "";
+    @RequestMapping(value="/siteEscalade/{id}", method = RequestMethod.GET )
+    public String index(Model model, @PathVariable Integer id) {
 
-        // je vais chercher mes tableaux pour le site 1 -> En beys:
+        // je crée des models afin d'afficher mes tableaux pour le site 1 -> En beys:
 
-        // les sites:
-        model.addAttribute("site", escaladeDao.getListSite(1));
-        // les secteurs:
-        model.addAttribute("secteur", escaladeDao.getListSecteur(1));
-        // les voies:
-        model.addAttribute("voie", escaladeDao.getListVoieAllSite( 1));
+        // Model pour les sites:
+        model.addAttribute("site", escaladeDao.getListSite(id));
+        // Model pour les secteurs:
+        model.addAttribute("secteur", escaladeDao.getListSecteur(id));
+        // Model pour les voies:
+        model.addAttribute("voie", escaladeDao.getListVoieAllSite( id));
 
         return "siteEscalade";
     }
+
+//    @RequestMapping(value="/siteEscalade/{id}/addComment", method = RequestMethod.GET )
+//    public String addComment...
+//
+//    @RequestMapping(value="/siteEscalade/{id}/showComment/{commentId}", method = RequestMethod.GET )
+//    public String showComment(Model model, @PathVariable Integer id, @PathVariable Integer commentId)
+
+//    mettre en attribut :, @SessionAttribute -> pour gérer les session utilisateur
+
 }
