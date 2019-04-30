@@ -15,7 +15,7 @@ public class Secteur {
     private String typeRoche;
     private Integer nombreDeVoies;
     private String cotation;
-    private String nomPhoto;
+    private String urlPhoto;
     private String coordonneGps;
     private Integer element_id;
     private Integer site_id;
@@ -85,11 +85,11 @@ public class Secteur {
     public void setCotation(String cotation) {
         this.cotation = cotation;
     }
-    public String getNomPhoto() {
-        return nomPhoto;
+    public String getUrlPhoto() {
+        return urlPhoto;
     }
-    public void setNomPhoto(String nomPhoto) {
-        this.nomPhoto = nomPhoto;
+    public void setUrlPhoto(String urlPhoto) {
+        this.urlPhoto = urlPhoto;
     }
     public String getCoordonneGps() {
         return coordonneGps;

@@ -11,7 +11,7 @@ public class Site {
     private String description;
     private String localisationDepartement;
     private String localisationPays;
-    private String nomPhoto;
+    private String urlPhoto;
     private Integer nombreDeSecteur;
     private Integer element_id;
 
@@ -60,11 +60,11 @@ public class Site {
     public void setLocalisationPays(String localisationPays) {
         this.localisationPays = localisationPays;
     }
-    public String getNomPhoto() {
-        return nomPhoto;
+    public String getUrlPhoto() {
+        return urlPhoto;
     }
-    public void setNomPhoto(String nomPhoto) {
-        this.nomPhoto = nomPhoto;
+    public void setUrlPhoto(String urlPhoto) {
+        this.urlPhoto = urlPhoto;
     }
     public Integer getNombreDeSecteur() {
         return nombreDeSecteur;

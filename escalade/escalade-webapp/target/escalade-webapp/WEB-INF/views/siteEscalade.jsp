@@ -77,7 +77,7 @@
     </c:forEach></p>
 
     <!-- image base-->
-    <c:forEach items="${site}" var="si"><img src="../../resources/pictures/${si.nomPhoto}" alt="${si.nomPhoto}" style="width:500px;height:500px;border:0;"></c:forEach>
+    <c:forEach items="${site}" var="si"><img src="${si.urlPhoto}" alt="${si.urlPhoto}" style="width:500px;height:500px;border:0;"></c:forEach>
 
     <!-- Tableau des Secteurs
     ================================================== -->
@@ -112,7 +112,7 @@
     <h3>Les voies:</h3>
 
     <!-- Images des secteur (pour les voies) -->
-    <c:forEach items="${secteur}" var="s"><img src="../../resources/pictures/${s.nomPhoto}" alt="${s.nomPhoto}"></c:forEach>
+    <c:forEach items="${secteur}" var="s"><img src="${s.urlPhoto}" alt="${s.urlPhoto}" style="width:500px;height:500px;border:0;"></c:forEach>
 
     <!-- Tableau des voies
     ================================================== -->

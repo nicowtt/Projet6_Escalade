@@ -20,7 +20,7 @@ public class SecteurRowMapper implements RowMapper<Secteur> {
         vSecteur.setTypeRoche(resultSet.getString("typeroche"));
         vSecteur.setNombreDeVoies(resultSet.getInt("nombredevoies"));
         vSecteur.setCotation(resultSet.getString("cotation"));
-        vSecteur.setNomPhoto(resultSet.getString("nomphoto"));
+        vSecteur.setUrlPhoto(resultSet.getString("urlphoto"));
         vSecteur.setCoordonneGps(resultSet.getString("coordonnegps"));
         vSecteur.setElement_id(resultSet.getInt("element_id"));
         vSecteur.setSite_id(resultSet.getInt("site_id"));

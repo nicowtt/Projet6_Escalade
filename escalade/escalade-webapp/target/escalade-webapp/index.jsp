@@ -72,7 +72,7 @@
 
     <p></p>
     <a href="/siteEscalade/1">
-        <img src="/resources/pictures/enbeys_base.jpg" alt="enbeys_base.jpg" style="width:200px;height:200px;border:0;">
+        <img src="https://image.noelshack.com/fichiers/2019/18/2/1556636810-enbays-base.jpg" alt="enbeys_base.jpg" style="width:200px;height:200px;border:0;">
         <p> Site d'En beys </p>
     </a>
     <%--<h3>test CSS</h3>--%>
