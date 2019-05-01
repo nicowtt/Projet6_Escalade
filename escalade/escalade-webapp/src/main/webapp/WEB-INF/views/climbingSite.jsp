@@ -33,7 +33,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand page-top" href="/index">Les amis de l'escalade</a>
+      <a class="navbar-brand page-top" href="/home">Les amis de l'escalade</a>
     </div>
     <!-- Tous les éléments qui peuvent aller dans la barre du haut -->
     <div class="collapse navbar-collapse">

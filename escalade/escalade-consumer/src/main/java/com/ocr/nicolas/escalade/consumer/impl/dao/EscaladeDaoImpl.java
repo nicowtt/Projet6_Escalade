@@ -27,11 +27,11 @@ public class EscaladeDaoImpl extends AbstractDAoImpl implements EscaladeDao {
 
 
     /**
-     * Pour savoir combien il y a de Site d'escalade dans le site
-     * @return
+     * for count how many site exist
+     * @return number of site
      */
     @Override
-    public int getNombreSite() {
+    public int getNbrAllSite() {
 
         // remplir une List avec les infos de la bdd
         JdbcTemplate vJdbcTemplate = new JdbcTemplate(getDatasource());
@@ -45,10 +45,10 @@ public class EscaladeDaoImpl extends AbstractDAoImpl implements EscaladeDao {
 
 
     /**
-     * pour aller chercher dans la BDD la liste (bean) des voies d'un secteur.
+     * for get ways List on sectors
      *
-     * @param pSecteur -> numero du secteur
-     * @return liste de voies
+     * @param pSecteur -> id of sector
+     * @return Ways List
      */
     @Override
     public List<Voie> getListVoie(int pSecteur) {
@@ -69,13 +69,13 @@ public class EscaladeDaoImpl extends AbstractDAoImpl implements EscaladeDao {
     }
 
     /**
-     * Pour aller chercher dans la BDD la liste (bean) des secteurs d'un site.
+     * for get sectors List on Site
      *
      * @param pSite -> numero de site
      * @return liste de secteur
      */
     @Override
-    public List<Secteur> getListSecteur(int pSite) {
+    public List<Secteur> getListOneSector(int pSite) {
 
         String vSQL = "SELECT * FROM secteur WHERE site_id = :site_id";
 
@@ -92,10 +92,10 @@ public class EscaladeDaoImpl extends AbstractDAoImpl implements EscaladeDao {
     }
 
     /**
-     * pour trouver le nombre de secteur sur un site d'escalade
+     * for count sectors on site
      *
-     * @param pNom nom du site d'escalade
-     * @return nombre de secteur
+     * @param pNom name of site
+     * @return sectors number
      */
     public int getNbrSecteur(String pNom) {
 
@@ -115,12 +115,12 @@ public class EscaladeDaoImpl extends AbstractDAoImpl implements EscaladeDao {
 
 
     /**
-     *  pour afficher une liste de voie d'un site entier
+     *  for get Ways List on Site
      *
      * @param pSite
      * @return
      */
-    public List<Voie> getListVoieAllSite(int pSite) {
+    public List<Voie> getListAllWaysForOneSite(int pSite) {
 
         String vSQL
                 = "SELECT * FROM voie"
@@ -142,13 +142,13 @@ public class EscaladeDaoImpl extends AbstractDAoImpl implements EscaladeDao {
     }
 
     /**
-     * Pour aller chercher dans la BDD la liste (bean) des sites.
+     * Pour aller chercher dans la BDD la liste (bean) d'un site.
      *
      * @param pSite -> numero de site
      * @return liste de site
      */
     @Override
-    public List<Site> getListSite(int pSite) {
+    public List<Site> getListOneSite(int pSite) {
 
         String vSQL = "SELECT * FROM site WHERE id = :site_id";
 
@@ -163,4 +163,21 @@ public class EscaladeDaoImpl extends AbstractDAoImpl implements EscaladeDao {
 
         return vListSite;
     }
+
+
+    @Override
+    public List<Site> getLitAllSite() {
+
+        String vSQL = "SELECT * FROM site ";
+
+        NamedParameterJdbcTemplate vJdbcTemplate = new NamedParameterJdbcTemplate(getDatasource());
+
+        RowMapper<Site> vRowMapper = new SiteRowMapper();
+
+        List<Site> vListSite = vJdbcTemplate.query(vSQL, vRowMapper);
+
+        return vListSite;
+    }
+
+
 }

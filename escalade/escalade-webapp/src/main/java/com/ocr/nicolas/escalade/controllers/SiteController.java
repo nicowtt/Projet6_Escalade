@@ -1,7 +1,5 @@
 package com.ocr.nicolas.escalade.controllers;
 
-
-
 import com.ocr.nicolas.escalade.consumer.contract.dao.EscaladeDao;
 
 import org.apache.commons.logging.Log;
@@ -22,19 +20,35 @@ public class SiteController {
     @Inject
     private EscaladeDao escaladeDao;
 
-    @RequestMapping(value="/siteEscalade/{id}", method = RequestMethod.GET )
+    /**
+     * Redirection index.jsp to home.jsp
+     * @param model
+     * @return home.jsp
+     */
+    @RequestMapping(value="/home", method = RequestMethod.GET )
+    public String home(Model model) {
+        //For display all site
+        model.addAttribute("site", escaladeDao.getLitAllSite());
+        return "home";
+    }
+
+    /**
+     * For display generic climbing site
+     * @param model
+     * @param id -> for one climbing site
+     * @return
+     */
+    @RequestMapping(value="/climbingSite/{id}", method = RequestMethod.GET )
     public String index(Model model, @PathVariable Integer id) {
 
-        // je crée des models afin d'afficher mes tableaux pour le site 1 -> En beys:
+        // Model for one site:
+        model.addAttribute("site", escaladeDao.getListOneSite(id));
+        // Model for all sectors on one site:
+        model.addAttribute("secteur", escaladeDao.getListOneSector(id));
+        // Model for all ways on one site:
+        model.addAttribute("voie", escaladeDao.getListAllWaysForOneSite(id));
 
-        // Model pour les sites:
-        model.addAttribute("site", escaladeDao.getListSite(id));
-        // Model pour les secteurs:
-        model.addAttribute("secteur", escaladeDao.getListSecteur(id));
-        // Model pour les voies:
-        model.addAttribute("voie", escaladeDao.getListVoieAllSite( id));
-
-        return "siteEscalade";
+        return "climbingSite";
     }
 
 //    @RequestMapping(value="/siteEscalade/{id}/addComment", method = RequestMethod.GET )

@@ -8,10 +8,11 @@ import java.util.List;
 
 public interface EscaladeDao {
 
-    int getNombreSite();
+    int getNbrAllSite();
     List<Voie> getListVoie(int pSecteur);
-    List<Secteur> getListSecteur(int pSite);
+    List<Secteur> getListOneSector(int pSite);
     int getNbrSecteur(String pNom);
-    List<Voie> getListVoieAllSite (int pSite);
-    List<Site> getListSite(int pSite);
+    List<Voie> getListAllWaysForOneSite (int pSite);
+    List<Site> getListOneSite(int pSite);
+    List<Site> getLitAllSite();
 }
