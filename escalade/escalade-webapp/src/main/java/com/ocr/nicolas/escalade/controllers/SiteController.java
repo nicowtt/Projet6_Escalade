@@ -22,33 +22,46 @@ public class SiteController {
 
     /**
      * Redirection index.jsp to home.jsp
-     * @param model
+     * @param model model
      * @return home.jsp
      */
     @RequestMapping(value="/home", method = RequestMethod.GET )
     public String home(Model model) {
-        //For display all site
-        model.addAttribute("site", escaladeDao.getLitAllSite());
+        //Model for display all site on home.jsp
+        model.addAttribute("site", escaladeDao.getListAllSite());
         return "home";
     }
 
     /**
-     * For display generic climbing site
-     * @param model
+     * For display generic climbing site page
+     * @param model model
      * @param id -> for one climbing site
      * @return
      */
     @RequestMapping(value="/climbingSite/{id}", method = RequestMethod.GET )
     public String index(Model model, @PathVariable Integer id) {
 
-        // Model for one site:
+        // Models for display all information about one climbing site
         model.addAttribute("site", escaladeDao.getListOneSite(id));
-        // Model for all sectors on one site:
         model.addAttribute("secteur", escaladeDao.getListOneSector(id));
-        // Model for all ways on one site:
         model.addAttribute("voie", escaladeDao.getListAllWaysForOneSite(id));
-
         return "climbingSite";
+    }
+
+
+    /**
+     * For display generic comments page
+     * @param model model
+     * @param element_Id -> for one element
+     * @return Comments List
+     */
+    @RequestMapping(value="/comment/{element_Id}", method = RequestMethod.GET )
+    public String comment(Model model, @PathVariable Integer element_Id) {
+
+//        // Models for display comments
+        model.addAttribute("commentaire", escaladeDao.getListAllCommentForOneElementId(element_Id));
+
+        return "comment";
     }
 
 //    @RequestMapping(value="/siteEscalade/{id}/addComment", method = RequestMethod.GET )

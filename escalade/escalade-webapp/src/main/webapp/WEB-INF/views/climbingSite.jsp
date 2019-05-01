@@ -15,10 +15,13 @@
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
 
-    <spring:url value="/resources/css/style.css " var="stylecss" />
+    <spring:url value="/resources/css/style.css" var="stylecss" />
     <link href="${stylecss}" rel="stylesheet" />
 
     <%--<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>resources/css/style.css">--%>
+
+      <%--<link rel="stylesheet" media="screen" type="text/css" title="main_css"--%>
+      <%--href="/resources/css/style.css" />--%>
 
   </head>
 
@@ -63,23 +66,23 @@
   </header>
   <div class="container">
 
-    <!-- Corps
+    <!-- Body
     ================================================== -->
 
-    <!-- Titre du site -->
+    <!-- Climbing site title -->
     <h1><c:forEach items="${site}" var="si">
       <c:out value="${si.nom}" />
     </c:forEach></h1>
 
-    <!-- Description-->
+    <!-- Site Description-->
     <p><c:forEach items="${site}" var="si">
       <c:out value="${si.description}" />
     </c:forEach></p>
 
-    <!-- image base-->
+    <!-- Picture-->
     <c:forEach items="${site}" var="si"><img src="${si.urlPhoto}" alt="${si.urlPhoto}" style="width:500px;height:500px;border:0;"></c:forEach>
 
-    <!-- Tableau des Secteurs
+    <!-- Sectors table
     ================================================== -->
     <h3>Les Secteurs:</h3>
 
@@ -87,7 +90,7 @@
     <table class="table">
       <tr>
         <th>Numero de secteur</th><th>Nom</th><th>Description</th><th>Accés</th><th>Altitude base</th><th>orientation</th><th>Type de roche</th>
-        <th>Nombre de voies</th><th>cotation</th><th>Coordonnés GPS</th>
+        <th>Nombre de voies</th><th>cotation</th><th>Coordonnés GPS</th><th>Commentaires</th><th>Commentaires</th>
         <%--<th>Element_id</th><th>Secteur_id</th>--%>
       </tr>
       <c:forEach items="${secteur}" var="s">
@@ -102,7 +105,9 @@
           <td>${s.nombreDeVoies}</td>
           <td>${s.cotation}</td>
           <td>${s.coordonneGps}</td>
-            <%--<td><a href="editProduit?ref=${p.reference}">Editer</a></td>--%>
+          <td><a href="/comment/${s.element_id}">Voir</a></td>
+          <td><a href="editProduit?ref=${p.reference}">Ecrire</a></td>
+          <%--<td><a href="editProduit?ref=${p.reference}">Editer</a></td>--%>
             <%--<td><a href="deleteProduit?ref=${p.reference}">Supprimer</a></td>--%>
         </tr>
       </c:forEach>
@@ -111,10 +116,10 @@
 
     <h3>Les voies:</h3>
 
-    <!-- Images des secteur (pour les voies) -->
+    <!-- Way pictures (depend of sectors number) -->
     <c:forEach items="${secteur}" var="s"><img src="${s.urlPhoto}" alt="${s.urlPhoto}" style="width:500px;height:500px;border:0;"></c:forEach>
 
-    <!-- Tableau des voies
+    <!-- Way table
     ================================================== -->
   <div id="listerVoie">
     <table class="table">

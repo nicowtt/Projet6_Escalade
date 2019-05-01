@@ -2,9 +2,12 @@ package com.ocr.nicolas.escalade.consumer.impl.dao;
 
 
 import com.ocr.nicolas.escalade.consumer.contract.dao.EscaladeDao;
+
+import com.ocr.nicolas.escalade.consumer.impl.rowmapper.CommentaireRowMapper;
 import com.ocr.nicolas.escalade.consumer.impl.rowmapper.SecteurRowMapper;
 import com.ocr.nicolas.escalade.consumer.impl.rowmapper.SiteRowMapper;
 import com.ocr.nicolas.escalade.consumer.impl.rowmapper.VoieRowMapper;
+import com.ocr.nicolas.escalade.model.bean.commentaire.Commentaire;
 import com.ocr.nicolas.escalade.model.bean.secteur.Secteur;
 import com.ocr.nicolas.escalade.model.bean.site.Site;
 import com.ocr.nicolas.escalade.model.bean.voie.Voie;
@@ -166,7 +169,7 @@ public class EscaladeDaoImpl extends AbstractDAoImpl implements EscaladeDao {
 
 
     @Override
-    public List<Site> getLitAllSite() {
+    public List<Site> getListAllSite() {
 
         String vSQL = "SELECT * FROM site ";
 
@@ -177,6 +180,23 @@ public class EscaladeDaoImpl extends AbstractDAoImpl implements EscaladeDao {
         List<Site> vListSite = vJdbcTemplate.query(vSQL, vRowMapper);
 
         return vListSite;
+    }
+
+
+    @Override
+    public List<Commentaire> getListAllCommentForOneElementId(int pElement_id) {
+        String vSQL = "SELECT * FROM commentaire WHERE element_id = :element_id";
+
+        NamedParameterJdbcTemplate vJdbcTemplate = new NamedParameterJdbcTemplate(getDatasource());
+
+        MapSqlParameterSource vParams = new MapSqlParameterSource();
+        vParams.addValue("element_id", pElement_id, Types.INTEGER);
+
+        RowMapper<Commentaire> vRowMapper = new CommentaireRowMapper();
+
+        List<Commentaire> vListCommentaire = vJdbcTemplate.query(vSQL, vParams, vRowMapper);
+
+        return vListCommentaire;
     }
 
 
