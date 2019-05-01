@@ -66,6 +66,18 @@
             <artifactId>log4j-web</artifactId>
         </dependency>
 
+        <!-- JSR-250 -->
+        <dependency>
+            <groupId>javax.annotation</groupId>
+            <artifactId>javax.annotation-api</artifactId>
+        </dependency>
+
+        <!-- JSR-330 -->
+        <dependency>
+            <groupId>javax.inject</groupId>
+            <artifactId>javax.inject</artifactId>
+        </dependency>
+
         <!-- ===== Tests ===== -->
         <dependency>
             <groupId>junit</groupId>

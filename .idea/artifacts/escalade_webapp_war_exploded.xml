@@ -19,6 +19,7 @@
           <element id="library" level="project" name="Maven: org.apache.logging.log4j:log4j-core:2.6.2" />
           <element id="library" level="project" name="Maven: org.apache.logging.log4j:log4j-jcl:2.6.2" />
           <element id="library" level="project" name="Maven: org.apache.logging.log4j:log4j-web:2.11.0" />
+          <element id="library" level="project" name="Maven: javax.inject:javax.inject:1" />
           <element id="archive" name="escalade-model-1.0-SNAPSHOT.jar">
             <element id="module-output" name="escalade-model" />
           </element>

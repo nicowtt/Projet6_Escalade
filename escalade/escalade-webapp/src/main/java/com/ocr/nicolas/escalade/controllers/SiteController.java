@@ -2,6 +2,10 @@ package com.ocr.nicolas.escalade.controllers;
 
 import com.ocr.nicolas.escalade.consumer.contract.dao.EscaladeDao;
 
+import com.ocr.nicolas.escalade.business.contract.EscaladeManager;
+
+
+
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.stereotype.Controller;
@@ -19,6 +23,9 @@ public class SiteController {
 
     @Inject
     private EscaladeDao escaladeDao;
+
+    @Inject
+    private EscaladeManager escaladeManager;
 
     /**
      * Redirection index.jsp to home.jsp
@@ -60,8 +67,9 @@ public class SiteController {
 
 //        // Models for display comments
         model.addAttribute("commentaire", escaladeDao.getListAllCommentForOneElementId(element_Id));
-        model.addAttribute("utilisateur", escaladeDao.getUserNameOfComment(element_Id));
 
+        //-->>exemple correct je prend de la classe Manager
+        model.addAttribute("utilisateur", escaladeManager.getUserNameOfComment(element_Id));
 
         return "comment";
     }
