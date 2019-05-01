@@ -18,4 +18,5 @@ public interface EscaladeDao {
     List<Site> getListOneSite(int pSite);
     List<Site> getListAllSite();
     List<Commentaire> getListAllCommentForOneElementId(int pElement_id);
+    List<Utilisateur> getUserNameOfComment(int pElement_id);
 }

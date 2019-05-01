@@ -3,13 +3,11 @@ package com.ocr.nicolas.escalade.consumer.impl.dao;
 
 import com.ocr.nicolas.escalade.consumer.contract.dao.EscaladeDao;
 
-import com.ocr.nicolas.escalade.consumer.impl.rowmapper.CommentaireRowMapper;
-import com.ocr.nicolas.escalade.consumer.impl.rowmapper.SecteurRowMapper;
-import com.ocr.nicolas.escalade.consumer.impl.rowmapper.SiteRowMapper;
-import com.ocr.nicolas.escalade.consumer.impl.rowmapper.VoieRowMapper;
+import com.ocr.nicolas.escalade.consumer.impl.rowmapper.*;
 import com.ocr.nicolas.escalade.model.bean.commentaire.Commentaire;
 import com.ocr.nicolas.escalade.model.bean.secteur.Secteur;
 import com.ocr.nicolas.escalade.model.bean.site.Site;
+import com.ocr.nicolas.escalade.model.bean.utilisateur.Utilisateur;
 import com.ocr.nicolas.escalade.model.bean.voie.Voie;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -145,7 +143,7 @@ public class EscaladeDaoImpl extends AbstractDAoImpl implements EscaladeDao {
     }
 
     /**
-     * Pour aller chercher dans la BDD la liste (bean) d'un site.
+     * For get one site
      *
      * @param pSite -> numero de site
      * @return liste de site
@@ -168,6 +166,11 @@ public class EscaladeDaoImpl extends AbstractDAoImpl implements EscaladeDao {
     }
 
 
+    /**
+     * For get All site on a list
+     *
+     * @return all site list
+     */
     @Override
     public List<Site> getListAllSite() {
 
@@ -183,6 +186,12 @@ public class EscaladeDaoImpl extends AbstractDAoImpl implements EscaladeDao {
     }
 
 
+    /**
+     * For get Comment List for one Element_id
+     *
+     * @param pElement_id -> Comment element_id
+     * @return List of comments
+     */
     @Override
     public List<Commentaire> getListAllCommentForOneElementId(int pElement_id) {
         String vSQL = "SELECT * FROM commentaire WHERE element_id = :element_id";
@@ -198,6 +207,36 @@ public class EscaladeDaoImpl extends AbstractDAoImpl implements EscaladeDao {
 
         return vListCommentaire;
     }
+
+
+    /**
+     * For get User name of one comment.
+     *
+     * @param pElement_id -> user id
+     * @return name String
+     */
+    @Override
+    public List<Utilisateur> getUserNameOfComment(int pElement_id) {
+
+
+        String vSQL
+                = "SELECT * FROM utilisateur"
+                + " JOIN commentaire ON commentaire.utilisateur_id = utilisateur.id"
+                + "  WHERE element_id = :element_id";
+
+        NamedParameterJdbcTemplate vJdbcTemplate = new NamedParameterJdbcTemplate(getDatasource());
+
+        MapSqlParameterSource vParams = new MapSqlParameterSource();
+        vParams.addValue("element_id", pElement_id, Types.INTEGER);
+
+        RowMapper<Utilisateur> vRowMapper = new UtilisateurRowMapper();
+
+        List<Utilisateur> vUtilisateur = vJdbcTemplate.query(vSQL, vParams, vRowMapper);
+
+        return vUtilisateur;
+    }
+
+
 
 
 }

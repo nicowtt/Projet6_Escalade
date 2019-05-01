@@ -81,7 +81,7 @@
             <c:forEach items="${commentaire}" var="co">
                 <tr>
                     <td>${co.dateCommentaire}</td>
-                    <td>${co.utilisateur_id}</td>
+                    <td><c:forEach items="${utilisateur}" var="ut"> <c:out value="${ut.prenom}" /></c:forEach></td>
                     <td>${co.commentaire}</td>
                 </tr>
             </c:forEach>

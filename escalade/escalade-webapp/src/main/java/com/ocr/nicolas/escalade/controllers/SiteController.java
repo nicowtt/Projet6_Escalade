@@ -60,6 +60,8 @@ public class SiteController {
 
 //        // Models for display comments
         model.addAttribute("commentaire", escaladeDao.getListAllCommentForOneElementId(element_Id));
+        model.addAttribute("utilisateur", escaladeDao.getUserNameOfComment(element_Id));
+
 
         return "comment";
     }
