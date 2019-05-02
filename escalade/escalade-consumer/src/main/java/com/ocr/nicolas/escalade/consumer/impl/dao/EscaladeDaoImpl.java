@@ -69,28 +69,7 @@ public class EscaladeDaoImpl extends AbstractDAoImpl implements EscaladeDao {
 
     }
 
-    /**
-     * for get sectors List on Site
-     *
-     * @param pSite -> numero de site
-     * @return liste de secteur
-     */
-    @Override
-    public List<Secteur> getListOneSector(int pSite) {
 
-        String vSQL = "SELECT * FROM secteur WHERE site_id = :site_id";
-
-        NamedParameterJdbcTemplate vJdbcTemplate = new NamedParameterJdbcTemplate(getDatasource());
-
-        MapSqlParameterSource vParams = new MapSqlParameterSource();
-        vParams.addValue("site_id", pSite, Types.INTEGER);
-
-        RowMapper<Secteur> vRowMapper = new SecteurRowMapper();
-
-        List<Secteur> vListSecteur = vJdbcTemplate.query(vSQL, vParams, vRowMapper);
-
-        return vListSecteur;
-    }
 
     /**
      * for count sectors on site

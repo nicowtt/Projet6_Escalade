@@ -12,7 +12,7 @@ public interface EscaladeDao {
 
     int getNbrAllSite();
     List<Voie> getListVoie(int pSecteur);
-    List<Secteur> getListOneSector(int pSite);
+
     int getNbrSecteur(String pNom);
     List<Voie> getListAllWaysForOneSite (int pSite);
 
