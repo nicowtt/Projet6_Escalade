@@ -167,26 +167,6 @@ public class EscaladeDaoImpl extends AbstractDAoImpl implements EscaladeDao {
 
 
     /**
-     * For get All site on a list
-     *
-     * @return all site list
-     */
-    @Override
-    public List<Site> getListAllSite() {
-
-        String vSQL = "SELECT * FROM site ";
-
-        NamedParameterJdbcTemplate vJdbcTemplate = new NamedParameterJdbcTemplate(getDatasource());
-
-        RowMapper<Site> vRowMapper = new SiteRowMapper();
-
-        List<Site> vListSite = vJdbcTemplate.query(vSQL, vRowMapper);
-
-        return vListSite;
-    }
-
-
-    /**
      * For get Comment List for one Element_id
      *
      * @param pElement_id -> Comment element_id

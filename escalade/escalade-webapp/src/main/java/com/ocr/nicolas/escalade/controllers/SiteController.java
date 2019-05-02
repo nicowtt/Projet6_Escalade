@@ -4,8 +4,6 @@ import com.ocr.nicolas.escalade.consumer.contract.dao.EscaladeDao;
 
 import com.ocr.nicolas.escalade.business.contract.EscaladeManager;
 
-
-
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.stereotype.Controller;
@@ -27,17 +25,6 @@ public class SiteController {
     @Inject
     private EscaladeManager escaladeManager;
 
-    /**
-     * Redirection index.jsp to home.jsp
-     * @param model model
-     * @return home.jsp
-     */
-    @RequestMapping(value="/home", method = RequestMethod.GET )
-    public String home(Model model) {
-        //Model for display all site on home.jsp
-        model.addAttribute("site", escaladeDao.getListAllSite());
-        return "home";
-    }
 
     /**
      * For display generic climbing site page

@@ -16,6 +16,7 @@ public class EscaladeManagerImpl implements EscaladeManager {
     @Inject
     private EscaladeDao escaladeDao;
     
+    @Override
     public List<Utilisateur> getUserNameOfComment(int pElement_id) {
         
         List<Utilisateur> vUtilisateur = new ArrayList<>();
