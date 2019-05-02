@@ -18,5 +18,5 @@ public interface EscaladeDao {
 
 
 
-    List<Utilisateur> getUserNameOfComment(int pElement_id);
+
 }

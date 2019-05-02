@@ -2,11 +2,9 @@ package com.ocr.nicolas.escalade.controllers;
 
 
 import com.ocr.nicolas.escalade.business.contract.CommentManager;
+import com.ocr.nicolas.escalade.business.contract.UserManager;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-
-import com.ocr.nicolas.escalade.business.contract.EscaladeManager;
-import com.ocr.nicolas.escalade.consumer.contract.dao.EscaladeDao;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -21,13 +19,10 @@ public class CommentController {
     static final Log logger = LogFactory.getLog(CommentController.class);
 
     @Inject
-    private EscaladeDao escaladeDao;
-
-    @Inject
-    private EscaladeManager escaladeManager;
-
-    @Inject
     private CommentManager commentManager;
+
+    @Inject
+    private UserManager userManager;
 
     /**
      * For display generic comments page
@@ -40,9 +35,7 @@ public class CommentController {
 
         // Models for display comments
         model.addAttribute("commentaire", commentManager.getListAllCommentForOneElementId(element_Id));
-        //todo deplacer cette methode pour qu'elle passe par le module manager
-        //-->>exemple correct je prend de la classe Manager
-        model.addAttribute("utilisateur", escaladeManager.getUserNameOfComment(element_Id));
+        model.addAttribute("utilisateur", userManager.getUserNameOfComment(element_Id));
 
         return "comment";
     }

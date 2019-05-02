@@ -4,10 +4,6 @@ package com.ocr.nicolas.escalade.consumer.impl.dao;
 import com.ocr.nicolas.escalade.consumer.contract.dao.EscaladeDao;
 
 import com.ocr.nicolas.escalade.consumer.impl.rowmapper.*;
-import com.ocr.nicolas.escalade.model.bean.commentaire.Commentaire;
-import com.ocr.nicolas.escalade.model.bean.secteur.Secteur;
-import com.ocr.nicolas.escalade.model.bean.site.Site;
-import com.ocr.nicolas.escalade.model.bean.utilisateur.Utilisateur;
 import com.ocr.nicolas.escalade.model.bean.voie.Voie;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -26,7 +22,6 @@ public class EscaladeDaoImpl extends AbstractDAoImpl implements EscaladeDao {
 
     static final Log logger = LogFactory.getLog(EscaladeDaoImpl.class);
 
-
     /**
      * for count how many site exist
      * @return number of site
@@ -43,7 +38,6 @@ public class EscaladeDaoImpl extends AbstractDAoImpl implements EscaladeDao {
         return vNbrSite;
 
     }
-
 
     /**
      * for get ways List on sectors
@@ -69,8 +63,6 @@ public class EscaladeDaoImpl extends AbstractDAoImpl implements EscaladeDao {
 
     }
 
-
-
     /**
      * for count sectors on site
      *
@@ -92,36 +84,4 @@ public class EscaladeDaoImpl extends AbstractDAoImpl implements EscaladeDao {
 
         return vNbrSite;
     }
-
-
-    /**
-     * For get User name of one comment.
-     *
-     * @param pElement_id -> user id
-     * @return name String
-     */
-    @Override
-    public List<Utilisateur> getUserNameOfComment(int pElement_id) {
-
-
-        String vSQL
-                = "SELECT * FROM utilisateur"
-                + " JOIN commentaire ON commentaire.utilisateur_id = utilisateur.id"
-                + "  WHERE element_id = :element_id";
-
-        NamedParameterJdbcTemplate vJdbcTemplate = new NamedParameterJdbcTemplate(getDatasource());
-
-        MapSqlParameterSource vParams = new MapSqlParameterSource();
-        vParams.addValue("element_id", pElement_id, Types.INTEGER);
-
-        RowMapper<Utilisateur> vRowMapper = new UtilisateurRowMapper();
-
-        List<Utilisateur> vUtilisateur = vJdbcTemplate.query(vSQL, vParams, vRowMapper);
-
-        return vUtilisateur;
-    }
-
-
-
-
 }
