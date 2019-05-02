@@ -7,4 +7,5 @@ import java.util.List;
 public interface SectorManager {
 
     List<Secteur> getListOneSector(int pSite);
+    int getNbrSecteur(String pNom);
 }

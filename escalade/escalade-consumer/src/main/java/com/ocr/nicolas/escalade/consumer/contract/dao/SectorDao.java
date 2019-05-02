@@ -7,4 +7,5 @@ import java.util.List;
 public interface SectorDao {
 
     List<Secteur> getListOneSector(int pSite);
+    int getNbrSecteur(String pNom);
 }

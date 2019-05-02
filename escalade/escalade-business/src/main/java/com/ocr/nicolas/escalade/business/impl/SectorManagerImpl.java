@@ -30,4 +30,17 @@ public class SectorManagerImpl implements SectorManager {
 
         return vSecteur;
     }
+
+    /**
+     * for count sectors on site
+     *
+     * @param pNom name of site
+     * @return sectors number
+     */
+    @Override
+    public int getNbrSecteur(String pNom) {
+        int nbrSector = sectorDao.getNbrSecteur(pNom);
+
+        return nbrSector;
+    }
 }
