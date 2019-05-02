@@ -2,6 +2,7 @@ package com.ocr.nicolas.escalade.controllers;
 
 import com.ocr.nicolas.escalade.business.contract.SectorManager;
 import com.ocr.nicolas.escalade.business.contract.SiteManager;
+import com.ocr.nicolas.escalade.business.contract.WayManager;
 import com.ocr.nicolas.escalade.consumer.contract.dao.EscaladeDao;
 
 import com.ocr.nicolas.escalade.business.contract.EscaladeManager;
@@ -33,6 +34,9 @@ public class SiteController {
     @Inject
     private SectorManager sectorManager;
 
+    @Inject
+    private WayManager wayManager;
+
 
     /**
      * For display generic climbing site page
@@ -46,8 +50,7 @@ public class SiteController {
         // Models for display all information about one climbing site
         model.addAttribute("site", siteManager.getListOneSite(id));
         model.addAttribute("secteur", sectorManager.getListOneSector(id));
-        //todo create manager for ways
-        model.addAttribute("voie", escaladeDao.getListAllWaysForOneSite(id));
+        model.addAttribute("voie", wayManager.getListAllWaysForOneSite(id));
         return "climbingSite";
     }
 

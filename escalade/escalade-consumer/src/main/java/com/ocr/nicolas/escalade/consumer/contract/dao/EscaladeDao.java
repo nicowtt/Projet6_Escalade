@@ -14,7 +14,7 @@ public interface EscaladeDao {
     List<Voie> getListVoie(int pSecteur);
 
     int getNbrSecteur(String pNom);
-    List<Voie> getListAllWaysForOneSite (int pSite);
+
 
 
     List<Commentaire> getListAllCommentForOneElementId(int pElement_id);

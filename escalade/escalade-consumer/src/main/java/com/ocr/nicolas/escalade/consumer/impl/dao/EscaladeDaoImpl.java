@@ -94,32 +94,7 @@ public class EscaladeDaoImpl extends AbstractDAoImpl implements EscaladeDao {
     }
 
 
-    /**
-     *  for get Ways List on Site
-     *
-     * @param pSite
-     * @return
-     */
-    public List<Voie> getListAllWaysForOneSite(int pSite) {
 
-        String vSQL
-                = "SELECT * FROM voie"
-                + " WHERE secteur_id IN ("
-                + " SELECT secteur.id FROM secteur"
-                + " WHERE site_id = :site_id)";
-
-        NamedParameterJdbcTemplate vJdbcTemplate = new NamedParameterJdbcTemplate(getDatasource());
-
-        MapSqlParameterSource vParams = new MapSqlParameterSource();
-        vParams.addValue("site_id", pSite, Types.INTEGER);
-
-        RowMapper<Voie> vRowMapper = new VoieRowMapper();
-
-        List<Voie> vListSecteur = vJdbcTemplate.query(vSQL, vParams, vRowMapper);
-
-        return vListSecteur;
-
-    }
 
 
 
