@@ -31,4 +31,19 @@ public class WayManagerImpl implements WayManager {
     }
 
 
+    /**
+     * for get ways List on sectors
+     *
+     * @param pSecteur -> id of sector
+     * @return Ways List
+     */
+    @Override
+    public List<Voie> getListVoie(int pSecteur) {
+        List<Voie> vVoie = new ArrayList<>();
+        vVoie = wayDao.getListVoie(pSecteur);
+
+        return vVoie;
+    }
+
+
 }

@@ -43,4 +43,28 @@ public class WayDaoImpl extends AbstractDAoImpl implements WayDao {
 
     }
 
+    /**
+     * for get ways List on sectors
+     *
+     * @param pSecteur -> id of sector
+     * @return Ways List
+     */
+    @Override
+    public List<Voie> getListVoie(int pSecteur) {
+
+        String vSQL = "SELECT * FROM voie WHERE secteur_id = :secteur_id";
+
+        NamedParameterJdbcTemplate vJdbcTemplate = new NamedParameterJdbcTemplate(getDatasource());
+
+        MapSqlParameterSource vParams = new MapSqlParameterSource();
+        vParams.addValue("secteur_id", pSecteur, Types.INTEGER);
+
+        RowMapper<Voie> vRowMapper = new VoieRowMapper();
+
+        List<Voie> vListVoie = vJdbcTemplate.query(vSQL, vParams, vRowMapper);
+
+        return vListVoie;
+
+    }
+
 }

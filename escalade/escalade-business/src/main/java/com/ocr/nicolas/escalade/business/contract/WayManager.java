@@ -7,4 +7,5 @@ import java.util.List;
 public interface WayManager {
 
     List<Voie> getListAllWaysForOneSite (int pSite);
+    List<Voie> getListVoie(int pSecteur);
 }
