@@ -17,6 +17,6 @@ public interface EscaladeDao {
 
 
 
-    List<Commentaire> getListAllCommentForOneElementId(int pElement_id);
+
     List<Utilisateur> getUserNameOfComment(int pElement_id);
 }

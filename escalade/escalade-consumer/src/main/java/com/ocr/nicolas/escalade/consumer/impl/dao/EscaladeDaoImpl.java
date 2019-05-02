@@ -94,34 +94,6 @@ public class EscaladeDaoImpl extends AbstractDAoImpl implements EscaladeDao {
     }
 
 
-
-
-
-
-
-    /**
-     * For get Comment List for one Element_id
-     *
-     * @param pElement_id -> Comment element_id
-     * @return List of comments
-     */
-    @Override
-    public List<Commentaire> getListAllCommentForOneElementId(int pElement_id) {
-        String vSQL = "SELECT * FROM commentaire WHERE element_id = :element_id";
-
-        NamedParameterJdbcTemplate vJdbcTemplate = new NamedParameterJdbcTemplate(getDatasource());
-
-        MapSqlParameterSource vParams = new MapSqlParameterSource();
-        vParams.addValue("element_id", pElement_id, Types.INTEGER);
-
-        RowMapper<Commentaire> vRowMapper = new CommentaireRowMapper();
-
-        List<Commentaire> vListCommentaire = vJdbcTemplate.query(vSQL, vParams, vRowMapper);
-
-        return vListCommentaire;
-    }
-
-
     /**
      * For get User name of one comment.
      *

@@ -1,6 +1,7 @@
 package com.ocr.nicolas.escalade.controllers;
 
 
+import com.ocr.nicolas.escalade.business.contract.CommentManager;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
@@ -18,12 +19,15 @@ import javax.inject.Inject;
 public class CommentController {
 
     static final Log logger = LogFactory.getLog(CommentController.class);
-    
+
     @Inject
     private EscaladeDao escaladeDao;
 
     @Inject
     private EscaladeManager escaladeManager;
+
+    @Inject
+    private CommentManager commentManager;
 
     /**
      * For display generic comments page
@@ -34,9 +38,9 @@ public class CommentController {
     @RequestMapping(value="/comment/{element_Id}", method = RequestMethod.GET )
     public String comment(Model model, @PathVariable Integer element_Id) {
 
-//        // Models for display comments
-        model.addAttribute("commentaire", escaladeDao.getListAllCommentForOneElementId(element_Id));
-
+        // Models for display comments
+        model.addAttribute("commentaire", commentManager.getListAllCommentForOneElementId(element_Id));
+        //todo deplacer cette methode pour qu'elle passe par le module manager
         //-->>exemple correct je prend de la classe Manager
         model.addAttribute("utilisateur", escaladeManager.getUserNameOfComment(element_Id));
 
