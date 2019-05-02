@@ -3,9 +3,6 @@ package com.ocr.nicolas.escalade.controllers;
 import com.ocr.nicolas.escalade.business.contract.SectorManager;
 import com.ocr.nicolas.escalade.business.contract.SiteManager;
 import com.ocr.nicolas.escalade.business.contract.WayManager;
-import com.ocr.nicolas.escalade.consumer.contract.dao.EscaladeDao;
-
-import com.ocr.nicolas.escalade.business.contract.EscaladeManager;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -21,12 +18,6 @@ import javax.inject.Inject;
 public class SiteController {
 
     static final Log logger = LogFactory.getLog(SiteController.class);
-
-    @Inject
-    private EscaladeDao escaladeDao;
-
-    @Inject
-    private EscaladeManager escaladeManager;
 
     @Inject
     private SiteManager siteManager;
@@ -55,23 +46,7 @@ public class SiteController {
     }
 
 
-    /**
-     * For display generic comments page
-     * @param model model
-     * @param element_Id -> for one element
-     * @return Comments List
-     */
-    @RequestMapping(value="/comment/{element_Id}", method = RequestMethod.GET )
-    public String comment(Model model, @PathVariable Integer element_Id) {
 
-//        // Models for display comments
-        model.addAttribute("commentaire", escaladeDao.getListAllCommentForOneElementId(element_Id));
-
-        //-->>exemple correct je prend de la classe Manager
-        model.addAttribute("utilisateur", escaladeManager.getUserNameOfComment(element_Id));
-
-        return "comment";
-    }
 
 //    @RequestMapping(value="/siteEscalade/{id}/addComment", method = RequestMethod.GET )
 //    public String addComment...
