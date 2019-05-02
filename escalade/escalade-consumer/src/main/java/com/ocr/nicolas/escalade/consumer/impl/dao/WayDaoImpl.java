@@ -1,7 +1,7 @@
 package com.ocr.nicolas.escalade.consumer.impl.dao;
 
 import com.ocr.nicolas.escalade.consumer.contract.dao.WayDao;
-import com.ocr.nicolas.escalade.consumer.impl.rowmapper.VoieRowMapper;
+import com.ocr.nicolas.escalade.consumer.impl.rowmapper.WayRowMapper;
 import com.ocr.nicolas.escalade.model.bean.voie.Voie;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
@@ -35,7 +35,7 @@ public class WayDaoImpl extends AbstractDAoImpl implements WayDao {
         MapSqlParameterSource vParams = new MapSqlParameterSource();
         vParams.addValue("site_id", pSite, Types.INTEGER);
 
-        RowMapper<Voie> vRowMapper = new VoieRowMapper();
+        RowMapper<Voie> vRowMapper = new WayRowMapper();
 
         List<Voie> vListSecteur = vJdbcTemplate.query(vSQL, vParams, vRowMapper);
 
@@ -59,7 +59,7 @@ public class WayDaoImpl extends AbstractDAoImpl implements WayDao {
         MapSqlParameterSource vParams = new MapSqlParameterSource();
         vParams.addValue("secteur_id", pSecteur, Types.INTEGER);
 
-        RowMapper<Voie> vRowMapper = new VoieRowMapper();
+        RowMapper<Voie> vRowMapper = new WayRowMapper();
 
         List<Voie> vListVoie = vJdbcTemplate.query(vSQL, vParams, vRowMapper);
 

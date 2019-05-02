@@ -1,5 +1,7 @@
 package com.ocr.nicolas.escalade.model.bean.commentaire;
 
+import com.ocr.nicolas.escalade.model.bean.utilisateur.Utilisateur;
+
 import java.sql.Timestamp;
 
 /**
@@ -12,7 +14,8 @@ public class Commentaire {
     private Timestamp dateCommentaire;
     private Integer element_id;
     private String commentaire;
-    private Integer utilisateur_id;
+    // bean utilisateur
+    private Utilisateur utilisateur;
 
     // ==================== Constructeurs ====================
     /**
@@ -53,14 +56,12 @@ public class Commentaire {
     public void setCommentaire(String commentaire) {
         this.commentaire = commentaire;
     }
-    public Integer getUtilisateur_id() {
-        return utilisateur_id;
+    public Utilisateur getUtilisateur() {
+        return utilisateur;
     }
-    public void setUtilisateur_id(Integer utilisateur_id) {
-        this.utilisateur_id = utilisateur_id;
+    public void setUtilisateur(Utilisateur utilisateur) {
+        this.utilisateur = utilisateur;
     }
-
-
     // ==================== Méthodes ====================
 
 }

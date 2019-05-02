@@ -1,7 +1,7 @@
 package com.ocr.nicolas.escalade.consumer.impl.dao;
 
 import com.ocr.nicolas.escalade.consumer.contract.dao.CommentDao;
-import com.ocr.nicolas.escalade.consumer.impl.rowmapper.CommentaireRowMapper;
+import com.ocr.nicolas.escalade.consumer.impl.rowmapper.CommentRowMapper;
 import com.ocr.nicolas.escalade.model.bean.commentaire.Commentaire;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
@@ -23,16 +23,19 @@ public class CommentDaoImpl extends AbstractDAoImpl implements CommentDao {
      */
     @Override
     public List<Commentaire> getListAllCommentForOneElementId(int pElement_id) {
-        String vSQL = "SELECT * FROM commentaire WHERE element_id = :element_id";
+        String vSQL
+                = "SELECT * FROM commentaire"
+                + " JOIN utilisateur ON utilisateur.id = utilisateur_id"
+                + "  WHERE element_id = :element_id";
 
         NamedParameterJdbcTemplate vJdbcTemplate = new NamedParameterJdbcTemplate(getDatasource());
 
         MapSqlParameterSource vParams = new MapSqlParameterSource();
         vParams.addValue("element_id", pElement_id, Types.INTEGER);
 
-        RowMapper<Commentaire> vRowMapper = new CommentaireRowMapper();
+        RowMapper<Commentaire> vRowMapperComment = new CommentRowMapper();
 
-        List<Commentaire> vListCommentaire = vJdbcTemplate.query(vSQL, vParams, vRowMapper);
+        List<Commentaire> vListCommentaire = vJdbcTemplate.query(vSQL, vParams, vRowMapperComment);
 
         return vListCommentaire;
     }

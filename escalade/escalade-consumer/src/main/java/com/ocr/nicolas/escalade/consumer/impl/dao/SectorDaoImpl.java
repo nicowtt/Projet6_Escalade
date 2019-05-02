@@ -1,7 +1,7 @@
 package com.ocr.nicolas.escalade.consumer.impl.dao;
 
 import com.ocr.nicolas.escalade.consumer.contract.dao.SectorDao;
-import com.ocr.nicolas.escalade.consumer.impl.rowmapper.SecteurRowMapper;
+import com.ocr.nicolas.escalade.consumer.impl.rowmapper.SectorRowMapper;
 import com.ocr.nicolas.escalade.model.bean.secteur.Secteur;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
@@ -32,7 +32,7 @@ public class SectorDaoImpl extends AbstractDAoImpl implements SectorDao {
         MapSqlParameterSource vParams = new MapSqlParameterSource();
         vParams.addValue("site_id", pSite, Types.INTEGER);
 
-        RowMapper<Secteur> vRowMapper = new SecteurRowMapper();
+        RowMapper<Secteur> vRowMapper = new SectorRowMapper();
 
         List<Secteur> vListSecteur = vJdbcTemplate.query(vSQL, vParams, vRowMapper);
 

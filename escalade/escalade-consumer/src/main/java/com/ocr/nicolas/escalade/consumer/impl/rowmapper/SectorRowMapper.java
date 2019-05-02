@@ -6,7 +6,7 @@ import org.springframework.jdbc.core.RowMapper;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class SecteurRowMapper implements RowMapper<Secteur> {
+public class SectorRowMapper implements RowMapper<Secteur> {
 
 
     @Override

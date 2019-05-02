@@ -1,7 +1,7 @@
 package com.ocr.nicolas.escalade.consumer.impl.dao;
 
 import com.ocr.nicolas.escalade.consumer.contract.dao.UserDao;
-import com.ocr.nicolas.escalade.consumer.impl.rowmapper.UtilisateurRowMapper;
+import com.ocr.nicolas.escalade.consumer.impl.rowmapper.UserRowMapper;
 import com.ocr.nicolas.escalade.model.bean.utilisateur.Utilisateur;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
@@ -35,7 +35,7 @@ public class UserDaoImpl extends AbstractDAoImpl implements UserDao {
         MapSqlParameterSource vParams = new MapSqlParameterSource();
         vParams.addValue("element_id", pElement_id, Types.INTEGER);
 
-        RowMapper<Utilisateur> vRowMapper = new UtilisateurRowMapper();
+        RowMapper<Utilisateur> vRowMapper = new UserRowMapper();
 
         List<Utilisateur> vUtilisateur = vJdbcTemplate.query(vSQL, vParams, vRowMapper);
 

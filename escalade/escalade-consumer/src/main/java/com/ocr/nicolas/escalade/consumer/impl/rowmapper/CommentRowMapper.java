@@ -2,11 +2,16 @@ package com.ocr.nicolas.escalade.consumer.impl.rowmapper;
 
 import com.ocr.nicolas.escalade.model.bean.commentaire.Commentaire;
 
+import com.ocr.nicolas.escalade.model.bean.utilisateur.Utilisateur;
 import org.springframework.jdbc.core.RowMapper;
+
+
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class CommentaireRowMapper implements RowMapper<Commentaire> {
+public class CommentRowMapper implements RowMapper<Commentaire> {
+
 
     @Override
     public Commentaire mapRow(ResultSet resultSet, int i) throws SQLException {
@@ -14,7 +19,16 @@ public class CommentaireRowMapper implements RowMapper<Commentaire> {
         vCommentaire.setDateCommentaire(resultSet.getTimestamp("datecommentaire"));
         vCommentaire.setElement_id(resultSet.getInt("element_id"));
         vCommentaire.setCommentaire(resultSet.getString("commentaire"));
-        vCommentaire.setUtilisateur_id(resultSet.getInt("utilisateur_id"));
+
+        //new bean "Utilisateur"
+        Utilisateur vUtilisateur = new Utilisateur(resultSet.getInt("utilisateur_id"));
+        //set utilisateur -> a completer au besoin
+        vUtilisateur.setPrenom(resultSet.getString("prenom"));
+        vUtilisateur.setMembreAssociation(resultSet.getString("membreassociation"));
+
+        //bean "Utilisateur" -> variable du bean "Commentaire"
+        vCommentaire.setUtilisateur(vUtilisateur);
+
 
         return vCommentaire;
     }

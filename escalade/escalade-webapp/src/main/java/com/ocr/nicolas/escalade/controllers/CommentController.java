@@ -2,7 +2,6 @@ package com.ocr.nicolas.escalade.controllers;
 
 
 import com.ocr.nicolas.escalade.business.contract.CommentManager;
-import com.ocr.nicolas.escalade.business.contract.UserManager;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.stereotype.Controller;
@@ -21,9 +20,6 @@ public class CommentController {
     @Inject
     private CommentManager commentManager;
 
-    @Inject
-    private UserManager userManager;
-
     /**
      * For display generic comments page
      * @param model model
@@ -35,8 +31,6 @@ public class CommentController {
 
         // Models for display comments
         model.addAttribute("commentaire", commentManager.getListAllCommentForOneElementId(element_Id));
-        model.addAttribute("utilisateur", userManager.getUserNameOfComment(element_Id));
-
         return "comment";
     }
 }
