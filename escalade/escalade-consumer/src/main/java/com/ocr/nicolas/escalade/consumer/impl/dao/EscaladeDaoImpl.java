@@ -15,22 +15,7 @@ public class EscaladeDaoImpl extends AbstractDAoImpl implements EscaladeDao {
 
     static final Log logger = LogFactory.getLog(EscaladeDaoImpl.class);
 
-    /**
-     * for count how many site exist
-     * @return number of site
-     */
-    @Override
-    public int getNbrAllSite() {
 
-        // remplir une List avec les infos de la bdd
-        JdbcTemplate vJdbcTemplate = new JdbcTemplate(getDatasource());
-
-        int vNbrSite =(int) vJdbcTemplate.queryForObject("SELECT COUNT (*) FROM public.site",
-                Integer.class);
-
-        return vNbrSite;
-
-    }
 
 
 

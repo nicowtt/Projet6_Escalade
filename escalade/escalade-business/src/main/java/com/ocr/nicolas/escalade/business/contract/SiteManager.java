@@ -8,4 +8,5 @@ public interface SiteManager {
 
     List<Site> getListAllSite();
     List<Site> getListOneSite(int pSite);
+    int getNbrAllSite();
 }

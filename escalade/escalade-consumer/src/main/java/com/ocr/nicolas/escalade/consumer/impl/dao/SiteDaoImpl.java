@@ -3,6 +3,7 @@ package com.ocr.nicolas.escalade.consumer.impl.dao;
 import com.ocr.nicolas.escalade.consumer.contract.dao.SiteDao;
 import com.ocr.nicolas.escalade.consumer.impl.rowmapper.SiteRowMapper;
 import com.ocr.nicolas.escalade.model.bean.site.Site;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
@@ -56,5 +57,22 @@ public class SiteDaoImpl extends AbstractDAoImpl implements SiteDao {
         List<Site> vListSite = vJdbcTemplate.query(vSQL, vParams, vRowMapper);
 
         return vListSite;
+    }
+
+    /**
+     * for count how many site exist
+     * @return number of site
+     */
+    @Override
+    public int getNbrAllSite() {
+
+        // remplir une List avec les infos de la bdd
+        JdbcTemplate vJdbcTemplate = new JdbcTemplate(getDatasource());
+
+        int vNbrSite =(int) vJdbcTemplate.queryForObject("SELECT COUNT (*) FROM public.site",
+                Integer.class);
+
+        return vNbrSite;
+
     }
 }

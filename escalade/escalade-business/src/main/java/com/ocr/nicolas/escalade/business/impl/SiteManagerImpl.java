@@ -43,4 +43,15 @@ public class SiteManagerImpl implements SiteManager {
 
         return vSite;
     }
+
+    /**
+     * for count how many site exist
+     * @return number of site
+     */
+    @Override
+    public int getNbrAllSite(){
+        int nbrAllSite = siteDao.getNbrAllSite();
+
+        return nbrAllSite;
+    }
 }
