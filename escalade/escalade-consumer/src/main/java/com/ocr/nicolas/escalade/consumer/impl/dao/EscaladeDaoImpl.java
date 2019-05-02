@@ -142,28 +142,7 @@ public class EscaladeDaoImpl extends AbstractDAoImpl implements EscaladeDao {
 
     }
 
-    /**
-     * For get one site
-     *
-     * @param pSite -> numero de site
-     * @return liste de site
-     */
-    @Override
-    public List<Site> getListOneSite(int pSite) {
 
-        String vSQL = "SELECT * FROM site WHERE id = :site_id";
-
-        NamedParameterJdbcTemplate vJdbcTemplate = new NamedParameterJdbcTemplate(getDatasource());
-
-        MapSqlParameterSource vParams = new MapSqlParameterSource();
-        vParams.addValue("site_id", pSite, Types.INTEGER);
-
-        RowMapper<Site> vRowMapper = new SiteRowMapper();
-
-        List<Site> vListSite = vJdbcTemplate.query(vSQL, vParams, vRowMapper);
-
-        return vListSite;
-    }
 
 
     /**

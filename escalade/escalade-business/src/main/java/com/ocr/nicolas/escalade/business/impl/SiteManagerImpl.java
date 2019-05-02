@@ -15,13 +15,32 @@ public class SiteManagerImpl implements SiteManager {
     @Inject
     private SiteDao siteDao;
 
+    /**
+     * For get All site on a list
+     *
+     * @return all site list
+     */
     @Override
     public List<Site> getListAllSite() {
 
         List<Site> vSite = new ArrayList<>();
         vSite = siteDao.getListAllSite();
 
-
         return  vSite;
+    }
+
+    /**
+     * For get one site
+     *
+     * @param pSite -> numero de site
+     * @return liste de site
+     */
+    @Override
+    public List<Site> getListOneSite(int pSite) {
+
+        List<Site> vSite = new ArrayList<>();
+        vSite = siteDao.getListOneSite(pSite);
+
+        return vSite;
     }
 }

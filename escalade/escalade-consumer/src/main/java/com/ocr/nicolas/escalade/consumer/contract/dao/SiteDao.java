@@ -7,4 +7,5 @@ import java.util.List;
 public interface SiteDao {
 
     List<Site> getListAllSite();
+    List<Site> getListOneSite(int pSite);
 }
