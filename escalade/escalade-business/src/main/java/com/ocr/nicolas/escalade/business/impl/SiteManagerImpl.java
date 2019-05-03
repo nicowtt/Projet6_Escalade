@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Named
-public class SiteManagerImpl implements SiteManager {
+public class SiteManagerImpl extends AbstractManager implements SiteManager {
 
     @Inject
     private SiteDao siteDao;

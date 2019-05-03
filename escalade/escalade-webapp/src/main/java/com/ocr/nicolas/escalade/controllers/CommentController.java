@@ -2,6 +2,7 @@ package com.ocr.nicolas.escalade.controllers;
 
 
 import com.ocr.nicolas.escalade.business.contract.CommentManager;
+import com.ocr.nicolas.escalade.model.exception.CommentException;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.stereotype.Controller;
@@ -27,7 +28,7 @@ public class CommentController {
      * @return Comments List
      */
     @RequestMapping(value="/comment/{element_Id}", method = RequestMethod.GET )
-    public String comment(Model model, @PathVariable Integer element_Id) {
+    public String comment(Model model, @PathVariable Integer element_Id) throws CommentException {
 
         // Models for display comments
         model.addAttribute("commentaire", commentManager.getListAllCommentForOneElementId(element_Id));

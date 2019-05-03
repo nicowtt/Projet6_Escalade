@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Named
-public class UserManagerImpl implements UserManager {
+public class UserManagerImpl extends AbstractManager implements UserManager {
 
     @Inject
     private UserDao userDao;

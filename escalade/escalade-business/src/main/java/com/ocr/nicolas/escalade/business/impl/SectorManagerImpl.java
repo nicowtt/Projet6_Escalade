@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Named
-public class SectorManagerImpl implements SectorManager {
+public class SectorManagerImpl extends AbstractManager implements SectorManager {
 
     @Inject
     private SectorDao sectorDao;

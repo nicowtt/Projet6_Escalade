@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Named
-public class WayManagerImpl implements WayManager {
+public class WayManagerImpl extends AbstractManager implements WayManager {
 
     @Inject
     private WayDao wayDao;

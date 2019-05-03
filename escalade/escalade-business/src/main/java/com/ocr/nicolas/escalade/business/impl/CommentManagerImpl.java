@@ -3,6 +3,11 @@ package com.ocr.nicolas.escalade.business.impl;
 import com.ocr.nicolas.escalade.business.contract.CommentManager;
 import com.ocr.nicolas.escalade.consumer.contract.dao.CommentDao;
 import com.ocr.nicolas.escalade.model.bean.commentaire.Commentaire;
+import com.ocr.nicolas.escalade.model.exception.CommentException;
+import org.springframework.transaction.TransactionDefinition;
+import org.springframework.transaction.TransactionStatus;
+import org.springframework.transaction.support.DefaultTransactionDefinition;
+
 
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -10,16 +15,48 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Named
-public class CommentManagerImpl implements CommentManager {
+public class CommentManagerImpl extends AbstractManager implements CommentManager {
 
     @Inject
     private CommentDao commentDao;
 
+
+    /**
+     * For get Comment List for one Element_id
+     *
+     * @param pElement_id -> Comment element_id
+     * @return List of comments
+     */
     @Override
-    public List<Commentaire> getListAllCommentForOneElementId(int pElement_id) {
+    public List<Commentaire> getListAllCommentForOneElementId(int pElement_id) throws CommentException {
+
+        //transaction
+        DefaultTransactionDefinition vDefinition = new DefaultTransactionDefinition();
+        vDefinition.setPropagationBehavior(TransactionDefinition.PROPAGATION_REQUIRES_NEW);
+        vDefinition.setTimeout(30); // 30 secondes
+        TransactionStatus vTransactionStatus = getPlatformTransactionManager().getTransaction(vDefinition);
+
         List<Commentaire> vCommentaire = new ArrayList<>();
-        vCommentaire = commentDao.getListAllCommentForOneElementId(pElement_id);
+        try {
+            //Method
+            vCommentaire = commentDao.getListAllCommentForOneElementId(pElement_id);
+
+            TransactionStatus vTScommit = vTransactionStatus;
+            vTransactionStatus = null;
+            getPlatformTransactionManager().commit(vTScommit);
+        } finally {
+            if (vTransactionStatus != null) {
+                getPlatformTransactionManager().rollback(vTransactionStatus);
+                throw new CommentException("Impossible de verifier les commentaires en BDD");
+            }
+        }
 
         return vCommentaire;
+
+
+//        //methode sans transaction qui marche
+//        List<Commentaire> vCommentaire = new ArrayList<>();
+//        vCommentaire = commentDao.getListAllCommentForOneElementId(pElement_id);
+//        return vCommentaire;
     }
 }
