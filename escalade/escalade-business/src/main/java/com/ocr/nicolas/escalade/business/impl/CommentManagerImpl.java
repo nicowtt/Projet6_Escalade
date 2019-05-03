@@ -7,6 +7,8 @@ import com.ocr.nicolas.escalade.model.exception.CommentException;
 import org.springframework.transaction.TransactionDefinition;
 import org.springframework.transaction.TransactionStatus;
 import org.springframework.transaction.support.DefaultTransactionDefinition;
+import org.springframework.transaction.support.TransactionCallback;
+import org.springframework.transaction.support.TransactionTemplate;
 
 
 import javax.inject.Inject;
@@ -30,33 +32,47 @@ public class CommentManagerImpl extends AbstractManager implements CommentManage
     @Override
     public List<Commentaire> getListAllCommentForOneElementId(int pElement_id) throws CommentException {
 
-        //transaction
-        DefaultTransactionDefinition vDefinition = new DefaultTransactionDefinition();
-        vDefinition.setPropagationBehavior(TransactionDefinition.PROPAGATION_REQUIRES_NEW);
-        vDefinition.setTimeout(30); // 30 secondes
-        TransactionStatus vTransactionStatus = getPlatformTransactionManager().getTransaction(vDefinition);
+        //transaction methode confortable (rollback automatique en cas d'exception)
+        TransactionTemplate vTransactionTemplate = new TransactionTemplate(getPlatformTransactionManager());
 
-        List<Commentaire> vCommentaire = new ArrayList<>();
-        try {
-            //Method
-            vCommentaire = commentDao.getListAllCommentForOneElementId(pElement_id);
+        List<Commentaire> vCommentaire = vTransactionTemplate.execute(transactionStatus -> {
 
-            TransactionStatus vTScommit = vTransactionStatus;
-            vTransactionStatus = null;
-            getPlatformTransactionManager().commit(vTScommit);
-        } finally {
-            if (vTransactionStatus != null) {
-                getPlatformTransactionManager().rollback(vTransactionStatus);
-                throw new CommentException("Impossible de verifier les commentaires en BDD");
-            }
-        }
+            List<Commentaire> vCommentaireTransaction = null;
+            vCommentaireTransaction = commentDao.getListAllCommentForOneElementId(pElement_id);
 
+            return vCommentaireTransaction;
+        });
         return vCommentaire;
+    }
+}
+
+//        //transaction avec methode plus detaillé
+//        DefaultTransactionDefinition vDefinition = new DefaultTransactionDefinition();
+//        vDefinition.setPropagationBehavior(TransactionDefinition.PROPAGATION_REQUIRES_NEW);
+//        vDefinition.setTimeout(30); // 30 secondes
+//        TransactionStatus vTransactionStatus = getPlatformTransactionManager().getTransaction(vDefinition);
+//
+//        List<Commentaire> vCommentaire = new ArrayList<>();
+//        try {
+//            //Method
+//            vCommentaire = commentDao.getListAllCommentForOneElementId(pElement_id);
+//
+//            TransactionStatus vTScommit = vTransactionStatus;
+//            vTransactionStatus = null;
+//            getPlatformTransactionManager().commit(vTScommit);
+//        } finally {
+//            if (vTransactionStatus != null) {
+//                getPlatformTransactionManager().rollback(vTransactionStatus);
+//                throw new CommentException("Impossible de verifier les commentaires en BDD");
+//            }
+//        }
+//
+//        return vCommentaire;
 
 
 //        //methode sans transaction qui marche
 //        List<Commentaire> vCommentaire = new ArrayList<>();
 //        vCommentaire = commentDao.getListAllCommentForOneElementId(pElement_id);
 //        return vCommentaire;
-    }
-}
+//    }
+//}
