@@ -47,18 +47,29 @@
       </ul>
 
       <!-- identification -->
+      <!-- identification -->
       <ul class="nav navbar-nav navbar-right"> <li class="dropdown">
+
+        <!-- if user is login -->
+        <c:if test="${!empty message}"><p style="color:white;"><c:out value="${message} "/>
+          <br><a href="/home">Se deconnecter </a></p>
+        </c:if>
+
+        <!-- if user not login -->
+        <c:if test="${empty message}">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">S'identifier <b class="caret"></b></a>
         <ul class="dropdown-menu">
+          <li class="dropdown-header">${message}</li>
           <li class="dropdown-header">Vous n'êtes pas identifié.</li>
-          <li><form class="navbar-form" method="post" action="/login?redirect=/">
-            <input type="text" class="form-control" name="username" placeholder="Identifiant" /><br />
-            <input type="password" class="form-control" name="password" placeholder="Mot de passe"/>
+          <li><form class="navbar-form" method="post" action="/dologin" modelAttribute="utilisateur">
+            <input type="text" class="form-control" name="email" placeholder="email" /><br />
+            <input type="password" class="form-control" name="motDePasse" placeholder="Mot de passe"/>
             <input type="submit" class="btn btn-primary btn-xs btn-block" /></form></li>
           <li class="disabled"><a href="#">Mot de passe oublié ?</a></li>
           <li class="disabled"><a href="#">Créer un compte...</a></li>
         </ul>
       </li>
+        </c:if>
       </ul>
 
     </div>

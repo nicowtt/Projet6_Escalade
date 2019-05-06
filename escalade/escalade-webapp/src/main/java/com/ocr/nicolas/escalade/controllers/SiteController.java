@@ -4,13 +4,12 @@ import com.ocr.nicolas.escalade.business.contract.SectorManager;
 import com.ocr.nicolas.escalade.business.contract.SiteManager;
 import com.ocr.nicolas.escalade.business.contract.WayManager;
 
+import com.ocr.nicolas.escalade.model.bean.utilisateur.Utilisateur;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 
 import javax.inject.Inject;
 
@@ -28,7 +27,6 @@ public class SiteController {
     @Inject
     private WayManager wayManager;
 
-
     /**
      * For display generic climbing site page
      * @param model model
@@ -36,13 +34,15 @@ public class SiteController {
      * @return
      */
     @RequestMapping(value="/climbingSite/{id}", method = RequestMethod.GET )
-    public String index(Model model, @PathVariable Integer id) {
+    public String index(Model model, @PathVariable Integer id, @SessionAttribute Utilisateur utilisateur) {
 
         // Models for display all information about one climbing site
         model.addAttribute("site", siteManager.getListOneSite(id));
         model.addAttribute("secteur", sectorManager.getListOneSector(id));
         model.addAttribute("voie", wayManager.getListAllWaysForOneSite(id));
         return "climbingSite";
+        // model for session:
+        // todo
     }
 
 
