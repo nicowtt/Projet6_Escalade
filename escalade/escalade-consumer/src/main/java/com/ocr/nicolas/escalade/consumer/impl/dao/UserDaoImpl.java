@@ -10,6 +10,7 @@ import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import javax.inject.Named;
 import java.sql.Types;
 import java.util.List;
+import java.util.Map;
 
 @Named
 public class UserDaoImpl extends AbstractDAoImpl implements UserDao {
@@ -24,7 +25,6 @@ public class UserDaoImpl extends AbstractDAoImpl implements UserDao {
     @Override
     public List<Utilisateur> getUserNameOfComment(int pElement_id) {
 
-
         String vSQL
                 = "SELECT * FROM utilisateur"
                 + " JOIN commentaire ON commentaire.utilisateur_id = utilisateur.id"
@@ -34,6 +34,34 @@ public class UserDaoImpl extends AbstractDAoImpl implements UserDao {
 
         MapSqlParameterSource vParams = new MapSqlParameterSource();
         vParams.addValue("element_id", pElement_id, Types.INTEGER);
+
+        RowMapper<Utilisateur> vRowMapper = new UserRowMapper();
+
+        List<Utilisateur> vUtilisateur = vJdbcTemplate.query(vSQL, vParams, vRowMapper);
+
+        return vUtilisateur;
+    }
+
+    /**
+     * for check if Email and password exist on bdd
+     * @param pEmail
+     * @param pPassword
+     *
+     * @return List of user
+     */
+    @Override
+    public List<Utilisateur> checkUserEmailAndPassword(String pEmail, String pPassword) {
+
+        String vSQL
+                = "SELECT * FROM utilisateur"
+                + " WHERE email = :pEmail"
+                + "  AND motdepasse = :pPassword";
+
+        NamedParameterJdbcTemplate vJdbcTemplate = new NamedParameterJdbcTemplate(getDatasource());
+
+        MapSqlParameterSource vParams = new MapSqlParameterSource();
+        vParams.addValue("pEmail", pEmail, Types.VARCHAR);
+        vParams.addValue("pPassword", pPassword, Types.VARCHAR);
 
         RowMapper<Utilisateur> vRowMapper = new UserRowMapper();
 

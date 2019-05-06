@@ -43,9 +43,9 @@ public class SiteController {
         model.addAttribute("secteur", sectorManager.getListOneSector(id));
         model.addAttribute("voie", wayManager.getListAllWaysForOneSite(id));
 
-        // model for "utilisateur"
+        // model for "log"
         if (utilisateur != null) {
-            model.addAttribute("message", utilisateur.getEmail());
+            model.addAttribute("log", utilisateur.getEmail());
         }
 
         return "climbingSite";

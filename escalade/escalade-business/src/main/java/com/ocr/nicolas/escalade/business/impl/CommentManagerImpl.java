@@ -68,11 +68,3 @@ public class CommentManagerImpl extends AbstractManager implements CommentManage
 //        }
 //
 //        return vCommentaire;
-
-
-        //methode sans transaction qui marche
-//        List<Commentaire> vCommentaire = new ArrayList<>();
-//        vCommentaire = commentDao.getListAllCommentForOneElementId(pElement_id);
-//        return vCommentaire;
-//    }
-//}

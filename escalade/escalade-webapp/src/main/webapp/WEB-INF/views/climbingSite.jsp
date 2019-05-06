@@ -50,12 +50,12 @@
       <ul class="nav navbar-nav navbar-right"> <li class="dropdown">
 
         <!-- if user is login -->
-        <c:if test="${!empty message}"><p style="color:white;"><c:out value="${message} "/>
-          <br><a href="/home">Se deconnecter </a></p>
+        <c:if test="${!empty log}"><p style="color:white;"><c:out value="${log} "/>
+          <br><a href="dologout">Se deconnecter </a></p>
         </c:if>
 
         <!-- if user not login -->
-        <c:if test="${empty message}">
+        <c:if test="${empty log}">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">S'identifier <b class="caret"></b></a>
         <ul class="dropdown-menu">
           <li class="dropdown-header">Vous n'êtes pas identifié.</li>
