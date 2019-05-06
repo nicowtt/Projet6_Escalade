@@ -3,6 +3,7 @@ package com.ocr.nicolas.escalade.business.impl;
 import com.ocr.nicolas.escalade.business.contract.WayManager;
 import com.ocr.nicolas.escalade.consumer.contract.dao.WayDao;
 import com.ocr.nicolas.escalade.model.bean.voie.Voie;
+import org.springframework.transaction.support.TransactionTemplate;
 
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -24,9 +25,15 @@ public class WayManagerImpl extends AbstractManager implements WayManager {
      */
     @Override
     public List<Voie> getListAllWaysForOneSite (int pSite) {
-        List<Voie> vVoie = new ArrayList<>();
-        vVoie = wayDao.getListAllWaysForOneSite(pSite);
+        TransactionTemplate vTransactionTemplate = new TransactionTemplate(getPlatformTransactionManager());
 
+        List<Voie> vVoie = vTransactionTemplate.execute(transactionStatus -> {
+
+            List<Voie> vVoieTransaction = new ArrayList<>();
+            vVoieTransaction = wayDao.getListAllWaysForOneSite(pSite);
+
+            return vVoieTransaction;
+        });
         return vVoie;
     }
 
@@ -39,9 +46,15 @@ public class WayManagerImpl extends AbstractManager implements WayManager {
      */
     @Override
     public List<Voie> getListVoie(int pSecteur) {
-        List<Voie> vVoie = new ArrayList<>();
-        vVoie = wayDao.getListVoie(pSecteur);
+        TransactionTemplate vTransactionTemplate = new TransactionTemplate(getPlatformTransactionManager());
 
+        List<Voie> vVoie = vTransactionTemplate.execute(transactionStatus -> {
+
+            List<Voie> vVoieTransaction = new ArrayList<>();
+            vVoieTransaction = wayDao.getListVoie(pSecteur);
+
+            return vVoieTransaction;
+        });
         return vVoie;
     }
 

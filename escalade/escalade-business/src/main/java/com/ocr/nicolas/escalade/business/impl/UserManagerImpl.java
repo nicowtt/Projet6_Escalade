@@ -27,9 +27,15 @@ public class UserManagerImpl extends AbstractManager implements UserManager {
      */
     @Override
     public List<Utilisateur> getUserNameOfComment(int pElement_id) {
-        List<Utilisateur> vUtilisateur = new ArrayList<>();
-        vUtilisateur = userDao.getUserNameOfComment(pElement_id);
+        TransactionTemplate vTransactionTemplate = new TransactionTemplate(getPlatformTransactionManager());
 
+        List<Utilisateur> vUtilisateur = vTransactionTemplate.execute(transactionStatus -> {
+
+            List<Utilisateur> vUtilisateurTransaction = new ArrayList<>();
+            vUtilisateurTransaction = userDao.getUserNameOfComment(pElement_id);
+
+            return vUtilisateurTransaction;
+        });
         return vUtilisateur;
     }
 

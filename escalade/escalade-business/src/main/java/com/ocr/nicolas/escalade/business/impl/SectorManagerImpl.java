@@ -2,7 +2,9 @@ package com.ocr.nicolas.escalade.business.impl;
 
 import com.ocr.nicolas.escalade.business.contract.SectorManager;
 import com.ocr.nicolas.escalade.consumer.contract.dao.SectorDao;
+import com.ocr.nicolas.escalade.model.bean.commentaire.Commentaire;
 import com.ocr.nicolas.escalade.model.bean.secteur.Secteur;
+import org.springframework.transaction.support.TransactionTemplate;
 
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -15,7 +17,6 @@ public class SectorManagerImpl extends AbstractManager implements SectorManager 
     @Inject
     private SectorDao sectorDao;
 
-
     /**
      * for get sectors List on Site
      *
@@ -25,9 +26,15 @@ public class SectorManagerImpl extends AbstractManager implements SectorManager 
     @Override
     public List<Secteur> getListOneSector(int pSite){
 
-        List<Secteur> vSecteur = new ArrayList<>();
-        vSecteur = sectorDao.getListOneSector(pSite);
+        TransactionTemplate vTransactionTemplate = new TransactionTemplate(getPlatformTransactionManager());
 
+        List<Secteur> vSecteur = vTransactionTemplate.execute(transactionStatus -> {
+
+            List<Secteur> vSecteurTransaction = new ArrayList<>();
+            vSecteurTransaction = sectorDao.getListOneSector(pSite);
+
+            return vSecteurTransaction;
+        });
         return vSecteur;
     }
 
@@ -39,8 +46,14 @@ public class SectorManagerImpl extends AbstractManager implements SectorManager 
      */
     @Override
     public int getNbrSecteur(String pNom) {
-        int nbrSector = sectorDao.getNbrSecteur(pNom);
 
+        TransactionTemplate vTransactionTemplate = new TransactionTemplate(getPlatformTransactionManager());
+        int nbrSector = vTransactionTemplate.execute(transactionStatus -> {
+
+            int nbrSectorTransaction = sectorDao.getNbrSecteur(pNom);
+
+            return nbrSectorTransaction;
+        });
         return nbrSector;
     }
 }
