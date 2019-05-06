@@ -34,7 +34,7 @@ public class SiteController {
      * @return
      */
     @RequestMapping(value="/climbingSite/{id}", method = RequestMethod.GET )
-    public String index(Model model, @PathVariable Integer id, @SessionAttribute Utilisateur utilisateur) {
+    public String index(Model model, @PathVariable Integer id) {
 
         // Models for display all information about one climbing site
         model.addAttribute("site", siteManager.getListOneSite(id));
