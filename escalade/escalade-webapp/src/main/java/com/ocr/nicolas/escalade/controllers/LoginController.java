@@ -15,7 +15,6 @@ public class LoginController {
     @Inject
     private SiteManager siteManager;
 
-
     @ModelAttribute("Utilisateur")
     public Utilisateur setUpUserForm() {
         return new Utilisateur();
@@ -26,18 +25,17 @@ public class LoginController {
         return "index";
     }
 
-    @PostMapping("/dologin")
+    @RequestMapping(value = "/dologin", method = RequestMethod.POST)
     public String doLogin(@ModelAttribute("Utilisateur") Utilisateur utilisateur, Model model) {
 
         //todo put in business Logic with bdd acces
 
         if (utilisateur.getEmail().equals("vincent.vega@gmail.com") && utilisateur.getMotDePasse().equals("pulpfiction")) {
             System.out.println("login OK");
-            model.addAttribute("message", "bienvenue vincent");
-
+            model.addAttribute("message", utilisateur.getEmail());
         } else {
-            model.addAttribute("message", "Login failed, Try again.");
-            return "home";
+            utilisateur.setEmail(null);
+            utilisateur.setMotDePasse(null);
         }
         model.addAttribute("site", siteManager.getListAllSite());
         return "/home";

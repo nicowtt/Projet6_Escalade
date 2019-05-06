@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.inject.Inject;
 
 @Controller
+@SessionAttributes("Utilisateur")
 public class SiteController {
 
     static final Log logger = LogFactory.getLog(SiteController.class);
@@ -34,15 +35,20 @@ public class SiteController {
      * @return
      */
     @RequestMapping(value="/climbingSite/{id}", method = RequestMethod.GET )
-    public String index(Model model, @PathVariable Integer id) {
+    public String index(Model model, @PathVariable Integer id, @SessionAttribute(value = "Utilisateur", required = false) Utilisateur utilisateur) {
+
 
         // Models for display all information about one climbing site
         model.addAttribute("site", siteManager.getListOneSite(id));
         model.addAttribute("secteur", sectorManager.getListOneSector(id));
         model.addAttribute("voie", wayManager.getListAllWaysForOneSite(id));
+
+        // model for "utilisateur"
+        if (utilisateur != null) {
+            model.addAttribute("message", utilisateur.getEmail());
+        }
+
         return "climbingSite";
-        // model for session:
-        // todo
     }
 
 

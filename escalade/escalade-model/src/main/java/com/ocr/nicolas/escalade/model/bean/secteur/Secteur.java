@@ -1,5 +1,9 @@
 package com.ocr.nicolas.escalade.model.bean.secteur;
 
+import com.ocr.nicolas.escalade.model.bean.voie.Voie;
+
+import java.util.List;
+
 /**
  * Bean représentant un Secteur d'escalade
  */
@@ -19,7 +23,8 @@ public class Secteur {
     private String coordonneGps;
     private Integer element_id;
     private Integer site_id;
-
+    //ajout bean voie
+    private List<Voie> ways;
 
     // ==================== Constructeurs ====================
     /**

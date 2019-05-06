@@ -47,7 +47,6 @@
       </ul>
 
       <!-- identification -->
-      <!-- identification -->
       <ul class="nav navbar-nav navbar-right"> <li class="dropdown">
 
         <!-- if user is login -->
@@ -59,7 +58,6 @@
         <c:if test="${empty message}">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">S'identifier <b class="caret"></b></a>
         <ul class="dropdown-menu">
-          <li class="dropdown-header">${message}</li>
           <li class="dropdown-header">Vous n'êtes pas identifié.</li>
           <li><form class="navbar-form" method="post" action="/dologin" modelAttribute="utilisateur">
             <input type="text" class="form-control" name="email" placeholder="email" /><br />
