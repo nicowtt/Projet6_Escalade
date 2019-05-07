@@ -14,7 +14,7 @@ public class SiteRowMapper implements RowMapper<Site> {
         vSite.setDescriptionSite(resultSet.getString("descriptionsite"));
         vSite.setLocalisationDepartement(resultSet.getString("localisationdepartement"));
         vSite.setLocalisationPays(resultSet.getString("localisationpays"));
-        vSite.setUrlPhoto(resultSet.getString("urlphoto"));
+        vSite.setUrlPhotoSite(resultSet.getString("urlphotosite"));
         vSite.setNombreDeSecteur(resultSet.getInt("nombredesecteur"));
         vSite.setElement_id(resultSet.getInt("element_id"));
         return vSite;

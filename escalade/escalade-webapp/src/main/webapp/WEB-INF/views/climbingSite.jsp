@@ -90,7 +90,7 @@
     </c:forEach></p>
 
     <!-- Picture-->
-    <c:forEach items="${site}" var="si"><img src="${si.urlPhoto}" alt="${si.urlPhoto}" style="width:500px;height:500px;border:0;"></c:forEach>
+    <c:forEach items="${site}" var="si"><img src="${si.urlPhotoSite}" alt="${si.urlPhotoSite}" style="width:500px;height:500px;border:0;"></c:forEach>
 
     <!-- Sectors table
     ================================================== -->
@@ -126,14 +126,14 @@
     <h3>Les voies:</h3>
 
     <!-- Way pictures (depend of sectors number) -->
-    <c:forEach items="${secteur}" var="s"><img src="${s.urlPhoto}" alt="${s.urlPhoto}" style="width:500px;height:500px;border:0;"></c:forEach>
+    <c:forEach items="${secteur}" var="s"><img src="${s.urlPhotoSecteur}" alt="${s.urlPhotoSecteur}" style="width:500px;height:500px;border:0;"></c:forEach>
 
     <!-- Way table
     ================================================== -->
   <div id="listerVoie">
     <table class="table">
       <tr>
-        <th>Nom du secteur</th><th>Numero de voie</th><th>Nom</th><th>Temp d'escalade</th><th>description</th><th>longueur</th><th>cotation</th>
+        <th>Nom du secteur</th><th>Numero de voie</th><th>Nom de la voie</th><th>Temp d'escalade</th><th>description</th><th>longueur</th><th>cotation</th>
         <th>hauteur</th><th>Precision equipement</th><th>Ouverture</th><th>Date ouverture</th><th>status</th>
       </tr>
 

@@ -17,7 +17,7 @@ public class Secteur {
     private String typeRoche;
     private Integer nombreDeVoies;
     private String cotation;
-    private String urlPhoto;
+    private String urlPhotoSecteur;
     private String coordonneGps;
     private Integer element_id;
     private Integer site_id;
@@ -88,11 +88,11 @@ public class Secteur {
     public void setCotation(String cotation) {
         this.cotation = cotation;
     }
-    public String getUrlPhoto() {
-        return urlPhoto;
+    public String getUrlPhotoSecteur() {
+        return urlPhotoSecteur;
     }
-    public void setUrlPhoto(String urlPhoto) {
-        this.urlPhoto = urlPhoto;
+    public void setUrlPhotoSecteur(String urlPhotoSecteur) {
+        this.urlPhotoSecteur = urlPhotoSecteur;
     }
     public String getCoordonneGps() {
         return coordonneGps;
@@ -112,7 +112,11 @@ public class Secteur {
     public void setSite_id(Integer site_id) {
         this.site_id = site_id;
     }
-
-
-    // ==================== Méthodes ====================
+    public List<Voie> getWays() {
+        return ways;
+    }
+    public void setWays(List<Voie> ways) {
+        this.ways = ways;
+    }
+// ==================== Méthodes ====================
 }
