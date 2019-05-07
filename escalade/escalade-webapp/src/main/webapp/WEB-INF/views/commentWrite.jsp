@@ -65,9 +65,21 @@
     ================================================== -->
 
     <!-- display for write comment -->
+    <br>
     <div id="EcrireCommentaire">
-        <p>ici on ecrit et on doit être logué</p>
-
+        <f:form modelAttribute="comment" method="post" action="/commentWrite">
+            <table>
+                <tr>
+                    <td> Commentaire:</td>
+                    <td><f:input path="commentaire" /></td>
+                    <td><f:errors path="commentaire" cssClass="errors"/></td>
+                </tr>
+                <p></p>
+                <tr>
+                    <td><input type="submit" value="Envoyer Commentaire"></td>
+                </tr>
+            </table>
+        </f:form>
     </div>
 
 

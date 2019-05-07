@@ -4,6 +4,8 @@ import com.ocr.nicolas.escalade.business.contract.CommentManager;
 import com.ocr.nicolas.escalade.consumer.contract.dao.CommentDao;
 import com.ocr.nicolas.escalade.model.bean.Commentaire;
 import com.ocr.nicolas.escalade.model.exception.CommentException;
+import org.springframework.transaction.TransactionStatus;
+import org.springframework.transaction.support.TransactionCallbackWithoutResult;
 import org.springframework.transaction.support.TransactionTemplate;
 
 
@@ -34,6 +36,31 @@ public class CommentManagerImpl extends AbstractManager implements CommentManage
 
             List<Commentaire> vCommentaireTransaction = null;
             vCommentaireTransaction = commentDao.getListAllCommentForOneElementId(pElement_id);
+
+            return vCommentaireTransaction;
+        });
+        return vCommentaire;
+    }
+
+    /**
+     * For write a comment
+     *
+     * @param pCommentaire -> comment bean
+     *
+     */
+    @Override
+    public Commentaire writeComment(Commentaire pCommentaire) {
+
+        TransactionTemplate vTransactionTemplate = new TransactionTemplate(getPlatformTransactionManager());
+
+        Commentaire vCommentaire = vTransactionTemplate.execute(transactionStatus -> {
+
+            Commentaire vCommentaireTransaction = null;
+            try {
+                vCommentaireTransaction = commentDao.writeComment(pCommentaire);
+            } catch (CommentException e) {
+                e.printStackTrace();
+            }
 
             return vCommentaireTransaction;
         });

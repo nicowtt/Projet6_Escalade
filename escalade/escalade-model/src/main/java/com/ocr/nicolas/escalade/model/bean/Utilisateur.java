@@ -20,6 +20,9 @@ public class Utilisateur {
     private String membreAssociation;
     private String autre;
 
+    // other attribute for put element_id user session
+    private Integer element_id;
+
     // ============ Constructeurs ======
     /**
      * Constructeur par defaut
@@ -113,6 +116,11 @@ public class Utilisateur {
     public void setAutre(String autre) {
         this.autre = autre;
     }
-
+    public Integer getElement_id() {
+        return element_id;
+    }
+    public void setElement_id(Integer element_id) {
+        this.element_id = element_id;
+    }
     // =========== Methodes ===========
 }

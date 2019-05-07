@@ -68,4 +68,28 @@ public class UserDaoImpl extends AbstractDAoImpl implements UserDao {
 
         return vUtilisateur;
     }
+
+    /**
+     * For find User_id with email
+     * @param pEmail
+     * @return -> bean Utilisateur
+     */
+    @Override
+    public Utilisateur getUserIDWithEmail(String pEmail) {
+        String vSQL
+                = "SELECT * FROM utilisateur"
+                + " WHERE email = :pEmail";
+
+        NamedParameterJdbcTemplate vJdbcTemplate = new NamedParameterJdbcTemplate(getDatasource());
+
+        MapSqlParameterSource vParams = new MapSqlParameterSource();
+        vParams.addValue("pEmail", pEmail, Types.VARCHAR);
+
+        RowMapper<Utilisateur> vRowMapper = new UserRowMapper();
+
+        Utilisateur vUtilisateur = vJdbcTemplate.queryForObject(vSQL,vParams,vRowMapper);
+
+        return vUtilisateur;
+
+    }
 }

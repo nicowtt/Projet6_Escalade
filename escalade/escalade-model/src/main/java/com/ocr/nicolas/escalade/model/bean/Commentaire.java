@@ -12,6 +12,7 @@ public class Commentaire {
     private Timestamp dateCommentaire;
     private Integer element_id;
     private String commentaire;
+    private Integer utilisateur_id;
     // bean utilisateur
     private Utilisateur utilisateur;
 
@@ -53,6 +54,12 @@ public class Commentaire {
     }
     public void setCommentaire(String commentaire) {
         this.commentaire = commentaire;
+    }
+    public Integer getUtilisateur_id() {
+        return utilisateur_id;
+    }
+    public void setUtilisateur_id(Integer utilisateur_id) {
+        this.utilisateur_id = utilisateur_id;
     }
     public Utilisateur getUtilisateur() {
         return utilisateur;
