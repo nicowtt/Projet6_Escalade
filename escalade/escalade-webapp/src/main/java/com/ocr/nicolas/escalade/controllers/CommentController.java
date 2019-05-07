@@ -29,8 +29,8 @@ public class CommentController {
      * @param element_Id -> for one element
      * @return Comments List
      */
-    @RequestMapping(value="/comment/{element_Id}", method = RequestMethod.GET )
-    public String comment(Model model, @PathVariable Integer element_Id, @SessionAttribute(value = "Utilisateur", required = false) Utilisateur utilisateur) throws CommentException {
+    @RequestMapping(value="/commentRead/{element_Id}", method = RequestMethod.GET )
+    public String commentRead(Model model, @PathVariable Integer element_Id, @SessionAttribute(value = "Utilisateur", required = false) Utilisateur utilisateur) throws CommentException {
 
         // Models for display comments
         model.addAttribute("commentaire", commentManager.getListAllCommentForOneElementId(element_Id));
@@ -40,7 +40,29 @@ public class CommentController {
             model.addAttribute("log", utilisateur.getEmail());
         }
 
-        return "comment";
+        return "commentRead";
+
+    }
+
+    /**
+     * For write a comment page
+     * @param model model
+     * @param element_Id -> for one element
+     * @return Comments List
+     */
+    @RequestMapping(value="/commentWrite/{element_Id}", method = RequestMethod.GET )
+    public String commentWrite(Model model, @PathVariable Integer element_Id, @SessionAttribute(value = "Utilisateur", required = false) Utilisateur utilisateur) throws CommentException {
+
+        // Models for display comments
+        model.addAttribute("commentaire", commentManager.getListAllCommentForOneElementId(element_Id));
+
+        // model for "log"
+        if (utilisateur != null) {
+            model.addAttribute("log", utilisateur.getEmail());
+        } else {
+            return "ForceLogin";
+        }
+        return "commentWrite";
 
     }
 }

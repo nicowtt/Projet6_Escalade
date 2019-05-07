@@ -79,9 +79,9 @@
     <!-- Body
     ================================================== -->
 
-    <!-- display site -->
+    <!-- display comment table -->
+    <p></p>
     <div id="listerCommentaire">
-        <p></p>
         <table class="table">
             <tr>
                 <th>Date Commentaire</th><th>Nom</th><th>commentaire</th>

@@ -6,8 +6,11 @@ import com.ocr.nicolas.escalade.model.bean.Utilisateur;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.support.SessionStatus;
+import org.springframework.web.context.request.WebRequest;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -38,19 +41,23 @@ public class LoginController {
      * @return
      */
     @RequestMapping(value = "/dologin", method = RequestMethod.POST)
-    public String doLogin(@ModelAttribute("Utilisateur") Utilisateur utilisateur, Model model) {
+    public String doLogin(@ModelAttribute("Utilisateur") Utilisateur utilisateur, WebRequest request, SessionStatus status, Model model) {
 
-        // sending email and password from Login for check if exist on bdd
+        // check if couple (email + password) exist exist on bdd
         if (utilisateur != null) {
             List<Utilisateur> vUtilisateur = new ArrayList<>();
             String email = utilisateur.getEmail();
             String password = utilisateur.getMotDePasse();
 
             vUtilisateur = userManager.checkUserEmailAndPassword(email, password);
-            // if email and password is wrong -> i clear email and password
+
+            // if email and password is wrong -> Removing Utilisateur session
             if (vUtilisateur.size() == 0) {
-                utilisateur.setEmail(null);
-                utilisateur.setMotDePasse(null);
+                status.setComplete();
+                request.removeAttribute("Utilisateur", WebRequest.SCOPE_SESSION);
+                return "ErrorLogin";
+            } else {
+
             }
             // if email and password are good,
             for (int i = 0; i < vUtilisateur.size(); i++) {

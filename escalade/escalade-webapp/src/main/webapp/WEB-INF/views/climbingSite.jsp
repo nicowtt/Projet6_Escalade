@@ -114,8 +114,8 @@
           <td>${s.nombreDeVoies}</td>
           <td>${s.cotation}</td>
           <td>${s.coordonneGps}</td>
-          <td><a href="/comment/${s.element_id}">Voir</a></td>
-          <td><a href="editProduit?ref=${s}">Ecrire</a></td>
+          <td><a href="/commentRead/${s.element_id}">Voir</a></td>
+          <td><a href="/commentWrite/${s.element_id}">Ecrire</a></td>
           <%--<td><a href="editProduit?ref=${p.reference}">Editer</a></td>--%>
             <%--<td><a href="deleteProduit?ref=${p.reference}">Supprimer</a></td>--%>
         </tr>
