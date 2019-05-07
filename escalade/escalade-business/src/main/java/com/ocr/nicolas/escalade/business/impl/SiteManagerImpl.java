@@ -2,7 +2,7 @@ package com.ocr.nicolas.escalade.business.impl;
 
 import com.ocr.nicolas.escalade.business.contract.SiteManager;
 import com.ocr.nicolas.escalade.consumer.contract.dao.SiteDao;
-import com.ocr.nicolas.escalade.model.bean.site.Site;
+import com.ocr.nicolas.escalade.model.bean.Site;
 import org.springframework.transaction.support.TransactionTemplate;
 
 import javax.inject.Inject;

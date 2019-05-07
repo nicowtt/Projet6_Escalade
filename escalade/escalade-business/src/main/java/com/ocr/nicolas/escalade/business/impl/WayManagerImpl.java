@@ -2,7 +2,7 @@ package com.ocr.nicolas.escalade.business.impl;
 
 import com.ocr.nicolas.escalade.business.contract.WayManager;
 import com.ocr.nicolas.escalade.consumer.contract.dao.WayDao;
-import com.ocr.nicolas.escalade.model.bean.voie.Voie;
+import com.ocr.nicolas.escalade.model.bean.Voie;
 import org.springframework.transaction.support.TransactionTemplate;
 
 import javax.inject.Inject;

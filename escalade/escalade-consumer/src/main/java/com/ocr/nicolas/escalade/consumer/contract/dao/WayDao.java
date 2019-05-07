@@ -1,6 +1,6 @@
 package com.ocr.nicolas.escalade.consumer.contract.dao;
 
-import com.ocr.nicolas.escalade.model.bean.voie.Voie;
+import com.ocr.nicolas.escalade.model.bean.Voie;
 
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package com.ocr.nicolas.escalade.model.bean.site;
+package com.ocr.nicolas.escalade.model.bean;
 
 /**
  * Bean représentant un Site d'escalade
@@ -7,8 +7,8 @@ public class Site {
 
     // ==================== Attributs ====================
     private Integer id;
-    private String nom;
-    private String description;
+    private String nomSite;
+    private String descriptionSite;
     private String localisationDepartement;
     private String localisationPays;
     private String urlPhoto;
@@ -36,17 +36,17 @@ public class Site {
     public void setId(Integer id) {
         this.id = id;
     }
-    public String getNom() {
-        return nom;
+    public String getNomSite() {
+        return nomSite;
     }
-    public void setNom(String nom) {
-        this.nom = nom;
+    public void setNomSite(String nomSite) {
+        this.nomSite = nomSite;
     }
-    public String getDescription() {
-        return description;
+    public String getDescriptionSite() {
+        return descriptionSite;
     }
-    public void setDescription(String description) {
-        this.description = description;
+    public void setDescriptionSite(String descriptionSite) {
+        this.descriptionSite = descriptionSite;
     }
     public String getLocalisationDepartement() {
         return localisationDepartement;

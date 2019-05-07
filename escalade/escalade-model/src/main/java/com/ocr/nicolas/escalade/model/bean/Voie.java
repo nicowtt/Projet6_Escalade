@@ -1,4 +1,4 @@
-package com.ocr.nicolas.escalade.model.bean.voie;
+package com.ocr.nicolas.escalade.model.bean;
 
 
 /**
@@ -9,9 +9,9 @@ public class Voie {
     // ==================== Attributs ====================
     private Integer id;
     private Integer numero;
-    private String nom;
+    private String nomVoie;
     private Integer tempDescalade;
-    private String description;
+    private String descriptionVoie;
     private String longueur;
     private String cotation;
     private Integer hauteur;
@@ -20,7 +20,8 @@ public class Voie {
     private String dateOuverture;
     private String statut;
     private Integer element_id;
-    private Integer secteur_id;
+    //bean
+    private Secteur secteur;
 
     // ==================== Constructeurs ====================
     /**
@@ -48,11 +49,11 @@ public class Voie {
     public void setNumero(Integer numero) {
         this.numero = numero;
     }
-    public String getNom() {
-        return nom;
+    public String getNomVoie() {
+        return nomVoie;
     }
-    public void setNom(String nom) {
-        this.nom = nom;
+    public void setNomVoie(String nomVoie) {
+        this.nomVoie = nomVoie;
     }
     public Integer getTempDescalade() {
         return tempDescalade;
@@ -60,11 +61,11 @@ public class Voie {
     public void setTempDescalade(Integer tempDescalade) {
         this.tempDescalade = tempDescalade;
     }
-    public String getDescription() {
-        return description;
+    public String getDescriptionVoie() {
+        return descriptionVoie;
     }
-    public void setDescription(String description) {
-        this.description = description;
+    public void setDescriptionVoie(String descriptionVoie) {
+        this.descriptionVoie = descriptionVoie;
     }
     public String getLongueur() {
         return longueur;
@@ -114,13 +115,11 @@ public class Voie {
     public void setElement_id(Integer element_id) {
         this.element_id = element_id;
     }
-    public Integer getSecteur_id() {
-        return secteur_id;
+    public Secteur getSecteur() {
+        return secteur;
     }
-    public void setSecteur_id(Integer secteur_id) {
-        this.secteur_id = secteur_id;
+    public void setSecteur(Secteur secteur) {
+        this.secteur = secteur;
     }
-
-
     // ==================== Méthodes ====================
 }

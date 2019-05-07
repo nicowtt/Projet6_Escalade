@@ -2,16 +2,13 @@ package com.ocr.nicolas.escalade.business.impl;
 
 import com.ocr.nicolas.escalade.business.contract.UserManager;
 import com.ocr.nicolas.escalade.consumer.contract.dao.UserDao;
-import com.ocr.nicolas.escalade.model.bean.commentaire.Commentaire;
-import com.ocr.nicolas.escalade.model.bean.utilisateur.Utilisateur;
+import com.ocr.nicolas.escalade.model.bean.Utilisateur;
 import org.springframework.transaction.support.TransactionTemplate;
 
 import javax.inject.Inject;
 import javax.inject.Named;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 @Named
 public class UserManagerImpl extends AbstractManager implements UserManager {

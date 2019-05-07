@@ -1,6 +1,4 @@
-package com.ocr.nicolas.escalade.model.bean.commentaire;
-
-import com.ocr.nicolas.escalade.model.bean.utilisateur.Utilisateur;
+package com.ocr.nicolas.escalade.model.bean;
 
 import java.sql.Timestamp;
 

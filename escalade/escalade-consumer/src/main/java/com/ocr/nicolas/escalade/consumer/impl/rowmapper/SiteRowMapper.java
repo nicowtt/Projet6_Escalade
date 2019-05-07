@@ -1,6 +1,6 @@
 package com.ocr.nicolas.escalade.consumer.impl.rowmapper;
 
-import com.ocr.nicolas.escalade.model.bean.site.Site;
+import com.ocr.nicolas.escalade.model.bean.Site;
 import org.springframework.jdbc.core.RowMapper;
 
 import java.sql.ResultSet;
@@ -10,8 +10,8 @@ public class SiteRowMapper implements RowMapper<Site> {
 
     public Site mapRow(ResultSet resultSet, int i) throws SQLException {
         Site vSite = new Site(resultSet.getInt("id"));
-        vSite.setNom(resultSet.getString("nom"));
-        vSite.setDescription(resultSet.getString("description"));
+        vSite.setNomSite(resultSet.getString("nomsite"));
+        vSite.setDescriptionSite(resultSet.getString("descriptionsite"));
         vSite.setLocalisationDepartement(resultSet.getString("localisationdepartement"));
         vSite.setLocalisationPays(resultSet.getString("localisationpays"));
         vSite.setUrlPhoto(resultSet.getString("urlphoto"));

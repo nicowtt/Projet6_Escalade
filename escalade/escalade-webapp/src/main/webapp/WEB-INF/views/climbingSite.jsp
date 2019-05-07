@@ -81,12 +81,12 @@
 
     <!-- Climbing site title -->
     <h1><c:forEach items="${site}" var="si">
-      <c:out value="${si.nom}" />
+      <c:out value="${si.nomSite}" />
     </c:forEach></h1>
 
     <!-- Site Description-->
     <p><c:forEach items="${site}" var="si">
-      <c:out value="${si.description}" />
+      <c:out value="${si.descriptionSite}" />
     </c:forEach></p>
 
     <!-- Picture-->
@@ -99,15 +99,14 @@
   <div id="listerSecteur">
     <table class="table">
       <tr>
-        <th>Numero de secteur</th><th>Nom</th><th>Description</th><th>Accés</th><th>Altitude base</th><th>orientation</th><th>Type de roche</th>
+        <th>Nom</th><th>Description</th><th>Accés</th><th>Altitude base</th><th>orientation</th><th>Type de roche</th>
         <th>Nombre de voies</th><th>cotation</th><th>Coordonnés GPS</th><th>Commentaires</th><th>Commentaires</th>
         <%--<th>Element_id</th><th>Secteur_id</th>--%>
       </tr>
       <c:forEach items="${secteur}" var="s">
         <tr>
-          <td>${s.id}</td>
-          <td>${s.nom}</td>
-          <td>${s.description}</td>
+          <td>${s.nomSecteur}</td>
+          <td>${s.descriptionSecteur}</td>
           <td>${s.acces}</td>
           <td>${s.altitudeBase}m</td>
           <td>${s.orientation}</td>
@@ -116,7 +115,7 @@
           <td>${s.cotation}</td>
           <td>${s.coordonneGps}</td>
           <td><a href="/comment/${s.element_id}">Voir</a></td>
-          <td><a href="editProduit?ref=${p.reference}">Ecrire</a></td>
+          <td><a href="editProduit?ref=${s}">Ecrire</a></td>
           <%--<td><a href="editProduit?ref=${p.reference}">Editer</a></td>--%>
             <%--<td><a href="deleteProduit?ref=${p.reference}">Supprimer</a></td>--%>
         </tr>
@@ -134,24 +133,24 @@
   <div id="listerVoie">
     <table class="table">
       <tr>
-        <th>Numero de secteur</th><th>Numero de voie</th><th>Nom</th><th>Temp d'escalade</th><th>description</th><th>longueur</th><th>cotation</th>
+        <th>Nom du secteur</th><th>Numero de voie</th><th>Nom</th><th>Temp d'escalade</th><th>description</th><th>longueur</th><th>cotation</th>
         <th>hauteur</th><th>Precision equipement</th><th>Ouverture</th><th>Date ouverture</th><th>status</th>
       </tr>
 
-      <c:forEach items="${voie}" var="p">
+      <c:forEach items="${voie}" var="v">
         <tr>
-          <td>${p.secteur_id}</td>
-          <td>${p.numero}</td>
-          <td>${p.nom}</td>
-          <td>${p.tempDescalade}h</td>
-          <td>${p.description}</td>
-          <td>${p.longueur}</td>
-          <td>${p.cotation}</td>
-          <td>${p.hauteur}m</td>
-          <td>${p.precisionEquipement}</td>
-          <td>${p.ouvertureEtEquipement}</td>
-          <td>${p.dateOuverture}</td>
-          <td>${p.statut}</td>
+          <td>${v.secteur.nomSecteur}</td>
+          <td>${v.numero}</td>
+          <td>${v.nomVoie}</td>
+          <td>${v.tempDescalade}h</td>
+          <td>${v.descriptionVoie}</td>
+          <td>${v.longueur}</td>
+          <td>${v.cotation}</td>
+          <td>${v.hauteur}m</td>
+          <td>${v.precisionEquipement}</td>
+          <td>${v.ouvertureEtEquipement}</td>
+          <td>${v.dateOuverture}</td>
+          <td>${v.statut}</td>
             <%--<td>${p.element_id}</td>--%>
             <%--<td><a href="editProduit?ref=${p.reference}">Editer</a></td>--%>
             <%--<td><a href="deleteProduit?ref=${p.reference}">Supprimer</a></td>--%>

@@ -2,7 +2,7 @@ package com.ocr.nicolas.escalade.consumer.impl.dao;
 
 import com.ocr.nicolas.escalade.consumer.contract.dao.CommentDao;
 import com.ocr.nicolas.escalade.consumer.impl.rowmapper.CommentRowMapper;
-import com.ocr.nicolas.escalade.model.bean.commentaire.Commentaire;
+import com.ocr.nicolas.escalade.model.bean.Commentaire;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;

@@ -1,6 +1,6 @@
 package com.ocr.nicolas.escalade.consumer.impl.rowmapper;
 
-import com.ocr.nicolas.escalade.model.bean.utilisateur.Utilisateur;
+import com.ocr.nicolas.escalade.model.bean.Utilisateur;
 import org.springframework.jdbc.core.RowMapper;
 
 import java.sql.ResultSet;

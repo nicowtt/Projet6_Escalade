@@ -1,8 +1,8 @@
 package com.ocr.nicolas.escalade.consumer.impl.rowmapper;
 
-import com.ocr.nicolas.escalade.model.bean.commentaire.Commentaire;
+import com.ocr.nicolas.escalade.model.bean.Commentaire;
 
-import com.ocr.nicolas.escalade.model.bean.utilisateur.Utilisateur;
+import com.ocr.nicolas.escalade.model.bean.Utilisateur;
 import org.springframework.jdbc.core.RowMapper;
 
 
@@ -22,7 +22,7 @@ public class CommentRowMapper implements RowMapper<Commentaire> {
 
         //new bean "Utilisateur"
         Utilisateur vUtilisateur = new Utilisateur(resultSet.getInt("utilisateur_id"));
-        //set utilisateur -> a completer au besoin
+        //set utilisateur -> to be completed if needed
         vUtilisateur.setPrenom(resultSet.getString("prenom"));
         vUtilisateur.setMembreAssociation(resultSet.getString("membreassociation"));
 

@@ -1,6 +1,6 @@
 package com.ocr.nicolas.escalade.consumer.impl.rowmapper;
 
-import com.ocr.nicolas.escalade.model.bean.secteur.Secteur;
+import com.ocr.nicolas.escalade.model.bean.Secteur;
 import org.springframework.jdbc.core.RowMapper;
 
 import java.sql.ResultSet;
@@ -12,8 +12,8 @@ public class SectorRowMapper implements RowMapper<Secteur> {
     @Override
     public Secteur mapRow(ResultSet resultSet, int i) throws SQLException {
         Secteur vSecteur = new Secteur(resultSet.getInt("id"));
-        vSecteur.setNom(resultSet.getString("nom"));
-        vSecteur.setDescription(resultSet.getString("description"));
+        vSecteur.setNomSecteur(resultSet.getString("nomsecteur"));
+        vSecteur.setDescriptionSecteur(resultSet.getString("descriptionsecteur"));
         vSecteur.setAcces(resultSet.getString("acces"));
         vSecteur.setAltitudeBase(resultSet.getInt("altitudebase"));
         vSecteur.setOrientation(resultSet.getString("orientation"));

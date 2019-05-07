@@ -2,18 +2,13 @@ package com.ocr.nicolas.escalade.business.impl;
 
 import com.ocr.nicolas.escalade.business.contract.CommentManager;
 import com.ocr.nicolas.escalade.consumer.contract.dao.CommentDao;
-import com.ocr.nicolas.escalade.model.bean.commentaire.Commentaire;
+import com.ocr.nicolas.escalade.model.bean.Commentaire;
 import com.ocr.nicolas.escalade.model.exception.CommentException;
-import org.springframework.transaction.TransactionDefinition;
-import org.springframework.transaction.TransactionStatus;
-import org.springframework.transaction.support.DefaultTransactionDefinition;
-import org.springframework.transaction.support.TransactionCallback;
 import org.springframework.transaction.support.TransactionTemplate;
 
 
 import javax.inject.Inject;
 import javax.inject.Named;
-import java.util.ArrayList;
 import java.util.List;
 
 @Named

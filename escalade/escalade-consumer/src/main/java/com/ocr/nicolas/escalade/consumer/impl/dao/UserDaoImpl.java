@@ -2,7 +2,7 @@ package com.ocr.nicolas.escalade.consumer.impl.dao;
 
 import com.ocr.nicolas.escalade.consumer.contract.dao.UserDao;
 import com.ocr.nicolas.escalade.consumer.impl.rowmapper.UserRowMapper;
-import com.ocr.nicolas.escalade.model.bean.utilisateur.Utilisateur;
+import com.ocr.nicolas.escalade.model.bean.Utilisateur;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
@@ -10,7 +10,6 @@ import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import javax.inject.Named;
 import java.sql.Types;
 import java.util.List;
-import java.util.Map;
 
 @Named
 public class UserDaoImpl extends AbstractDAoImpl implements UserDao {

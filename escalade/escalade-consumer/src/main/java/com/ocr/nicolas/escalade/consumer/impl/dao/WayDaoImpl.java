@@ -2,7 +2,7 @@ package com.ocr.nicolas.escalade.consumer.impl.dao;
 
 import com.ocr.nicolas.escalade.consumer.contract.dao.WayDao;
 import com.ocr.nicolas.escalade.consumer.impl.rowmapper.WayRowMapper;
-import com.ocr.nicolas.escalade.model.bean.voie.Voie;
+import com.ocr.nicolas.escalade.model.bean.Voie;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
@@ -26,9 +26,10 @@ public class WayDaoImpl extends AbstractDAoImpl implements WayDao {
 
         String vSQL
                 = "SELECT * FROM voie"
-                + " WHERE secteur_id IN ("
-                + " SELECT secteur.id FROM secteur"
-                + " WHERE site_id = :site_id)";
+                + " JOIN secteur ON secteur.id = voie.secteur_id"
+                + "  WHERE secteur_id IN ("
+                + "   SELECT secteur.id FROM secteur"
+                + "    WHERE site_id = :site_id)";
 
         NamedParameterJdbcTemplate vJdbcTemplate = new NamedParameterJdbcTemplate(getDatasource());
 

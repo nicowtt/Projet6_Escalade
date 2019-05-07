@@ -1,4 +1,4 @@
-package com.ocr.nicolas.escalade.model.bean.element;
+package com.ocr.nicolas.escalade.model.bean;
 
 /**
  * Bean representant un Element.

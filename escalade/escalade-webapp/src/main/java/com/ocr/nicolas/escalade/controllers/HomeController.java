@@ -1,7 +1,7 @@
 package com.ocr.nicolas.escalade.controllers;
 
 import com.ocr.nicolas.escalade.business.contract.SiteManager;
-import com.ocr.nicolas.escalade.model.bean.utilisateur.Utilisateur;
+import com.ocr.nicolas.escalade.model.bean.Utilisateur;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 

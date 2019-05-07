@@ -2,7 +2,7 @@ package com.ocr.nicolas.escalade.consumer.impl.dao;
 
 import com.ocr.nicolas.escalade.consumer.contract.dao.SiteDao;
 import com.ocr.nicolas.escalade.consumer.impl.rowmapper.SiteRowMapper;
-import com.ocr.nicolas.escalade.model.bean.site.Site;
+import com.ocr.nicolas.escalade.model.bean.Site;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;

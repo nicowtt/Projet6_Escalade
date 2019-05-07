@@ -2,8 +2,7 @@ package com.ocr.nicolas.escalade.business.impl;
 
 import com.ocr.nicolas.escalade.business.contract.SectorManager;
 import com.ocr.nicolas.escalade.consumer.contract.dao.SectorDao;
-import com.ocr.nicolas.escalade.model.bean.commentaire.Commentaire;
-import com.ocr.nicolas.escalade.model.bean.secteur.Secteur;
+import com.ocr.nicolas.escalade.model.bean.Secteur;
 import org.springframework.transaction.support.TransactionTemplate;
 
 import javax.inject.Inject;

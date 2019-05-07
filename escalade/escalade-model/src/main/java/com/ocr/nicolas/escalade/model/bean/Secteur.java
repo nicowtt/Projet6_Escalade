@@ -1,6 +1,4 @@
-package com.ocr.nicolas.escalade.model.bean.secteur;
-
-import com.ocr.nicolas.escalade.model.bean.voie.Voie;
+package com.ocr.nicolas.escalade.model.bean;
 
 import java.util.List;
 
@@ -11,8 +9,8 @@ public class Secteur {
 
     // ==================== Attributs ====================
     private Integer id;
-    private String nom;
-    private String description;
+    private String nomSecteur;
+    private String descriptionSecteur;
     private String acces;
     private Integer altitudeBase;
     private String orientation;
@@ -42,17 +40,17 @@ public class Secteur {
     public void setId(Integer id) {
         this.id = id;
     }
-    public String getNom() {
-        return nom;
+    public String getNomSecteur() {
+        return nomSecteur;
     }
-    public void setNom(String nom) {
-        this.nom = nom;
+    public void setNomSecteur(String nomSecteur) {
+        this.nomSecteur = nomSecteur;
     }
-    public String getDescription() {
-        return description;
+    public String getDescriptionSecteur() {
+        return descriptionSecteur;
     }
-    public void setDescription(String description) {
-        this.description = description;
+    public void setDescriptionSecteur(String descriptionSecteur) {
+        this.descriptionSecteur = descriptionSecteur;
     }
     public String getAcces() {
         return acces;

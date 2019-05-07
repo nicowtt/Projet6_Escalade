@@ -2,7 +2,7 @@ package com.ocr.nicolas.escalade.controllers;
 
 
 import com.ocr.nicolas.escalade.business.contract.CommentManager;
-import com.ocr.nicolas.escalade.model.bean.utilisateur.Utilisateur;
+import com.ocr.nicolas.escalade.model.bean.Utilisateur;
 import com.ocr.nicolas.escalade.model.exception.CommentException;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;

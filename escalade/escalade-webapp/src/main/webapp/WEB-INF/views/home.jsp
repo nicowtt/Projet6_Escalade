@@ -85,7 +85,7 @@
 
         <a href="/climbingSite/${si.id}">
         <img src="${si.urlPhoto}" alt="${si.urlPhoto}" style="width:200px;height:200px;border:0;">
-        <c:out value="${si.nom}" />
+        <c:out value="${si.nomSite}" />
         </a>
     </c:forEach></p>
 

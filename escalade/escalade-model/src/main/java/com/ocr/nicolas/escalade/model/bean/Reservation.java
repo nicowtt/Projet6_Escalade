@@ -1,4 +1,4 @@
-package com.ocr.nicolas.escalade.model.bean.reservation;
+package com.ocr.nicolas.escalade.model.bean;
 
 /**
  * Bean representant une Reservation

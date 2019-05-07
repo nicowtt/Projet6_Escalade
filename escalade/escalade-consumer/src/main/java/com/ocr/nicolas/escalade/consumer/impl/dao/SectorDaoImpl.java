@@ -2,7 +2,7 @@ package com.ocr.nicolas.escalade.consumer.impl.dao;
 
 import com.ocr.nicolas.escalade.consumer.contract.dao.SectorDao;
 import com.ocr.nicolas.escalade.consumer.impl.rowmapper.SectorRowMapper;
-import com.ocr.nicolas.escalade.model.bean.secteur.Secteur;
+import com.ocr.nicolas.escalade.model.bean.Secteur;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;

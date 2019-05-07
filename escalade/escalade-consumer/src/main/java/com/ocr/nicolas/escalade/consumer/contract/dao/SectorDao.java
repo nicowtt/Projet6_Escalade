@@ -1,6 +1,6 @@
 package com.ocr.nicolas.escalade.consumer.contract.dao;
 
-import com.ocr.nicolas.escalade.model.bean.secteur.Secteur;
+import com.ocr.nicolas.escalade.model.bean.Secteur;
 
 import java.util.List;
 

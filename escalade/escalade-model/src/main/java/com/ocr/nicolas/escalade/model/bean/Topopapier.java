@@ -1,4 +1,4 @@
-package com.ocr.nicolas.escalade.model.bean.topopapier;
+package com.ocr.nicolas.escalade.model.bean;
 
 import java.sql.Date;
 

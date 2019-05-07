@@ -1,6 +1,6 @@
 package com.ocr.nicolas.escalade.business.contract;
 
-import com.ocr.nicolas.escalade.model.bean.site.Site;
+import com.ocr.nicolas.escalade.model.bean.Site;
 
 import java.util.List;
 
