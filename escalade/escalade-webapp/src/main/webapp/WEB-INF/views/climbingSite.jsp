@@ -19,10 +19,10 @@
     <spring:url value="/resources/css/style.css" var="stylecss" />
     <link href="${stylecss}" rel="stylesheet" />
 
-    <%--<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>resources/css/style.css">--%>
+    <%--<link rel="stylesheet" type="text/css.css.css.css" href="<%=request.getContextPath()%>resources/css.css.css.css/style.css.css.css.css">--%>
 
-      <%--<link rel="stylesheet" media="screen" type="text/css" title="main_css"--%>
-      <%--href="/resources/css/style.css" />--%>
+      <%--<link rel="stylesheet" media="screen" type="text/css.css.css.css" title="main_css"--%>
+      <%--href="/resources/css.css.css.css/style.css.css.css.css" />--%>
 
   </head>
 
@@ -82,12 +82,15 @@
 
     <!-- Climbing site title -->
     <h1><c:forEach items="${site}" var="si">
-      <c:out value="${si.nomSite}" />
+      <c:out value="Site: ${si.nomSite}" />
     </c:forEach></h1>
 
     <!-- Site Description-->
     <p><c:forEach items="${site}" var="si">
-      <c:out value="${si.descriptionSite}" />
+      <c:out value="${si.descriptionSite}" /><br>
+      <p></p>
+      <a href="/commentRead/${si.element_id}">Voir les commentaires sur ce site</a><br>
+      <a href="/commentWrite/${si.element_id}">Ecrire un commentaire sur ce site</a>
     </c:forEach></p>
 
     <!-- Picture-->
@@ -100,9 +103,16 @@
   <div id="listerSecteur">
     <table class="table">
       <tr>
-        <th>Nom</th><th>Description</th><th>Accés</th><th>Altitude base</th><th>orientation</th><th>Type de roche</th>
-        <th>Nombre de voies</th><th>cotation</th><th>Coordonnés GPS</th><th>Commentaires</th><th>Commentaires</th>
-        <%--<th>Element_id</th><th>Secteur_id</th>--%>
+        <th>Nom</th>
+        <th>Description</th>
+        <th>Accés</th>
+        <th>Altitude base</th>
+        <th>orientation</th>
+        <th>Type de roche</th>
+        <th>Nombre de voies</th>
+        <th>cotation</th>
+        <th>Coordonnés GPS</th>
+        <th colspan="2">Commentaires</th>
       </tr>
       <c:forEach items="${secteur}" var="s">
         <tr>
@@ -117,8 +127,6 @@
           <td>${s.coordonneGps}</td>
           <td><a href="/commentRead/${s.element_id}">Voir</a></td>
           <td><a href="/commentWrite/${s.element_id}">Ecrire</a></td>
-          <%--<td><a href="editProduit?ref=${p.reference}">Editer</a></td>--%>
-            <%--<td><a href="deleteProduit?ref=${p.reference}">Supprimer</a></td>--%>
         </tr>
       </c:forEach>
     </table>
@@ -134,8 +142,19 @@
   <div id="listerVoie">
     <table class="table">
       <tr>
-        <th>Nom du secteur</th><th>Numero de voie</th><th>Nom de la voie</th><th>Temp d'escalade</th><th>description</th><th>longueur</th><th>cotation</th>
-        <th>hauteur</th><th>Precision equipement</th><th>Ouverture</th><th>Date ouverture</th><th>status</th>
+        <th>Nom du secteur</th>
+        <th>Numero de voie</th>
+        <th>Nom de la voie</th>
+        <th>Temp d'escalade</th>
+        <th>description</th>
+        <th>longueur</th>
+        <th>cotation</th>
+        <th>hauteur</th>
+        <th>Precision equipement</th>
+        <th>Ouverture</th>
+        <th>Date ouverture</th>
+        <th>status</th>
+        <th colspan="2">commentaire</th>
       </tr>
 
       <c:forEach items="${voie}" var="v">
@@ -152,19 +171,13 @@
           <td>${v.ouvertureEtEquipement}</td>
           <td>${v.dateOuverture}</td>
           <td>${v.statut}</td>
-            <%--<td>${p.element_id}</td>--%>
-            <%--<td><a href="editProduit?ref=${p.reference}">Editer</a></td>--%>
-            <%--<td><a href="deleteProduit?ref=${p.reference}">Supprimer</a></td>--%>
+          <td><a href="/commentRead/${v.element_id}">Voir</a></td>
+          <td><a href="/commentWrite/${v.element_id}">Ecrire</a></td>
         </tr>
       </c:forEach>
     </table>
   </div>
   </div>
-
-  <%--<!-- jQuery -->--%>
-  <%--<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>--%>
-  <%--<!-- Javascript de Bootstrap -->--%>
-  <%--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>--%>
 
   <!-- Optional JavaScript -->
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->

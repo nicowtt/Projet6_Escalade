@@ -19,10 +19,10 @@
     <spring:url value="/resources/css/style.css " var="stylecss" />
     <link href="${stylecss}" rel="stylesheet" />
 
-    <%--<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>resources/css/style.css">--%>
+    <%--<link rel="stylesheet" type="text/css.css.css.css" href="<%=request.getContextPath()%>resources/css.css.css.css/style.css.css.css.css">--%>
 
-    <%--<link rel="stylesheet" media="screen" type="text/css" title="main_css"--%>
-    <%--href="resources/css/style.css" />--%>
+    <%--<link rel="stylesheet" media="screen" type="text/css.css.css.css" title="main_css"--%>
+    <%--href="resources/css.css.css.css/style.css.css.css.css" />--%>
 
 </head>
 
@@ -84,7 +84,7 @@
     </div>
 
 
-    <%--<h3>test CSS</h3>--%>
+    <%--<h3>css.css CSS</h3>--%>
 </div>
 
 
