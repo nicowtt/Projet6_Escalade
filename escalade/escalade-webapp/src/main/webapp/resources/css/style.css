@@ -32,3 +32,11 @@ table {
     font-size: 80%;
 }
 
+.navbar-right{
+
+    margin-left: 0px;
+    margin-right: 5px;
+    margin-top: 5px;
+}
+
+
