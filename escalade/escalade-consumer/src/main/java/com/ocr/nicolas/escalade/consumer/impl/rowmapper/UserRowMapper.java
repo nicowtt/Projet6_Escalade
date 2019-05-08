@@ -22,7 +22,7 @@ public class UserRowMapper implements RowMapper<Utilisateur> {
         vUtilisateur.setPays(resultSet.getString("pays"));
         vUtilisateur.setNumeroTelephone(resultSet.getString("numerotelephone"));
         vUtilisateur.setEmail(resultSet.getString("email"));
-        vUtilisateur.setMembreAssociation(resultSet.getString("membreassociation"));
+        vUtilisateur.setMembreAssociation(resultSet.getBoolean("membreassociation"));
         vUtilisateur.setAutre(resultSet.getString("autre"));
 
         return vUtilisateur;

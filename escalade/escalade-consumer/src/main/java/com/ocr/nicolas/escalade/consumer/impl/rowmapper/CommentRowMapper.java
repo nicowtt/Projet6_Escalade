@@ -24,7 +24,7 @@ public class CommentRowMapper implements RowMapper<Commentaire> {
         Utilisateur vUtilisateur = new Utilisateur(resultSet.getInt("utilisateur_id"));
         //set utilisateur -> to be completed if needed
         vUtilisateur.setPrenom(resultSet.getString("prenom"));
-        vUtilisateur.setMembreAssociation(resultSet.getString("membreassociation"));
+        vUtilisateur.setMembreAssociation(resultSet.getBoolean("membreassociation"));
 
         //bean "Utilisateur" -> variable du bean "Commentaire"
         vCommentaire.setUtilisateur(vUtilisateur);
