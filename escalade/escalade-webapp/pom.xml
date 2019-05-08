@@ -28,6 +28,15 @@
         <application.name>Projet6_Escalade</application.name>
         <maven.build.timestamp.format>dd/MM/yyyy</maven.build.timestamp.format>
         <build.timestamp>${maven.build.timestamp}</build.timestamp>
+
+        <!-- ===== JSP property ===== -->
+        <jsp-config>
+            <jsp-property-group>
+                <url-pattern>*.jsp</url-pattern>
+                <page-encoding>UTF-8</page-encoding>
+            </jsp-property-group>
+        </jsp-config>
+
     </properties>
 
 

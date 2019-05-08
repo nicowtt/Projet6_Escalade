@@ -17,7 +17,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttribute;
 
 import javax.inject.Inject;
+import javax.servlet.ServletRequest;
 import javax.validation.Valid;
+import java.io.UnsupportedEncodingException;
 import java.sql.Timestamp;
 
 @Controller
@@ -61,7 +63,7 @@ public class CommentController {
      * @return commentWrite.jsp
      */
     @RequestMapping(value="/commentWrite/{element_Id}", method = RequestMethod.GET )
-    public String commentWrite(Model model, @PathVariable Integer element_Id, @SessionAttribute(value = "Utilisateur", required = false) Utilisateur utilisateur) throws CommentException {
+    public String commentWrite(Model model, @PathVariable Integer element_Id, @SessionAttribute(value = "Utilisateur", required = false) Utilisateur utilisateur) throws CommentException, UnsupportedEncodingException {
 
         // Models for display comments
         model.addAttribute("comment", new Commentaire());
@@ -90,7 +92,7 @@ public class CommentController {
      * @throws CommentException
      */
     @RequestMapping(value="/commentWrite", method = RequestMethod.POST)
-    public String commentWritePost(@Valid Commentaire commentaire, BindingResult bindingResult,  Model model, @SessionAttribute(value = "Utilisateur") Utilisateur utilisateur ) throws CommentException {
+    public String commentWritePost(@Valid Commentaire commentaire, BindingResult bindingResult, Model model, @SessionAttribute(value = "Utilisateur") Utilisateur utilisateur ) throws CommentException{
 
         //object
         Commentaire vCommentaire = new Commentaire();
