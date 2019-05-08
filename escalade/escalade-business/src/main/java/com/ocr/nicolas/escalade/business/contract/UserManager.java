@@ -8,5 +8,5 @@ public interface UserManager {
 
     List<Utilisateur> getUserNameOfComment(int pElement_id);
     List<Utilisateur> checkUserEmailAndPassword(String pEmail, String pPassword);
-    Utilisateur getUserIDWithEmail(String pEmail);
+    Utilisateur getUserBean(String pEmail);
 }

@@ -81,4 +81,21 @@ public class CommentDaoImpl extends AbstractDAoImpl implements CommentDao {
         return pCommentaire;
     }
 
+
+    /**
+     * For delete one comment
+     *
+     * @param pId -> id of comment to delete
+     */
+    @Override
+    public void deleteComment(Integer pId) {
+        String vSQL = "DELETE FROM commentaire WHERE id= :id";
+
+        NamedParameterJdbcTemplate vJdbcTemplate = new NamedParameterJdbcTemplate(getDatasource());
+        MapSqlParameterSource vParams = new MapSqlParameterSource();
+        vParams.addValue("id", pId, Types.INTEGER);
+
+        vJdbcTemplate.update(vSQL, vParams);
+    }
+
 }

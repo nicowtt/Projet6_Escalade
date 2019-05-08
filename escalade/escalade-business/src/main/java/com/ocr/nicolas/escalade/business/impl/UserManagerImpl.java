@@ -65,13 +65,13 @@ public class UserManagerImpl extends AbstractManager implements UserManager {
      * @return -> bean Utilisateur
      */
     @Override
-    public Utilisateur getUserIDWithEmail(String pEmail) {
+    public Utilisateur getUserBean(String pEmail) {
         TransactionTemplate vTransactionTemplate = new TransactionTemplate(getPlatformTransactionManager());
 
         Utilisateur vUserId = vTransactionTemplate.execute(transactionStatus -> {
 
             Utilisateur vUserIdTransaction = null;
-            vUserIdTransaction = userDao.getUserIDWithEmail(pEmail);
+            vUserIdTransaction = userDao.getUserBean(pEmail);
 
             return vUserIdTransaction;
         });

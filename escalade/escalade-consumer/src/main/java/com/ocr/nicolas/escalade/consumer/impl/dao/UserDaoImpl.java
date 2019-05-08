@@ -75,7 +75,7 @@ public class UserDaoImpl extends AbstractDAoImpl implements UserDao {
      * @return -> bean Utilisateur
      */
     @Override
-    public Utilisateur getUserIDWithEmail(String pEmail) {
+    public Utilisateur getUserBean(String pEmail) {
         String vSQL
                 = "SELECT * FROM utilisateur"
                 + " WHERE email = :pEmail";

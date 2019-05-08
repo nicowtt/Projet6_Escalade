@@ -9,5 +9,6 @@ public interface CommentManager {
 
     List<Commentaire> getListAllCommentForOneElementId(int pElement_id) throws CommentException;
     Commentaire writeComment(Commentaire pCommentaire);
+    void deleteComment(Integer pId);
 
 }

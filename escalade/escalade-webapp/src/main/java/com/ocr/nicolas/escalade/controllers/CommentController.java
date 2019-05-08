@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttribute;
 
 import javax.inject.Inject;
-import javax.servlet.ServletRequest;
 import javax.validation.Valid;
 import java.io.UnsupportedEncodingException;
 import java.sql.Timestamp;
@@ -101,7 +100,7 @@ public class CommentController {
         //i take user email session
         String emailUserSession = utilisateur.getEmail();
         //and i use it on a method who takes user_id on BDD
-        Utilisateur utilisateurBdd = userManager.getUserIDWithEmail(emailUserSession);
+        Utilisateur utilisateurBdd = userManager.getUserBean(emailUserSession);
 
         //now i set vCommentaire object
         vCommentaire.setDateCommentaire(datecommentaire);
@@ -116,6 +115,47 @@ public class CommentController {
         model.addAttribute("commentaire", commentManager.getListAllCommentForOneElementId(utilisateur.getElement_id()));
         // model for display"login"
         model.addAttribute("log", utilisateur.getEmail());
+        return "commentRead";
+    }
+
+    /**
+     * For delete one comment if user is member associative
+     *
+     * @param model -> model
+     * @param element_id -> element_id of comment
+     * @param id -> id of comment
+     * @param utilisateur -> bean session
+     * @return -> display all comment without deleted one
+     * @throws CommentException
+     */
+    @RequestMapping(value="/commentDelete/{element_id}/{id}", method = RequestMethod.GET)
+    public String commentDelete(Model model, @PathVariable Integer element_id, @PathVariable Integer id, @SessionAttribute(value="Utilisateur", required = false) Utilisateur utilisateur) throws CommentException {
+        // model for "log"
+        if (utilisateur != null) {
+            model.addAttribute("log", utilisateur.getEmail());
+            // for write i set element_id user session
+            utilisateur.setElement_id(element_id);
+
+            //check is user is member associative
+            //i take user email session
+            String emailUserSession = utilisateur.getEmail();
+            //and i use it on a method who know if user is associative member(BDD)
+            Utilisateur utilisateurBdd = userManager.getUserBean(emailUserSession);
+            // finally i put information about member associative in user Session
+            utilisateur.setMembreAssociation(utilisateurBdd.isMembreAssociation());
+
+            // if user is associative member -> delete comment is ok
+            if (utilisateur.isMembreAssociation()) {
+                //-> Delete comment
+                commentManager.deleteComment(id);
+            } else {
+                return "ErrorNotMember";
+            }
+        } else {
+            return "ForceLogin";
+        }
+        // Models for display comments
+        model.addAttribute("commentaire", commentManager.getListAllCommentForOneElementId(utilisateur.getElement_id()));
         return "commentRead";
     }
 }

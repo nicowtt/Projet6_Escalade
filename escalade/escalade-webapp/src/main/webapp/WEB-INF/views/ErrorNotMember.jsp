@@ -82,7 +82,7 @@
 
     <!-- display site -->
     <p></p>
-    Vous devez vous identifiez pour accéder a cette fonction du site.
+    Vous devez être membre de l'association pour accéder a cette fonction du site.
 
     <%--<h3>css.css CSS</h3>--%>
 </div>

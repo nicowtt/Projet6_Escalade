@@ -85,7 +85,9 @@
     <div id="listerCommentaire">
         <table class="table">
             <tr>
-                <th>Date Commentaire</th><th>Nom</th><th>commentaire</th>
+                <th>Date Commentaire</th>
+                <th>Nom</th>
+                <th>commentaire</th>
                 <%--<th>Element_id</th><th>Secteur_id</th>--%>
             </tr>
             <c:forEach items="${commentaire}" var="co">
@@ -93,6 +95,7 @@
                     <td>${co.dateCommentaire}</td>
                     <td>${co.utilisateur.prenom}</td>
                     <td>${co.commentaire}</td>
+                    <td><a href="/commentDelete/${co.element_id}/${co.id}">effacer</a> </td>
                 </tr>
             </c:forEach>
         </table>

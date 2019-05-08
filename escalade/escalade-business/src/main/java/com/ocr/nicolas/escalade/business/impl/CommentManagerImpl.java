@@ -66,6 +66,28 @@ public class CommentManagerImpl extends AbstractManager implements CommentManage
         });
         return vCommentaire;
     }
+
+    /**
+     * For delete one comment
+     *
+     * @param pCommentaire -> bean to delete
+     */
+    @Override
+    public void deleteComment(Integer pId) {
+
+        TransactionTemplate vTransactionTemplate = new TransactionTemplate(getPlatformTransactionManager());
+
+        vTransactionTemplate.execute(new TransactionCallbackWithoutResult() {
+            @Override
+            protected void doInTransactionWithoutResult(TransactionStatus transactionStatus) {
+                try {
+                    commentDao.deleteComment(pId);
+                } catch (CommentException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+    }
 }
 
 //        //transaction avec methode plus detaillé
