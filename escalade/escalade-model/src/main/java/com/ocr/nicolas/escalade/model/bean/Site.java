@@ -13,6 +13,7 @@ public class Site {
     private String localisationPays;
     private String urlPhotoSite;
     private Integer nombreDeSecteur;
+    private boolean officelSite;
     private Integer element_id;
 
     // ==================== Constructeurs ====================
@@ -71,6 +72,12 @@ public class Site {
     }
     public void setNombreDeSecteur(Integer nombreDeSecteur) {
         this.nombreDeSecteur = nombreDeSecteur;
+    }
+    public boolean isOfficelSite() {
+        return officelSite;
+    }
+    public void setOfficelSite(boolean officelSite) {
+        this.officelSite = officelSite;
     }
     public Integer getElement_id() {
         return element_id;

@@ -76,27 +76,29 @@
     ================================================== -->
 
     <!-- Climbing site title -->
-    <h1><c:forEach items="${site}" var="si">
-      <c:out value="Site: ${si.nomSite}" />
-    </c:forEach></h1>
+    <c:forEach items="${site}" var="si">
+    <h1><c:out value="Site: ${si.nomSite}" /></h1>
 
     <!-- Site Description-->
-    <p><c:forEach items="${site}" var="si">
       <c:out value="${si.descriptionSite}" /><br>
       <p></p>
       <a href="/commentRead/${si.element_id}">Voir les commentaires sur ce site</a><br>
       <a href="/commentWrite/${si.element_id}">Ecrire un commentaire sur ce site</a>
-    </c:forEach></p>
+      <p></p>
+      <c:if test="${si.officelSite}"><b>Site Officiel Les amis de l'esclade !</b></c:if>
+      <p></p>
 
     <!-- Picture-->
-    <c:forEach items="${site}" var="si"><img src="${si.urlPhotoSite}" alt="${si.urlPhotoSite}" style="width:500px;height:500px;border:0;"></c:forEach>
+      <img src="${si.urlPhotoSite}" alt="${si.urlPhotoSite}" style="width:500px;height:500px;border:0;">
+    </c:forEach>
+
 
     <!-- Sectors table
     ================================================== -->
-    <h3>Les Secteurs:</h3>
 
-  <div id="listerSecteur">
-    <table class="table">
+    <h3>Les Secteurs:</h3>
+      <div id="listerSecteur">
+      <table class="table">
       <tr>
         <th>Nom</th>
         <th>Description</th>
@@ -109,33 +111,38 @@
         <th>Coordonnés GPS</th>
         <th colspan="2">Commentaires</th>
       </tr>
-      <c:forEach items="${secteur}" var="s">
-        <tr>
-          <td>${s.nomSecteur}</td>
-          <td>${s.descriptionSecteur}</td>
-          <td>${s.acces}</td>
-          <td>${s.altitudeBase}m</td>
-          <td>${s.orientation}</td>
-          <td>${s.typeRoche}</td>
-          <td>${s.nombreDeVoies}</td>
-          <td>${s.cotation}</td>
-          <td>${s.coordonneGps}</td>
-          <td><a href="/commentRead/${s.element_id}">Voir</a></td>
-          <td><a href="/commentWrite/${s.element_id}">Ecrire</a></td>
-        </tr>
-      </c:forEach>
-    </table>
-  </div>
 
-    <h3>Les voies:</h3>
+        <c:forEach items="${secteur}" var="s">
+      <tr>
+        <td>${s.nomSecteur}</td>
+        <td>${s.descriptionSecteur}</td>
+        <td>${s.acces}</td>
+        <td>${s.altitudeBase}m</td>
+        <td>${s.orientation}</td>
+        <td>${s.typeRoche}</td>
+        <td>${s.nombreDeVoies}</td>
+        <td>${s.cotation}</td>
+        <td>${s.coordonneGps}</td>
+        <td><a href="/commentRead/${s.element_id}">Voir</a></td>
+        <td><a href="/commentWrite/${s.element_id}">Ecrire</a></td>
+      </tr>
+        </c:forEach>
+      </table>
+      </div>
 
-    <!-- Way pictures (depend of sectors number) -->
-    <c:forEach items="${secteur}" var="s"><img src="${s.urlPhotoSecteur}" alt="${s.urlPhotoSecteur}" style="width:500px;height:500px;border:0;"></c:forEach>
+      <h3>Les voies:</h3>
+
+      <!-- Way pictures (depend of sectors number) -->
+        <c:forEach items="${secteur}" var="s">
+      <img src="${s.urlPhotoSecteur}" alt="${s.urlPhotoSecteur}" style="width:500px;height:500px;border:0;">
+        </c:forEach>
+
 
     <!-- Way table
     ================================================== -->
-  <div id="listerVoie">
-    <table class="table">
+
+      <div id="listerVoie">
+      <table class="table">
       <tr>
         <th>Nom du secteur</th>
         <th>Numero de voie</th>
@@ -151,7 +158,6 @@
         <th>status</th>
         <th colspan="2">commentaire</th>
       </tr>
-
       <c:forEach items="${voie}" var="v">
         <tr>
           <td>${v.secteur.nomSecteur}</td>
