@@ -9,4 +9,5 @@ public interface SiteManager {
     List<Site> getListAllSite();
     List<Site> getListOneSite(int pSite);
     int getNbrAllSite();
+    List<Site> getListSiteWithFilter(String pCountry, String pDepartment, Integer pNbrSectors, String pSiteName);
 }

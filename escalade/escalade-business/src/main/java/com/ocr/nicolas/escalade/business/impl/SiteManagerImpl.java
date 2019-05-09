@@ -72,4 +72,27 @@ public class SiteManagerImpl extends AbstractManager implements SiteManager {
 
         return nbrAllSite;
     }
+
+    /**
+     * For have a site List with filter
+     *
+     * @param pCountry -> filter by country
+     * @param pDepartment -> filter by department
+     * @param pNbrSectors -> filter by sectors numbers
+     * @param pSiteName -> filter by SiteName
+     * @return -> list of site with filter
+     */
+    @Override
+    public List<Site> getListSiteWithFilter(String pCountry, String pDepartment, Integer pNbrSectors, String pSiteName) {
+        TransactionTemplate vTransactionTemplate = new TransactionTemplate(getPlatformTransactionManager());
+
+        List<Site> vListSite = vTransactionTemplate.execute(transactionStatus -> {
+
+            List<Site> vListSiteTransaction = new ArrayList<>();
+            vListSiteTransaction = siteDao.getListSiteWithFilter(pCountry, pDepartment, pNbrSectors, pSiteName);
+
+            return vListSiteTransaction;
+        });
+        return vListSite;
+    }
 }

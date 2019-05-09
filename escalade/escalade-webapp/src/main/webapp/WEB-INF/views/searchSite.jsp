@@ -75,9 +75,59 @@
     <!-- Body
     ================================================== -->
 
-    <!-- display site -->
-    <p></p>
-    ici on peut faire ça recherche de site d'escalade
+    <!-- display for search climbing Site -->
+    <br>
+    <div id="searchClimbingSite">
+        <f:form modelAttribute="search" method="post" action="/home">
+            <p></p>
+
+            <%--<!-- search by country -->--%>
+            <h3>Recherche Site d'escalade:</h3>
+            <p></p>
+            <p>Par Pays:</p>
+            <f:select path="localisationPays">
+                <c:forEach items="${site}" var="si">
+                    <f:option value=""></f:option>
+                    <f:option value="${si.localisationPays}">${si.localisationPays}</f:option>
+                </c:forEach>
+            </f:select>
+            <p></p>
+
+            <%--<!-- search by departement -->--%>
+            <p>par Département:</p>
+            <f:select path="localisationDepartement">
+                <c:forEach items="${site}" var="si">
+                    <f:option value=""></f:option>
+                    <f:option value="${si.localisationDepartement}">${si.localisationDepartement}</f:option>
+                </c:forEach>
+            </f:select>
+            <p></p>
+
+            <%--<!-- search by sector number -->--%>
+            <p>Par nombre de secteur:</p>
+            <f:select path="nombreDeSecteur">
+                <c:forEach items="${site}" var="si">
+                    <f:option value=""></f:option>
+                    <f:option value="${si.nombreDeSecteur}">${si.nombreDeSecteur}</f:option>
+                </c:forEach>
+            </f:select>
+            <p></p>
+
+            <%--<!-- search by site name -->--%>
+            <p>Ou par nom de site:</p>
+            <f:select path="nomSite">
+                <c:forEach items="${site}" var="si">
+                    <f:option value=""></f:option>
+                    <f:option value="${si.nomSite}">${si.nomSite}</f:option>
+                </c:forEach>
+            </f:select>
+            <p></p>
+
+            <input type="submit" value="Rechercher">
+
+        </f:form>
+    </div>
+
 
 </div>
 

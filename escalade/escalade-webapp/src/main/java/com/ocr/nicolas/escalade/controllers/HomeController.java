@@ -1,17 +1,23 @@
 package com.ocr.nicolas.escalade.controllers;
 
 import com.ocr.nicolas.escalade.business.contract.SiteManager;
+import com.ocr.nicolas.escalade.model.bean.Site;
 import com.ocr.nicolas.escalade.model.bean.Utilisateur;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttribute;
 
 import javax.inject.Inject;
+import javax.validation.Valid;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 @Controller
 public class HomeController {
@@ -39,6 +45,23 @@ public class HomeController {
         return "home";
     }
 
+    /**
+     * Redirection index.jsp to home.jsp
+     * @param model model
+     * @return home.jsp
+     */
+    @RequestMapping(value="/home", method = RequestMethod.POST)
+    public String homePost(@Valid Site site, Model model, BindingResult bindingResult, @SessionAttribute(value = "Utilisateur", required = false) Utilisateur utilisateur) {
 
+
+        //method for display climbing site with filter -> to check !!!
+        model.addAttribute("site", siteManager.getListSiteWithFilter(site.getLocalisationPays(), site.getLocalisationDepartement(), site.getNombreDeSecteur(), site.getNomSite()));
+
+        // model for "log"
+        if (utilisateur != null) {
+            model.addAttribute("log", utilisateur.getEmail());
+        }
+        return "home";
+    }
 
 }
