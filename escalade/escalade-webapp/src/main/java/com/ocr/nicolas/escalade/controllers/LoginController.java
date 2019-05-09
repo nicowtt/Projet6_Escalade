@@ -8,15 +8,18 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.context.request.WebRequest;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 
 import javax.inject.Inject;
-import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.List;
 
 @Controller
 @SessionAttributes("Utilisateur")
 public class LoginController {
+
+    static final Log logger = LogFactory.getLog(LoginController.class);
 
     @Inject
     private SiteManager siteManager;

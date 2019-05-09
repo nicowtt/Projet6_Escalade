@@ -40,7 +40,7 @@
             <!-- All elements on navbar -->
             <div class="collapse navbar-collapse">
                 <ul class="nav navbar-nav">
-                    <li><a href="/recherche">Recherche</a></li>
+                    <li><a href="/searchSite">Recherche</a></li>
                     <li><a href="/creationTopo">Creation de Topo</a></li>
                     <li><a href="/echangeTopo">Echange de Topo</a></li>
                 </ul>
