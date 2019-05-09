@@ -77,7 +77,11 @@
 
     <!-- Climbing site title -->
     <c:forEach items="${site}" var="si">
-    <h1><c:out value="Site: ${si.nomSite}" /></h1>
+      <c:if test="${si.officelSite}"><img src="https://image.noelshack.com/fichiers/2019/19/4/1557415844-officiel-logo-les-amis-de-lescalade-vide.png" alt="logo escalade officiel" style="width:191px;height:92 px;border:0;"></c:if>
+      <%--<b>TAG: Site Officiel Les amis de l'esclade !</b>--%>
+      <p></p>
+    <h1><c:out value="${si.nomSite}" /></h1>
+      <p></p>
 
     <!-- Site Description-->
       <c:out value="${si.descriptionSite}" /><br>
@@ -85,7 +89,7 @@
       <a href="/commentRead/${si.element_id}">Voir les commentaires sur ce site</a><br>
       <a href="/commentWrite/${si.element_id}">Ecrire un commentaire sur ce site</a>
       <p></p>
-      <c:if test="${si.officelSite}"><b>Site Officiel Les amis de l'esclade !</b></c:if>
+      <a href="/addTagForOfficialSite/${si.element_id}">Tagger ce site en Site Officiel Les amis de l'escalade !</a>
       <p></p>
 
     <!-- Picture-->

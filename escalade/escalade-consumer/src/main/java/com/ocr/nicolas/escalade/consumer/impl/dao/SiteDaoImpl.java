@@ -110,4 +110,25 @@ public class SiteDaoImpl extends AbstractDAoImpl implements SiteDao {
 
         return vListeSite;
     }
+
+    /**
+     * For tag Official site of climbing friend
+     *
+     * @param pId -> site id
+     */
+    @Override
+    public void addTagForOfficialSite(int pId) {
+
+        String vSQL
+                = "UPDATE site"
+                + " SET officielsite = true"
+                + "  WHERE id = :id";
+
+        NamedParameterJdbcTemplate vJdbcTemplate = new NamedParameterJdbcTemplate(getDatasource());
+        MapSqlParameterSource vParams = new MapSqlParameterSource();
+        vParams.addValue("id", pId, Types.INTEGER);
+
+        vJdbcTemplate.update(vSQL, vParams);
+
+    }
 }

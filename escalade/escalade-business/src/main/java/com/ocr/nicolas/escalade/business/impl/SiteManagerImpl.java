@@ -3,6 +3,10 @@ package com.ocr.nicolas.escalade.business.impl;
 import com.ocr.nicolas.escalade.business.contract.SiteManager;
 import com.ocr.nicolas.escalade.consumer.contract.dao.SiteDao;
 import com.ocr.nicolas.escalade.model.bean.Site;
+import com.ocr.nicolas.escalade.model.exception.CommentException;
+import com.ocr.nicolas.escalade.model.exception.SiteException;
+import org.springframework.transaction.TransactionStatus;
+import org.springframework.transaction.support.TransactionCallbackWithoutResult;
 import org.springframework.transaction.support.TransactionTemplate;
 
 import javax.inject.Inject;
@@ -94,5 +98,23 @@ public class SiteManagerImpl extends AbstractManager implements SiteManager {
             return vListSiteTransaction;
         });
         return vListSite;
+    }
+
+    /**
+     * For tag Official site of climbing friend
+     *
+     * @param pId -> site id
+     */
+    @Override
+    public void addTagForOfficialSite(int pId) {
+        TransactionTemplate vTransactionTemplate = new TransactionTemplate(getPlatformTransactionManager());
+
+        vTransactionTemplate.execute(new TransactionCallbackWithoutResult() {
+            @Override
+            protected void doInTransactionWithoutResult(TransactionStatus transactionStatus) {
+
+                siteDao.addTagForOfficialSite(pId);
+            }
+        });
     }
 }

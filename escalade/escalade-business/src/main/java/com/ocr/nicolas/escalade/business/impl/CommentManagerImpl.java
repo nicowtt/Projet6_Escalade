@@ -70,7 +70,7 @@ public class CommentManagerImpl extends AbstractManager implements CommentManage
     /**
      * For delete one comment
      *
-     * @param pCommentaire -> bean to delete
+     * @param pId -> comment id to delete
      */
     @Override
     public void deleteComment(Integer pId) {

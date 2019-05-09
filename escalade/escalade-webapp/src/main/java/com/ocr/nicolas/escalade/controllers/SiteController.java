@@ -2,6 +2,7 @@ package com.ocr.nicolas.escalade.controllers;
 
 import com.ocr.nicolas.escalade.business.contract.SectorManager;
 import com.ocr.nicolas.escalade.business.contract.SiteManager;
+import com.ocr.nicolas.escalade.business.contract.UserManager;
 import com.ocr.nicolas.escalade.business.contract.WayManager;
 
 import com.ocr.nicolas.escalade.model.bean.Utilisateur;
@@ -28,6 +29,9 @@ public class SiteController {
     @Inject
     private WayManager wayManager;
 
+    @Inject
+    private UserManager userManager;
+
     /**
      * For display generic climbing site page
      * @param model model
@@ -47,6 +51,40 @@ public class SiteController {
         if (utilisateur != null) {
             model.addAttribute("log", utilisateur.getEmail());
         }
+
+        return "climbingSite";
+    }
+
+
+    /**
+     * For tag site -> Official friend of climbing site
+     * @param model -> model
+     * @param id -> id of climbing site
+     * @param userSession -> user in session
+     * @return
+     */
+    @RequestMapping(value="/addTagForOfficialSite/{id}", method = RequestMethod.GET)
+    public String addTagForOfficialSite(Model model, @PathVariable Integer id, @SessionAttribute(value = "Utilisateur", required = false) Utilisateur userSession) {
+
+        boolean associativeMember;
+
+        // User must log and associative member
+        if (userSession != null) {
+            //base login
+            model.addAttribute("log", userSession.getEmail());
+            //check if associative member
+            Utilisateur userInBdd = userManager.getUserBean(userSession.getEmail());
+            associativeMember = userInBdd.isMembreAssociation();
+            if (associativeMember) {
+                // -> method for tag climbing site
+                siteManager.addTagForOfficialSite(id);
+            } else {return "ErrorNotMember";}
+        } else {return "ForceLogin";}
+
+        // Models for display all information about one climbing site
+        model.addAttribute("site", siteManager.getListOneSite(id));
+        model.addAttribute("secteur", sectorManager.getListOneSector(id));
+        model.addAttribute("voie", wayManager.getListAllWaysForOneSite(id));
 
         return "climbingSite";
     }
