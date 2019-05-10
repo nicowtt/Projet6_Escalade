@@ -87,7 +87,7 @@
             <p>Par Pays:</p>
             <f:select path="localisationPays">
                 <c:forEach items="${site}" var="si">
-                    <f:option value=""></f:option>
+                    <f:option value="" />
                     <f:option value="${si.localisationPays}">${si.localisationPays}</f:option>
                 </c:forEach>
             </f:select>
@@ -97,7 +97,7 @@
             <p>par Département:</p>
             <f:select path="localisationDepartement">
                 <c:forEach items="${site}" var="si">
-                    <f:option value=""></f:option>
+                    <f:option value="" />
                     <f:option value="${si.localisationDepartement}">${si.localisationDepartement}</f:option>
                 </c:forEach>
             </f:select>
@@ -107,7 +107,7 @@
             <p>Par nombre de secteur:</p>
             <f:select path="nombreDeSecteur">
                 <c:forEach items="${site}" var="si">
-                    <f:option value=""></f:option>
+                    <f:option value="" />
                     <f:option value="${si.nombreDeSecteur}">${si.nombreDeSecteur}</f:option>
                 </c:forEach>
             </f:select>
@@ -117,7 +117,7 @@
             <p>Ou par nom de site:</p>
             <f:select path="nomSite">
                 <c:forEach items="${site}" var="si">
-                    <f:option value=""></f:option>
+                    <f:option value="" />
                     <f:option value="${si.nomSite}">${si.nomSite}</f:option>
                 </c:forEach>
             </f:select>

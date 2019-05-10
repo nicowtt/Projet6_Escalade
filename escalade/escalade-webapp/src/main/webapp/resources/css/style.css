@@ -28,6 +28,13 @@ h3{
     text-align: center;
 }
 
+.lignesEspacees {
+    border-collapse: separate;
+    border-spacing: 10px;
+    font-size: small;
+    font-weight: bold;
+}
+
 table {
     font-size: 80%;
 }
