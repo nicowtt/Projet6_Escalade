@@ -6,20 +6,20 @@ import com.ocr.nicolas.escalade.model.bean.Utilisateur;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import org.omg.CORBA.Request;
+import org.springframework.http.HttpMethod;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.Errors;
-import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttribute;
 
 import javax.inject.Inject;
+import javax.servlet.ServletRequest;
 import javax.validation.Valid;
-import javax.validation.Validator;
 
 
 @Controller
@@ -40,7 +40,7 @@ public class NewUserController {
      * @param userSession -> sessionUser
      * @return
      */
-    @RequestMapping(value="/newUser", method = RequestMethod.GET)
+    @RequestMapping(value="/newUserGet", method = RequestMethod.GET)
     public String newUser(Model model, @SessionAttribute(value = "Utilisateur", required = false) Utilisateur userSession) {
         // Models for display new user form
         model.addAttribute("utilisateur", new Utilisateur());
@@ -48,25 +48,35 @@ public class NewUserController {
         return "/newUser";
     }
 
-    @RequestMapping(value="/newUserWrite", method = RequestMethod.POST)
+    /**
+     * For valid new user
+     * @param newUser -> bean user to validate
+     * @param bindingResult -> error List
+     * @param model -> model
+     * @param userSession -> user Session
+     * @return
+     */
+    @RequestMapping(value="/newUser", method = RequestMethod.POST)
     public String newUserPost(@Valid Utilisateur newUser, BindingResult bindingResult, Model model, @SessionAttribute(value = "Utilisateur", required = false) Utilisateur userSession) {
 
-        System.out.println(bindingResult);
-
         if (bindingResult.hasErrors()) {
-            model.addAttribute("utilisateur", new Utilisateur());
+            model.addAttribute("utilisateur", newUser);
             logger.info("*********");
             logger.info("erreur lors du remplissage formulaire enregistrement nouvel utilisateur");
-            //todo je n'arrive pas a voir les erreur de mon bindingResult lorsque j'affiche la methode newUser (en get)
             return "/newUser";
+        } else {
+
+            // Hashing password in
+            String hashingPassword = passwordEncoder.hashPassword(newUser.getMotDePasse());
+            //je set le bean newUser
+            newUser.setMotDePasse(hashingPassword);
+            //todo method for write newUser on bdd
         }
 
-        // Hashing password in
-        String hashingPassword = passwordEncoder.hashPassword(newUser.getMotDePasse());
-        //je set le bean newUser
-        newUser.setMotDePasse(hashingPassword);
 
-        //todo method for write newUser on bdd
+
+
+
 
 
 

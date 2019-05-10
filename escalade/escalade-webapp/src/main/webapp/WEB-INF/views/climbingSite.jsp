@@ -60,7 +60,7 @@
             <input type="password" class="form-control" name="motDePasse" placeholder="Mot de passe"/>
             <input type="submit" class="btn btn-primary btn-xs btn-block" /></form></li>
           <li class="disabled"><a href="#">Mot de passe oublié ?</a></li>
-          <li class="enable"><a href="/newUser">Créer un compte...</a></li>
+          <li class="enable"><a href="/newUserGet">Créer un compte...</a></li>
         </ul>
       </li>
         </c:if>
