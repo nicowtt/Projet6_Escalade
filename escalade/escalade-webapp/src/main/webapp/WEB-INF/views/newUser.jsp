@@ -80,7 +80,7 @@
     <div id="NewUser">
         <h3>Inscription nouvel utilisateur:</h3>
         <p></p>
-        <f:form modelAttribute="user" method="post" action="/commentWrite">
+        <f:form modelAttribute="user" method="post" action="/newUserWrite">
             <table class="lignesEspacees">
                 <tr>
                     <!-- display for "raison sociale" -->
