@@ -19,7 +19,6 @@
     <spring:url value="/resources/css/style.css " var="stylecss" />
     <link href="${stylecss}" rel="stylesheet" />
 
-
 </head>
 
 <header class="raw">
@@ -78,7 +77,7 @@
 
     <!-- display site -->
     <p></p>
-    Vous devez vous identifiez pour accéder a cette fonction du site.
+    Page new user
 
 </div>
 
@@ -101,14 +100,3 @@
 </html>
 
 
-
-
-<%--<%@ page contentType="text/html;charset=UTF-8" language="java" %>--%>
-<%--<html>--%>
-<%--<head>--%>
-<%--<title>Index Page</title>--%>
-<%--</head>--%>
-<%--<body>--%>
-<%--<a href="/index">Go To Home Page</a>--%>
-<%--</body>--%>
-<%--</html>--%>
