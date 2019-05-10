@@ -80,7 +80,7 @@
     <div id="NewUser">
         <h3>Inscription nouvel utilisateur:</h3>
         <p></p>
-        <f:form modelAttribute="user" method="post" action="/newUserWrite">
+        <f:form modelAttribute="utilisateur" method="post" action="/newUserWrite">
             <table class="lignesEspacees">
                 <tr>
                     <!-- display for "raison sociale" -->
@@ -94,55 +94,55 @@
                 <tr>
                     <!-- display for "nom" -->
                     <td> Votre Nom: </td>
-                    <td><f:input type="text" id="name" size="20" placeholder="ex:Wallace" path="nom" cssStyle=""/></td>
+                    <td><f:input path="nom" type="text" id="name" size="20" placeholder="ex:Wallace"  cssStyle=""/></td>
                     <td><f:errors path="nom" cssClass="errors"/></td>
                 </tr>
                 <tr>
                     <!-- display for "prenom" -->
                     <td>Votre prénom :</td>
-                    <td><f:input type="text" id="firstName" size="20" placeholder="ex:Marsellus" path="prenom" cssStyle=""/></td>
+                    <td><f:input path="prenom" type="text" id="firstName" size="20" placeholder="ex:Marsellus"  cssStyle=""/></td>
                     <td><f:errors path="prenom" cssClass="errors"/></td>
                 </tr>
                 <tr>
                     <!-- display for "mot de passe" -->
                     <td>Choisissez un mot de passe:</td>
-                    <td><f:input type="password" id="password" size="20" path="motDePasse" cssStyle="" /></td>
-                    <td><f:errors path="motDePasse" cssClass="errors"/></td>
+                    <td><f:input path="motDePasse" type="password" id="password" size="20"  cssStyle="" /></td>
+                    <td><f:errors path="motDePasse" cssClass="errors" /></td>
                 </tr>
                 <tr>
                     <!-- display for "adresse" -->
                     <td>Votre adresse :</td>
-                    <td><f:input type="text" id="adress" size="40" placeholder="ex: 43 boulevard pulpfiction" path="adresse" cssStyle=""/></td>
+                    <td><f:input path="adresse" type="text" id="adress" size="40" placeholder="ex: 43 boulevard pulpfiction" cssStyle=""/></td>
                     <td><f:errors path="adresse" cssClass="errors"/></td>
                 </tr>
                 <tr>
                     <!-- display for "code postal" -->
                     <td>Votre code postal :</td>
-                    <td><f:input type="number" id="postalCode" placeholder="ex: 31000" path="codePostal" cssStyle=""/></td>
+                    <td><f:input path="codePostal" type="number" id="postalCode" placeholder="ex: 31000" cssStyle=""/></td>
                     <td><f:errors path="codePostal" cssClass="errors"/></td>
                 </tr>
                 <tr>
                     <!-- display for "ville" -->
                     <td>Votre ville :</td>
-                    <td><f:input type="text" id="city" size="15" placeholder="ex: Toulouse" path="ville" cssStyle=""/></td>
+                    <td><f:input path="ville" type="text" id="city" size="15" placeholder="ex: Toulouse" cssStyle=""/></td>
                     <td><f:errors path="ville" cssClass="errors"/></td>
                 </tr>
                 <tr>
                     <!-- display for "Pays" -->
                     <td>Votre pays :</td>
-                    <td><f:input type="text" id="country " size="15" placeholder="ex: France" path="pays" cssStyle=""/></td>
+                    <td><f:input path="pays" type="text" id="country " size="15" placeholder="ex: France" cssStyle=""/></td>
                     <td><f:errors path="pays" cssClass="errors"/></td>
                 </tr>
                 <tr>
                     <!-- display for "numero de telephone" -->
                     <td>Votre numero de télephone :</td>
-                    <td><f:input type="tel" id="telephoneNumber" size="20" path="numeroTelephone" cssStyle=""/></td>
+                    <td><f:input path="numeroTelephone" type="tel" id="telephoneNumber" size="20" cssStyle=""/></td>
                     <td><f:errors path="numeroTelephone" cssClass="errors"/></td>
                 </tr>
                 <tr>
                     <!-- display for "email" -->
                     <td>Votre E-mail :</td>
-                    <td><f:input type="email" id="email" size="30" placeholder="ex: marsellus.wallace@gmail.com" path="email" cssStyle=""/></td>
+                    <td><f:input path="email" type="email" id="email" size="30" placeholder="ex: marsellus.wallace@gmail.com" cssStyle=""/></td>
                     <td><f:errors path="email" cssClass="errors"/>
                 </tr>
             </table>
