@@ -149,8 +149,8 @@
                     <!-- display for "membre association" -->
                     <td>Membre association: </td>
                     <td><f:select path="membreAssociation" id="association">
-                        <f:option value="true"/>Oui
-                        <f:option value="false" />Non
+                        <f:option value="true">Oui</f:option>
+                        <f:option value="false">Non</f:option>
                     </f:select></td>
                 </tr>
             </table>
