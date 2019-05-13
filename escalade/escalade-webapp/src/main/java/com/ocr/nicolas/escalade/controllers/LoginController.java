@@ -79,9 +79,11 @@ public class LoginController {
      * @return
      */
     @RequestMapping(value = "/dologout", method = RequestMethod.GET)
-    public String doLogout(@ModelAttribute("Utilisateur") Utilisateur utilisateur, Model model) {
-        utilisateur.setEmail(null);
-        utilisateur.setMotDePasse(null);
+    public String doLogout(@ModelAttribute("Utilisateur") Utilisateur utilisateur, WebRequest request, SessionStatus status, Model model) {
+
+        // remove session
+        status.setComplete();
+        request.removeAttribute("Utilisateur", WebRequest.SCOPE_SESSION);
 
         //for display climbing site
         model.addAttribute("site", siteManager.getListAllSite());

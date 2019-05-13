@@ -60,7 +60,7 @@ public class CommentDaoImpl extends AbstractDAoImpl implements CommentDao {
     public Commentaire writeComment(Commentaire pCommentaire) throws CommentException {
         String vSQL = "INSERT INTO commentaire (datecommentaire, element_id, commentaire, utilisateur_id )" +
                 "VALUES (:date, :element_id, :commentaire, :utilisateur_id)";
-//        KeyHolder keyHolder = new GeneratedKeyHolder();
+
         NamedParameterJdbcTemplate vJdbcTemplate = new NamedParameterJdbcTemplate(getDatasource());
         MapSqlParameterSource vParams = new MapSqlParameterSource();
         vParams.addValue("date", pCommentaire.getDateCommentaire(), Types.TIMESTAMP);
@@ -70,9 +70,9 @@ public class CommentDaoImpl extends AbstractDAoImpl implements CommentDao {
 
         try {
             vJdbcTemplate.update(vSQL,vParams);
-//            vJdbcTemplate.update(vSQL, vParams, keyHolder, new String[] { "commentaire" });
-//            pCommentaire.setId(keyHolder.getKey().intValue());
+
         } catch (DuplicateKeyException vEx) {
+
             //vEx.printStackTrace();
             logger.debug("Le commentaire existe déjà ! pseudo=" + pCommentaire.getCommentaire());
             //return pUtilisateur;

@@ -69,9 +69,10 @@ public class SiteController {
         boolean associativeMember;
 
         // User must log and associative member
-        if (userSession != null) {
+        if (userSession != null ) {
             //base login
             model.addAttribute("log", userSession.getEmail());
+
             //check if associative member
             Utilisateur userInBdd = userManager.getUserBean(userSession.getEmail());
             associativeMember = userInBdd.isMembreAssociation();
@@ -79,6 +80,7 @@ public class SiteController {
                 // -> method for tag climbing site
                 siteManager.addTagForOfficialSite(id);
             } else {return "ErrorJsp/errorNotMember";}
+
         } else {return "ErrorJsp/forceLogin";}
 
         // Models for display all information about one climbing site
@@ -88,16 +90,4 @@ public class SiteController {
 
         return "climbingSite";
     }
-
-
-
-
-//    @RequestMapping(value="/siteEscalade/{id}/addComment", method = RequestMethod.GET )
-//    public String addComment...
-//
-//    @RequestMapping(value="/siteEscalade/{id}/showComment/{commentId}", method = RequestMethod.GET )
-//    public String showComment(Model model, @PathVariable Integer id, @PathVariable Integer commentId)
-
-//    mettre en attribut :, @SessionAttribute -> pour gérer les session utilisateur
-
 }
