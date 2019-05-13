@@ -88,6 +88,56 @@ public class CommentManagerImpl extends AbstractManager implements CommentManage
             }
         });
     }
+
+
+    /**
+     * For display only one comment
+     *
+     * @param pId -> id of comment
+     * @return List with one comment in
+     */
+    @Override
+    public List<Commentaire> displayOneComment(int pId) {
+
+        TransactionTemplate vTransactionTemplate = new TransactionTemplate(getPlatformTransactionManager());
+
+        List<Commentaire> vListCommentaire = vTransactionTemplate.execute(transactionStatus -> {
+
+            List<Commentaire> vListCommentaireTransaction = null;
+
+            vListCommentaireTransaction = commentDao.displayOneComment(pId);
+
+            return vListCommentaireTransaction;
+        });
+        return vListCommentaire;
+    }
+
+
+    /**
+     * For update comment
+     *
+     * @param pCommentaire -> bean comment in
+     * @return bean comment
+     * @throws CommentException
+     */
+    @Override
+    public Commentaire updateComment(Commentaire pCommentaire) throws CommentException {
+
+        TransactionTemplate vTransactionTemplate = new TransactionTemplate(getPlatformTransactionManager());
+
+        Commentaire vCommentaire = vTransactionTemplate.execute(transactionStatus -> {
+
+            Commentaire vCommentaireTransaction = null;
+
+            try {
+                vCommentaireTransaction = commentDao.updateComment(pCommentaire);
+            } catch (CommentException e) {
+                e.printStackTrace();
+            }
+            return vCommentaireTransaction;
+        });
+        return vCommentaire;
+    }
 }
 
 //        //transaction avec methode plus detaillé

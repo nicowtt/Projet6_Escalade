@@ -10,4 +10,6 @@ public interface CommentDao {
     List<Commentaire> getListAllCommentForOneElementId(int pElement_id);
     Commentaire writeComment(Commentaire pCommentaire) throws CommentException;
     void deleteComment(Integer pId) throws CommentException;
+    List<Commentaire> displayOneComment(int pId);
+    Commentaire updateComment(Commentaire pCommentaire) throws CommentException;
 }

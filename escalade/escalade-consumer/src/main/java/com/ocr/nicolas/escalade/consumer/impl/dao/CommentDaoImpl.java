@@ -4,12 +4,11 @@ import com.ocr.nicolas.escalade.consumer.contract.dao.CommentDao;
 import com.ocr.nicolas.escalade.consumer.impl.rowmapper.CommentRowMapper;
 import com.ocr.nicolas.escalade.model.bean.Commentaire;
 import com.ocr.nicolas.escalade.model.exception.CommentException;
+import org.springframework.dao.DataAccessException;
 import org.springframework.dao.DuplicateKeyException;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
-import org.springframework.jdbc.support.GeneratedKeyHolder;
-import org.springframework.jdbc.support.KeyHolder;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -96,6 +95,62 @@ public class CommentDaoImpl extends AbstractDAoImpl implements CommentDao {
         vParams.addValue("id", pId, Types.INTEGER);
 
         vJdbcTemplate.update(vSQL, vParams);
+    }
+
+
+    /**
+     * For display one comment
+     * @param pId -> id of comment
+     * @return List of Comment bean
+     */
+    @Override
+    public List<Commentaire> displayOneComment(int pId) {
+        String vSQL
+                = "SELECT * FROM commentaire"
+                + " JOIN utilisateur ON utilisateur.id = utilisateur_id"
+                + " WHERE commentaire.id = :pId";
+
+        NamedParameterJdbcTemplate vJdbcTemplate = new NamedParameterJdbcTemplate(getDatasource());
+        MapSqlParameterSource vParams = new MapSqlParameterSource();
+        vParams.addValue("pId", pId, Types.INTEGER);
+
+        RowMapper<Commentaire> vRowMapper = new CommentRowMapper();
+
+        List<Commentaire> vListCommentaire = vJdbcTemplate.query(vSQL, vParams, vRowMapper);
+
+        return  vListCommentaire;
+    }
+
+    /**
+     * For update comment
+     * @param pCommentaire input bean with comment updated
+     * @return bean comment
+     * @throws CommentException
+     */
+    @Override
+    public Commentaire updateComment(Commentaire pCommentaire) throws CommentException {
+        String vSQL
+                = "UPDATE commentaire "
+                + " SET commentaire = :commentaire"
+                + "  WHERE id = :id";
+
+        NamedParameterJdbcTemplate vJdbcTemplate = new NamedParameterJdbcTemplate(getDatasource());
+        MapSqlParameterSource vParams = new MapSqlParameterSource();
+        vParams.addValue("commentaire", pCommentaire.getCommentaire(), Types.VARCHAR);
+        vParams.addValue("id", pCommentaire.getId(), Types.INTEGER);
+
+        try {
+            vJdbcTemplate.update(vSQL,vParams);
+
+        } catch (DataAccessException vEx) {
+
+            //vEx.printStackTrace();
+            logger.debug(" problème accés BDD");
+            //return pUtilisateur;
+            throw new CommentException(" problème accés BDD");
+        }
+        return pCommentaire;
+
     }
 
 }

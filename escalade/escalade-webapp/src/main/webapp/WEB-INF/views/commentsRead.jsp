@@ -90,6 +90,7 @@
                     <td>${co.utilisateur.prenom}</td>
                     <td>${co.commentaire}</td>
                     <td><a href="/commentDelete/${co.element_id}/${co.id}">effacer</a> </td>
+                    <td><a href="/oneCommentRead/${co.id}/">modifier</a> </td>
                 </tr>
             </c:forEach>
         </table>
@@ -115,13 +116,3 @@
 
 
 
-
-<%--<%@ page contentType="text/html;charset=UTF-8" language="java" %>--%>
-<%--<html>--%>
-<%--<head>--%>
-<%--<title>Index Page</title>--%>
-<%--</head>--%>
-<%--<body>--%>
-<%--<a href="/index">Go To Home Page</a>--%>
-<%--</body>--%>
-<%--</html>--%>
