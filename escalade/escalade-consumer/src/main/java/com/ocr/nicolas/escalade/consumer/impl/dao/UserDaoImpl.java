@@ -49,34 +49,6 @@ public class UserDaoImpl extends AbstractDAoImpl implements UserDao {
     }
 
     /**
-     * for check if Email and password exist on bdd
-     * @param pEmail
-     * @param pPassword
-     *
-     * @return List of user
-     */
-    @Override
-    public List<Utilisateur> checkUserEmailAndPassword(String pEmail, String pPassword) {
-
-        String vSQL
-                = "SELECT * FROM utilisateur"
-                + " WHERE email = :pEmail"
-                + "  AND motdepasse = :pPassword";
-
-        NamedParameterJdbcTemplate vJdbcTemplate = new NamedParameterJdbcTemplate(getDatasource());
-
-        MapSqlParameterSource vParams = new MapSqlParameterSource();
-        vParams.addValue("pEmail", pEmail, Types.VARCHAR);
-        vParams.addValue("pPassword", pPassword, Types.VARCHAR);
-
-        RowMapper<Utilisateur> vRowMapper = new UserRowMapper();
-
-        List<Utilisateur> vUtilisateur = vJdbcTemplate.query(vSQL, vParams, vRowMapper);
-
-        return vUtilisateur;
-    }
-
-    /**
      * For find User_id with email
      * @param pEmail
      * @return -> bean Utilisateur
@@ -133,9 +105,9 @@ public class UserDaoImpl extends AbstractDAoImpl implements UserDao {
             vJdbcTemplate.update(vSQL, vParams);
         } catch (DuplicateKeyException vEx) {
 
-            logger.debug("L'utilisateur existe deja ! pseudo=" );// todo ici il faudra rajouter le pseudo
+            logger.debug("L'utilisateur existe deja !" );
             //retour
-            throw new UserException("L'utilisateur existe deja ! pseudo=");
+            throw new UserException("L'utilisateur existe deja !");
         }
 
         return pUser;

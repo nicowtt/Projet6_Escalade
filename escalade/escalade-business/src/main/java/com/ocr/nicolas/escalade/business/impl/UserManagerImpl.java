@@ -38,29 +38,6 @@ public class UserManagerImpl extends AbstractManager implements UserManager {
     }
 
     /**
-     * for check if Email and password exist on bdd
-     * @param pEmail
-     * @param pPassword
-     *
-     * @return List of user
-     */
-    @Override
-    public List<Utilisateur> checkUserEmailAndPassword(String pEmail, String pPassword) {
-        //transaction (rollback automatique en cas d'exception)
-        TransactionTemplate vTransactionTemplate = new TransactionTemplate(getPlatformTransactionManager());
-
-        List<Utilisateur> vUtilisateur = vTransactionTemplate.execute(transactionStatus -> {
-
-            List<Utilisateur> vUtilisateurTransaction = null;
-            vUtilisateurTransaction = userDao.checkUserEmailAndPassword(pEmail, pPassword);
-
-            return vUtilisateurTransaction;
-        });
-
-        return vUtilisateur;
-    }
-
-    /**
      * For find User_id with email
      * @param pEmail
      * @return -> bean Utilisateur

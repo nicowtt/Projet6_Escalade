@@ -1,5 +1,6 @@
 package com.ocr.nicolas.escalade.controllers;
 
+import com.ocr.nicolas.escalade.business.contract.PasswordEncoder;
 import com.ocr.nicolas.escalade.business.contract.SiteManager;
 import com.ocr.nicolas.escalade.business.contract.UserManager;
 import com.ocr.nicolas.escalade.model.bean.Utilisateur;
@@ -27,6 +28,9 @@ public class LoginController {
     @Inject
     private UserManager userManager;
 
+    @Inject
+    private PasswordEncoder passwordEncoder;
+
     @ModelAttribute("Utilisateur")
     public Utilisateur setUpUserForm() {
         return new Utilisateur();
@@ -39,33 +43,35 @@ public class LoginController {
 
     /**
      * For User login
-     * @param utilisateur -> user bean
+     * @param userSession -> user bean
      * @param model -> model for display all climbing site.
      * @return
      */
     @RequestMapping(value = "/dologin", method = RequestMethod.POST)
-    public String doLogin(@ModelAttribute("Utilisateur") Utilisateur utilisateur, WebRequest request, SessionStatus status, Model model) {
+    public String doLogin(@ModelAttribute("Utilisateur") Utilisateur userSession, WebRequest request, SessionStatus status, Model model) {
 
-        // check if couple (email + password) exist exist on bdd
-        if (utilisateur != null) {
-            List<Utilisateur> vUtilisateur = new ArrayList<>();
-            String email = utilisateur.getEmail();
-            String password = utilisateur.getMotDePasse();
+        //variable
+        boolean checkPassword = false;
 
-            vUtilisateur = userManager.checkUserEmailAndPassword(email, password);
+        //Objet
+        Utilisateur userBdd = new Utilisateur();
 
-            // if email and password is wrong -> Removing Utilisateur session
-            if (vUtilisateur.size() == 0) {
+        //method for have UserBdd bean with sessionUser email
+        if (userSession != null) {
+
+            userBdd = userManager.getUserBean(userSession.getEmail());
+
+            //method for check if password is good
+            checkPassword = passwordEncoder.checkPassword(userSession.getMotDePasse(), userBdd.getMotDePasse());
+
+            if (checkPassword) {
+                model.addAttribute("log", userSession.getEmail());
+            } else {
                 status.setComplete();
                 request.removeAttribute("Utilisateur", WebRequest.SCOPE_SESSION);
                 return "ErrorJsp/errorLogin";
-            } else {
+            }
 
-            }
-            // if email and password are good,
-            for (int i = 0; i < vUtilisateur.size(); i++) {
-                model.addAttribute("log", utilisateur.getEmail());
-            }
         }
         //for display climbing site
         model.addAttribute("site", siteManager.getListAllSite());
