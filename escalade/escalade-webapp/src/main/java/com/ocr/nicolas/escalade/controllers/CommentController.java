@@ -74,7 +74,7 @@ public class CommentController {
             // for write i set element_id user session
             utilisateur.setElement_id(element_Id);
         } else {
-            return "ForceLogin";
+            return "ErrorJsp/forceLogin";
         }
         return "commentWrite";
 
@@ -149,10 +149,10 @@ public class CommentController {
                 //-> Delete comment
                 commentManager.deleteComment(id);
             } else {
-                return "ErrorNotMember";
+                return "ErrorJsp/errorNotMember";
             }
         } else {
-            return "ForceLogin";
+            return "ErrorJsp/forceLogin";
         }
         // Models for display comments
         model.addAttribute("commentaire", commentManager.getListAllCommentForOneElementId(utilisateur.getElement_id()));

@@ -75,90 +75,9 @@
     <!-- Body
     ================================================== -->
 
-    <!-- display for write new user -->
-    <br>
-    <div id="NewUser">
-        <h3>Inscription nouvel utilisateur:</h3>
-        <p></p>
-        <f:form modelAttribute="utilisateur" method="post" action="/newUser">
-            <table class="lignesEspacees">
-                <tr>
-                    <!-- display for "raison sociale" -->
-                    <td>Raison sociale: </td>
-                    <td><f:select path="raisonSociale" id="social">
-                        <f:option value="" />
-                        <f:option value="Mr" />
-                        <f:option value="Mme" />
-                    </f:select></td>
-                </tr>
-                <tr>
-                    <!-- display for "nom" -->
-                    <td> Votre Nom: </td>
-                    <td><f:input path="nom" type="text" id="name" size="20" placeholder=""  cssStyle=""/></td>
-                    <td><f:errors path="nom" cssClass="errors"/></td>
-                </tr>
-                <tr>
-                    <!-- display for "prenom" -->
-                    <td>Votre prénom :</td>
-                    <td><f:input path="prenom" type="text" id="firstName" size="20" placeholder=""  cssStyle=""/></td>
-                    <td><f:errors path="prenom" cssClass="errors"/></td>
-                </tr>
-                <tr>
-                    <!-- display for "mot de passe" -->
-                    <td>Choisissez un mot de passe:</td>
-                    <td><f:input path="motDePasse" type="password" id="password" size="20"  cssStyle="" /></td>
-                    <td><f:errors path="motDePasse" cssClass="errors" /></td>
-                </tr>
-                <tr>
-                    <!-- display for "adresse" -->
-                    <td>Votre adresse :</td>
-                    <td><f:input path="adresse" type="text" id="adress" size="40" placeholder="" cssStyle=""/></td>
-                    <td><f:errors path="adresse" cssClass="errors"/></td>
-                </tr>
-                <tr>
-                    <!-- display for "code postal" -->
-                    <td>Votre code postal :</td>
-                    <td><f:input path="codePostal" type="number" id="postalCode" placeholder="" cssStyle=""/></td>
-                    <td><f:errors path="codePostal" cssClass="errors"/></td>
-                </tr>
-                <tr>
-                    <!-- display for "ville" -->
-                    <td>Votre ville :</td>
-                    <td><f:input path="ville" type="text" id="city" size="15" placeholder="" cssStyle=""/></td>
-                    <td><f:errors path="ville" cssClass="errors"/></td>
-                </tr>
-                <tr>
-                    <!-- display for "Pays" -->
-                    <td>Votre pays :</td>
-                    <td><f:input path="pays" type="text" id="country " size="15" placeholder="" cssStyle=""/></td>
-                    <td><f:errors path="pays" cssClass="errors"/></td>
-                </tr>
-                <tr>
-                    <!-- display for "numero de telephone" -->
-                    <td>Votre numero de télephone :</td>
-                    <td><f:input path="numeroTelephone" type="tel" id="telephoneNumber" size="20" cssStyle=""/></td>
-                    <td><f:errors path="numeroTelephone" cssClass="errors"/></td>
-                </tr>
-                <tr>
-                    <!-- display for "email" -->
-                    <td>Votre E-mail :</td>
-                    <td><f:input path="email" type="email" id="email" size="30" placeholder="" cssStyle=""/></td>
-                    <td><f:errors path="email" cssClass="errors"/>
-                </tr>
-                <tr>
-                    <!-- display for "membre association" -->
-                    <td>Membre association: </td>
-                    <td><f:select path="membreAssociation" id="association">
-                        <f:option value="true"/>Oui
-                        <f:option value="false" />Non
-                    </f:select></td>
-                </tr>
-            </table>
-
-            <input type="submit" value="Envoyer">
-
-        </f:form>
-    </div>
+    <!-- display site -->
+    <p></p>
+    Enregistrement nouvel utilisateur ok
 
 </div>
 

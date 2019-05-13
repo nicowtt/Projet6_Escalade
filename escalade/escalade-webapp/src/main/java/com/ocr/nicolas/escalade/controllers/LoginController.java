@@ -58,7 +58,7 @@ public class LoginController {
             if (vUtilisateur.size() == 0) {
                 status.setComplete();
                 request.removeAttribute("Utilisateur", WebRequest.SCOPE_SESSION);
-                return "ErrorLogin";
+                return "ErrorJsp/errorLogin";
             } else {
 
             }

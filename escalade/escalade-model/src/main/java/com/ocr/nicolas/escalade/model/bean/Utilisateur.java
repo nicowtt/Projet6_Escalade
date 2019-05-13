@@ -1,7 +1,6 @@
 package com.ocr.nicolas.escalade.model.bean;
 
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Size;
 
 /**
  * Bean representant un Utilisateur.
@@ -12,7 +11,6 @@ public class Utilisateur {
     private Integer id;
     private String raisonSociale;
     private String nom;
-    @Size(min=4, max=12)
     private String prenom;
     @NotBlank
     private String motDePasse;

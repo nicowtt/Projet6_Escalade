@@ -78,8 +78,8 @@ public class SiteController {
             if (associativeMember) {
                 // -> method for tag climbing site
                 siteManager.addTagForOfficialSite(id);
-            } else {return "ErrorNotMember";}
-        } else {return "ForceLogin";}
+            } else {return "ErrorJsp/errorNotMember";}
+        } else {return "ErrorJsp/forceLogin";}
 
         // Models for display all information about one climbing site
         model.addAttribute("site", siteManager.getListOneSite(id));

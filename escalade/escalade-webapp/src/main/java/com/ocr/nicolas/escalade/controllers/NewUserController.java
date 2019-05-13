@@ -6,19 +6,15 @@ import com.ocr.nicolas.escalade.model.bean.Utilisateur;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
-import org.omg.CORBA.Request;
-import org.springframework.http.HttpMethod;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttribute;
 
 import javax.inject.Inject;
-import javax.servlet.ServletRequest;
 import javax.validation.Valid;
 
 
@@ -49,7 +45,7 @@ public class NewUserController {
     }
 
     /**
-     * For valid new user
+     * For writing new user on bdd
      * @param newUser -> bean user to validate
      * @param bindingResult -> error List
      * @param model -> model
@@ -70,17 +66,10 @@ public class NewUserController {
             String hashingPassword = passwordEncoder.hashPassword(newUser.getMotDePasse());
             //je set le bean newUser
             newUser.setMotDePasse(hashingPassword);
-            //todo method for write newUser on bdd
+            //and write newUser on bdd
+            userManager.writeNewUser(newUser);
+
+            return "ComfirmationJsp/userWritingOk";
         }
-
-
-
-
-
-
-
-
-        return "/newUser";
     }
-
 }
