@@ -80,50 +80,61 @@
     <div id="searchClimbingSite">
         <f:form modelAttribute="search" method="post" action="/home">
             <p></p>
-
             <%--<!-- search by country -->--%>
             <h3>Recherche Site d'escalade:</h3>
             <p></p>
-            <p>Par Pays:</p>
+            </br>
+            <%--<p>Par Pays:</p>--%>
             <f:select path="localisationPays">
                 <c:forEach items="${site}" var="si">
-                    <f:option value="" />
                     <f:option value="${si.localisationPays}">${si.localisationPays}</f:option>
                 </c:forEach>
             </f:select>
             <p></p>
+            <input type="submit" value="Rechercher par pays">
+            <p></p>
+        </f:form>
 
+        <f:form modelAttribute="search" method="post" action="/home">
             <%--<!-- search by departement -->--%>
-            <p>par Département:</p>
+            <p>----------------------</p>
             <f:select path="localisationDepartement">
                 <c:forEach items="${site}" var="si">
-                    <f:option value="" />
                     <f:option value="${si.localisationDepartement}">${si.localisationDepartement}</f:option>
                 </c:forEach>
             </f:select>
             <p></p>
+            <input type="submit" value="Rechercher par departement">
+            <p></p>
+        </f:form>
+
+        <f:form modelAttribute="search" method="post" action="/home">
 
             <%--<!-- search by sector number -->--%>
-            <p>Par nombre de secteur:</p>
+            <p>----------------------</p>
             <f:select path="nombreDeSecteur">
                 <c:forEach items="${site}" var="si">
-                    <f:option value="" />
                     <f:option value="${si.nombreDeSecteur}">${si.nombreDeSecteur}</f:option>
                 </c:forEach>
             </f:select>
             <p></p>
+            <input type="submit" value="Rechercher par nombre de secteur">
+            <p></p>
+
+        </f:form>
+
+
+        <f:form modelAttribute="search" method="post" action="/home">
 
             <%--<!-- search by site name -->--%>
-            <p>Ou par nom de site:</p>
+            <p>----------------------</p>
             <f:select path="nomSite">
                 <c:forEach items="${site}" var="si">
-                    <f:option value="" />
                     <f:option value="${si.nomSite}">${si.nomSite}</f:option>
                 </c:forEach>
             </f:select>
             <p></p>
-
-            <input type="submit" value="Rechercher">
+            <input type="submit" value="Rechercher par nom de site d'escalade">
 
         </f:form>
     </div>

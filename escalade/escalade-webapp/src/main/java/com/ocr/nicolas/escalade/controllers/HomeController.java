@@ -48,16 +48,17 @@ public class HomeController {
      * @return home.jsp
      */
     @RequestMapping(value="/home", method = RequestMethod.POST)
-    public String homePost(@Valid Site site, Model model, BindingResult bindingResult, @SessionAttribute(value = "Utilisateur", required = false) Utilisateur utilisateur) {
-
-
-        //method for display climbing site with filter -> to check !!!
-        model.addAttribute("site", siteManager.getListSiteWithFilter(site.getLocalisationPays(), site.getLocalisationDepartement(), site.getNombreDeSecteur(), site.getNomSite()));
+    public String homePost(@Valid Site site, BindingResult bindingResult, Model model, @SessionAttribute(value = "Utilisateur", required = false) Utilisateur utilisateur) {
 
         // model for "log"
         if (utilisateur != null) {
             model.addAttribute("log", utilisateur.getEmail());
         }
+
+        //method for display climbing site with filter -> to check !!!
+        model.addAttribute("site", siteManager.getListSiteWithFilter(site.getLocalisationPays(), site.getLocalisationDepartement(), site.getNombreDeSecteur(), site.getNomSite()));
+
+
         return "home";
     }
 
