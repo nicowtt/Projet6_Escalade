@@ -8,7 +8,7 @@ import java.util.List;
 public interface UserDao {
 
     List<Utilisateur> getUserNameOfComment(int pElement_id);
-    Utilisateur getUserBean(String pEmail);
+    Utilisateur getUserBean(String pEmail) throws UserException;
     Utilisateur writeNewUser(Utilisateur pUser) throws UserException;
 
 }

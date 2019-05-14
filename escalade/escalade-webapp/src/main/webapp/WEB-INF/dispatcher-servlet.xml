@@ -18,8 +18,6 @@ http://www.springframework.org/schema/mvc http://www.springframework.org/schema/
     serving up static resources in the ${webappRoot}/resources directory -->
 
     <mvc:resources mapping="/resources/**" location="/resources/" />
-    <!--<mvc:resources mapping="/css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css/**" location="/WEB-INF/resources/" />-->
-    <!--<mvc:resources mapping="/favicon.ico" location="/favicon.ico" />-->
 
 
     <!-- Resolves views selected for rendering by @Controllers to

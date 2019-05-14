@@ -60,7 +60,10 @@ public class LoginController {
         if (userSession != null) {
 
             userBdd = userManager.getUserBean(userSession.getEmail());
-
+            //User not recognize on bdd
+            if (userBdd == null) {
+                return "ErrorJsp/errorLogin";
+            }
             //method for check if password is good
             checkPassword = passwordEncoder.checkPassword(userSession.getMotDePasse(), userBdd.getMotDePasse());
 

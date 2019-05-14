@@ -49,7 +49,16 @@ public class UserManagerImpl extends AbstractManager implements UserManager {
         Utilisateur vUserId = vTransactionTemplate.execute(transactionStatus -> {
 
             Utilisateur vUserIdTransaction = null;
-            vUserIdTransaction = userDao.getUserBean(pEmail);
+            try {
+                vUserIdTransaction = userDao.getUserBean(pEmail);
+            } catch (UserException e) {
+                e.printStackTrace();
+                try {
+                    throw new UserException("L'utilisateur ou le mot de passe n'as pas été reconnu");
+                } catch (UserException e1) {
+                    e1.printStackTrace();
+                }
+            }
 
             return vUserIdTransaction;
         });

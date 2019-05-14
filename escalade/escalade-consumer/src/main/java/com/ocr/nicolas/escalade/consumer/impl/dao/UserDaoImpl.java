@@ -5,6 +5,7 @@ import com.ocr.nicolas.escalade.consumer.impl.rowmapper.UserRowMapper;
 import com.ocr.nicolas.escalade.model.bean.Utilisateur;
 import com.ocr.nicolas.escalade.model.exception.UserException;
 import org.springframework.dao.DuplicateKeyException;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
@@ -54,7 +55,7 @@ public class UserDaoImpl extends AbstractDAoImpl implements UserDao {
      * @return -> bean Utilisateur
      */
     @Override
-    public Utilisateur getUserBean(String pEmail) {
+    public Utilisateur getUserBean(String pEmail) throws UserException {
         String vSQL
                 = "SELECT * FROM utilisateur"
                 + " WHERE email = :pEmail";
@@ -66,9 +67,16 @@ public class UserDaoImpl extends AbstractDAoImpl implements UserDao {
 
         RowMapper<Utilisateur> vRowMapper = new UserRowMapper();
 
-        Utilisateur vUtilisateur = vJdbcTemplate.queryForObject(vSQL,vParams,vRowMapper);
+        try {
+            Utilisateur vUtilisateur = vJdbcTemplate.queryForObject(vSQL,vParams,vRowMapper);
 
-        return vUtilisateur;
+            return vUtilisateur;
+
+        } catch (EmptyResultDataAccessException ex) {
+            logger.debug("L'utilisateur ou le mot de passe n'as pas été reconnu");
+            //retour
+            throw new UserException("L'utilisateur ou le mot de passe n'as pas été reconnu");
+        }
 
     }
 
