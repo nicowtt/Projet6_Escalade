@@ -10,7 +10,9 @@ public class Utilisateur {
     // ============ Attributs =========
     private Integer id;
     private String raisonSociale;
+    @NotBlank
     private String nom;
+    @NotBlank
     private String prenom;
     @NotBlank
     private String motDePasse;
@@ -19,6 +21,7 @@ public class Utilisateur {
     private String ville;
     private String pays;
     private String numeroTelephone;
+    @NotBlank
     private String email;
     private boolean membreAssociation;
     private String autre;

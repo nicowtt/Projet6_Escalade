@@ -67,6 +67,11 @@ public class NewUserController {
             //je set le bean newUser
             newUser.setMotDePasse(hashingPassword);
             //and write newUser on bdd
+            if (newUser.getRaisonSociale().isEmpty()) {newUser.setRaisonSociale(null);}
+            if (newUser.getAdresse().isEmpty()) {newUser.setAdresse(null);}
+            if (newUser.getVille().isEmpty()) {newUser.setVille(null);}
+            if (newUser.getPays().isEmpty()) {newUser.setPays(null);}
+            if (newUser.getNumeroTelephone().isEmpty()) {newUser.setNumeroTelephone(null);}
             userManager.writeNewUser(newUser);
 
             return "ComfirmationJsp/userWritingOk";
