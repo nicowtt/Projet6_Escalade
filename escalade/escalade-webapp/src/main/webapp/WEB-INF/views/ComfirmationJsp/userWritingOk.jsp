@@ -77,7 +77,7 @@
 
     <!-- display site -->
     <p></p>
-    Enregistrement nouvel utilisateur ok
+    <p><b>Enregistrement nouvel utilisateur ok</b></p>
 
 </div>
 

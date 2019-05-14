@@ -77,7 +77,7 @@
 
     <!-- display site -->
     <p></p>
-    L'email et le mot de passe n'ont pas été reconnu, veuillez re-essayer ou vous enregistrer.
+    <p><b>L'email et le mot de passe n'ont pas été reconnu, veuillez re-essayer ou vous enregistrer.</b></p>
 
 </div>
 

@@ -77,7 +77,7 @@
 
     <!-- display site -->
     <p></p>
-    Vous devez être membre de l'association pour accéder a cette fonction du site.
+    <p><b>Vous devez être membre de l'association pour accéder a cette fonction du site.</b></p>
 
 </div>
 

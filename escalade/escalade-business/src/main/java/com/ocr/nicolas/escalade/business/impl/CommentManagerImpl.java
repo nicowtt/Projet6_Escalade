@@ -45,11 +45,11 @@ public class CommentManagerImpl extends AbstractManager implements CommentManage
     /**
      * For write a comment
      *
-     * @param pCommentaire -> comment bean
+     * @param pComment-> comment bean
      *
      */
     @Override
-    public Commentaire writeComment(Commentaire pCommentaire) {
+    public Commentaire writeComment(Commentaire pComment) {
 
         TransactionTemplate vTransactionTemplate = new TransactionTemplate(getPlatformTransactionManager());
 
@@ -57,7 +57,7 @@ public class CommentManagerImpl extends AbstractManager implements CommentManage
 
             Commentaire vCommentaireTransaction = null;
             try {
-                vCommentaireTransaction = commentDao.writeComment(pCommentaire);
+                vCommentaireTransaction = commentDao.writeComment(pComment);
             } catch (CommentException e) {
                 e.printStackTrace();
             }
