@@ -27,17 +27,17 @@ public class ElementDaoImpl extends AbstractDAoImpl implements ElementDao {
     /**
      * For write new element
      *
-     * @param pId-> user id
+     * @param pUserId-> user id
      */
     @Override
-    public void writeNewElement(Integer pId) {
+    public void writeNewElement(Integer pUserId) {
 
         String vSQL
                 = "INSERT INTO public.element (utilisateur_id) VALUES (:pId)";
 
         NamedParameterJdbcTemplate vJdbcTemplate = new NamedParameterJdbcTemplate(getDatasource());
         MapSqlParameterSource vParams = new MapSqlParameterSource();
-        vParams.addValue("pId", pId, Types.INTEGER);
+        vParams.addValue("pId", pUserId, Types.INTEGER);
 
         vJdbcTemplate.update(vSQL, vParams);
     }
@@ -61,7 +61,7 @@ public class ElementDaoImpl extends AbstractDAoImpl implements ElementDao {
 
         RowMapper vRowMapper = new ElementRowMapper();
 
-        Element vElement;
+        Element vElement = new Element();
 
         vElement = (Element) vJdbcTemplate.query(vSQL, vParams, vRowMapper).get(0);
 

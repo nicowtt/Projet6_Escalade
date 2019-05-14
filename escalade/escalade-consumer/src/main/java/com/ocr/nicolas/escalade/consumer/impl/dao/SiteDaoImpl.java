@@ -3,18 +3,26 @@ package com.ocr.nicolas.escalade.consumer.impl.dao;
 import com.ocr.nicolas.escalade.consumer.contract.dao.SiteDao;
 import com.ocr.nicolas.escalade.consumer.impl.rowmapper.SiteRowMapper;
 import com.ocr.nicolas.escalade.model.bean.Site;
+
+import com.ocr.nicolas.escalade.model.exception.SiteException;
+import org.springframework.dao.DuplicateKeyException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 
 import javax.inject.Named;
-import java.lang.reflect.Type;
+
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+
 import java.sql.Types;
 import java.util.List;
 
 @Named
 public class SiteDaoImpl extends AbstractDAoImpl implements SiteDao {
+
+    static final Log logger = LogFactory.getLog(SiteDaoImpl.class);
 
 
     /**
@@ -130,5 +138,36 @@ public class SiteDaoImpl extends AbstractDAoImpl implements SiteDao {
 
         vJdbcTemplate.update(vSQL, vParams);
 
+    }
+
+    /**
+     * For write climbing site on bdd
+     * @param pSite -> bean Site
+     * @throws SiteException
+     */
+    @Override
+    public void writeSiteOnBdd(Site pSite) throws SiteException {
+        String vSQL
+                = "INSERT INTO site (nomsite, descriptionsite, localisationdepartement, localisationpays, urlphotosite, nombredesecteur, officielsite, element_id)"
+                + " VALUES (:nomsite, :descriptionsite, :localisationdepartement, :localisationpays, :urlphotosite, :nombredesecteur, :officielsite, :element_id)";
+
+        NamedParameterJdbcTemplate vJdbcTemplate = new NamedParameterJdbcTemplate(getDatasource());
+        MapSqlParameterSource vParams = new MapSqlParameterSource();
+        vParams.addValue("nomsite", pSite.getNomSite(), Types.VARCHAR);
+        vParams.addValue("descriptionsite", pSite.getDescriptionSite(), Types.VARCHAR);
+        vParams.addValue("localisationdepartement", pSite.getLocalisationDepartement(), Types.VARCHAR);
+        vParams.addValue("localisationpays", pSite.getLocalisationPays(), Types.VARCHAR);
+        vParams.addValue("urlphotosite", pSite.getUrlPhotoSite(), Types.VARCHAR);
+        vParams.addValue("nombredesecteur", pSite.getNombreDeSecteur(), Types.INTEGER);
+        vParams.addValue("officielsite", pSite.isOfficelSite(), Types.BOOLEAN);
+        vParams.addValue("element_id", pSite.getElement_id(), Types.INTEGER);
+
+        try {
+            vJdbcTemplate.update(vSQL, vParams);
+        } catch (DuplicateKeyException vEx) {
+            logger.debug("Le site existe déja !");
+            //return for user
+            throw new SiteException("Le site existe déja !");
+        }
     }
 }

@@ -11,4 +11,5 @@ public interface SiteManager {
     int getNbrAllSite();
     List<Site> getListSiteWithFilter(String pCountry, String pDepartment, Integer pNbrSectors, String pSiteName);
     void addTagForOfficialSite(int pId);
+    void writeSiteOnBdd(Site site, int pUserId);
 }

@@ -1,7 +1,9 @@
 package com.ocr.nicolas.escalade.business.impl;
 
 import com.ocr.nicolas.escalade.business.contract.SiteManager;
+import com.ocr.nicolas.escalade.consumer.contract.dao.ElementDao;
 import com.ocr.nicolas.escalade.consumer.contract.dao.SiteDao;
+import com.ocr.nicolas.escalade.model.bean.Element;
 import com.ocr.nicolas.escalade.model.bean.Site;
 import com.ocr.nicolas.escalade.model.exception.CommentException;
 import com.ocr.nicolas.escalade.model.exception.SiteException;
@@ -19,6 +21,9 @@ public class SiteManagerImpl extends AbstractManager implements SiteManager {
 
     @Inject
     private SiteDao siteDao;
+
+    @Inject
+    private ElementDao elementDao;
 
     /**
      * For get All site on a list
@@ -114,6 +119,37 @@ public class SiteManagerImpl extends AbstractManager implements SiteManager {
             protected void doInTransactionWithoutResult(TransactionStatus transactionStatus) {
 
                 siteDao.addTagForOfficialSite(pId);
+            }
+        });
+    }
+
+    /**
+     * For create new element and write new site
+     *
+     * @param pSite -> bean new climbing site
+     * @param pUserId -> userId
+     */
+    @Override
+    public void writeSiteOnBdd(Site pSite, int pUserId) {
+        final Element[] newElementOnBdd = {new Element()};
+
+        TransactionTemplate vTransactionTemplate = new TransactionTemplate(getPlatformTransactionManager());
+
+        vTransactionTemplate.execute(new TransactionCallbackWithoutResult() {
+            @Override
+            protected void doInTransactionWithoutResult(TransactionStatus transactionStatus) {
+                // creating new element
+                elementDao.writeNewElement(pUserId);
+                // get this new element
+                newElementOnBdd[0] = elementDao.getLastElement();
+                // set element_id in bean "site"-> pSite
+                pSite.setElement_id(newElementOnBdd[0].getId());
+                // finaly writing "site" on bdd
+                try {
+                    siteDao.writeSiteOnBdd(pSite);
+                } catch (SiteException e) {
+                    e.printStackTrace();
+                }
             }
         });
     }
