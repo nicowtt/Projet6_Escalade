@@ -41,7 +41,7 @@
             <div class="collapse navbar-collapse">
                 <ul class="nav navbar-nav">
                     <li><a href="/searchSite">Recherche</a></li>
-                    <li><a href="/creationTopo">Creation de Topo</a></li>
+                    <li><a href="/createTopoWeb">Creation de Topo</a></li>
                     <li><a href="/echangeTopo">Echange de Topo</a></li>
                 </ul>
 
