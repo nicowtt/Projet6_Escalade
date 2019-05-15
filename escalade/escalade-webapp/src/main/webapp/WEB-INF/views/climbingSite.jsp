@@ -94,6 +94,9 @@
 
     <!-- Picture-->
       <img src="${si.urlPhotoSite}" alt="${si.urlPhotoSite}" style="width:500px;height:500px;border:0;">
+      <!-- lien pour crée un nouveau secteur-->
+    <p></p>
+      <p><a href="/createNewSector/${si.id}">Ajouter un nouveau secteur sur ce site </a></p>
     </c:forEach>
 
 

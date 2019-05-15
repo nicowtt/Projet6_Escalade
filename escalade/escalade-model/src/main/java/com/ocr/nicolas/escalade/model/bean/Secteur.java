@@ -1,5 +1,7 @@
 package com.ocr.nicolas.escalade.model.bean;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.util.List;
 
 /**
@@ -9,13 +11,16 @@ public class Secteur {
 
     // ==================== Attributs ====================
     private Integer id;
+    @NotBlank
     private String nomSecteur;
     private String descriptionSecteur;
     private String acces;
     private Integer altitudeBase;
     private String orientation;
     private String typeRoche;
+    @NotNull
     private Integer nombreDeVoies;
+    @NotBlank
     private String cotation;
     private String urlPhotoSecteur;
     private String coordonneGps;

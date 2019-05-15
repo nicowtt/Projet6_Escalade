@@ -2,20 +2,16 @@ package com.ocr.nicolas.escalade.consumer.impl.dao;
 
 
 import com.ocr.nicolas.escalade.consumer.impl.rowmapper.ElementRowMapper;
-import com.ocr.nicolas.escalade.model.bean.Commentaire;
 import com.ocr.nicolas.escalade.model.bean.Element;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import com.ocr.nicolas.escalade.consumer.contract.dao.ElementDao;
-
-import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
-
 import javax.inject.Named;
 import java.sql.Types;
-import java.util.List;
+
 
 
 @Named

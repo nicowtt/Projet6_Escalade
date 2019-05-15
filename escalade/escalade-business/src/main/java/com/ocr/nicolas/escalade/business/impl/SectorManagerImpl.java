@@ -1,8 +1,13 @@
 package com.ocr.nicolas.escalade.business.impl;
 
 import com.ocr.nicolas.escalade.business.contract.SectorManager;
+import com.ocr.nicolas.escalade.consumer.contract.dao.ElementDao;
 import com.ocr.nicolas.escalade.consumer.contract.dao.SectorDao;
+import com.ocr.nicolas.escalade.model.bean.Element;
 import com.ocr.nicolas.escalade.model.bean.Secteur;
+import com.ocr.nicolas.escalade.model.exception.SectorException;
+import org.springframework.transaction.TransactionStatus;
+import org.springframework.transaction.support.TransactionCallbackWithoutResult;
 import org.springframework.transaction.support.TransactionTemplate;
 
 import javax.inject.Inject;
@@ -15,6 +20,9 @@ public class SectorManagerImpl extends AbstractManager implements SectorManager 
 
     @Inject
     private SectorDao sectorDao;
+
+    @Inject
+    private ElementDao elementDao;
 
     /**
      * for get sectors List on Site
@@ -54,5 +62,36 @@ public class SectorManagerImpl extends AbstractManager implements SectorManager 
             return nbrSectorTransaction;
         });
         return nbrSector;
+    }
+
+    /**
+     * For create new element and new sector
+     *
+     * @param pSector -> bean sector in
+     * @param pUserId -> user id for know who create this new sector
+     */
+    @Override
+    public void writeSectorOnBdd(Secteur pSector, int pUserId) {
+        final Element[] newElementOnBdd = {new Element()};
+
+        TransactionTemplate vTransactionTEmplate = new TransactionTemplate(getPlatformTransactionManager());
+
+        vTransactionTEmplate.execute(new TransactionCallbackWithoutResult() {
+            @Override
+            protected void doInTransactionWithoutResult(TransactionStatus transactionStatus) {
+                // creating new element
+                elementDao.writeNewElement(pUserId);
+                // get this new element
+                newElementOnBdd[0] = elementDao.getLastElement();
+                //set element_id in bean "secteur" -> pSector
+                pSector.setElement_id(newElementOnBdd[0].getId());
+                // finaly writing "secteur" on BDD
+                try {
+                    sectorDao.writeSectorOnBdd(pSector);
+                } catch (SectorException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
     }
 }

@@ -75,9 +75,84 @@
     <!-- Body
     ================================================== -->
 
-    <!-- display site -->
-    <p></p>
-    <p><b>Enregistrement OK.</b></p>
+    <!-- display for write new climbing site -->
+    <br>
+    <div id="NewSite">
+        <h3>Enregistrement nouveau Secteur d'escalade:</h3>
+
+        <p></p>
+        <f:form modelAttribute="secteur" method="post" action="/createNewSectorPost/${secteur.site_id}">
+            <table class="lignesEspacees">
+                <h2>nouveau Site:</h2>
+                <tr>
+                    <!-- display for "nom secteur" -->
+                    <td> Nom du nouveau secteur:* </td>
+                    <td><f:input path="nomSecteur" type="text" id="nomSite" size="20" placeholder="obligatoire"  cssStyle=""/></td>
+                    <td><f:errors path="nomSecteur" cssClass="errors"/></td>
+                </tr>
+                <tr>
+                    <!-- display for "descriptionSecteur" -->
+                    <td>Description:</td>
+                    <td><f:input path="descriptionSecteur" type="text" id="descriptionSecteur" size="40" placeholder=""  cssStyle=""/></td>
+                    <td><f:errors path="descriptionSecteur" cssClass="errors"/></td>
+                </tr>
+                <tr>
+                    <!-- display for "acces" -->
+                    <td>Accés:</td>
+                    <td><f:input path="acces" type="text" id="acces" placeholder="" size="20"  cssStyle="" /></td>
+                    <td><f:errors path="acces" cssClass="errors" /></td>
+                </tr>
+                <tr>
+                    <!-- display for "altitude base" -->
+                    <td>Altitude: </td>
+                    <td><f:input path="altitudeBase" type="text" id="altitudeBase" size="20" placeholder="" cssStyle=""/></td>
+                    <td><f:errors path="altitudeBase" cssClass="errors"/></td>
+                </tr>
+                <tr>
+                    <!-- display for "orientation" -->
+                    <td>Orientation: </td>
+                    <td><f:input path="orientation" type="text" id="orientation" placeholder="" cssStyle=""/></td>
+                    <td><f:errors path="orientation" cssClass="errors"/></td>
+                </tr>
+                <tr>
+                    <!-- display for "Type de roche" -->
+                    <td>Type de roche: </td>
+                    <td><f:input path="typeRoche" type="text" id="city" size="20" placeholder="" cssStyle=""/></td>
+                    <td><f:errors path="typeRoche" cssClass="errors"/></td>
+                </tr>
+                <tr>
+                    <!-- display for "Nombre de voies" -->
+                    <td>Nombre de voies:* </td>
+                    <td><f:input path="nombreDeVoies" type="number" id="nombredevoie" size="20" placeholder="obligatoire" cssStyle=""/></td>
+                    <td><f:errors path="nombreDeVoies" cssClass="errors"/></td>
+                </tr>
+                <tr>
+                    <!-- display for "cotation" -->
+                    <td>Cotation:* </td>
+                    <td><f:input path="cotation" type="text" id="cotation" placeholder="obligatoire" cssStyle=""/></td>
+                    <td><f:errors path="cotation" cssClass="errors"/></td>
+                </tr>
+                <tr>
+                    <!-- display for "url photo secteur" -->
+                    <td>Url photo du secteur (voies visible): </td>
+                    <td><f:input path="urlPhotoSecteur" type="url" id="orientation" placeholder="" cssStyle=""/></td>
+                    <td><f:errors path="urlPhotoSecteur" cssClass="errors"/></td>
+                </tr>
+                <tr>
+                    <!-- display for "coordonne gps" -->
+                    <td>Coordonné gps: </td>
+                    <td><f:input path="coordonneGps" type="text" id="coordonnegps" placeholder="" cssStyle=""/></td>
+                    <td><f:errors path="coordonneGps" cssClass="errors"/></td>
+                </tr>
+            </table>
+            <p></p>
+            <p>(*) obligatoire</p>
+            <p></p>
+            <input type="submit" value="Envoyer">
+        </f:form>
+    </div>
+
+
 
 </div>
 
