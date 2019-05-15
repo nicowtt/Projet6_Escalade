@@ -4,6 +4,7 @@ import com.ocr.nicolas.escalade.consumer.contract.dao.TopoPapierDao;
 
 import javax.inject.Named;
 
+
 import com.ocr.nicolas.escalade.consumer.impl.rowmapper.TopoPapierRowMapper;
 import com.ocr.nicolas.escalade.model.bean.Topopapier;
 import org.apache.commons.logging.Log;
@@ -43,6 +44,30 @@ public class TopoPapierDaoImpl extends AbstractDAoImpl implements TopoPapierDao 
         RowMapper<Topopapier> vRowMapperTopoPapier = new TopoPapierRowMapper();
 
         List<Topopapier> vListTopoPapier = vJdbcTemplate.query(vSQL, vParams, vRowMapperTopoPapier);
+
+        return vListTopoPapier;
+    }
+
+
+    /**
+     * For get one topo papier from BDD
+     * @param pElementId -> id of topoPapier
+     * @return -> list with one bean topoPapier
+     */
+    @Override
+    public List<Topopapier> getOneTopoPapier(int pElementId) {
+        String vSQL
+                = "SELECT * FROM public.topopapier"
+                + " JOIN element ON element.id = topopapier.element_id"
+                + "  WHERE topopapier.id = :pId";
+
+        NamedParameterJdbcTemplate vJdbcTemplate = new NamedParameterJdbcTemplate(getDatasource());
+        MapSqlParameterSource vParams = new MapSqlParameterSource();
+        vParams.addValue("pId", pElementId, Types.INTEGER);
+
+        RowMapper<Topopapier> vRowMapper = new TopoPapierRowMapper();
+
+        List<Topopapier> vListTopoPapier = vJdbcTemplate.query(vSQL, vParams, vRowMapper);
 
         return vListTopoPapier;
     }

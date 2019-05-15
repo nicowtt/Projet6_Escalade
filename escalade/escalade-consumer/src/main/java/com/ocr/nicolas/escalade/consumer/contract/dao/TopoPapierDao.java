@@ -7,4 +7,5 @@ import java.util.List;
 public interface TopoPapierDao {
 
     List<Topopapier> getListTopoPapier(int pIdUser);
+    List<Topopapier> getOneTopoPapier(int pElementId);
 }

@@ -37,4 +37,24 @@ public class TopoPapierManagerImpl extends AbstractManager implements TopoPapier
         });
         return vTopoPapier;
     }
+
+    /**
+     * For get only one topopapier
+     * @param pElementId -> id of topoPapier
+     * @return
+     */
+    @Override
+    public List<Topopapier> getOneTopoPapier(int pElementId) {
+        TransactionTemplate vTransactionTemplate = new TransactionTemplate(getPlatformTransactionManager());
+
+        List<Topopapier> vTopoPapier = vTransactionTemplate.execute(transactionStatus -> {
+
+            List<Topopapier> vTopoPapierTransaction = new ArrayList<>();
+            vTopoPapierTransaction = topoPapierDao.getOneTopoPapier(pElementId);
+
+            return vTopoPapierTransaction;
+        });
+        return vTopoPapier;
+
+    }
 }
