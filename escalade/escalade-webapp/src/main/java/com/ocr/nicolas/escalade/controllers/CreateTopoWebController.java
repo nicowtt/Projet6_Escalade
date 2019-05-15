@@ -30,9 +30,14 @@ public class CreateTopoWebController {
     private UserManager userManager;
 
 
-
-    @RequestMapping(value="/createTopoWeb", method = RequestMethod.GET)
-    public String createTopoWeb(Model model, @SessionAttribute(value = "Utilisateur", required = false) Utilisateur userSession) {
+    /**
+     *
+     * @param model
+     * @param userSession
+     * @return
+     */
+    @RequestMapping(value="/createClimbingSite", method = RequestMethod.GET)
+    public String createClimbingSite(Model model, @SessionAttribute(value = "Utilisateur", required = false) Utilisateur userSession) {
 
         // model for "log"
         if (userSession != null) {
@@ -55,8 +60,8 @@ public class CreateTopoWebController {
      * @param userSession -> userSession
      * @return
      */
-    @RequestMapping(value="/createTopoWeb", method = RequestMethod.POST)
-    public String createTopoWeb(@Valid Site newSite, BindingResult bindingResult, Model model, @SessionAttribute(value = "Utilisateur", required = false) Utilisateur userSession) {
+    @RequestMapping(value="/createClimbingSite", method = RequestMethod.POST)
+    public String createClimbingSite(@Valid Site newSite, BindingResult bindingResult, Model model, @SessionAttribute(value = "Utilisateur", required = false) Utilisateur userSession) {
 
         Utilisateur userOnBdd = new Utilisateur();
 

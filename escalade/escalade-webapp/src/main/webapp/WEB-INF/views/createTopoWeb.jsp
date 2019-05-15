@@ -38,7 +38,7 @@
         <div class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
                 <li><a href="/searchSite">Recherche</a></li>
-                <li><a href="/createTopoWeb">Creation de Topo</a></li>
+                <li><a href="/createClimbingSite">Creation de Topo</a></li>
                 <li><a href="/echangeTopo">Echange de Topo</a></li>
             </ul>
 
@@ -81,7 +81,7 @@
         <h3>Enregistrement nouveau Site d'escalade:</h3>
 
         <p></p>
-        <f:form modelAttribute="site" method="post" action="/createTopoWeb">
+        <f:form modelAttribute="site" method="post" action="/createClimbingSite">
             <table class="lignesEspacees">
                 <h2>nouveau Site:</h2>
                 <tr>
