@@ -1,7 +1,14 @@
 
 .navbar {
     margin: 0px;
+    line-height: 15px;
 }
+
+/*.nav-justified li a {*/
+    /*display:inline-block;*/
+    /*vertical-align:middle;*/
+    /*line-height:normal !* et hop on rétablit le line-height *!*/
+/*}*/
 
 .errors{
     color: red;

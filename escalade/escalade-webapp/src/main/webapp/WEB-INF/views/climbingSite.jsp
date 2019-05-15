@@ -47,7 +47,8 @@
 
         <!-- if user is login -->
         <c:if test="${!empty log}"><p style="color:white;"><c:out value="${log} "/>
-          <br><a href="/dologout">Se deconnecter </a></p>
+          <br><a href="/personalSpace">Mon espace personnel</a><br>
+          <a href="/dologout">Se deconnecter </a></p>
         </c:if>
 
         <!-- if user not login -->
