@@ -4,6 +4,7 @@ package com.ocr.nicolas.escalade.controllers;
 import com.ocr.nicolas.escalade.business.contract.SectorManager;
 import com.ocr.nicolas.escalade.business.contract.SiteManager;
 import com.ocr.nicolas.escalade.business.contract.UserManager;
+import com.ocr.nicolas.escalade.business.contract.WayManager;
 import com.ocr.nicolas.escalade.model.bean.Secteur;
 import com.ocr.nicolas.escalade.model.bean.Site;
 import com.ocr.nicolas.escalade.model.bean.Utilisateur;
@@ -35,6 +36,9 @@ public class CreateTopoWebController {
 
     @Inject
     private SectorManager sectorManager;
+
+    @Inject
+    private WayManager wayManager;
 
 
     /**
@@ -68,7 +72,7 @@ public class CreateTopoWebController {
      * @return
      */
     @RequestMapping(value="/createClimbingSite", method = RequestMethod.POST)
-    public String createClimbingSite(@Valid Site newSite, BindingResult bindingResult, @SessionAttribute(value = "Utilisateur", required = false) Utilisateur userSession) {
+    public String createClimbingSite(@Valid Site newSite, BindingResult bindingResult, Model model, @SessionAttribute(value = "Utilisateur", required = false) Utilisateur userSession) {
 
         Utilisateur userOnBdd = new Utilisateur();
 
@@ -76,6 +80,10 @@ public class CreateTopoWebController {
 
             logger.info("*************");
             logger.info("erreur lors du remplissage du formulaire de creation d'un nouveau site");
+
+            // for "log" session
+            model.addAttribute("log", userSession.getEmail());
+
             return "createNewSite";
         } else {
             //search for userId
@@ -133,6 +141,10 @@ public class CreateTopoWebController {
 
             logger.info("*************");
             logger.info("erreur lors du remplissage du formulaire de creation d'un nouveau secteur");
+
+            // for "log" session
+            model.addAttribute("log", userSession.getEmail());
+
             return "createNewSector";
         } else {
             //search for userId
@@ -173,8 +185,41 @@ public class CreateTopoWebController {
     }
 
 
+    /**
+     * For get new way form and create new way
+     *
+     * @param secteur_id -> sector who we create new way in
+     * @param newWay -> bean with new way information
+     * @param bindingResult -> list of errors
+     * @param model -> model
+     * @param userSession -> user Session
+     * @return
+     */
+    @RequestMapping(value="/createNewWayPost/{secteur_id}", method = RequestMethod.POST)
+    public String createNewWayPost(@PathVariable Integer secteur_id, @Valid Voie newWay, BindingResult bindingResult, Model model, @SessionAttribute(value = "Utilisateur", required = false) Utilisateur userSession) {
+
+        Utilisateur userOnBdd = new Utilisateur();
+
+        if (bindingResult.hasErrors()) {
+
+            logger.info("*************");
+            logger.info("erreur lors du remplissage du formulaire de creation d'une nouvelle voie");
+
+            // for "log" session
+            model.addAttribute("log", userSession.getEmail());
+            return "createNewWay";
+        } else {
+            //search for userId
+            userOnBdd = userManager.getUserBean(userSession.getEmail());
+            //Write new way on bdd (need new element (user_id needed) and sector_id (where we create new way)
+            wayManager.writeNewWay(newWay, userOnBdd.getId());
+
+            // for "log" session
+            model.addAttribute("log", userSession.getEmail());
+
+            return "ComfirmationJsp/topoWebOk";
+        }
+    }
 
 
-
-
-}
+    }

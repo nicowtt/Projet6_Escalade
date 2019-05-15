@@ -38,7 +38,7 @@
         <div class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
                 <li><a href="/searchSite">Recherche</a></li>
-                <li><a href="/createClimbingSite">Creation de Topo</a></li>
+                <li><a href="/createClimbingSite">Enregistrer un nouveau site d'escalade</a></li>
                 <li><a href="/echangeTopo">Echange de Topo</a></li>
             </ul>
 
@@ -98,7 +98,7 @@
                 <tr>
                     <!-- display for "tempdescalade" -->
                     <td>Temp d'escalade:</td>
-                    <td><f:input path="tempDescalade" type="number" id="tempDescalade" placeholder="" size="20"  cssStyle="" /></td>
+                    <td><f:input path="tempDescalade" type="number" id="tempDescalade" placeholder="" size="20"  cssStyle="" /> heure(s)</td>
                     <td><f:errors path="tempDescalade" cssClass="errors" /></td>
                 </tr>
                 <tr>
@@ -122,7 +122,7 @@
                 <tr>
                     <!-- display for "Hauteur" -->
                     <td>Hauteur: </td>
-                    <td><f:input path="hauteur" type="number" id="hauteur" size="20" placeholder="" cssStyle=""/></td>
+                    <td><f:input path="hauteur" type="number" id="hauteur" size="20" placeholder="" cssStyle=""/> mètres</td>
                     <td><f:errors path="hauteur" cssClass="errors"/></td>
                 </tr>
                 <tr>

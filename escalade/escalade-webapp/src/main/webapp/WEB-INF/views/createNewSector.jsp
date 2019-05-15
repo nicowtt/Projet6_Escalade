@@ -38,7 +38,7 @@
         <div class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
                 <li><a href="/searchSite">Recherche</a></li>
-                <li><a href="/createClimbingSite">Creation de Topo</a></li>
+                <li><a href="/createClimbingSite">Enregistrer un nouveau site d'escalade</a></li>
                 <li><a href="/echangeTopo">Echange de Topo</a></li>
             </ul>
 
@@ -104,7 +104,7 @@
                 <tr>
                     <!-- display for "altitude base" -->
                     <td>Altitude: </td>
-                    <td><f:input path="altitudeBase" type="text" id="altitudeBase" size="20" placeholder="" cssStyle=""/></td>
+                    <td><f:input path="altitudeBase" type="text" id="altitudeBase" size="20" placeholder="" cssStyle=""/> mètres</td>
                     <td><f:errors path="altitudeBase" cssClass="errors"/></td>
                 </tr>
                 <tr>

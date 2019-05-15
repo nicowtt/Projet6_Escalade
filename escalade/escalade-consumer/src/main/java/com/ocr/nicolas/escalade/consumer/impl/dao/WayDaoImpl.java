@@ -1,8 +1,12 @@
 package com.ocr.nicolas.escalade.consumer.impl.dao;
 
+import com.ocr.nicolas.escalade.model.exception.WayException;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import com.ocr.nicolas.escalade.consumer.contract.dao.WayDao;
 import com.ocr.nicolas.escalade.consumer.impl.rowmapper.WayRowMapper;
 import com.ocr.nicolas.escalade.model.bean.Voie;
+import org.springframework.dao.DuplicateKeyException;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
@@ -13,6 +17,8 @@ import java.util.List;
 
 @Named
 public class WayDaoImpl extends AbstractDAoImpl implements WayDao {
+
+    static final Log logger = LogFactory.getLog(WayDaoImpl.class);
 
 
     /**
@@ -65,6 +71,44 @@ public class WayDaoImpl extends AbstractDAoImpl implements WayDao {
         List<Voie> vListVoie = vJdbcTemplate.query(vSQL, vParams, vRowMapper);
 
         return vListVoie;
+
+    }
+
+
+    /**
+     * For write new way on bdd
+     * @param pWay -> bean way in
+     * @throws WayException
+     */
+    @Override
+    public void writeWayOnBdd(Voie pWay) throws WayException {
+        String vSQL
+                = "INSERT INTO public.voie (numero, nomvoie, tempdescalade, descriptionvoie, longueur, cotation, hauteur, precisionequipement, ouvertureetequipement, dateouverture, statut, element_id, secteur_id)"
+                + " VALUES (:numero, :nomvoie, :tempdescalade, :descriptionvoie, :longueur, :cotation, :hauteur, :precisionequipement, :ouvertureetequipement, :dateouverture, :statut, :element_id, :secteur_id)";
+
+        NamedParameterJdbcTemplate vJdbcTemplate = new NamedParameterJdbcTemplate(getDatasource());
+        MapSqlParameterSource vParams = new MapSqlParameterSource();
+        vParams.addValue("numero", pWay.getNumero(), Types.INTEGER);
+        vParams.addValue("nomvoie", pWay.getNomVoie(),Types.VARCHAR);
+        vParams.addValue("tempdescalade", pWay.getTempDescalade(), Types.INTEGER);
+        vParams.addValue("descriptionvoie", pWay.getDescriptionVoie(), Types.VARCHAR);
+        vParams.addValue("longueur", pWay.getLongueur(), Types.VARCHAR);
+        vParams.addValue("cotation", pWay.getCotation(), Types.VARCHAR);
+        vParams.addValue("hauteur", pWay.getHauteur(), Types.INTEGER);
+        vParams.addValue("precisionequipement", pWay.getPrecisionEquipement(), Types.VARCHAR);
+        vParams.addValue("ouvertureetequipement", pWay.getOuvertureEtEquipement(), Types.VARCHAR);
+        vParams.addValue("dateouverture", pWay.getDateOuverture(), Types.DATE);
+        vParams.addValue("statut", pWay.getStatut(), Types.VARCHAR);
+        vParams.addValue("element_id", pWay.getElement_id(), Types.INTEGER);
+        vParams.addValue("secteur_id", pWay.getSecteur_id(), Types.INTEGER);
+
+        try {
+            vJdbcTemplate.update(vSQL, vParams);
+        } catch (DuplicateKeyException vEx) {
+            logger.debug("La voie existe déjà !");
+            //return for user
+            throw new WayException("La voie existe déjà !");
+        }
 
     }
 
