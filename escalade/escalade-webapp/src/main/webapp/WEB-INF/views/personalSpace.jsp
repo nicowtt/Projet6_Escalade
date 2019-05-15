@@ -77,15 +77,31 @@
     ================================================== -->
 
     <!-- display site -->
-    <p> in progress</p>
-    <%--<p><c:forEach items="${site}" var="si">--%>
-    <%--<div class="col-lg-3">--%>
-        <%--<a href="/climbingSite/${si.id}">--%>
-            <%--<img src="${si.urlPhotoSite}" alt="${si.urlPhotoSite}" style="width:200px;height:200px;border:0;">--%>
-            <%--<c:out value="${si.nomSite}" />--%>
-        <%--</a>--%>
-    <%--</div>--%>
-    <%--</c:forEach>--%>
+    <br>
+    <p>Topo papier possédé:</p>
+
+    <div id="listerTopoPapier">
+        <table class="table">
+            <tr>
+                <th>Nom du topo</th>
+                <th>description</th>
+                <th>nom createur</th>
+                <th>date de creation</th>
+                <th>date de maj</th>
+                <th>disponibilité</th>
+            </tr>
+            <c:forEach items="${topoPapier}" var="to">
+                <tr>
+                    <td>${to.nomTopo}</td>
+                    <td>${to.description}</td>
+                    <td>${to.nomCreateur}</td>
+                    <td>${to.dateCreation}</td>
+                    <td>${to.dateMaj}</td>
+                    <td>${to.disponibilite ? "oui" : "non"} </td>
+                </tr>
+            </c:forEach>
+        </table>
+    </div>
 
 </div>
 

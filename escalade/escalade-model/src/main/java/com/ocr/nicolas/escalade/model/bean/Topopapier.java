@@ -1,6 +1,7 @@
 package com.ocr.nicolas.escalade.model.bean;
 
 import java.sql.Date;
+import java.util.List;
 
 /**
  * Bean representant un Topopapier
@@ -10,12 +11,16 @@ public class Topopapier {
     // =========== Attributs ============
     private Integer id;
     private String nomTopo;
+    private String description;
     private String nomCreateur;
     private Date dateCreation;
     private Date dateMaj;
-    private String disponibilite;
+    private boolean disponibilite;
     private Integer site_id;
     private Integer element_id;
+
+    //bean
+    private Element element;
 
     // =========== Constructeurs =========
     /**
@@ -44,6 +49,12 @@ public class Topopapier {
     public void setNomTopo(String nomTopo) {
         this.nomTopo = nomTopo;
     }
+    public String getDescription() {
+        return description;
+    }
+    public void setDescription(String description) {
+        this.description = description;
+    }
     public String getNomCreateur() {
         return nomCreateur;
     }
@@ -62,10 +73,10 @@ public class Topopapier {
     public void setDateMaj(Date dateMaj) {
         this.dateMaj = dateMaj;
     }
-    public String getDisponibilite() {
+    public boolean isDisponibilite() {
         return disponibilite;
     }
-    public void setDisponibilite(String disponibilite) {
+    public void setDisponibilite(boolean disponibilite) {
         this.disponibilite = disponibilite;
     }
     public Integer getSite_id() {
@@ -80,7 +91,12 @@ public class Topopapier {
     public void setElement_id(Integer element_id) {
         this.element_id = element_id;
     }
-
+    public Element getElement() {
+        return element;
+    }
+    public void setElement(Element element) {
+        this.element = element;
+    }
     // ============== methodes ============
 }
 

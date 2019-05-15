@@ -5,7 +5,6 @@ import com.ocr.nicolas.escalade.consumer.contract.dao.ElementDao;
 import com.ocr.nicolas.escalade.consumer.contract.dao.SiteDao;
 import com.ocr.nicolas.escalade.model.bean.Element;
 import com.ocr.nicolas.escalade.model.bean.Site;
-import com.ocr.nicolas.escalade.model.exception.CommentException;
 import com.ocr.nicolas.escalade.model.exception.SiteException;
 import org.springframework.transaction.TransactionStatus;
 import org.springframework.transaction.support.TransactionCallbackWithoutResult;
