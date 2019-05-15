@@ -7,8 +7,10 @@ import javax.inject.Named;
 
 import com.ocr.nicolas.escalade.consumer.impl.rowmapper.TopoPapierRowMapper;
 import com.ocr.nicolas.escalade.model.bean.Topopapier;
+import com.ocr.nicolas.escalade.model.exception.TopoPapierException;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
@@ -70,5 +72,34 @@ public class TopoPapierDaoImpl extends AbstractDAoImpl implements TopoPapierDao 
         List<Topopapier> vListTopoPapier = vJdbcTemplate.query(vSQL, vParams, vRowMapper);
 
         return vListTopoPapier;
+    }
+
+    /**
+     * For change availability of one topoPapier
+     *
+     * @param pTopoPapier-> bean topoPapier
+     * @param pElementId -> id of topoPapier
+     * @throws TopoPapierException
+     */
+    @Override
+    public void changeAvailabilityTopoPapier(Topopapier pTopoPapier,int pElementId) throws TopoPapierException {
+        String vSQL
+                = "UPDATE topopapier"
+                + " SET disponibilite = :disponibilite"
+                + "  WHERE id = :id";
+
+        NamedParameterJdbcTemplate vJdbcTemplate = new NamedParameterJdbcTemplate(getDatasource());
+        MapSqlParameterSource vParams = new MapSqlParameterSource();
+        vParams.addValue("disponibilite", pTopoPapier.isDisponibilite(), Types.BOOLEAN);
+        vParams.addValue("id", pElementId, Types.INTEGER);
+
+        try {
+            vJdbcTemplate.update(vSQL, vParams);
+        } catch (DataAccessException vEx) {
+            vEx.printStackTrace();
+            logger.debug(" problème accés BDD");
+            //return pUtilisateur;
+            throw new TopoPapierException(" problème accés BDD");
+        }
     }
 }

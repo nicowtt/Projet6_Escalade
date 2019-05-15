@@ -9,9 +9,11 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.inject.Inject;
+import javax.validation.Valid;
 
 @Controller
 @SessionAttributes("Utilisateur")
@@ -47,6 +49,14 @@ public class PersonalSpaceController {
         }
     }
 
+    /**
+     * For display change availability of topopapier function
+     *
+     * @param element_id -> id of "topoPapier"
+     * @param model -> model
+     * @param userSession -> user session
+     * @return
+     */
     @RequestMapping(value="/availabilityTopoPapier/{element_id}", method = RequestMethod.GET)
     public String availabilityTopoPapier(@PathVariable Integer element_id, Model model, @SessionAttribute(value = "Utilisateur", required = false) Utilisateur userSession) {
 
@@ -55,7 +65,8 @@ public class PersonalSpaceController {
         if (userSession != null) {
             model.addAttribute("log", userSession.getEmail());
             //method for display only one topopapier
-            model.addAttribute("topoPapier", new Topopapier());
+            model.addAttribute("topoPapier", topoPapierManager.getOneTopoPapier(element_id));
+            model.addAttribute("updateTopoPapier", new Topopapier());
 
             return "topoPapierUpdateAvailability";
         } else {
@@ -65,22 +76,26 @@ public class PersonalSpaceController {
     }
 
 
-    @RequestMapping(value="/changeAvailabilityTopoPapier/{element_id}", method = RequestMethod.POST)
-    public String changeAvailabilityTopoPapier(@PathVariable Integer element_id, Model model, @SessionAttribute(value = "Utilisateur", required = false) Utilisateur userSession) {
+    @RequestMapping(value="/changeAvailabilityTopoPapier/{id}", method = RequestMethod.POST)
+    public String changeAvailabilityTopoPapier(@PathVariable Integer id, @Valid Topopapier topoForm, Model model, BindingResult bindingResult, @SessionAttribute(value = "Utilisateur", required = false) Utilisateur userSession) {
 
-        Topopapier vTopoPapierIn = new Topopapier();
         Utilisateur userOnBdd = new Utilisateur();
 
         // model for "log"
         if (userSession != null) {
             model.addAttribute("log", userSession.getEmail());
             // new model for TopoPapier Form
-            model.addAttribute("topoPapierIn", vTopoPapierIn);
+            model.addAttribute("topoPapier", new Topopapier());
 
             //search for user id
             userOnBdd = userManager.getUserBean(userSession.getEmail());
 
-            //todo method for change topoPapier "disponibité"
+            //method for change topoPapier "availability
+            topoPapierManager.changeAvailabilityTopoPapier(topoForm, id);
+
+            //display user "topoPapier"
+            model.addAttribute("topoPapier", topoPapierManager.getListTopoPapier(userOnBdd.getId()));
+
 
             return "personalSpace";
         } else {

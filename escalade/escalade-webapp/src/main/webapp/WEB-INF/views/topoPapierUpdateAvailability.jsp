@@ -70,7 +70,8 @@
     <!-- display for change availability of one topoPapier -->
     <br>
     <div id="changeAvailability">
-        <f:form modelAttribute="topoPapier" method="post" action="/changeAvailabilityTopoPapier/${element_id}">
+        <c:forEach items="${topoPapier}" var="to">
+        <f:form modelAttribute="updateTopoPapier" method="post" action="/changeAvailabilityTopoPapier/${to.id}">
             <p> mettre la disponiblité sur:</p>
             <f:select path="disponibilite" id="availability">
                 <f:option value="true">Oui</f:option>
@@ -80,6 +81,7 @@
             <input type="submit" value="Changer la disponibilité">
 
         </f:form>
+        </c:forEach>
     </div>
 </div>
 

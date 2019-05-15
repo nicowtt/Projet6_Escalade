@@ -99,7 +99,7 @@
                     <td>${to.dateCreation}</td>
                     <td>${to.dateMaj}</td>
                     <td>${to.disponibilite ? "oui" : "non"} </td>
-                    <td><a href="/availabilityTopoPapier/${to.element_id}">modifier la diponibilité </a></td>
+                    <td><a href="/availabilityTopoPapier/${to.id}">modifier la diponibilité </a></td>
                 </tr>
             </c:forEach>
         </table>
