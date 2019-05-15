@@ -1,6 +1,8 @@
 package com.ocr.nicolas.escalade.model.bean;
 
 
+import javax.validation.constraints.NotNull;
+
 /**
  * Bean representant une Voie d'escalade
  */
@@ -8,6 +10,7 @@ public class Voie {
 
     // ==================== Attributs ====================
     private Integer id;
+    @NotNull
     private Integer numero;
     private String nomVoie;
     private Integer tempDescalade;
@@ -20,6 +23,7 @@ public class Voie {
     private String dateOuverture;
     private String statut;
     private Integer element_id;
+    private Integer secteur_id;
     //bean
     private Secteur secteur;
 
@@ -114,6 +118,12 @@ public class Voie {
     }
     public void setElement_id(Integer element_id) {
         this.element_id = element_id;
+    }
+    public Integer getSecteur_id() {
+        return secteur_id;
+    }
+    public void setSecteur_id(Integer secteur_id) {
+        this.secteur_id = secteur_id;
     }
     public Secteur getSecteur() {
         return secteur;

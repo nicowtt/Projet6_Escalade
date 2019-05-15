@@ -78,70 +78,76 @@
     <!-- display for write new climbing site -->
     <br>
     <div id="NewSite">
-        <h3>Enregistrement d'un nouveau Secteur d'escalade:</h3>
+        <h3>Enregistrement d'une nouvelle voie d'escalade:</h3>
 
         <p></p>
-        <f:form modelAttribute="secteur" method="post" action="/createNewSectorPost/${secteur.site_id}">
+        <f:form modelAttribute="voie" method="post" action="/createNewWayPost/${voie.secteur_id}">
             <table class="lignesEspacees">
                 <tr>
-                    <!-- display for "nom secteur" -->
-                    <td> Nom du nouveau secteur:* </td>
-                    <td><f:input path="nomSecteur" type="text" id="nomSite" size="20" placeholder="obligatoire"  cssStyle=""/></td>
-                    <td><f:errors path="nomSecteur" cssClass="errors"/></td>
+                    <!-- display for "numero" -->
+                    <td> Numero de voie:* </td>
+                    <td><f:input path="numero" type="number" id="numero" size="20" placeholder="Obligatoire"  cssStyle=""/></td>
+                    <td><f:errors path="numero" cssClass="errors"/></td>
                 </tr>
                 <tr>
-                    <!-- display for "descriptionSecteur" -->
-                    <td>Description:</td>
-                    <td><f:input path="descriptionSecteur" type="text" id="descriptionSecteur" size="40" placeholder=""  cssStyle=""/></td>
-                    <td><f:errors path="descriptionSecteur" cssClass="errors"/></td>
+                    <!-- display for "nomvoie" -->
+                    <td>Nom de la voie:</td>
+                    <td><f:input path="nomVoie" type="text" id="nomVoie" size="20" placeholder=""  cssStyle=""/></td>
+                    <td><f:errors path="nomVoie" cssClass="errors"/></td>
                 </tr>
                 <tr>
-                    <!-- display for "acces" -->
-                    <td>Accés:</td>
-                    <td><f:input path="acces" type="text" id="acces" placeholder="" size="20"  cssStyle="" /></td>
-                    <td><f:errors path="acces" cssClass="errors" /></td>
+                    <!-- display for "tempdescalade" -->
+                    <td>Temp d'escalade:</td>
+                    <td><f:input path="tempDescalade" type="number" id="tempDescalade" placeholder="" size="20"  cssStyle="" /></td>
+                    <td><f:errors path="tempDescalade" cssClass="errors" /></td>
                 </tr>
                 <tr>
-                    <!-- display for "altitude base" -->
-                    <td>Altitude: </td>
-                    <td><f:input path="altitudeBase" type="text" id="altitudeBase" size="20" placeholder="" cssStyle=""/></td>
-                    <td><f:errors path="altitudeBase" cssClass="errors"/></td>
+                    <!-- display for "descriptionvoie" -->
+                    <td>Description: </td>
+                    <td><f:input path="descriptionVoie" type="text" id="descriptionVoie" size="20" placeholder="" cssStyle=""/></td>
+                    <td><f:errors path="descriptionVoie" cssClass="errors"/></td>
                 </tr>
                 <tr>
-                    <!-- display for "orientation" -->
-                    <td>Orientation: </td>
-                    <td><f:input path="orientation" type="text" id="orientation" placeholder="" cssStyle=""/></td>
-                    <td><f:errors path="orientation" cssClass="errors"/></td>
-                </tr>
-                <tr>
-                    <!-- display for "Type de roche" -->
-                    <td>Type de roche: </td>
-                    <td><f:input path="typeRoche" type="text" id="city" size="20" placeholder="" cssStyle=""/></td>
-                    <td><f:errors path="typeRoche" cssClass="errors"/></td>
-                </tr>
-                <tr>
-                    <!-- display for "Nombre de voies" -->
-                    <td>Nombre de voies:* </td>
-                    <td><f:input path="nombreDeVoies" type="number" id="nombredevoie" size="20" placeholder="obligatoire" cssStyle=""/></td>
-                    <td><f:errors path="nombreDeVoies" cssClass="errors"/></td>
+                    <!-- display for "longueur" -->
+                    <td>Longueur: </td>
+                    <td><f:input path="longueur" type="text" id="orientation" placeholder="" cssStyle=""/></td>
+                    <td><f:errors path="longueur" cssClass="errors"/></td>
                 </tr>
                 <tr>
                     <!-- display for "cotation" -->
-                    <td>Cotation:* </td>
-                    <td><f:input path="cotation" type="text" id="cotation" placeholder="obligatoire" cssStyle=""/></td>
+                    <td>Cotation: </td>
+                    <td><f:input path="cotation" type="text" id="city" size="20" placeholder="" cssStyle=""/></td>
                     <td><f:errors path="cotation" cssClass="errors"/></td>
                 </tr>
                 <tr>
-                    <!-- display for "url photo secteur" -->
-                    <td>Url photo du secteur (voies visible): </td>
-                    <td><f:input path="urlPhotoSecteur" type="url" id="orientation" placeholder="" cssStyle=""/></td>
-                    <td><f:errors path="urlPhotoSecteur" cssClass="errors"/></td>
+                    <!-- display for "Hauteur" -->
+                    <td>Hauteur: </td>
+                    <td><f:input path="hauteur" type="number" id="hauteur" size="20" placeholder="" cssStyle=""/></td>
+                    <td><f:errors path="hauteur" cssClass="errors"/></td>
                 </tr>
                 <tr>
-                    <!-- display for "coordonne gps" -->
-                    <td>Coordonné gps: </td>
-                    <td><f:input path="coordonneGps" type="text" id="coordonnegps" placeholder="" cssStyle=""/></td>
-                    <td><f:errors path="coordonneGps" cssClass="errors"/></td>
+                    <!-- display for "precisionEquipement" -->
+                    <td>Precision de l'équipement: </td>
+                    <td><f:input path="precisionEquipement" type="text" id="precisionEquipement" placeholder="" cssStyle=""/></td>
+                    <td><f:errors path="precisionEquipement" cssClass="errors"/></td>
+                </tr>
+                <tr>
+                    <!-- display for "ouvertureEtEquipement" -->
+                    <td>Ouverture et Equipement: </td>
+                    <td><f:input path="ouvertureEtEquipement" type="text" id="ouvertureEtEquipement" placeholder="" cssStyle=""/></td>
+                    <td><f:errors path="ouvertureEtEquipement" cssClass="errors"/></td>
+                </tr>
+                <tr>
+                    <!-- display for "date d'ouverture" -->
+                    <td>date d'ouverture: </td>
+                    <td><f:input path="dateOuverture" type="date" id="dateOuverture" placeholder="" cssStyle=""/></td>
+                    <td><f:errors path="dateOuverture" cssClass="errors"/></td>
+                </tr>
+                <tr>
+                    <!-- display for "status" -->
+                    <td>Status: </td>
+                    <td><f:input path="statut" type="text" id="status" placeholder="" cssStyle=""/></td>
+                    <td><f:errors path="statut" cssClass="errors"/></td>
                 </tr>
             </table>
             <p></p>

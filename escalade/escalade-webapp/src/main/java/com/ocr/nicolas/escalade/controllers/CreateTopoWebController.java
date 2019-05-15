@@ -7,6 +7,7 @@ import com.ocr.nicolas.escalade.business.contract.UserManager;
 import com.ocr.nicolas.escalade.model.bean.Secteur;
 import com.ocr.nicolas.escalade.model.bean.Site;
 import com.ocr.nicolas.escalade.model.bean.Utilisateur;
+import com.ocr.nicolas.escalade.model.bean.Voie;
 import org.springframework.stereotype.Controller;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -145,6 +146,33 @@ public class CreateTopoWebController {
             return "ComfirmationJsp/topoWebOk";
         }
     }
+
+    /**
+     * for display form for create new way
+     * @param secteur_id -> where new way will be create
+     * @param model -> model
+     * @param userSession -> user Session
+     * @return
+     */
+    @RequestMapping(value="/createNewWay/{secteur_id}", method = RequestMethod.GET)
+    public String createNewWay(@PathVariable Integer secteur_id, Model model, @SessionAttribute(value = "Utilisateur", required = false) Utilisateur userSession) {
+
+        // model for "log"
+        if (userSession != null) {
+            Voie way = new Voie();
+            way.setSecteur_id(secteur_id);
+
+            model.addAttribute("log", userSession.getEmail());
+            model.addAttribute("voie", way);
+
+
+            return "createNewWay";
+        } else {
+            return "ErrorJsp/forceLogin";
+        }
+    }
+
+
 
 
 

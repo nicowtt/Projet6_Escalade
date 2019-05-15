@@ -78,12 +78,11 @@
     <!-- display for write new climbing site -->
     <br>
     <div id="NewSite">
-        <h3>Enregistrement nouveau Site d'escalade:</h3>
+        <h3>Enregistrement d'un nouveau Site d'escalade:</h3>
 
         <p></p>
         <f:form modelAttribute="site" method="post" action="/createClimbingSite">
             <table class="lignesEspacees">
-                <h2>nouveau Site:</h2>
                 <tr>
                     <!-- display for "nomSite" -->
                     <td> Nom du nouveau site:* </td>

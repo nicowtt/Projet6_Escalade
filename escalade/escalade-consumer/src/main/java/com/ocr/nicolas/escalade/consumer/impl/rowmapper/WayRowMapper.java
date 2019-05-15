@@ -25,6 +25,7 @@ public class WayRowMapper implements RowMapper<Voie> {
         vVoie.setDateOuverture(resultSet.getString("dateouverture"));
         vVoie.setStatut(resultSet.getString("statut"));
         vVoie.setElement_id(resultSet.getInt("element_id"));
+        vVoie.setSecteur_id(resultSet.getInt("secteur_id"));
 
         //new bean Sector
         Secteur vSecteur = new Secteur(resultSet.getInt("secteur_id"));

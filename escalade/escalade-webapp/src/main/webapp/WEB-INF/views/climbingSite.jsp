@@ -116,6 +116,7 @@
         <th>Nombre de voies</th>
         <th>cotation</th>
         <th>Coordonnés GPS</th>
+        <th>Modification</th>
         <th colspan="2">Commentaires</th>
       </tr>
 
@@ -130,6 +131,7 @@
         <td>${s.nombreDeVoies}</td>
         <td>${s.cotation}</td>
         <td>${s.coordonneGps}</td>
+        <td><a href="/createNewWay/${s.id}">Ajouter une nouvelle voie</a></td>
         <td><a href="/commentRead/${s.element_id}">Voir</a></td>
         <td><a href="/commentWrite/${s.element_id}">Ecrire</a></td>
       </tr>
