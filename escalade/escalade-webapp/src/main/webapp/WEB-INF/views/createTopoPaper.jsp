@@ -43,7 +43,7 @@
             </ul>
 
             <!-- identification -->
-            <ul class="nav navbar-nav navbar-right" > <li class="dropdown">
+            <ul class="nav navbar-nav navbar-right"> <li class="dropdown">
 
                 <!-- if user is login -->
                 <c:if test="${!empty log}"><p style="color:white;"><c:out value="${log} "/>
@@ -76,36 +76,54 @@
     <!-- Body
     ================================================== -->
 
-    <!-- display site -->
+    <!-- display for write new climbing site -->
     <br>
-    <p>Topo papier possédé:</p>
+    <div id="NewTopoPapier">
+        <h3>Enregistrement d'un nouveau topo papier:</h3>
 
-    <div id="listerTopoPapier">
-        <table class="table">
-            <tr>
-                <th>Nom du topo</th>
-                <th>Site couvert</th>
-                <th>Description</th>
-                <th>Nom createur</th>
-                <th>Date de creation</th>
-                <th>Date de maj</th>
-                <th>Disponibilité</th>
-                <th>Modification</th>
-            </tr>
-            <c:forEach items="${topoPapier}" var="to">
+        <p></p>
+        <f:form modelAttribute="topopaper" method="post" action="/createTopoPaper/${topopaper.site_id}">
+            <table class="lignesEspacees">
                 <tr>
-                    <td>${to.nomTopo}</td>
-                    <td>${to.site.nomSite}</td>
-                    <td>${to.description}</td>
-                    <td>${to.nomCreateur}</td>
-                    <td>${to.dateCreation}</td>
-                    <td>${to.dateMaj}</td>
-                    <td>${to.disponibilite ? "oui" : "non"} </td>
-                    <td><a href="/availabilityTopoPapier/${to.id}">modifier la diponibilité </a></td>
+                    <!-- display for "nom secteur" -->
+                    <td> Nom du nouveau topo papier:* </td>
+                    <td><f:input path="nomTopo" type="text" id="nomtopo" size="20" placeholder="obligatoire"  cssStyle=""/></td>
+                    <td><f:errors path="nomTopo" cssClass="errors"/></td>
                 </tr>
-            </c:forEach>
-        </table>
+                <tr>
+                    <!-- display for "description" -->
+                    <td>Description:*</td>
+                    <td><f:input path="description" type="text" id="description" size="40" placeholder="obligatoire"  cssStyle=""/></td>
+                    <td><f:errors path="description" cssClass="errors"/></td>
+                </tr>
+                <tr>
+                    <!-- display for "creator name" -->
+                    <td>Nom de l'auteur:*</td>
+                    <td><f:input path="nomCreateur" type="text" id="nomCreateur" placeholder="obligatoire" size="20"  cssStyle="" /></td>
+                    <td><f:errors path="nomCreateur" cssClass="errors" /></td>
+                </tr>
+                <tr>
+                    <!-- display for creation date -->
+                    <td>Date du topo papier:* </td>
+                    <td><f:input path="dateCreation" type="date" id="dateCreation" size="20" placeholder="obligatoire" cssStyle=""/></td>
+                    <td><f:errors path="dateCreation" cssClass="errors"/></td>
+                </tr>
+                <tr>
+                    <!-- display for update date -->
+                    <td>Date de mise à jour du topo papier: </td>
+                    <td><f:input path="dateMaj" type="date" id="dateMaj" size="20" placeholder="" cssStyle=""/></td>
+                    <td><f:errors path="dateMaj" cssClass="errors"/></td>
+                </tr>
+            </table>
+            <p></p>
+            <p>(*) obligatoire</p>
+            <p></p>
+            <input type="submit" value="Envoyer">
+        </f:form>
     </div>
+
+
+
 </div>
 
 
@@ -120,7 +138,10 @@
 <%--<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>--%>
 <%--<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>--%>
 
-</html>
 
+
+
+</body>
+</html>
 
 
