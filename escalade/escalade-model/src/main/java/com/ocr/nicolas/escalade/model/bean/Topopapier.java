@@ -21,6 +21,7 @@ public class Topopapier {
 
     //bean
     private Element element;
+    private Site site;
 
     // =========== Constructeurs =========
     /**
@@ -96,6 +97,12 @@ public class Topopapier {
     }
     public void setElement(Element element) {
         this.element = element;
+    }
+    public Site getSite() {
+        return site;
+    }
+    public void setSite(Site site) {
+        this.site = site;
     }
     // ============== methodes ============
 }

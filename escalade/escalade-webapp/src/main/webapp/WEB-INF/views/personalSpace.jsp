@@ -84,6 +84,7 @@
         <table class="table">
             <tr>
                 <th>Nom du topo</th>
+                <th>Site couvert</th>
                 <th>Description</th>
                 <th>Nom createur</th>
                 <th>Date de creation</th>
@@ -94,6 +95,7 @@
             <c:forEach items="${topoPapier}" var="to">
                 <tr>
                     <td>${to.nomTopo}</td>
+                    <td>${to.site.nomSite}</td>
                     <td>${to.description}</td>
                     <td>${to.nomCreateur}</td>
                     <td>${to.dateCreation}</td>

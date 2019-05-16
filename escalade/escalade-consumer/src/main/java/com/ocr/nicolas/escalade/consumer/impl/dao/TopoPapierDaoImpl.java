@@ -36,6 +36,7 @@ public class TopoPapierDaoImpl extends AbstractDAoImpl implements TopoPapierDao 
         String vSQL
                 = "SELECT * FROM public.topopapier"
                 + " JOIN element ON element.id = topopapier.element_id"
+                + "  JOIN site on site.id = topopapier.site_id"
                 + "  WHERE utilisateur_id = :IdUser";
 
         NamedParameterJdbcTemplate vJdbcTemplate = new NamedParameterJdbcTemplate(getDatasource());
@@ -61,7 +62,8 @@ public class TopoPapierDaoImpl extends AbstractDAoImpl implements TopoPapierDao 
         String vSQL
                 = "SELECT * FROM public.topopapier"
                 + " JOIN element ON element.id = topopapier.element_id"
-                + "  WHERE topopapier.id = :pId";
+                + "  JOIN site on site.id = topopapier.site_id"
+                + "   WHERE topopapier.id = :pId";
 
         NamedParameterJdbcTemplate vJdbcTemplate = new NamedParameterJdbcTemplate(getDatasource());
         MapSqlParameterSource vParams = new MapSqlParameterSource();

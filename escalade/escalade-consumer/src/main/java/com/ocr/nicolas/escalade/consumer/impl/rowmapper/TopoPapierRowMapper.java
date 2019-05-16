@@ -2,6 +2,7 @@ package com.ocr.nicolas.escalade.consumer.impl.rowmapper;
 
 
 import com.ocr.nicolas.escalade.model.bean.Element;
+import com.ocr.nicolas.escalade.model.bean.Site;
 import com.ocr.nicolas.escalade.model.bean.Topopapier;
 import org.springframework.jdbc.core.RowMapper;
 
@@ -26,7 +27,14 @@ public class TopoPapierRowMapper implements RowMapper<Topopapier> {
         Element vElement = new Element(resultSet.getInt("id"));
         vElement.setUtilisateur_id(resultSet.getInt("utilisateur_id"));
 
-        //bean Element -> variable du ben "TopoPapier"
+        //new bean "site"
+        Site vSite = new Site(resultSet.getInt("id"));
+        vSite.setNomSite(resultSet.getString("nomsite"));
+
+        //-> add if needed
+
+        //set bean
+        vTopoPapier.setSite(vSite);
         vTopoPapier.setElement(vElement);
 
         return vTopoPapier;
