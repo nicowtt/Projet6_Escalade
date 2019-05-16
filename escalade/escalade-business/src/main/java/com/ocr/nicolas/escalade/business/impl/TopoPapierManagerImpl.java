@@ -1,8 +1,11 @@
 package com.ocr.nicolas.escalade.business.impl;
 
 import com.ocr.nicolas.escalade.business.contract.TopoPapierManager;
+import com.ocr.nicolas.escalade.consumer.contract.dao.ElementDao;
 import com.ocr.nicolas.escalade.consumer.contract.dao.TopoPapierDao;
+import com.ocr.nicolas.escalade.model.bean.Element;
 import com.ocr.nicolas.escalade.model.bean.Topopapier;
+import com.ocr.nicolas.escalade.model.exception.SectorException;
 import com.ocr.nicolas.escalade.model.exception.TopoPapierException;
 import org.springframework.transaction.TransactionStatus;
 import org.springframework.transaction.support.TransactionCallbackWithoutResult;
@@ -19,6 +22,9 @@ public class TopoPapierManagerImpl extends AbstractManager implements TopoPapier
 
     @Inject
     private TopoPapierDao topoPapierDao;
+
+    @Inject
+    private ElementDao elementDao;
 
 
     /**
@@ -82,5 +88,35 @@ public class TopoPapierManagerImpl extends AbstractManager implements TopoPapier
             }
         });
 
+    }
+
+    /**
+     * For write new element and new topopapier on bdd
+     * @param pTopopapier -> new bean topopapier
+     * @param pUserId -> user ID
+     */
+    @Override
+    public void writeNewTopoPapier(Topopapier pTopopapier, int pUserId) {
+        final Element[] newElementOnBdd = {new Element()};
+
+        TransactionTemplate vTransactionTemplate = new TransactionTemplate(getPlatformTransactionManager());
+
+        vTransactionTemplate.execute(new TransactionCallbackWithoutResult() {
+            @Override
+            protected void doInTransactionWithoutResult(TransactionStatus transactionStatus) {
+                //creating new element
+                elementDao.writeNewElement(pUserId);
+                //get this new element
+                newElementOnBdd[0] = elementDao.getLastElement();
+                //set element_id in bean "topopapier" -> pTopopapier
+                pTopopapier.setElement_id(newElementOnBdd[0].getId());
+                //finaly writing "topopapier" on BDD
+                try {
+                    topoPapierDao.writeNewTopoPapier(pTopopapier);
+                } catch (TopoPapierException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
     }
 }

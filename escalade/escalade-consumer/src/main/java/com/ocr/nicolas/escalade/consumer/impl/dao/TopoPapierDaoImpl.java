@@ -11,6 +11,7 @@ import com.ocr.nicolas.escalade.model.exception.TopoPapierException;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.dao.DataAccessException;
+import org.springframework.dao.DuplicateKeyException;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
@@ -102,6 +103,37 @@ public class TopoPapierDaoImpl extends AbstractDAoImpl implements TopoPapierDao 
             logger.debug(" problème accés BDD");
             //return pUtilisateur;
             throw new TopoPapierException(" problème accés BDD");
+        }
+    }
+
+    /**
+     * For write new topo papier on BDD
+     * @param pTopopapier -> bean in
+     * @throws TopoPapierException
+     */
+    @Override
+    public void writeNewTopoPapier(Topopapier pTopopapier) throws TopoPapierException {
+        String vSQL
+                = "INSERT INTO public.topopapier (nomtopo, description, nomcreateur, datecreation, datemaj, disponibilite, site_id, element_id)"
+                + " VALUES (:nomtopo, :description, :nomcreateur, :datecreation, :datemaj, :disponibilite, :site_id, :element_id)";
+
+        NamedParameterJdbcTemplate vJvdcTemplate = new NamedParameterJdbcTemplate(getDatasource());
+        MapSqlParameterSource vParams = new MapSqlParameterSource();
+        vParams.addValue("nomtopo", pTopopapier.getNomTopo(), Types.VARCHAR);
+        vParams.addValue("description", pTopopapier.getDescription(), Types.VARCHAR);
+        vParams.addValue("nomcreateur", pTopopapier.getNomCreateur(), Types.VARCHAR);
+        vParams.addValue("datecreation", pTopopapier.getDateCreation(), Types.VARCHAR);
+        vParams.addValue("datemaj", pTopopapier.getDateMaj(), Types.VARCHAR);
+        vParams.addValue("disponibilite", pTopopapier.isDisponibilite(), Types.BOOLEAN);
+        vParams.addValue("site_id", pTopopapier.getSite_id(), Types.INTEGER);
+        vParams.addValue("element_id", pTopopapier.getElement_id(), Types.INTEGER);
+
+        try {
+            vJvdcTemplate.update(vSQL,vParams);
+        } catch (DuplicateKeyException vEx) {
+            logger.debug("Le topo papier exite déjà !");
+            //return for user
+            throw new TopoPapierException("Le topo papier existe déja !");
         }
     }
 }

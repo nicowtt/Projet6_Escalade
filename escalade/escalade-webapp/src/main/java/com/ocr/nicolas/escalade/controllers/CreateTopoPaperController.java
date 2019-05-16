@@ -2,6 +2,8 @@ package com.ocr.nicolas.escalade.controllers;
 
 
 
+import com.ocr.nicolas.escalade.business.contract.TopoPapierManager;
+import com.ocr.nicolas.escalade.business.contract.UserManager;
 import com.ocr.nicolas.escalade.model.bean.Topopapier;
 import com.ocr.nicolas.escalade.model.bean.Utilisateur;
 import org.apache.commons.logging.Log;
@@ -14,11 +16,18 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttribute;
 
+import javax.inject.Inject;
 import javax.validation.Valid;
 
 
 @Controller
 public class CreateTopoPaperController {
+
+    @Inject
+    private TopoPapierManager topoPapierManager;
+
+    @Inject
+    private UserManager userManager;
 
     static final Log logger = LogFactory.getLog(CreateTopoPaperController.class);
 
@@ -52,6 +61,8 @@ public class CreateTopoPaperController {
     @RequestMapping(value = "/createTopoPaper/{siteId}", method = RequestMethod.POST)
     public String createTopoPaper(@Valid Topopapier newTopoPaper, BindingResult bindingResult, @PathVariable Integer siteId, Model model, @SessionAttribute(value = "Utilisateur", required = false) Utilisateur userSession) {
 
+        Utilisateur userOnBdd = new Utilisateur();
+
         if (bindingResult.hasErrors()) {
             model.addAttribute("topopaper", newTopoPaper);
             //set site_id
@@ -64,6 +75,16 @@ public class CreateTopoPaperController {
 
             return "/createTopoPaper";
         } else {
+            //search for userId
+            userOnBdd = userManager.getUserBean(userSession.getEmail());
+            //set site_id
+            newTopoPaper.setSite_id(siteId);
+            //todo probleme de validation
+            //For write new element and new "topopapier"
+            topoPapierManager.writeNewTopoPapier(newTopoPaper, userOnBdd.getId());
+
+            // for "log" session
+            model.addAttribute("log", userSession.getEmail());
 
             return "ComfirmationJsp/topoWebOk";
         }
