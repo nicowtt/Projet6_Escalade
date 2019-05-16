@@ -7,6 +7,7 @@ public class Reservation {
 
     // ============ Attributs ============
     private Integer id;
+    private boolean statusReservation;
     private Integer topoPapier_id;
     private Integer utilisateur_id;
 
@@ -31,6 +32,12 @@ public class Reservation {
     public void setId(Integer id) {
         this.id = id;
     }
+    public boolean isStatusReservation() {
+        return statusReservation;
+    }
+    public void setStatusReservation(boolean statusReservation) {
+        this.statusReservation = statusReservation;
+    }
     public Integer getTopoPapier_id() {
         return topoPapier_id;
     }
@@ -43,7 +50,6 @@ public class Reservation {
     public void setUtilisateur_id(Integer utilisateur_id) {
         this.utilisateur_id = utilisateur_id;
     }
-
 
     // ============= methodes =============
 }
