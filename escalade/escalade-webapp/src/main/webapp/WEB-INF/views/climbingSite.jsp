@@ -39,7 +39,7 @@
       <ul class="nav navbar-nav">
         <li><a href="/searchSite">Recherche</a></li>
         <li><a href="/createClimbingSite">Enregistrer un nouveau site d'escalade</a></li>
-        <li><a href="/echangeTopo">Echange de Topo</a></li>
+        <li><a href="/exchangeTopoPapier">Echange de Topo papier</a></li>
       </ul>
 
       <!-- identification -->
@@ -78,7 +78,7 @@
 
     <!-- Climbing site title -->
     <c:forEach items="${site}" var="si">
-      <c:if test="${si.officelSite}"><img src="https://image.noelshack.com/fichiers/2019/19/4/1557415844-officiel-logo-les-amis-de-lescalade-vide.png" alt="logo escalade officiel" style="width:191px;height:92 px;border:0;"></c:if>
+      <c:if test="${si.officelSite}"><img src="https://image.noelshack.com/fichiers/2019/19/4/1557415844-officiel-logo-les-amis-de-lescalade-vide.png" alt="logo escalade officiel" style="width:191px;height:92px;border:0;"></c:if>
       <%--<b>TAG: Site Officiel Les amis de l'esclade !</b>--%>
       <p></p>
     <h1><c:out value="${si.nomSite}" /></h1>

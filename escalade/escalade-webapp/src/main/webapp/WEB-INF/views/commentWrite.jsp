@@ -42,7 +42,7 @@
                 <ul class="nav navbar-nav">
                     <li><a href="/searchSite">Recherche</a></li>
                     <li><a href="/createClimbingSite">Enregistrer un nouveau site d'escalade</a></li>
-                    <li><a href="/echangeTopo">Echange de Topo</a></li>
+                    <li><a href="/exchangeTopoPapier">Echange de Topo papier</a></li>
                 </ul>
 
                 <!-- identification -->
