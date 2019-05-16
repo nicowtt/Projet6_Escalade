@@ -119,4 +119,23 @@ public class TopoPapierManagerImpl extends AbstractManager implements TopoPapier
             }
         });
     }
+
+    /**
+     * For get all paper topo available
+     * @return
+     */
+    @Override
+    public List<Topopapier> getListAllTopoPapierAvailable() {
+        TransactionTemplate vTransactionTemplate = new TransactionTemplate(getPlatformTransactionManager());
+
+        List<Topopapier> vTopoPapierList = vTransactionTemplate.execute(transactionStatus -> {
+
+            List<Topopapier> vTopoPapierListTransaction = new ArrayList<>();
+            vTopoPapierListTransaction = topoPapierDao.getListAllTopoPapierAvailable();
+
+            return vTopoPapierListTransaction;
+
+        });
+        return  vTopoPapierList;
+    }
 }

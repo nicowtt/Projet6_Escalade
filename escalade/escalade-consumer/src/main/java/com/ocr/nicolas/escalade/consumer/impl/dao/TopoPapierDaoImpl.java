@@ -5,7 +5,9 @@ import com.ocr.nicolas.escalade.consumer.contract.dao.TopoPapierDao;
 import javax.inject.Named;
 
 
+import com.ocr.nicolas.escalade.consumer.impl.rowmapper.SiteRowMapper;
 import com.ocr.nicolas.escalade.consumer.impl.rowmapper.TopoPapierRowMapper;
+import com.ocr.nicolas.escalade.model.bean.Site;
 import com.ocr.nicolas.escalade.model.bean.Topopapier;
 import com.ocr.nicolas.escalade.model.exception.TopoPapierException;
 import org.apache.commons.logging.Log;
@@ -135,5 +137,26 @@ public class TopoPapierDaoImpl extends AbstractDAoImpl implements TopoPapierDao 
             //return for user
             throw new TopoPapierException("Le topo papier existe déja !");
         }
+    }
+
+    /**
+     * For get all paper topo available
+     * @return -> list of topo
+     */
+    @Override
+    public List<Topopapier> getListAllTopoPapierAvailable() {
+        String vSQL
+                = "SELECT * FROM public.topopapier"
+                + " JOIN element ON element.id = topopapier.element_id"
+                + "  JOIN site on site.id = topopapier.site_id"
+                + "    WHERE disponibilite = true";
+
+        NamedParameterJdbcTemplate vJdbcTemplate = new NamedParameterJdbcTemplate(getDatasource());
+
+        RowMapper<Topopapier> vRowMapper = new TopoPapierRowMapper();
+
+        List<Topopapier> vListTopoPapier = vJdbcTemplate.query(vSQL, vRowMapper);
+
+        return vListTopoPapier;
     }
 }

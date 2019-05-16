@@ -77,36 +77,35 @@
     ================================================== -->
 
     <!-- display site -->
-    <p>Test</p>
-    <%--<br>--%>
-    <%--<p>Topo papier possédé:</p>--%>
+    <br>
+    <p>Topo papier disponible:</p>
 
-    <%--<div id="listerTopoPapier">--%>
-        <%--<table class="table">--%>
-            <%--<tr>--%>
-                <%--<th>Nom du topo</th>--%>
-                <%--<th>Site couvert</th>--%>
-                <%--<th>Description</th>--%>
-                <%--<th>Nom createur</th>--%>
-                <%--<th>Date de creation</th>--%>
-                <%--<th>Date de maj</th>--%>
-                <%--<th>Disponibilité</th>--%>
-                <%--<th>Modification</th>--%>
-            <%--</tr>--%>
-            <%--<c:forEach items="${topoPapier}" var="to">--%>
-                <%--<tr>--%>
-                    <%--<td>${to.nomTopo}</td>--%>
-                    <%--<td>${to.site.nomSite}</td>--%>
-                    <%--<td>${to.description}</td>--%>
-                    <%--<td>${to.nomCreateur}</td>--%>
-                    <%--<td>${to.dateCreation}</td>--%>
-                    <%--<td>${to.dateMaj}</td>--%>
-                    <%--<td>${to.disponibilite ? "oui" : "non"} </td>--%>
-                    <%--<td><a href="/availabilityTopoPapier/${to.id}">modifier la diponibilité </a></td>--%>
-                <%--</tr>--%>
-            <%--</c:forEach>--%>
-        <%--</table>--%>
-    <%--</div>--%>
+    <div id="listerTopoPapier">
+        <table class="table">
+            <tr>
+                <th>Nom du topo</th>
+                <th>Site couvert</th>
+                <th>Description</th>
+                <th>Nom createur</th>
+                <th>Date de creation</th>
+                <th>Date de maj</th>
+                <th>Disponibilité</th>
+                <th>Modification</th>
+            </tr>
+            <c:forEach items="${topoPapier}" var="to">
+                <tr>
+                    <td>${to.nomTopo}</td>
+                    <td>${to.site.nomSite}</td>
+                    <td>${to.description}</td>
+                    <td>${to.nomCreateur}</td>
+                    <td>${to.dateCreation}</td>
+                    <td>${to.dateMaj}</td>
+                    <td>${to.disponibilite ? "oui" : "non"} </td>
+                    <td><a href="/availabilityTopoPapier/${to.id}">faire un demande de reservation </a></td>
+                </tr>
+            </c:forEach>
+        </table>
+    </div>
 </div>
 
 
