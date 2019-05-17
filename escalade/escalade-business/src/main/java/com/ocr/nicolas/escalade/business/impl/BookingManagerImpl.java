@@ -2,6 +2,7 @@ package com.ocr.nicolas.escalade.business.impl;
 
 import com.ocr.nicolas.escalade.business.contract.BookingManager;
 import com.ocr.nicolas.escalade.consumer.contract.dao.BookingDao;
+import com.ocr.nicolas.escalade.model.bean.Commentaire;
 import com.ocr.nicolas.escalade.model.bean.Reservation;
 import com.ocr.nicolas.escalade.model.exception.BookingException;
 import org.springframework.transaction.TransactionStatus;
@@ -10,6 +11,7 @@ import org.springframework.transaction.support.TransactionTemplate;
 
 import javax.inject.Inject;
 import javax.inject.Named;
+import java.util.List;
 
 @Named
 public class BookingManagerImpl extends AbstractManager implements BookingManager {
@@ -37,6 +39,26 @@ public class BookingManagerImpl extends AbstractManager implements BookingManage
                 }
             }
         });
+    }
+
+    /**
+     * For get list of asking booking in progress
+     *
+     * @param pUserId
+     * @return
+     */
+    @Override
+    public List<Reservation> getListBookingAskForOneUser(int pUserId) {
+        TransactionTemplate vTransactionTemplate = new TransactionTemplate(getPlatformTransactionManager());
+
+        List<Reservation> vListBooking = vTransactionTemplate.execute(transactionStatus -> {
+
+            List<Reservation> vListBookingTransaction = null;
+            vListBookingTransaction = bookingDao.getListBookingAskForOneUser(pUserId);
+
+            return  vListBookingTransaction;
+        });
+        return  vListBooking;
     }
 
 

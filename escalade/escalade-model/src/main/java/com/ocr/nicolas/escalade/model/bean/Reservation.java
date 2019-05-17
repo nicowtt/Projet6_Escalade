@@ -11,6 +11,9 @@ public class Reservation {
     private Integer topoPapier_id;
     private Integer utilisateur_id;
 
+    //bean topoPapier
+    private Topopapier topopapier;
+
     // ============ Constructeurs =========
     /**
      * Constructeur par defaut.
@@ -50,6 +53,11 @@ public class Reservation {
     public void setUtilisateur_id(Integer utilisateur_id) {
         this.utilisateur_id = utilisateur_id;
     }
-
+    public Topopapier getTopopapier() {
+        return topopapier;
+    }
+    public void setTopopapier(Topopapier topopapier) {
+        this.topopapier = topopapier;
+    }
     // ============= methodes =============
 }

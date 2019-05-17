@@ -1,5 +1,6 @@
 package com.ocr.nicolas.escalade.controllers;
 
+import com.ocr.nicolas.escalade.business.contract.BookingManager;
 import com.ocr.nicolas.escalade.business.contract.TopoPapierManager;
 import com.ocr.nicolas.escalade.business.contract.UserManager;
 import com.ocr.nicolas.escalade.business.impl.TopoPapierManagerImpl;
@@ -27,6 +28,9 @@ public class PersonalSpaceController {
     @Inject
     private UserManager userManager;
 
+    @Inject
+    private BookingManager bookingManager;
+
 
     @RequestMapping(value="/personalSpace", method = RequestMethod.GET)
     public String personalSpace(Model model, @SessionAttribute(value = "Utilisateur", required = false) Utilisateur userSession) {
@@ -42,6 +46,9 @@ public class PersonalSpaceController {
 
             //display user "topoPapier"
             model.addAttribute("topoPapier", topoPapierManager.getListTopoPapier(userOnBdd.getId()));
+
+            // display ask booking
+            model.addAttribute("reservation", bookingManager.getListBookingAskForOneUser(userOnBdd.getId()));
 
             return "personalSpace";
         } else {

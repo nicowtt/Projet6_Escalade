@@ -106,6 +106,19 @@
             </c:forEach>
         </table>
     </div>
+
+    <div id="TopoPapierReserveration">
+        <p>Demande de reservation en cours:</p>
+        <table class="table">
+            <tr>
+                <th>Nom du topo</th>
+            </tr>
+        <c:forEach items = "${reservation}" var="re">
+            <tr>
+                <td>${re.topopapier.nomTopo}</td>
+            </tr>
+        </c:forEach>
+    </div>
 </div>
 
 
