@@ -1,6 +1,7 @@
 package com.ocr.nicolas.escalade.business.impl;
 
 import com.ocr.nicolas.escalade.business.contract.TopoPapierManager;
+import com.ocr.nicolas.escalade.consumer.contract.dao.BookingDao;
 import com.ocr.nicolas.escalade.consumer.contract.dao.ElementDao;
 import com.ocr.nicolas.escalade.consumer.contract.dao.TopoPapierDao;
 import com.ocr.nicolas.escalade.model.bean.Element;

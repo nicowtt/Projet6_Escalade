@@ -50,8 +50,8 @@ public class PersonalSpaceController {
             // display ask booking in progress
             model.addAttribute("reservationEnvoie", bookingManager.getListBookingAskForOneUser(userOnBdd.getId()));
 
-            //todo display for display booking (reception)
-            //model.addAttribute("reservationReception", )
+            // display request booking (reception in french) only for user in session and if he have this paper topo and availability is ok and booking status on !
+            model.addAttribute("reservationReception", bookingManager.getListAllTopoPapierWithBookingRequest(userOnBdd.getId()));
 
             return "personalSpace";
         } else {

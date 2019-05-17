@@ -24,7 +24,6 @@ public class BookingDaoImpl extends  AbstractDAoImpl implements BookingDao {
     /**
      * For write new booking of paper topo
      * @param pReservation -> bbooking bean
-     * @param pUserId -> user id
      * @throws BookingException
      */
     @Override
@@ -78,22 +77,30 @@ public class BookingDaoImpl extends  AbstractDAoImpl implements BookingDao {
 
 
     /**
-     * fors ask a list with bokking in progress
+     * For have booking request (with only askBooking(true) and booking status (true) and availability (true)
      *
-     * @return -> List of booking in progress
+     * @param pUserId -> user session
+     * @return
      */
     @Override
-    public List<Reservation> getListBookingInProgress() {
+    public List<Reservation> getListAllTopoPapierWithBookingRequest(int pUserId) {
         String vSQL
                 = "SELECT * FROM public.reservation"
                 + " JOIN topopapier ON reservation.topopapier_id = topopapier.id"
-                + "  WHERE statusreservation = true";
+                + "  JOIN element ON topopapier.element_id = element.id"
+                + "   WHERE statusreservation = true"
+                + "    AND demandereservation = true"
+                + "     AND disponibilite = true"
+                + "      AND element.utilisateur_id = :utilisateur_id";
+
 
         NamedParameterJdbcTemplate vJdbcTemplate = new NamedParameterJdbcTemplate(getDatasource());
+        MapSqlParameterSource vParams = new MapSqlParameterSource();
+        vParams.addValue("utilisateur_id", pUserId, Types.INTEGER);
 
         RowMapper<Reservation> vRowMapperBooking = new BookingRowMapper();
 
-        List<Reservation> vListBooking = vJdbcTemplate.query(vSQL,vRowMapperBooking);
+        List<Reservation> vListBooking = vJdbcTemplate.query(vSQL, vParams, vRowMapperBooking);
 
         return vListBooking;
 

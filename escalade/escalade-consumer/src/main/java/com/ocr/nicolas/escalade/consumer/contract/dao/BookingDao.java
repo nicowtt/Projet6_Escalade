@@ -9,5 +9,5 @@ public interface BookingDao {
 
     void writeBooking(Reservation pReservation) throws BookingException;
     List<Reservation> getListBookingAskForOneUser(int pUserId);
-    List<Reservation> getListBookingInProgress();
+    List<Reservation> getListAllTopoPapierWithBookingRequest(int pUserId);
 }

@@ -75,35 +75,24 @@ public class BookingManagerImpl extends AbstractManager implements BookingManage
         return  vListBooking;
     }
 
+    /**
+     * For get List with booking request true
+     *
+     * @return
+     */
+    @Override
+    public List<Reservation> getListAllTopoPapierWithBookingRequest(int pUserId) {
 
-//    @Override
-//    public List<Reservation> getListReceptionBookingForOneUser(int pUserId) {
-//        TransactionTemplate vTransactionTemplate = new TransactionTemplate(getPlatformTransactionManager());
-//
-//        List<Reservation> vListBookingReception = vTransactionTemplate.execute(transactionStatus -> {
-//
-//            int topoPapier_idReservation;
-//
-//
-//            // je vais chercher la liste des topo par user
-//            List<Topopapier> vListTopoPapierTransaction = null;
-//            vListTopoPapierTransaction = topoPapierDao.getListTopoPapier(pUserId);
-//
-//            // je vais chercher la liste des reservation en cours
-//            List<Reservation> vListBookingInProgressTransaction = null;
-//            vListBookingInProgressTransaction = bookingDao.getListBookingInProgress();
-//
-//            //todo
-//            // je prend la liste des topo que possede l'utilisateur
-//            // pour chaque topo je parcour la liste des reservation
-//            //
-//
-//
-//
-//
-//            }
-//        })
-//    }
+        TransactionTemplate vTransactionTemplate = new TransactionTemplate(getPlatformTransactionManager());
 
+        List<Reservation> vListBooking = vTransactionTemplate.execute(transactionStatus -> {
+
+            List<Reservation> vListBookingTransaction = null;
+            vListBookingTransaction = bookingDao.getListAllTopoPapierWithBookingRequest(pUserId);
+
+            return vListBookingTransaction;
+        });
+        return vListBooking;
+    }
 
 }

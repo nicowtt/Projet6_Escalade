@@ -111,7 +111,7 @@
         <p>Demande de reservation en cours:</p>
         <table class="table">
             <tr>
-                <th>Nom du demandeur</th>
+                <th>id du demandeur</th>
                 <th>Nom du topo</th>
             </tr>
         <c:forEach items = "${reservationEnvoie}" var="re">
@@ -127,7 +127,7 @@
         <p>reception de reservation en cours:</p>
         <table class="table">
             <tr>
-                <th>Nom du demandeur</th>
+                <th>id du demandeur</th>
                 <th>Nom du topo</th>
             </tr>
             <c:forEach items = "${reservationReception}" var="re">
