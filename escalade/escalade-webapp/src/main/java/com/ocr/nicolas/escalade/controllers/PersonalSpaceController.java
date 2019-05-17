@@ -47,8 +47,11 @@ public class PersonalSpaceController {
             //display user "topoPapier"
             model.addAttribute("topoPapier", topoPapierManager.getListTopoPapier(userOnBdd.getId()));
 
-            // display ask booking
-            model.addAttribute("reservation", bookingManager.getListBookingAskForOneUser(userOnBdd.getId()));
+            // display ask booking in progress
+            model.addAttribute("reservationEnvoie", bookingManager.getListBookingAskForOneUser(userOnBdd.getId()));
+
+            //todo display for display booking (reception)
+            //model.addAttribute("reservationReception", )
 
             return "personalSpace";
         } else {

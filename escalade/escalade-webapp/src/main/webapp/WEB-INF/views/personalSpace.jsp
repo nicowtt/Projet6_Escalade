@@ -107,17 +107,36 @@
         </table>
     </div>
 
-    <div id="TopoPapierReserveration">
+    <div id="TopoPapierDemandeReserveration">
         <p>Demande de reservation en cours:</p>
         <table class="table">
             <tr>
+                <th>Nom du demandeur</th>
                 <th>Nom du topo</th>
             </tr>
-        <c:forEach items = "${reservation}" var="re">
+        <c:forEach items = "${reservationEnvoie}" var="re">
             <tr>
+                <td>${re.utilisateur_id}</td>
                 <td>${re.topopapier.nomTopo}</td>
             </tr>
         </c:forEach>
+        </table>
+
+
+    <div id="TopoPapierReceptionReserveration">
+        <p>reception de reservation en cours:</p>
+        <table class="table">
+            <tr>
+                <th>Nom du demandeur</th>
+                <th>Nom du topo</th>
+            </tr>
+            <c:forEach items = "${reservationReception}" var="re">
+            <tr>
+                <td>${re.utilisateur_id}</td>
+                <td>${re.topopapier.nomTopo}</td>
+            </tr>
+            </c:forEach>
+        </table>
     </div>
 </div>
 

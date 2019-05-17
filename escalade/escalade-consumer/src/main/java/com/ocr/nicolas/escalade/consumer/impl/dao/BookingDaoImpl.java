@@ -1,15 +1,10 @@
 package com.ocr.nicolas.escalade.consumer.impl.dao;
 
 import com.ocr.nicolas.escalade.consumer.impl.rowmapper.BookingRowMapper;
-import com.ocr.nicolas.escalade.consumer.impl.rowmapper.CommentRowMapper;
-import com.ocr.nicolas.escalade.model.bean.Commentaire;
 import com.ocr.nicolas.escalade.model.bean.Reservation;
-import com.ocr.nicolas.escalade.model.bean.Topopapier;
 import com.ocr.nicolas.escalade.model.exception.BookingException;
-import com.ocr.nicolas.escalade.model.exception.SectorException;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-
 import com.ocr.nicolas.escalade.consumer.contract.dao.BookingDao;
 import org.springframework.dao.DuplicateKeyException;
 import org.springframework.jdbc.core.RowMapper;
@@ -79,6 +74,29 @@ public class BookingDaoImpl extends  AbstractDAoImpl implements BookingDao {
         List<Reservation> vListBooking = vJdbcTemplate.query(vSQL, vParams, vRowMapperBooking);
 
         return  vListBooking;
+    }
+
+
+    /**
+     * fors ask a list with bokking in progress
+     *
+     * @return -> List of booking in progress
+     */
+    @Override
+    public List<Reservation> getListBookingInProgress() {
+        String vSQL
+                = "SELECT * FROM public.reservation"
+                + " JOIN topopapier ON reservation.topopapier_id = topopapier.id"
+                + "  WHERE statusreservation = true";
+
+        NamedParameterJdbcTemplate vJdbcTemplate = new NamedParameterJdbcTemplate(getDatasource());
+
+        RowMapper<Reservation> vRowMapperBooking = new BookingRowMapper();
+
+        List<Reservation> vListBooking = vJdbcTemplate.query(vSQL,vRowMapperBooking);
+
+        return vListBooking;
+
     }
 
 

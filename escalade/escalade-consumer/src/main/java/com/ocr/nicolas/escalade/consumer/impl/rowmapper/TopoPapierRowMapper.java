@@ -20,6 +20,7 @@ public class TopoPapierRowMapper implements RowMapper<Topopapier> {
         vTopoPapier.setDateCreation(resultSet.getString("datecreation"));
         vTopoPapier.setDateMaj(resultSet.getString("datemaj"));
         vTopoPapier.setDisponibilite(resultSet.getBoolean("disponibilite"));
+        vTopoPapier.setDemandeReservation(resultSet.getBoolean("demandereservation"));
         vTopoPapier.setSite_id(resultSet.getInt("site_id"));
         vTopoPapier.setElement_id(resultSet.getInt("element_id"));
 

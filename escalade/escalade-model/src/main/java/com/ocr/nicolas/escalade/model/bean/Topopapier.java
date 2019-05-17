@@ -19,6 +19,7 @@ public class Topopapier {
     private String dateCreation;
     private String dateMaj;
     private boolean disponibilite;
+    private boolean demandeReservation;
     private Integer site_id;
     private Integer element_id;
 
@@ -87,6 +88,12 @@ public class Topopapier {
     }
     public void setDisponibilite(boolean disponibilite) {
         this.disponibilite = disponibilite;
+    }
+    public boolean isDemandeReservation() {
+        return demandeReservation;
+    }
+    public void setDemandeReservation(boolean demandeReservation) {
+        this.demandeReservation = demandeReservation;
     }
     public Integer getSite_id() {
         return site_id;

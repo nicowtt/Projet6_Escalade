@@ -78,7 +78,7 @@
 
     <!-- display site -->
     <p></p>
-    <p><b>Reservation Ok.</b></p>
+    <p><b>Demande de reservation Ok.</b></p>
 
 </div>
 

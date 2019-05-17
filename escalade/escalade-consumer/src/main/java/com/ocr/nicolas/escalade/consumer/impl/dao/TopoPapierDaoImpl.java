@@ -5,9 +5,8 @@ import com.ocr.nicolas.escalade.consumer.contract.dao.TopoPapierDao;
 import javax.inject.Named;
 
 
-import com.ocr.nicolas.escalade.consumer.impl.rowmapper.SiteRowMapper;
+
 import com.ocr.nicolas.escalade.consumer.impl.rowmapper.TopoPapierRowMapper;
-import com.ocr.nicolas.escalade.model.bean.Site;
 import com.ocr.nicolas.escalade.model.bean.Topopapier;
 import com.ocr.nicolas.escalade.model.exception.TopoPapierException;
 import org.apache.commons.logging.Log;
@@ -116,8 +115,8 @@ public class TopoPapierDaoImpl extends AbstractDAoImpl implements TopoPapierDao 
     @Override
     public void writeNewTopoPapier(Topopapier pTopopapier) throws TopoPapierException {
         String vSQL
-                = "INSERT INTO public.topopapier (nomtopo, description, nomcreateur, datecreation, datemaj, disponibilite, site_id, element_id)"
-                + " VALUES (:nomtopo, :description, :nomcreateur, :datecreation, :datemaj, :disponibilite, :site_id, :element_id)";
+                = "INSERT INTO public.topopapier (nomtopo, description, nomcreateur, datecreation, datemaj, disponibilite, demandereservation, site_id, element_id)"
+                + " VALUES (:nomtopo, :description, :nomcreateur, :datecreation, :datemaj, :disponibilite, :demandereservation, :site_id, :element_id)";
 
         NamedParameterJdbcTemplate vJvdcTemplate = new NamedParameterJdbcTemplate(getDatasource());
         MapSqlParameterSource vParams = new MapSqlParameterSource();
@@ -127,6 +126,7 @@ public class TopoPapierDaoImpl extends AbstractDAoImpl implements TopoPapierDao 
         vParams.addValue("datecreation", pTopopapier.getDateCreation(), Types.VARCHAR);
         vParams.addValue("datemaj", pTopopapier.getDateMaj(), Types.VARCHAR);
         vParams.addValue("disponibilite", pTopopapier.isDisponibilite(), Types.BOOLEAN);
+        vParams.addValue("demandereservation", pTopopapier.isDemandeReservation(), Types.BOOLEAN);
         vParams.addValue("site_id", pTopopapier.getSite_id(), Types.INTEGER);
         vParams.addValue("element_id", pTopopapier.getElement_id(), Types.INTEGER);
 
@@ -158,5 +158,21 @@ public class TopoPapierDaoImpl extends AbstractDAoImpl implements TopoPapierDao 
         List<Topopapier> vListTopoPapier = vJdbcTemplate.query(vSQL, vRowMapper);
 
         return vListTopoPapier;
+    }
+
+    @Override
+    public void changeBookingRequest(Topopapier pTopoPapier, int pElementId) {
+        String vSQL
+                = "UPDATE topopapier"
+                + " SET demandereservation = :demandereservation"
+                + "  WHERE id = :id";
+
+        NamedParameterJdbcTemplate vJdbcTemplate = new NamedParameterJdbcTemplate(getDatasource());
+        MapSqlParameterSource vParams = new MapSqlParameterSource();
+        vParams.addValue("demandereservation", pTopoPapier.isDemandeReservation(), Types.BOOLEAN);
+        vParams.addValue("id", pElementId, Types.INTEGER);
+
+        vJdbcTemplate.update(vSQL, vParams);
+
     }
 }

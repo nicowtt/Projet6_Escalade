@@ -8,4 +8,6 @@ public interface BookingManager {
 
     void writeBooking(Reservation pReservation);
     List<Reservation> getListBookingAskForOneUser(int pUserId);
+//    List<Reservation> getListReceptionBookingForOneUser(int pUserId);
+
 }
