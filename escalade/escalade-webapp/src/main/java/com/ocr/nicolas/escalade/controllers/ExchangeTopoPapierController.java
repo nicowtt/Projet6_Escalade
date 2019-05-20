@@ -46,7 +46,7 @@ public class ExchangeTopoPapierController {
             //for List all paper topo available
             model.addAttribute("topoPapier", topoPapierManager.getListAllTopoPapierAvailable());
 
-            return "/personalSpace";
+            return "/exchangeTopoPapier";
         } else {
             return "ErrorJsp/forceLogin";
         }
