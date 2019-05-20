@@ -160,6 +160,12 @@ public class TopoPapierDaoImpl extends AbstractDAoImpl implements TopoPapierDao 
         return vListTopoPapier;
     }
 
+    /**
+     * For change booking request boolean
+     *
+     * @param pTopoPapier -> bean paper topo
+     * @param pElementId -> id of topoPapier
+     */
     @Override
     public void changeBookingRequest(Topopapier pTopoPapier, int pElementId) {
         String vSQL
@@ -174,5 +180,34 @@ public class TopoPapierDaoImpl extends AbstractDAoImpl implements TopoPapierDao 
 
         vJdbcTemplate.update(vSQL, vParams);
 
+    }
+
+
+    /**
+     * For get one topo papier from BDD
+     * @param pId -> id of topoPapier
+     * @return -> list with one bean topoPapier
+     */
+    @Override
+    public Topopapier getOnlyOneTopopaper(int pId) {
+        Topopapier newTopoPaper = new Topopapier();
+
+        String vSQL
+                = "SELECT * FROM topopapier"
+                + " JOIN element ON element.id = topopapier.element_id"
+                + "  JOIN site on site.id = topopapier.site_id"
+                + "   WHERE topopapier.id = :id";
+
+        NamedParameterJdbcTemplate vJdbcTempalte = new NamedParameterJdbcTemplate(getDatasource());
+        MapSqlParameterSource vParams = new MapSqlParameterSource();
+        vParams.addValue("id", pId, Types.INTEGER );
+
+        RowMapper<Topopapier> vRowMapper = new TopoPapierRowMapper();
+
+        List<Topopapier> vListTopoPapier = vJdbcTempalte.query(vSQL, vParams, vRowMapper);
+
+        newTopoPaper = vListTopoPapier.get(0);
+
+        return newTopoPaper;
     }
 }

@@ -13,6 +13,7 @@ public class BookingRowMapper implements RowMapper<Reservation> {
     public Reservation mapRow(ResultSet resultSet, int i) throws SQLException {
         Reservation vBooking = new Reservation(resultSet.getInt("id"));
         vBooking.setStatusReservation(resultSet.getBoolean("statusreservation"));
+        vBooking.setEmailPretOk(resultSet.getString("emailpretok"));
         vBooking.setTopoPapier_id(resultSet.getInt("topopapier_id"));
         vBooking.setUtilisateur_id(resultSet.getInt("utilisateur_id"));
 

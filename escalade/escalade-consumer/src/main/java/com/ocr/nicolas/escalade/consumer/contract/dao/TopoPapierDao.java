@@ -13,4 +13,5 @@ public interface TopoPapierDao {
     void writeNewTopoPapier(Topopapier pTopopapier) throws TopoPapierException;
     List<Topopapier> getListAllTopoPapierAvailable();
     void changeBookingRequest(Topopapier pTopoPapier, int pElementId);
+    Topopapier getOnlyOneTopopaper(int pId);
 }

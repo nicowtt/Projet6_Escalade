@@ -4,6 +4,7 @@ import com.ocr.nicolas.escalade.business.contract.BookingManager;
 import com.ocr.nicolas.escalade.business.contract.TopoPapierManager;
 import com.ocr.nicolas.escalade.business.contract.UserManager;
 import com.ocr.nicolas.escalade.business.impl.TopoPapierManagerImpl;
+import com.ocr.nicolas.escalade.model.bean.Reservation;
 import com.ocr.nicolas.escalade.model.bean.Topopapier;
 import com.ocr.nicolas.escalade.model.bean.Utilisateur;
 import org.apache.commons.logging.Log;
@@ -15,6 +16,8 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.inject.Inject;
 import javax.validation.Valid;
+import java.util.ArrayList;
+import java.util.List;
 
 @Controller
 @SessionAttributes("Utilisateur")
@@ -59,6 +62,9 @@ public class PersonalSpaceController {
 
             // display request booking (reception in french) only for user in session and if he have this paper topo and availability is ok and booking status on !
             model.addAttribute("reservationReception", bookingManager.getListAllTopoPapierWithBookingRequest(userOnBdd.getId()));
+
+            // display booking ok
+            model.addAttribute("reservationOK", bookingManager.getListBookingOK(userOnBdd.getId()));
 
             return "personalSpace";
         } else {
@@ -125,30 +131,39 @@ public class PersonalSpaceController {
      * For accept booking topo paper
      *
      * @param model -> model
-     * @param booking_Id -> id of booking
+     * @param bookingId -> id of booking
      * @param userSession -> user session
      * @return
      */
-    @RequestMapping(value = "/acceptBooking/{booking_Id}", method = RequestMethod.GET)
-    public String acceptBooking(Model model, @PathVariable Integer booking_Id, @SessionAttribute(value = "Utilisateur", required = false) Utilisateur userSession) {
+    @RequestMapping(value = "/acceptBooking/{bookingId}/{topoPapierIdIn}", method = RequestMethod.GET)
+    public String acceptBooking(Model model, @PathVariable Integer bookingId, @PathVariable Integer topoPapierIdIn, @SessionAttribute(value = "Utilisateur", required = false) Utilisateur userSession) {
 
         Utilisateur userOnBdd = new Utilisateur();
+        Topopapier newTopoPapier = new Topopapier();
+        Reservation newBooking = new Reservation();
+        Utilisateur usertopoOwner = new Utilisateur();
 
         // model for "log"
         if (userSession != null) {
             model.addAttribute("log", userSession.getEmail());
 
-            //todo method pour accepter la reservation
+            //For accept booking
+            //set newTopoPapier
+            newTopoPapier.setDisponibilite(false);
+            newTopoPapier.setId(topoPapierIdIn);
+            //set newBooking
+            newBooking.setId(bookingId);
+            // for accept booking
+            bookingManager.acceptBookingAndRelationShip(newTopoPapier, newBooking);
 
+
+            //for jsp display
             //search for user id
             userOnBdd = userManager.getUserBean(userSession.getEmail());
-
             //display user "topoPapier"
             model.addAttribute("topoPapier", topoPapierManager.getListTopoPapier(userOnBdd.getId()));
-
             // display ask booking in progress
             model.addAttribute("reservationEnvoie", bookingManager.getListBookingAskForOneUser(userOnBdd.getId()));
-
             // display request booking (reception in french) only for user in session and if he have this paper topo and availability is ok and booking status on !
             model.addAttribute("reservationReception", bookingManager.getListAllTopoPapierWithBookingRequest(userOnBdd.getId()));
 

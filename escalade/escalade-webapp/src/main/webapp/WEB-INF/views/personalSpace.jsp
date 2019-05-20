@@ -78,7 +78,7 @@
 
     <!-- display site -->
     <br>
-    <p>Topo papier possédé:</p>
+    <p>Topo papier possédé(s):</p>
 
     <div id="listerTopoPapier">
         <table class="table">
@@ -108,34 +108,55 @@
     </div>
 
     <div id="TopoPapierDemandeReserveration">
-        <p>Demande de reservation en cours:</p>
+        <p>Demande de réservation en cours:</p>
         <table class="table">
             <tr>
-                <th>id du demandeur</th>
+                <th>N°de reservation</th>
                 <th>Nom du topo</th>
+                <th>Email du preteur</th>
             </tr>
         <c:forEach items = "${reservationEnvoie}" var="re">
             <tr>
-                <td>${re.utilisateur_id}</td>
+                <td>${re.id}</td>
                 <td>${re.topopapier.nomTopo}</td>
+                <td>${re.emailPretOk}</td>
             </tr>
         </c:forEach>
         </table>
+    </div>
 
 
     <div id="TopoPapierReceptionReserveration">
-        <p>reception de reservation en cours:</p>
+        <p>réception de réservation en cours:</p>
         <table class="table">
             <tr>
-                <th>id du demandeur</th>
+                <th>N° de reservationr</th>
                 <th>Nom du topo</th>
             </tr>
             <c:forEach items = "${reservationReception}" var="re">
             <tr>
-                <td>${re.utilisateur_id}</td>
+                <td>${re.id}</td>
                 <td>${re.topopapier.nomTopo}</td>
-                <td><a href="/acceptBooking/${re.id}">Accepter la demande</a> </td>
+                <td><a href="/acceptBooking/${re.id}/${re.topoPapier_id}">Accepter la demande</a> </td>
             </tr>
+            </c:forEach>
+        </table>
+    </div>
+
+    <div id="TopoPapierReserveration ok">
+        <p>Demande de réservation validé:</p>
+        <table class="table">
+            <tr>
+                <th>N°de reservation</th>
+                <th>Nom du topo</th>
+                <th>Email du preteur</th>
+            </tr>
+            <c:forEach items = "${reservationOK}" var="re">
+                <tr>
+                    <td>${re.id}</td>
+                    <td>${re.topopapier.nomTopo}</td>
+                    <td>${re.emailPretOk}</td>
+                </tr>
             </c:forEach>
         </table>
     </div>

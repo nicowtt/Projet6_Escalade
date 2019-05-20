@@ -8,6 +8,7 @@ public class Reservation {
     // ============ Attributs ============
     private Integer id;
     private boolean statusReservation;
+    private String emailPretOk;
     private Integer topoPapier_id;
     private Integer utilisateur_id;
 
@@ -41,6 +42,12 @@ public class Reservation {
     }
     public void setStatusReservation(boolean statusReservation) {
         this.statusReservation = statusReservation;
+    }
+    public String getEmailPretOk() {
+        return emailPretOk;
+    }
+    public void setEmailPretOk(String emailPretOk) {
+        this.emailPretOk = emailPretOk;
     }
     public Integer getTopoPapier_id() {
         return topoPapier_id;

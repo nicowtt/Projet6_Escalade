@@ -29,12 +29,13 @@ public class BookingDaoImpl extends  AbstractDAoImpl implements BookingDao {
     @Override
     public void writeBooking(Reservation pReservation) throws BookingException {
         String vSQL
-                = "INSERT INTO public.reservation (statusreservation, topopapier_id, utilisateur_id)"
-                + " VALUES (:statusreservation, :topopapier_id, :utilisateur_id)";
+                = "INSERT INTO public.reservation (statusreservation, emailpretok, topopapier_id, utilisateur_id)"
+                + " VALUES (:statusreservation, :emailpretok, :topopapier_id, :utilisateur_id)";
 
         NamedParameterJdbcTemplate vJdbcTemplate = new NamedParameterJdbcTemplate(getDatasource());
         MapSqlParameterSource vParams = new MapSqlParameterSource();
         vParams.addValue("statusreservation", pReservation.isStatusReservation());
+        vParams.addValue("emailpretok", pReservation.getEmailPretOk());
         vParams.addValue("topopapier_id", pReservation.getTopoPapier_id());
         vParams.addValue("utilisateur_id", pReservation.getUtilisateur_id());
 
@@ -104,6 +105,76 @@ public class BookingDaoImpl extends  AbstractDAoImpl implements BookingDao {
 
         return vListBooking;
 
+    }
+
+
+    /**
+     * For change booking status
+     *
+     * @param pBooking -> bokking bean
+     */
+    @Override
+    public void changeBookingStatus (Reservation pBooking) {
+        String vSQL
+                = "UPDATE reservation"
+                + " SET statusreservation = :statusreservation"
+                + "  WHERE id = :id";
+
+        NamedParameterJdbcTemplate vJdbcTemplate = new NamedParameterJdbcTemplate(getDatasource());
+        MapSqlParameterSource vParams = new MapSqlParameterSource();
+        vParams.addValue("statusreservation", pBooking.isStatusReservation(), Types.BOOLEAN);
+        vParams.addValue("id", pBooking.getId(), Types.INTEGER);
+
+        vJdbcTemplate.update(vSQL, vParams);
+    }
+
+    /**
+     * For change email on booking
+     *
+     * @param pEmail -> to write
+     * @param pBooking -> bean booking in
+     */
+    @Override
+    public void changeEmailOnBooking(String pEmail, Reservation pBooking) {
+        String vSQL
+                = "UPDATE reservation"
+                + " SET emailpretok = :emailpretok"
+                + "  WHERE id = :id";
+
+        NamedParameterJdbcTemplate vJdbcTemplate = new NamedParameterJdbcTemplate(getDatasource());
+        MapSqlParameterSource vParams = new MapSqlParameterSource();
+        vParams.addValue("emailpretok", pEmail, Types.VARCHAR);
+        vParams.addValue("id", pBooking.getId(), Types.INTEGER);
+
+        vJdbcTemplate.update(vSQL, vParams);
+
+    }
+
+
+    /**
+     * For get list of booking OK
+     * @param pUserId
+     * @return
+     */
+    @Override
+    public List<Reservation> getListBookingOK(int pUserId) {
+        String vSQL
+                = "SELECT * FROM public.reservation"
+                + " JOIN topopapier ON reservation.topopapier_id = topopapier.id"
+                + "  WHERE utilisateur_id = :utilisateur_id"
+                + "   AND statusreservation = false";
+
+
+        NamedParameterJdbcTemplate vJdbcTemplate = new NamedParameterJdbcTemplate(getDatasource());
+
+        MapSqlParameterSource vParams = new MapSqlParameterSource();
+        vParams.addValue("utilisateur_id", pUserId, Types.INTEGER);
+
+        RowMapper<Reservation> vRowMapperBooking = new BookingRowMapper();
+
+        List<Reservation> vListBooking = vJdbcTemplate.query(vSQL, vParams, vRowMapperBooking);
+
+        return  vListBooking;
     }
 
 

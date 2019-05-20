@@ -73,6 +73,7 @@ public class ExchangeTopoPapierController {
             userOnBdd = userManager.getUserBean(userSession.getEmail());
             //set new bean NewBooking
             vNewBooking.setStatusReservation(true); //booking asking
+            vNewBooking.setEmailPretOk("En cours");
             vNewBooking.setTopoPapier_id(topoId);
             vNewBooking.setUtilisateur_id(userOnBdd.getId());
             // finaly write on bdd

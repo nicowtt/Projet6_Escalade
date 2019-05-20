@@ -2,6 +2,7 @@ package com.ocr.nicolas.escalade.consumer.impl.dao;
 
 import com.ocr.nicolas.escalade.consumer.contract.dao.UserDao;
 import com.ocr.nicolas.escalade.consumer.impl.rowmapper.UserRowMapper;
+import com.ocr.nicolas.escalade.model.bean.Topopapier;
 import com.ocr.nicolas.escalade.model.bean.Utilisateur;
 import com.ocr.nicolas.escalade.model.exception.UserException;
 import org.springframework.dao.DuplicateKeyException;
@@ -119,5 +120,37 @@ public class UserDaoImpl extends AbstractDAoImpl implements UserDao {
         }
 
         return pUser;
+    }
+
+
+    /**
+     * For get a user bean with a bean paper topo
+     *
+     * @param pTopoPapier -> bean paper topo
+     * @return -> email of paper topo owner
+     */
+    @Override
+    public String getUserBean(Topopapier pTopoPapier) {
+        String vEmail = "";
+
+        String vSql
+                = "SELECT * FROM topopapier"
+                + " JOIN element ON topopapier.element_id = element.id"
+                + "  JOIN utilisateur ON element.utilisateur_id = utilisateur.id"
+                + "   WHERE topopapier.id = :id";
+
+        NamedParameterJdbcTemplate vJdbcTemplate = new NamedParameterJdbcTemplate(getDatasource());
+
+        MapSqlParameterSource vParams = new MapSqlParameterSource();
+        vParams.addValue("id", pTopoPapier.getId(), Types.INTEGER);
+
+        RowMapper<Utilisateur> vRomMapper = new UserRowMapper();
+
+        Utilisateur vUser = vJdbcTemplate.query(vSql, vParams, vRomMapper).get(0);
+
+        vEmail = vUser.getEmail();
+
+        return vEmail;
+
     }
 }
