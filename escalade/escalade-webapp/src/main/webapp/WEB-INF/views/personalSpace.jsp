@@ -134,6 +134,7 @@
             <tr>
                 <td>${re.utilisateur_id}</td>
                 <td>${re.topopapier.nomTopo}</td>
+                <td><a href="/acceptBooking/${re.id}">Accepter la demande</a> </td>
             </tr>
             </c:forEach>
         </table>

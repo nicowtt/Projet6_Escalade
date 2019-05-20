@@ -30,6 +30,13 @@ public class ExchangeTopoPapierController {
     @Inject
     private BookingManager bookingManager;
 
+    /**
+     * For display paper topo available
+     *
+     * @param model -> model
+     * @param userSession -> user session
+     * @return
+     */
     @RequestMapping(value = "/exchangeTopoPapier", method = RequestMethod.GET)
     public String exchangeTopoPapier(Model model, @SessionAttribute(value = "Utilisateur", required = false) Utilisateur userSession) {
 
@@ -39,7 +46,7 @@ public class ExchangeTopoPapierController {
             //for List all paper topo available
             model.addAttribute("topoPapier", topoPapierManager.getListAllTopoPapierAvailable());
 
-            return "exchangeTopoPapier";
+            return "/personalSpace";
         } else {
             return "ErrorJsp/forceLogin";
         }
@@ -47,6 +54,7 @@ public class ExchangeTopoPapierController {
 
     /**
      * For write new booking of paper topo on bdd
+     *
      * @param model -> model
      * @param topoId -> which topo user want to booking
      * @param userSession -> user session

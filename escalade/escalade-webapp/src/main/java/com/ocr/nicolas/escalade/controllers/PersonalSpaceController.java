@@ -32,6 +32,13 @@ public class PersonalSpaceController {
     private BookingManager bookingManager;
 
 
+    /**
+     * For display personal space
+     *
+     * @param model -> model
+     * @param userSession -> user session
+     * @return
+     */
     @RequestMapping(value="/personalSpace", method = RequestMethod.GET)
     public String personalSpace(Model model, @SessionAttribute(value = "Utilisateur", required = false) Utilisateur userSession) {
 
@@ -108,6 +115,45 @@ public class PersonalSpaceController {
 
 
             return "personalSpace";
+        } else {
+            return "ErrorJsp/forceLogin";
+        }
+
+    }
+
+    /**
+     * For accept booking topo paper
+     *
+     * @param model -> model
+     * @param booking_Id -> id of booking
+     * @param userSession -> user session
+     * @return
+     */
+    @RequestMapping(value = "/acceptBooking/{booking_Id}", method = RequestMethod.GET)
+    public String acceptBooking(Model model, @PathVariable Integer booking_Id, @SessionAttribute(value = "Utilisateur", required = false) Utilisateur userSession) {
+
+        Utilisateur userOnBdd = new Utilisateur();
+
+        // model for "log"
+        if (userSession != null) {
+            model.addAttribute("log", userSession.getEmail());
+
+            //todo method pour accepter la reservation
+
+            //search for user id
+            userOnBdd = userManager.getUserBean(userSession.getEmail());
+
+            //display user "topoPapier"
+            model.addAttribute("topoPapier", topoPapierManager.getListTopoPapier(userOnBdd.getId()));
+
+            // display ask booking in progress
+            model.addAttribute("reservationEnvoie", bookingManager.getListBookingAskForOneUser(userOnBdd.getId()));
+
+            // display request booking (reception in french) only for user in session and if he have this paper topo and availability is ok and booking status on !
+            model.addAttribute("reservationReception", bookingManager.getListAllTopoPapierWithBookingRequest(userOnBdd.getId()));
+
+
+            return "/personalSpace";
         } else {
             return "ErrorJsp/forceLogin";
         }
