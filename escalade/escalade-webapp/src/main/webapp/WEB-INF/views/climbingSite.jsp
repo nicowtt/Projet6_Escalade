@@ -92,7 +92,7 @@
       <a href="/commentWrite/${si.element_id}">Ecrire un commentaire sur ce site</a><br>
       <!-- Site action: add site to personnal space-->
       <p></p>
-      <a href="/createTopoPaper/${si.element_id}">Déclarer un topo papier possédé pour ce site</a>
+      <a href="/createTopoPaper/${si.id}">Déclarer un topo papier possédé pour ce site</a>
       <!-- Site action: tag site "officiel les amis de l'escalade-->
       <p></p>
       <a href="/addTagForOfficialSite/${si.id}">Tagger ce site en Site Officiel Les amis de l'escalade !</a>

@@ -79,7 +79,6 @@ public class CreateTopoPaperController {
             userOnBdd = userManager.getUserBean(userSession.getEmail());
             //set site_id
             newTopoPaper.setSite_id(siteId);
-            //todo probleme de validation
             //For write new element and new "topopapier"
             topoPapierManager.writeNewTopoPapier(newTopoPaper, userOnBdd.getId());
 
