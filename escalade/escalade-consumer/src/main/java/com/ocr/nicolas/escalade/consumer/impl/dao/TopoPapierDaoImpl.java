@@ -210,4 +210,21 @@ public class TopoPapierDaoImpl extends AbstractDAoImpl implements TopoPapierDao 
 
         return newTopoPaper;
     }
+
+    /**
+     * For delete paper topo
+     * @param pId -> id to delete
+     */
+    @Override
+    public void deleteTopoPaper(int pId) {
+        String vSQL
+                = "DELETE FROM topopapier"
+                + " WHERE id = :id";
+        NamedParameterJdbcTemplate vJdbcTEmplate = new NamedParameterJdbcTemplate(getDatasource());
+        MapSqlParameterSource vParams = new MapSqlParameterSource();
+        vParams.addValue("id", pId, Types.INTEGER);
+
+        vJdbcTEmplate.update(vSQL, vParams);
+
+    }
 }

@@ -104,7 +104,7 @@
                 </tr>
                 <tr>
                     <!-- display for creation date -->
-                    <td>Date du topo papier:* </td>
+                    <td>Date du topo papier: </td>
                     <td><f:input path="dateCreation" type="date" id="dateCreation" size="20" placeholder="obligatoire" cssStyle=""/></td>
                     <td><f:errors path="dateCreation" cssClass="errors"/></td>
                 </tr>

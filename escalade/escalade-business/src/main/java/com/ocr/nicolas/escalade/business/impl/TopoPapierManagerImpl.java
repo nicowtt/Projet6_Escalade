@@ -139,4 +139,20 @@ public class TopoPapierManagerImpl extends AbstractManager implements TopoPapier
         });
         return  vTopoPapierList;
     }
+
+
+    /**
+     * For deleting paper topo
+     * @param pId -> id to delete
+     */
+    @Override
+    public void deleteTopoPaper(int pId) {
+        TransactionTemplate vTransactionTemplate = new TransactionTemplate(getPlatformTransactionManager());
+        vTransactionTemplate.execute(new TransactionCallbackWithoutResult() {
+            @Override
+            protected void doInTransactionWithoutResult(TransactionStatus transactionStatus) {
+                topoPapierDao.deleteTopoPaper(pId);
+            }
+        });
+    }
 }

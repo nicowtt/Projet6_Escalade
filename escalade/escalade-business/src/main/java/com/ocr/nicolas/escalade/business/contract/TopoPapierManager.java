@@ -12,4 +12,5 @@ public interface TopoPapierManager {
     void changeAvailabilityTopoPapier(Topopapier pTopoPapier, int pElementId);
     void writeNewTopoPapier(Topopapier pTopopapier, int pUserId);
     List<Topopapier> getListAllTopoPapierAvailable();
+    void deleteTopoPaper(int pId);
 }

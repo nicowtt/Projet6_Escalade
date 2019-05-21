@@ -33,6 +33,14 @@ public class DeleteTopoPaperController {
     private UserManager userManager;
 
 
+    /**
+     * For display if user realy want to delete topo papier
+     *
+     * @param topoId -> topo paper id
+     * @param model -> model
+     * @param userSession -> user
+     * @return
+     */
     @RequestMapping(value="/comfirmationForDeleteTopoPaper/{topoId}", method = RequestMethod.GET)
     public String comfirmationForDeleteTopoPaper(@PathVariable Integer topoId,  Model model, @SessionAttribute(value = "Utilisateur", required = false) Utilisateur userSession) {
 
@@ -52,20 +60,26 @@ public class DeleteTopoPaperController {
         }
     }
 
+    /**
+     * For delete topo papier and topo papier booking (trace) from bdd
+     *
+     * @param topoId -> id of paper topo to delete
+     * @param model -> model
+     * @param userSession -> user session
+     * @return
+     */
     @RequestMapping(value="/DeleteTopoPaper/{topoId}", method = RequestMethod.GET)
     public String DeleteTopoPaper(@PathVariable Integer topoId,  Model model, @SessionAttribute(value = "Utilisateur", required = false) Utilisateur userSession) {
 
-        Topopapier deletingTopoPaper = new Topopapier();
+
         Utilisateur userOnBdd = new Utilisateur();
-
-        //set topoId in deletingTopoPaper
-        deletingTopoPaper.setId(topoId);
-
-        //todo method for delete topoPapier
 
         // model for "log"
         if (userSession != null) {
             model.addAttribute("log", userSession.getEmail());
+
+            //delete topoPapier
+            topoPapierManager.deleteTopoPaper(topoId); // + automatic cascade on booking table
 
             //for jsp display
             //search for user id
@@ -78,7 +92,7 @@ public class DeleteTopoPaperController {
             model.addAttribute("reservationReception", bookingManager.getListAllTopoPapierWithBookingRequest(userOnBdd.getId()));
 
 
-            return "/ComfirmationJsp/deletingTopoPaper";
+            return "/personalSpace";
         } else {
             return "ErrorJsp/forceLogin";
         }
