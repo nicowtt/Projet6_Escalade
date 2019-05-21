@@ -10,11 +10,11 @@ public class Topopapier {
 
     // =========== Attributs ============
     private Integer id;
-//    @NotBlank
+    @NotBlank
     private String nomTopo;
-//    @NotBlank
+    @NotBlank
     private String description;
-//    @NotBlank
+    @NotBlank
     private String nomCreateur;
     private String dateCreation;
     private String dateMaj;

@@ -49,7 +49,7 @@ public class CreateTopoPaperController {
         // model for "log"
         if (userSession != null) {
             model.addAttribute("log", userSession.getEmail());
-            model.addAttribute("topopaper", newTopoPaper);
+            model.addAttribute("topopapier", newTopoPaper);
 
             return "createTopoPaper";
         } else {
@@ -59,12 +59,12 @@ public class CreateTopoPaperController {
     }
 
     @RequestMapping(value = "/createTopoPaper/{siteId}", method = RequestMethod.POST)
-    public String createTopoPaper(@Valid Topopapier newTopoPaper, BindingResult bindingResult, @PathVariable Integer siteId, Model model, @SessionAttribute(value = "Utilisateur", required = false) Utilisateur userSession) {
+    public String createTopoPaperPost(@Valid Topopapier newTopoPaper, BindingResult bindingResult, @PathVariable Integer siteId, Model model, @SessionAttribute(value = "Utilisateur", required = false) Utilisateur userSession) {
 
         Utilisateur userOnBdd = new Utilisateur();
 
         if (bindingResult.hasErrors()) {
-            model.addAttribute("topopaper", newTopoPaper);
+            model.addAttribute("topopapier", newTopoPaper);
             //set site_id
             newTopoPaper.setSite_id(siteId);
             logger.info("*********");

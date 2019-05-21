@@ -78,6 +78,11 @@
                 <f:option value="false">Non</f:option>
             </f:select>
 
+            <%--<!-- for bean validation -->--%>
+            <input type="hidden" value="nomTopo" name="nomTopo">
+            <input type="hidden" value="description" name="description">
+            <input type="hidden" value="nomCreateur" name="nomCreateur">
+
             <input type="submit" value="Changer la disponibilité">
 
         </f:form>
