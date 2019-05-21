@@ -95,7 +95,7 @@
       <a href="/createTopoPaper/${si.element_id}">Déclarer un topo papier possédé pour ce site</a>
       <!-- Site action: tag site "officiel les amis de l'escalade-->
       <p></p>
-      <a href="/addTagForOfficialSite/${si.element_id}">Tagger ce site en Site Officiel Les amis de l'escalade !</a>
+      <a href="/addTagForOfficialSite/${si.id}">Tagger ce site en Site Officiel Les amis de l'escalade !</a>
       <p></p>
 
     <!-- Picture-->
