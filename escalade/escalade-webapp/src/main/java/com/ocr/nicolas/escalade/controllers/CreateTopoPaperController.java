@@ -58,6 +58,15 @@ public class CreateTopoPaperController {
 
     }
 
+    /**
+     * For create new topo papier
+     * @param newTopoPaper -> new paper topo
+     * @param bindingResult -> list of error
+     * @param siteId -> site id for this new topo
+     * @param model -> model
+     * @param userSession -> user session
+     * @return
+     */
     @RequestMapping(value = "/createTopoPaper/{siteId}", method = RequestMethod.POST)
     public String createTopoPaperPost(@Valid Topopapier newTopoPaper, BindingResult bindingResult, @PathVariable Integer siteId, Model model, @SessionAttribute(value = "Utilisateur", required = false) Utilisateur userSession) {
 
