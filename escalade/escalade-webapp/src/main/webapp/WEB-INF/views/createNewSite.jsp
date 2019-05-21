@@ -117,7 +117,7 @@
                 </tr>
                 <tr>
                     <!-- display for "nombre de secteur" -->
-                    <td>Nombre de secteur: </td>
+                    <td>Nombre de secteur:* </td>
                     <td><f:input path="nombreDeSecteur" type="number" id="city" size="15" placeholder="" cssStyle=""/></td>
                     <td><f:errors path="nombreDeSecteur" cssClass="errors"/></td>
                 </tr>

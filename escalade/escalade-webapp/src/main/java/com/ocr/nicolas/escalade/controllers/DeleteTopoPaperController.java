@@ -1,9 +1,9 @@
 package com.ocr.nicolas.escalade.controllers;
 
 import com.ocr.nicolas.escalade.business.contract.BookingManager;
+import com.ocr.nicolas.escalade.business.contract.ElementManager;
 import com.ocr.nicolas.escalade.business.contract.TopoPapierManager;
 import com.ocr.nicolas.escalade.business.contract.UserManager;
-import com.ocr.nicolas.escalade.model.bean.Site;
 import com.ocr.nicolas.escalade.model.bean.Topopapier;
 import com.ocr.nicolas.escalade.model.bean.Utilisateur;
 import org.apache.commons.logging.Log;
@@ -31,6 +31,9 @@ public class DeleteTopoPaperController {
 
     @Inject
     private UserManager userManager;
+
+    @Inject
+    private ElementManager elementManager;
 
 
     /**
@@ -79,7 +82,7 @@ public class DeleteTopoPaperController {
             model.addAttribute("log", userSession.getEmail());
 
             //delete topoPapier
-            topoPapierManager.deleteTopoPaper(topoId); // + automatic cascade on booking table
+            elementManager.deleteOneElement(topoId); // + automatic cascade on booking table and topoPapier
 
             //for jsp display
             //search for user id

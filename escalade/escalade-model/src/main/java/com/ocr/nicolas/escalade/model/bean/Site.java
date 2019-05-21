@@ -2,6 +2,7 @@ package com.ocr.nicolas.escalade.model.bean;
 
 import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 /**
  * Bean représentant un Site d'escalade
@@ -19,6 +20,7 @@ public class Site {
     private String localisationPays;
     private String urlPhotoSite;
     @DecimalMin(value= "1")
+    @NotNull
     private Integer nombreDeSecteur;
     private boolean officelSite;
     private Integer element_id;

@@ -14,5 +14,4 @@ public interface TopoPapierDao {
     List<Topopapier> getListAllTopoPapierAvailable();
     void changeBookingRequest(Topopapier pTopoPapier, int pElementId);
     Topopapier getOnlyOneTopopaper(int pId);
-    void deleteTopoPaper(int pId);
 }

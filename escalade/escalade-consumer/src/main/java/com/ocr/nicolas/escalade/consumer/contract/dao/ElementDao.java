@@ -7,4 +7,5 @@ import java.util.List;
 public interface ElementDao {
     void writeNewElement(Integer pId);
     Element getLastElement();
+    void deleteOneElement(Integer pId);
 }

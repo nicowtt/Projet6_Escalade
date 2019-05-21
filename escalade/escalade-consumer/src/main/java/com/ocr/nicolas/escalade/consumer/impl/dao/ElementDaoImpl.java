@@ -46,8 +46,6 @@ public class ElementDaoImpl extends AbstractDAoImpl implements ElementDao {
      */
     @Override
     public Element getLastElement() {
-
-
         String vSQL
                 = "SELECT * FROM public.element"
                 + " WHERE id = (SELECT MAX(id) FROM element)";
@@ -63,6 +61,24 @@ public class ElementDaoImpl extends AbstractDAoImpl implements ElementDao {
 
 
        return vElement;
+
+    }
+
+    /**
+     * For delete one element
+     * @param pId -> element id to delete
+     */
+    @Override
+    public void deleteOneElement(Integer pId) {
+        String vSQL
+                = " DELETE FROM public.element"
+                + "  WHERE id = :id";
+
+        NamedParameterJdbcTemplate vJdbcTemplate = new NamedParameterJdbcTemplate(getDatasource());
+        MapSqlParameterSource vParams = new MapSqlParameterSource();
+        vParams.addValue("id", pId, Types.INTEGER);
+
+        vJdbcTemplate.update(vSQL, vParams);
 
     }
 }
