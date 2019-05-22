@@ -1,10 +1,8 @@
 package com.ocr.nicolas.escalade.controllers;
 
-import com.ocr.nicolas.escalade.business.contract.SectorManager;
-import com.ocr.nicolas.escalade.business.contract.SiteManager;
-import com.ocr.nicolas.escalade.business.contract.UserManager;
-import com.ocr.nicolas.escalade.business.contract.WayManager;
+import com.ocr.nicolas.escalade.business.contract.*;
 
+import com.ocr.nicolas.escalade.model.bean.Site;
 import com.ocr.nicolas.escalade.model.bean.Utilisateur;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -32,13 +30,17 @@ public class SiteController {
     @Inject
     private UserManager userManager;
 
+    @Inject
+    private ElementManager elementManager;
+
     /**
      * For display generic climbing site page
+     *
      * @param model model
-     * @param id -> for one climbing site
+     * @param id    -> for one climbing site
      * @return
      */
-    @RequestMapping(value="/climbingSite/{id}", method = RequestMethod.GET )
+    @RequestMapping(value = "/climbingSite/{id}", method = RequestMethod.GET)
     public String index(Model model, @PathVariable Integer id, @SessionAttribute(value = "Utilisateur", required = false) Utilisateur utilisateur) {
 
 
@@ -58,18 +60,19 @@ public class SiteController {
 
     /**
      * For tag site -> Official friend of climbing site
-     * @param model -> model
-     * @param id -> id of climbing site
+     *
+     * @param model       -> model
+     * @param id          -> id of climbing site
      * @param userSession -> user in session
      * @return
      */
-    @RequestMapping(value="/addTagForOfficialSite/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/addTagForOfficialSite/{id}", method = RequestMethod.GET)
     public String addTagForOfficialSite(Model model, @PathVariable Integer id, @SessionAttribute(value = "Utilisateur", required = false) Utilisateur userSession) {
 
         boolean associativeMember;
 
         // User must log and associative member
-        if (userSession != null ) {
+        if (userSession != null) {
             //base login
             model.addAttribute("log", userSession.getEmail());
 
@@ -79,9 +82,13 @@ public class SiteController {
             if (associativeMember) {
                 // -> method for tag climbing site
                 siteManager.addTagForOfficialSite(id);
-            } else {return "ErrorJsp/errorNotMember";}
+            } else {
+                return "ErrorJsp/errorNotMember";
+            }
 
-        } else {return "ErrorJsp/forceLogin";}
+        } else {
+            return "ErrorJsp/forceLogin";
+        }
 
         // Models for display all information about one climbing site
         model.addAttribute("site", siteManager.getListOneSite(id));
@@ -90,4 +97,58 @@ public class SiteController {
 
         return "climbingSite";
     }
+
+    /**
+     * For display delete comfirmation
+     *
+     * @param model       -> model
+     * @param siteId      -> site id to delete
+     * @param userSession -> user session
+     * @return
+     */
+    @RequestMapping(value = "/comfirmDeleteSite/{siteId}", method = RequestMethod.GET)
+    public String comfirmDeleteSite(Model model, @PathVariable Integer siteId, @SessionAttribute(value = "Utilisateur", required = false) Utilisateur userSession) {
+
+        boolean associativeMember;
+        Site newSite = new Site();
+        // User must log and associative member
+        if (userSession != null) {
+            //base login
+            model.addAttribute("log", userSession.getEmail());
+
+            //check if associative member
+            Utilisateur userInBdd = userManager.getUserBean(userSession.getEmail());
+            associativeMember = userInBdd.isMembreAssociation();
+            if (associativeMember) {
+                newSite.setId(siteId);
+                model.addAttribute("site", newSite);
+
+            } else {
+                return "ErrorJsp/errorNotMember";
+            }
+
+        } else {
+            return "ErrorJsp/forceLogin";
+        }
+
+        return "/ComfirmationJsp/deletingSite";
+    }
+
+    @RequestMapping(value = "/deleteSite/{siteId}", method = RequestMethod.GET)
+    public String deleteSite(Model model, @PathVariable Integer siteId, @SessionAttribute(value = "Utilisateur", required = false) Utilisateur userSession) {
+
+        if (userSession != null) {
+            //base login
+            model.addAttribute("log", userSession.getEmail());
+
+            //for delete site (+ automatic cascade(sectors/ways/topoPaper/booking + all comments
+            elementManager.deleteOneElementLinkSite(siteId);
+
+            //Model for display all site on home.jsp
+            model.addAttribute("site", siteManager.getListAllSite());
+        }
+        return "home";
+
+    }
 }
+

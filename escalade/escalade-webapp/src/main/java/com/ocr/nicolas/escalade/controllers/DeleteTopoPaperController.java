@@ -82,7 +82,7 @@ public class DeleteTopoPaperController {
             model.addAttribute("log", userSession.getEmail());
 
             //delete topoPapier
-            elementManager.deleteOneElement(topoId); // + automatic cascade on booking table and topoPapier
+            elementManager.deleteOneElementLinkTopoPaper(topoId); // + automatic cascade on booking table and topoPapier
 
             //for jsp display
             //search for user id

@@ -97,8 +97,12 @@
       <p></p>
       <a href="/addTagForOfficialSite/${si.id}">Tagger ce site en Site Officiel Les amis de l'escalade !</a>
       <p></p>
+      <!-- Site action: delete site-->
+      <a href="/comfirmDeleteSite/${si.id}">supprimer le site</a>
+      <p></p>
 
-    <!-- Picture-->
+
+      <!-- Picture-->
       <img src="${si.urlPhotoSite}" alt="${si.urlPhotoSite}" style="width:500px;height:500px;border:0;">
       <!-- lien pour crée un nouveau secteur-->
     <p></p>

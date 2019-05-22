@@ -1,5 +1,6 @@
 package com.ocr.nicolas.escalade.business.contract;
 
 public interface ElementManager {
-    void deleteOneElement(int pId);
+    void deleteOneElementLinkTopoPaper(int pId);
+    void deleteOneElementLinkSite(int pId);
 }
