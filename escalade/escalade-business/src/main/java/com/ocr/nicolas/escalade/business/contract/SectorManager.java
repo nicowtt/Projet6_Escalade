@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface SectorManager {
 
-    List<Secteur> getListOneSector(int pSite);
+    List<Secteur> getListAllSectorForOneSite(int pSite);
     int getNbrSecteur(String pNom);
     void writeSectorOnBdd(Secteur pSector, int pUserId);
 }

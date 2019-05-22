@@ -46,7 +46,7 @@ public class SiteController {
 
         // Models for display all information about one climbing site
         model.addAttribute("site", siteManager.getListOneSite(id));
-        model.addAttribute("secteur", sectorManager.getListOneSector(id));
+        model.addAttribute("secteur", sectorManager.getListAllSectorForOneSite(id));
         model.addAttribute("voie", wayManager.getListAllWaysForOneSite(id));
 
         // model for "log"
@@ -92,7 +92,7 @@ public class SiteController {
 
         // Models for display all information about one climbing site
         model.addAttribute("site", siteManager.getListOneSite(id));
-        model.addAttribute("secteur", sectorManager.getListOneSector(id));
+        model.addAttribute("secteur", sectorManager.getListAllSectorForOneSite(id));
         model.addAttribute("voie", wayManager.getListAllWaysForOneSite(id));
 
         return "climbingSite";

@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface SectorDao {
 
-    List<Secteur> getListOneSector(int pSite);
+    List<Secteur> getListAllSectorForOneSite(int pSite);
     int getNbrSecteur(String pNom);
     void writeSectorOnBdd(Secteur pSector) throws SectorException;
 }

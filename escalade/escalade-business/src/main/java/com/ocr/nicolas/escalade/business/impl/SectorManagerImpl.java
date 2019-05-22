@@ -31,14 +31,14 @@ public class SectorManagerImpl extends AbstractManager implements SectorManager 
      * @return liste de secteur
      */
     @Override
-    public List<Secteur> getListOneSector(int pSite){
+    public List<Secteur> getListAllSectorForOneSite(int pSite){
 
         TransactionTemplate vTransactionTemplate = new TransactionTemplate(getPlatformTransactionManager());
 
         List<Secteur> vSecteur = vTransactionTemplate.execute(transactionStatus -> {
 
             List<Secteur> vSecteurTransaction = new ArrayList<>();
-            vSecteurTransaction = sectorDao.getListOneSector(pSite);
+            vSecteurTransaction = sectorDao.getListAllSectorForOneSite(pSite);
 
             return vSecteurTransaction;
         });

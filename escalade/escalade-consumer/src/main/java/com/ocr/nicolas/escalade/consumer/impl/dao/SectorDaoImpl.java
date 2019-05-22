@@ -29,7 +29,7 @@ public class SectorDaoImpl extends AbstractDAoImpl implements SectorDao {
      * @return liste de secteur
      */
     @Override
-    public List<Secteur> getListOneSector(int pSite) {
+    public List<Secteur> getListAllSectorForOneSite(int pSite) {
 
         String vSQL = "SELECT * FROM secteur WHERE site_id = :site_id";
 

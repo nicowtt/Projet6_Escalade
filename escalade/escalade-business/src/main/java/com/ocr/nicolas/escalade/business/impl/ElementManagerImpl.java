@@ -2,8 +2,10 @@ package com.ocr.nicolas.escalade.business.impl;
 
 import com.ocr.nicolas.escalade.business.contract.ElementManager;
 import com.ocr.nicolas.escalade.consumer.contract.dao.ElementDao;
+import com.ocr.nicolas.escalade.consumer.contract.dao.SectorDao;
 import com.ocr.nicolas.escalade.consumer.contract.dao.SiteDao;
 import com.ocr.nicolas.escalade.consumer.contract.dao.TopoPapierDao;
+import com.ocr.nicolas.escalade.model.bean.Secteur;
 import com.ocr.nicolas.escalade.model.bean.Site;
 import com.ocr.nicolas.escalade.model.bean.Topopapier;
 import org.springframework.transaction.TransactionStatus;
@@ -23,6 +25,9 @@ public class ElementManagerImpl extends AbstractManager implements ElementManage
 
     @Inject
     private SiteDao siteDao;
+
+    @Inject
+    private SectorDao sectorDao;
 
     @Inject
     private ElementDao elementDao;
@@ -67,6 +72,7 @@ public class ElementManagerImpl extends AbstractManager implements ElementManage
             @Override
             protected void doInTransactionWithoutResult(TransactionStatus transactionStatus) {
                 List<Site> fullSiteList = new ArrayList<>();
+                List<Secteur> fullSectorList = new ArrayList<>();
                 Site fullSite = new Site();
 
                 //get element_id link of site for delete
@@ -74,16 +80,14 @@ public class ElementManagerImpl extends AbstractManager implements ElementManage
                 fullSite = fullSiteList.get(0);
                 Integer element_id = fullSite.getElement_id();
 
-                // todo find element (comments) from other supression like sector/ways/comment/topopapier on site
-                //for sectors
-
-
-                // delete element of topo paper
+                // delete element of site
                 elementDao.deleteOneElement(element_id); // cascade on serveur for site/sectors/Ways/topoPaper/booking
 
 
-
-
+                // reste element lié au site -> secteur /voie /commentaire
+                //todo faire une liste d'element a suprimmer qui corresponde a ce site
+                // pour les secteurs (method je lui envoi le siteId il me renvoi une liste d'element de secteur)
+                fullSectorList = sectorDao.getListAllSectorForOneSite(pId);
             }
         });
     }
