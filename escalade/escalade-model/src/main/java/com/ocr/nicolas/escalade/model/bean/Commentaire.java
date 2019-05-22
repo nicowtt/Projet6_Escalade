@@ -1,5 +1,7 @@
 package com.ocr.nicolas.escalade.model.bean;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 import java.sql.Timestamp;
 
 /**
@@ -11,6 +13,8 @@ public class Commentaire {
     private Integer id;
     private Timestamp dateCommentaire;
     private Integer element_id;
+    @Size(max=500)
+    @NotBlank
     private String commentaire;
     private Integer utilisateur_id;
     // bean utilisateur

@@ -70,10 +70,12 @@
     <!-- display for write comment -->
     <br>
     <div id="EcrireCommentaire">
-        <f:form modelAttribute="comment" method="post" action="/commentWrite">
+        <f:form modelAttribute="commentaire" method="post" action="/commentWrite">
             <p>
                 <label for="EcrireCommentaire">Voulez-vous écrire un commentaire ?</label><br/>
                 <f:input size="60" path="commentaire" cssStyle=""/>
+                <f:errors path="commentaire" cssClass="errors"/>
+
             <p></p>
                 <input type="submit" value="Envoyer Commentaire">
 

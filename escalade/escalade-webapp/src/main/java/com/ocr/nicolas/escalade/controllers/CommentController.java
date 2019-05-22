@@ -65,8 +65,7 @@ public class CommentController {
     public String commentWrite(Model model, @PathVariable Integer element_Id, @SessionAttribute(value = "Utilisateur", required = false) Utilisateur userSession) throws CommentException, UnsupportedEncodingException {
 
         // Models for display comments
-        model.addAttribute("comment", new Commentaire());
-        model.addAttribute("commentaire", commentManager.getListAllCommentForOneElementId(element_Id));
+        model.addAttribute("commentaire", new Commentaire());
 
         // model for "log"
         if (userSession != null) {
@@ -91,31 +90,38 @@ public class CommentController {
      * @throws CommentException
      */
     @RequestMapping(value="/commentWrite", method = RequestMethod.POST)
-    public String commentWritePost(@Valid Commentaire commentaire, BindingResult bindingResult, Model model, @SessionAttribute(value = "Utilisateur") Utilisateur userSession ) throws CommentException{
+    public String commentWritePost(@Valid Commentaire commentaire, BindingResult bindingResult, Model model, @SessionAttribute(value = "Utilisateur") Utilisateur userSession ) throws CommentException {
 
-        //object
-        Commentaire vCommentaire = new Commentaire();
-        Timestamp datecommentaire = new Timestamp(System.currentTimeMillis());
+        if (bindingResult.hasErrors()) {
+            model.addAttribute("commentaire", commentaire);
+            logger.info("*********");
+            logger.info("erreur lors du remplissage d'un nouveau commentaire");
+            return "/commentWrite";
+        } else {
+            //object
+            Commentaire vCommentaire = new Commentaire();
+            Timestamp datecommentaire = new Timestamp(System.currentTimeMillis());
 
-        //i take user email session
-        String emailUserSession = userSession.getEmail();
-        //and i use it on a method who takes user_id on BDD
-        Utilisateur utilisateurBdd = userManager.getUserBean(emailUserSession);
+            //i take user email session
+            String emailUserSession = userSession.getEmail();
+            //and i use it on a method who takes user_id on BDD
+            Utilisateur utilisateurBdd = userManager.getUserBean(emailUserSession);
 
-        //now i set vCommentaire object
-        vCommentaire.setDateCommentaire(datecommentaire);
-        vCommentaire.setElement_id(userSession.getElement_id());
-        vCommentaire.setCommentaire(commentaire.getCommentaire());
-        vCommentaire.setUtilisateur_id(utilisateurBdd.getId());
+            //now i set vCommentaire object
+            vCommentaire.setDateCommentaire(datecommentaire);
+            vCommentaire.setElement_id(userSession.getElement_id());
+            vCommentaire.setCommentaire(commentaire.getCommentaire());
+            vCommentaire.setUtilisateur_id(utilisateurBdd.getId());
 
-        //and send this object for write comment on BDD
-        commentManager.writeComment(vCommentaire);
+            //and send this object for write comment on BDD
+            commentManager.writeComment(vCommentaire);
 
-        // Models for display comments
-        model.addAttribute("commentaire", commentManager.getListAllCommentForOneElementId(userSession.getElement_id()));
-        // model for display"login"
-        model.addAttribute("log", userSession.getEmail());
-        return "commentsRead";
+            // Models for display comments
+            model.addAttribute("commentaire", commentManager.getListAllCommentForOneElementId(userSession.getElement_id()));
+            // model for display"login"
+            model.addAttribute("log", userSession.getEmail());
+            return "commentsRead";
+        }
     }
 
     /**
