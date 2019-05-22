@@ -211,4 +211,39 @@ public class TopoPapierDaoImpl extends AbstractDAoImpl implements TopoPapierDao 
         return newTopoPaper;
     }
 
+    /**
+     * For get one topo papier link to climbing site
+     * @param pSiteId -> id of topoPapier
+     * @return -> list with one bean topoPapier
+     */
+    @Override
+    public Topopapier getTopopaperLinkToOneSite(int pSiteId) {
+        Topopapier newTopoPaper = new Topopapier();
+
+        String vSQL
+                = "SELECT * FROM topopapier"
+                + " JOIN element ON element.id = topopapier.element_id"
+                + "  JOIN site on site.id = topopapier.site_id"
+                + "   WHERE site.id = :id";
+
+        NamedParameterJdbcTemplate vJdbcTempalte = new NamedParameterJdbcTemplate(getDatasource());
+        MapSqlParameterSource vParams = new MapSqlParameterSource();
+        vParams.addValue("id", pSiteId, Types.INTEGER );
+
+        RowMapper<Topopapier> vRowMapper = new TopoPapierRowMapper();
+
+        List<Topopapier> vListTopoPapier = vJdbcTempalte.query(vSQL, vParams, vRowMapper);
+
+        if (vListTopoPapier.isEmpty()) {
+            logger.info("Personne n'a déclaré posséder de topo Papier pour ce site");
+        } else {
+            newTopoPaper = vListTopoPapier.get(0);
+        }
+
+        return newTopoPaper;
+    }
+
+
+
+
 }

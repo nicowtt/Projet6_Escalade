@@ -134,6 +134,14 @@ public class SiteController {
         return "/ComfirmationJsp/deletingSite";
     }
 
+    /**
+     * For delete climbing site (+ automatic cascade for delete sectors, ways and paper topo. + comments )
+     *
+     * @param model -> model
+     * @param siteId -> site id to delete
+     * @param userSession -> user session
+     * @return
+     */
     @RequestMapping(value = "/deleteSite/{siteId}", method = RequestMethod.GET)
     public String deleteSite(Model model, @PathVariable Integer siteId, @SessionAttribute(value = "Utilisateur", required = false) Utilisateur userSession) {
 
@@ -142,7 +150,7 @@ public class SiteController {
             model.addAttribute("log", userSession.getEmail());
 
             //for delete site (+ automatic cascade(sectors/ways/topoPaper/booking + all comments
-            elementManager.deleteOneElementLinkSite(siteId);
+            elementManager.deleteElementsLinkSite(siteId);
 
             //Model for display all site on home.jsp
             model.addAttribute("site", siteManager.getListAllSite());
