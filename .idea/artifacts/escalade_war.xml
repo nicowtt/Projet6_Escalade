@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="escalade:war">
+    <output-path>$PROJECT_DIR$/escalade/target</output-path>
+    <root id="archive" name="escalade-1.0-SNAPSHOT.war">
+      <element id="artifact" artifact-name="escalade:war exploded" />
+    </root>
+  </artifact>
+</component>

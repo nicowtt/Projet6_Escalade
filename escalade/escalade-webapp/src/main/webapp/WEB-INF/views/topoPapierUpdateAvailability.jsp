@@ -26,37 +26,8 @@
 <body>
 <header class="raw">
 
-    <!-- Navigation
-    ================================================== -->
-    <nav class="navbar navbar-inverse" role="navigation">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand page-top" href="/home">Les amis de l'escalade</a>
-        </div>
-        <!-- All elements on navbar -->
-        <div class="collapse navbar-collapse">
-            <ul class="nav navbar-nav">
-                <li><a href="/searchSite">Recherche</a></li>
-                <li><a href="/createClimbingSite">Enregistrer un nouveau site d'escalade</a></li>
-                <li><a href="/exchangeTopoPapier">Echange de Topo papier</a></li>
-            </ul>
+    <%@include file="_include/header.jsp"%>
 
-            <!-- identification -->
-            <ul class="nav navbar-nav navbar-right"> <li class="dropdown">
-
-                <!-- user must be login -->
-                <c:if test="${!empty log}"><p style="color:white;"><c:out value="${log} "/>
-                <br><a href="/personalSpace">Mon espace personnel</a><br>
-                <a href="/dologout">Se deconnecter </a></p>
-                </c:if>
-            </ul>
-
-        </div>
-    </nav>
 </header>
 </body>
 </body>

@@ -25,7 +25,7 @@
     <!-- Propriétés -->
     <!-- =============================================================== -->
     <properties>
-        <application.name>Projet6_Escalade</application.name>
+        <application.name>${projectName}</application.name>
         <maven.build.timestamp.format>dd/MM/yyyy</maven.build.timestamp.format>
         <build.timestamp>${maven.build.timestamp}</build.timestamp>
 
@@ -229,6 +229,23 @@
     <!-- =============================================================== -->
     <build>
         <finalName>escalade-webapp</finalName>
+
+        <plugins>
+            <!-- ===== Packaging WAR ===== -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <configuration>
+                    <webResources>
+                        <resource>
+                            <filtering>true</filtering>
+                            <directory>src/main/webapp</directory>
+                        </resource>
+                    </webResources>
+                </configuration>
+            </plugin>
+
+        </plugins>
     </build>
 
 </project>
