@@ -89,10 +89,11 @@
 
     <div id="EcrireCommentaire">
         <c:forEach items="${comment}" var="co">
-        <f:form modelAttribute="updatedComment" method="post" action="/updateComment/${co.id}">
+        <f:form modelAttribute="commentaire" method="post" action="/updateComment/${co.id}">
             <p>
                 <label for="EcrireCommentaire">Voulez-vous modifier le commentaire ?</label><br/>
                     <f:input size="60" path="commentaire" cssStyle=""/>
+                    <f:errors path="commentaire" cssClass="errors"/>
             <p></p>
             <input type="submit" value="Envoyer Commentaire">
 

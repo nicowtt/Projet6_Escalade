@@ -176,12 +176,26 @@ public class CommentController {
     @RequestMapping(value="/oneCommentRead/{pId}", method = RequestMethod.GET)
     public String oneCommentRead(Model model, @PathVariable Integer pId, @SessionAttribute(value="Utilisateur", required = false) Utilisateur userSession) {
 
-        model.addAttribute("updatedComment", new Commentaire());
-        model.addAttribute("comment", commentManager.displayOneComment(pId));
-
         // Model for log
         if (userSession != null) {
             model.addAttribute("log", userSession.getEmail());
+
+            //check if user is member associative
+            //i take user email session
+            String emailUserSession = userSession.getEmail();
+            //and i use it on a method who know if user is associative member(BDD)
+            Utilisateur utilisateurBdd = userManager.getUserBean(emailUserSession);
+            // finally i put information about member associative in user Session
+            userSession.setMembreAssociation(utilisateurBdd.isMembreAssociation());
+
+            // if user is associative member -> function accés ok
+            if (userSession.isMembreAssociation()) {
+
+                model.addAttribute("commentaire", new Commentaire());
+                model.addAttribute("comment", commentManager.displayOneComment(pId));
+            } else {
+                return "ErrorJsp/errorNotMember";
+            }
 
         } else {
             return "ErrorJsp/forceLogin";
@@ -192,7 +206,7 @@ public class CommentController {
 
     /**
      * For update comment
-     * @param comentIn -> new comment for update
+     * @param commentaire -> new comment for update
      * @param model -> model
      * @param pId -> comment id
      * @param userSession -> sessionUser
@@ -200,41 +214,32 @@ public class CommentController {
      * @throws CommentException
      */
     @RequestMapping(value="/updateComment/{pId}", method = RequestMethod.POST)
-    public String updateComment(@Valid Commentaire comentIn, Model model, @PathVariable Integer pId, @SessionAttribute(value="Utilisateur", required = false) Utilisateur userSession) throws CommentException {
-
-        model.addAttribute("updatedComment", new Commentaire());
+    public String updateComment(@Valid Commentaire commentaire, BindingResult bindingResult, Model model, @PathVariable Integer pId, @SessionAttribute(value="Utilisateur", required = false) Utilisateur userSession) throws CommentException {
 
         // model for "log"
-        if (userSession != null) {
-            model.addAttribute("log", userSession.getEmail());
+        model.addAttribute("log", userSession.getEmail());
 
-            //check is user is member associative
-            //i take user email session
-            String emailUserSession = userSession.getEmail();
-            //and i use it on a method who know if user is associative member(BDD)
-            Utilisateur utilisateurBdd = userManager.getUserBean(emailUserSession);
-            // finally i put information about member associative in user Session
-            userSession.setMembreAssociation(utilisateurBdd.isMembreAssociation());
+        if (bindingResult.hasErrors()) {
+            model.addAttribute("commentaire", commentaire);
+            logger.info("*********");
+            logger.info("erreur lors du remplissage d'un nouveau commentaire");
 
-            // if user is associative member -> delete comment is ok
-            if (userSession.isMembreAssociation()) {
-                //-> set new updated comment
-                Commentaire updatedComment = new Commentaire();
-                updatedComment.setCommentaire(comentIn.getCommentaire());
-                updatedComment.setId(pId);
-                // -> method for update comment
-                commentManager.updateComment(updatedComment);
+            // model for display comment to update
+            model.addAttribute("comment", commentManager.displayOneComment(pId));
 
-                //model for display all comments
-                model.addAttribute("commentaire", commentManager.displayOneComment(pId));
-
-                return "/commentsRead";
-
-            } else {
-                return "ErrorJsp/errorNotMember";
-            }
+            return "commentUpdate";
         } else {
-            return "ErrorJsp/errorLogin";
+            //-> set new updated comment
+            Commentaire updatedComment = new Commentaire();
+            updatedComment.setCommentaire(commentaire.getCommentaire());
+            updatedComment.setId(pId);
+            // -> method for update comment
+            commentManager.updateComment(updatedComment);
+
+            //model for display all comments
+            model.addAttribute("commentaire", commentManager.displayOneComment(pId));
+
+            return "/commentsRead";
         }
     }
 }
