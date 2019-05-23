@@ -9,23 +9,31 @@ public class Site {
 
     // ==================== Attributs ====================
     private Integer id;
-    @NotBlank
+
     @Size(max=100)
+    @NotBlank
     private String nomSite;
+
     @Size(max=500)
     private String descriptionSite;
-    @NotBlank
+
     @Size(max=50)
+    @NotBlank
     private String localisationDepartement;
-    @NotBlank
+
     @Size(max=50)
+    @NotBlank
     private String localisationPays;
+
     @Size(max=100)
     private String urlPhotoSite;
+
     @DecimalMin(value= "1")
     @NotNull
     private Integer nombreDeSecteur;
+
     private boolean officelSite;
+
     private Integer element_id;
 
     // ==================== Constructeurs ====================

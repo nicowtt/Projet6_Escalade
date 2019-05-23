@@ -1,8 +1,6 @@
 package com.ocr.nicolas.escalade.model.bean;
 
-import javax.validation.constraints.Max;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Size;
+import javax.validation.constraints.*;
 
 /**
  * Bean representant un Utilisateur.
@@ -11,30 +9,42 @@ public class Utilisateur {
 
     // ============ Attributs =========
     private Integer id;
+
     private String raisonSociale;
+
     @Size(max=50)
     @NotBlank
     private String nom;
+
     @Size(max=50)
     @NotBlank
     private String prenom;
+
     @Size(max=100)
     @NotBlank
     private String motDePasse;
+
     @Size(max=100)
     private String adresse;
-    @Max(10000000)
+
+    @DecimalMax(value= "10000000")
     private Integer codePostal;
+
     @Size(max=50)
     private String ville;
+
     @Size(max=50)
     private String pays;
+
     @Size(max=20)
     private String numeroTelephone;
+
     @Size(max=100)
     @NotBlank
     private String email;
+
     private boolean membreAssociation;
+
     @Size(max=200)
     private String autre;
 
