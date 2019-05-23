@@ -93,14 +93,14 @@
       <!-- Site action: add site to personnal space-->
       <p></p>
       <a href="/createTopoPaper/${si.id}">Déclarer un topo papier possédé pour ce site</a>
-      <!-- Site action: tag site "officiel les amis de l'escalade-->
+      <!-- Site action: tag site "officiel les amis de l'escalade ** only for member associative-->
       <p></p>
-      <a href="/addTagForOfficialSite/${si.id}">Tagger ce site en Site Officiel Les amis de l'escalade !</a>
+      <c:if test="${user.membreAssociation}"><a href="/addTagForOfficialSite/${si.id}">Tagger ce site en Site Officiel Les amis de l'escalade !</a></c:if>
       <p></p>
-      <!-- Site action: delete site-->
-      <a href="/comfirmDeleteSite/${si.id}">supprimer le site</a>
-      <p></p>
+      <!-- Site action: delete site ** only for member associative-->
+      <c:if test="${user.membreAssociation}"><a href="/comfirmDeleteSite/${si.id}">supprimer le site</a></c:if>
 
+      <p></p>
 
       <!-- Picture-->
       <img src="${si.urlPhotoSite}" alt="${si.urlPhotoSite}" style="width:500px;height:500px;border:0;">
@@ -172,7 +172,7 @@
         <th>cotation</th>
         <th>hauteur</th>
         <th>Precision equipement</th>
-        <th>Ouverture</th>
+        <th>Nom de l'ouvreur</th>
         <th>Date ouverture</th>
         <th>status</th>
         <th colspan="2">commentaire</th>

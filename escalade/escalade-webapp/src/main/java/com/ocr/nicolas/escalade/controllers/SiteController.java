@@ -41,8 +41,8 @@ public class SiteController {
      * @return
      */
     @RequestMapping(value = "/climbingSite/{id}", method = RequestMethod.GET)
-    public String index(Model model, @PathVariable Integer id, @SessionAttribute(value = "Utilisateur", required = false) Utilisateur utilisateur) {
-
+    public String index(Model model, @PathVariable Integer id, @SessionAttribute(value = "Utilisateur", required = false) Utilisateur userSession) {
+        Utilisateur newUser = new Utilisateur();
 
         // Models for display all information about one climbing site
         model.addAttribute("site", siteManager.getListOneSite(id));
@@ -50,8 +50,12 @@ public class SiteController {
         model.addAttribute("voie", wayManager.getListAllWaysForOneSite(id));
 
         // model for "log"
-        if (utilisateur != null) {
-            model.addAttribute("log", utilisateur.getEmail());
+        if (userSession != null) {
+            model.addAttribute("log", userSession.getEmail());
+
+            // for display member function
+            newUser = userManager.getUserBean(userSession.getEmail());
+            model.addAttribute("user", newUser);
         }
 
         return "climbingSite";
