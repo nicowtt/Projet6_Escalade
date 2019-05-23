@@ -13,4 +13,5 @@ public interface SiteDao {
     List<Site> getListSiteWithFilter(String pCountry, String pDepartment, Integer pNbrSectors, String pSiteName);
     void addTagForOfficialSite(int pId);
     void writeSiteOnBdd(Site site) throws SiteException;
+    void deleteTagForOfficialSite(int pId);
 }

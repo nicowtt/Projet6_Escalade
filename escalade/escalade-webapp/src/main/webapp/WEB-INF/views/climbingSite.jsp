@@ -51,14 +51,19 @@
       <p></p>
       <a href="/createTopoPaper/${si.id}">Déclarer un topo papier possédé pour ce site</a>
 
-      <!-- Site action: tag site "officiel les amis de l'escalade ** only for member associative-->
+      <!-- Site action: tag site "officiel les amis de l'escalade ** see only by member associative-->
       <p></p>
+      <!-- if no tag-->
       <c:if test="${!si.officelSite}">
-      <c:if test="${user.membreAssociation}"><a href="/addTagForOfficialSite/${si.id}">Tagger ce site en Site Officiel Les amis de l'escalade !</a></c:if>
+      <c:if test="${user.membreAssociation}"><a href="/addTagForOfficialSite/${si.id}">Tagger ce site "Officiel Les amis de l'escalade !"</a></c:if>
+      </c:if>
+      <!-- if tag is present-->
+      <c:if test="${si.officelSite}">
+      <c:if test="${user.membreAssociation}"><a href="/deleteTagForOfficialSite/${si.id}">Enlever le tag "Officiel Les amis de l'escalade !"</a></c:if>
       </c:if>
       <p></p>
 
-      <!-- Site action: delete site ** only for member associative-->
+      <!-- Site action: delete site ** see only by member associative-->
       <c:if test="${user.membreAssociation}"><a href="/comfirmDeleteSite/${si.id}">supprimer le site</a></c:if>
 
       <p></p>

@@ -152,4 +152,22 @@ public class SiteManagerImpl extends AbstractManager implements SiteManager {
             }
         });
     }
+
+    /**
+     * For delete tag Official site of climbing friend
+     *
+     * @param pId -> site id
+     */
+    @Override
+    public void deleteTagForOfficialSite(int pId) {
+        TransactionTemplate vTransactionTemplate = new TransactionTemplate(getPlatformTransactionManager());
+
+        vTransactionTemplate.execute(new TransactionCallbackWithoutResult() {
+            @Override
+            protected void doInTransactionWithoutResult(TransactionStatus transactionStatus) {
+
+                siteDao.deleteTagForOfficialSite(pId);
+            }
+        });
+    }
 }

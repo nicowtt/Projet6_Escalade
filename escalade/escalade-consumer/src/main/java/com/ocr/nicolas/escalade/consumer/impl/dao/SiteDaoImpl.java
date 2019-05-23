@@ -170,4 +170,25 @@ public class SiteDaoImpl extends AbstractDAoImpl implements SiteDao {
             throw new SiteException("Le site existe déja !");
         }
     }
+
+    /**
+     * For delete tag Official site of climbing friend
+     *
+     * @param pId -> site id
+     */
+    @Override
+    public void deleteTagForOfficialSite(int pId) {
+
+        String vSQL
+                = "UPDATE site"
+                + " SET officielsite = false"
+                + "  WHERE id = :id";
+
+        NamedParameterJdbcTemplate vJdbcTemplate = new NamedParameterJdbcTemplate(getDatasource());
+        MapSqlParameterSource vParams = new MapSqlParameterSource();
+        vParams.addValue("id", pId, Types.INTEGER);
+
+        vJdbcTemplate.update(vSQL, vParams);
+
+    }
 }
