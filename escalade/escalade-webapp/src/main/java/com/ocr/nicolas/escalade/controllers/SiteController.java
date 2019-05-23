@@ -74,11 +74,17 @@ public class SiteController {
     public String addTagForOfficialSite(Model model, @PathVariable Integer id, @SessionAttribute(value = "Utilisateur", required = false) Utilisateur userSession) {
 
         boolean associativeMember;
+        Utilisateur newUser = new Utilisateur();
 
         // User must log and associative member
         if (userSession != null) {
             //base login
             model.addAttribute("log", userSession.getEmail());
+
+            // for display member function
+            newUser = userManager.getUserBean(userSession.getEmail());
+            model.addAttribute("user", newUser);
+
 
             //check if associative member
             Utilisateur userInBdd = userManager.getUserBean(userSession.getEmail());

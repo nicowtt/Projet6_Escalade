@@ -41,17 +41,23 @@
 
     <!-- Site Description-->
       <c:out value="${si.descriptionSite}" /><br>
+
       <!-- Site action: display or write comment-->
       <p></p>
       <a href="/commentRead/${si.element_id}">Voir les commentaires sur ce site</a><br>
       <a href="/commentWrite/${si.element_id}">Ecrire un commentaire sur ce site</a><br>
+
       <!-- Site action: add site to personnal space-->
       <p></p>
       <a href="/createTopoPaper/${si.id}">Déclarer un topo papier possédé pour ce site</a>
+
       <!-- Site action: tag site "officiel les amis de l'escalade ** only for member associative-->
       <p></p>
+      <c:if test="${!si.officelSite}">
       <c:if test="${user.membreAssociation}"><a href="/addTagForOfficialSite/${si.id}">Tagger ce site en Site Officiel Les amis de l'escalade !</a></c:if>
+      </c:if>
       <p></p>
+
       <!-- Site action: delete site ** only for member associative-->
       <c:if test="${user.membreAssociation}"><a href="/comfirmDeleteSite/${si.id}">supprimer le site</a></c:if>
 
