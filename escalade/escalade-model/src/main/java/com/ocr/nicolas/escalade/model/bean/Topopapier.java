@@ -2,6 +2,7 @@ package com.ocr.nicolas.escalade.model.bean;
 
 
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 
 /**
  * Bean representant un Topopapier
@@ -10,16 +11,27 @@ public class Topopapier {
 
     // =========== Attributs ============
     private Integer id;
+
+    @Size(max=100)
     @NotBlank
     private String nomTopo;
+
+    @Size(max=200)
     @NotBlank
     private String description;
+
+    @Size(max=50)
     @NotBlank
     private String nomCreateur;
+
     private String dateCreation;
+
     private String dateMaj;
+
     private boolean disponibilite;
+
     private boolean demandeReservation;
+    
     private Integer site_id;
     private Integer element_id;
 
