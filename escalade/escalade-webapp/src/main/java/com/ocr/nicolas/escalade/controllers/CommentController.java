@@ -222,7 +222,7 @@ public class CommentController {
         if (bindingResult.hasErrors()) {
             model.addAttribute("commentaire", commentaire);
             logger.info("*********");
-            logger.info("erreur lors du remplissage d'un nouveau commentaire");
+            logger.info("erreur lors du remplissage d'une correction de commentaire");
 
             // model for display comment to update
             model.addAttribute("comment", commentManager.displayOneComment(pId));
