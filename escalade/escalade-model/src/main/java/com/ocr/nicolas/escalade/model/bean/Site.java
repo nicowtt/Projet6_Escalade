@@ -28,6 +28,7 @@ public class Site {
     @Size(max=100)
     private String urlPhotoSite;
 
+    @DecimalMax(value="100000")
     @DecimalMin(value= "1")
     @NotNull
     private Integer nombreDeSecteur;

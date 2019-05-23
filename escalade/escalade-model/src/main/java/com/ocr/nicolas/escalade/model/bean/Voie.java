@@ -1,7 +1,7 @@
 package com.ocr.nicolas.escalade.model.bean;
 
 
-import javax.validation.constraints.NotNull;
+import javax.validation.constraints.*;
 
 /**
  * Bean representant une Voie d'escalade
@@ -10,19 +10,45 @@ public class Voie {
 
     // ==================== Attributs ====================
     private Integer id;
+
+    @DecimalMax(value="100000")
+    @DecimalMin(value="1")
     @NotNull
     private Integer numero;
+
+    @Size(max=100)
     private String nomVoie;
+
+    @DecimalMax(value="1000")
+    @DecimalMin(value="1")
     private Integer tempDescalade;
+
+    @Size(max=500)
     private String descriptionVoie;
+
+    @Size(max=50)
     private String longueur;
+
+    @Size(max=50)
     private String cotation;
+
+    @DecimalMax(value="100000")
+    @DecimalMin(value="1")
     private Integer hauteur;
+
+    @Size(max=100)
     private String precisionEquipement;
+
+    @Size(max=100)
     private String ouvertureEtEquipement;
+
     private String dateOuverture;
+
+    @Size(max=50)
     private String statut;
+
     private Integer element_id;
+
     private Integer secteur_id;
     //bean
     private Secteur secteur;

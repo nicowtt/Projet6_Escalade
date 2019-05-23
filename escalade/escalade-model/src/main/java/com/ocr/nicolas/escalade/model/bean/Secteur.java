@@ -1,7 +1,6 @@
 package com.ocr.nicolas.escalade.model.bean;
 
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
+import javax.validation.constraints.*;
 import java.util.List;
 
 /**
@@ -11,20 +10,44 @@ public class Secteur {
 
     // ==================== Attributs ====================
     private Integer id;
+
+    @Size(max=100)
     @NotBlank
     private String nomSecteur;
+
+    @Size(max=500)
     private String descriptionSecteur;
+
+    @Size(max=200)
     private String acces;
+
+    @DecimalMax(value="100000")
+    @DecimalMin(value="1")
     private Integer altitudeBase;
+
+    @Size(max=100)
     private String orientation;
+
+    @Size(max=100)
     private String typeRoche;
+
+    @DecimalMax(value="100000")
+    @DecimalMin(value="1")
     @NotNull
     private Integer nombreDeVoies;
+
+    @Size(max=50)
     @NotBlank
     private String cotation;
+
+    @Size(max=100)
     private String urlPhotoSecteur;
+
+    @Size(max=100)
     private String coordonneGps;
+
     private Integer element_id;
+
     private Integer site_id;
     //ajout bean voie
     private List<Voie> ways;
