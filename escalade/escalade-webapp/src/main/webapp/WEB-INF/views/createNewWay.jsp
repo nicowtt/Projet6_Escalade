@@ -134,7 +134,7 @@
                 </tr>
                 <tr>
                     <!-- display for "ouvertureEtEquipement" -->
-                    <td>Ouverture et Equipement: </td>
+                    <td>Ouvreur de la voie: </td>
                     <td><f:input path="ouvertureEtEquipement" type="text" id="ouvertureEtEquipement" placeholder="" cssStyle=""/></td>
                     <td><f:errors path="ouvertureEtEquipement" cssClass="errors"/></td>
                 </tr>

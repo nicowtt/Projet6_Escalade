@@ -97,7 +97,7 @@ public class WayDaoImpl extends AbstractDAoImpl implements WayDao {
         vParams.addValue("hauteur", pWay.getHauteur(), Types.INTEGER);
         vParams.addValue("precisionequipement", pWay.getPrecisionEquipement(), Types.VARCHAR);
         vParams.addValue("ouvertureetequipement", pWay.getOuvertureEtEquipement(), Types.VARCHAR);
-        vParams.addValue("dateouverture", pWay.getDateOuverture(), Types.DATE);
+        vParams.addValue("dateouverture", pWay.getDateOuverture(), Types.VARCHAR);
         vParams.addValue("statut", pWay.getStatut(), Types.VARCHAR);
         vParams.addValue("element_id", pWay.getElement_id(), Types.INTEGER);
         vParams.addValue("secteur_id", pWay.getSecteur_id(), Types.INTEGER);

@@ -31,7 +31,7 @@ public class Topopapier {
     private boolean disponibilite;
 
     private boolean demandeReservation;
-    
+
     private Integer site_id;
     private Integer element_id;
 
