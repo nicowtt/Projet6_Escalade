@@ -30,6 +30,7 @@
 <body>
 
 <div class="container">
+    <section class="row">
 
     <!-- Body
     ================================================== -->
@@ -37,13 +38,20 @@
     <!-- display site -->
     <p></p>
     <p><c:forEach items="${site}" var="si">
-        <div class="col-lg-3">
-            <a href="/climbingSite/${si.id}">
-            <img src="${si.urlPhotoSite}" alt="${si.urlPhotoSite}" style="width:200px;height:200px;border:0;">
-            <c:out value="${si.nomSite}" />
+        <div class="col-xs-6 col-sm-4 col-md-3">
+            <a href="/climbingSite/${si.id}" class="thumbnail">
+            <img src="${si.urlPhotoSite}" alt="${si.urlPhotoSite}" style="width:250px;height:250px; border:0px;" class="img-rounded">
             </a>
+                <span class="label label-default"><c:out value="${si.localisationPays}"/></span>
+                <span class="label label-info"><c:out value="Nom: ${si.nomSite}"/></span>
+                <p></p>
+                <span class="label label-info"><c:out value="Nombre de secteur: ${si.nombreDeSecteur}"/></span>
+                <p></p>
+
         </div>
     </c:forEach>
+
+    </section>
 
 </div>
 

@@ -199,6 +199,7 @@ public class SiteDaoImpl extends AbstractDAoImpl implements SiteDao {
      * @param pDepartment -> filter by department
      * @param pNbrSectors -> filter by sectors numbers
      * @param pSiteName -> filter by SiteName
+     * @param pNbrMax -> for take all sectors
      * @return -> list of site with filter
      */
     @Override

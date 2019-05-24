@@ -33,7 +33,9 @@
 
     <!-- Climbing site title -->
     <c:forEach items="${site}" var="si">
+      <p class="flotte">
       <c:if test="${si.officelSite}"><img src="https://image.noelshack.com/fichiers/2019/19/4/1557415844-officiel-logo-les-amis-de-lescalade-vide.png" alt="logo escalade officiel" style="width:191px;height:92px;border:0;"></c:if>
+      </p>
       <%--<b>TAG: Site Officiel Les amis de l'esclade !</b>--%>
       <p></p>
     <h1><c:out value="${si.nomSite}" /></h1>
