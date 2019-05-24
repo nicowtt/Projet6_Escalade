@@ -3,12 +3,17 @@ package com.ocr.nicolas.escalade.business.impl;
 import com.ocr.nicolas.escalade.business.contract.SiteManager;
 import com.ocr.nicolas.escalade.consumer.contract.dao.ElementDao;
 import com.ocr.nicolas.escalade.consumer.contract.dao.SiteDao;
+import com.ocr.nicolas.escalade.consumer.impl.dao.SiteDaoImpl;
 import com.ocr.nicolas.escalade.model.bean.Element;
 import com.ocr.nicolas.escalade.model.bean.Site;
 import com.ocr.nicolas.escalade.model.exception.SiteException;
 import org.springframework.transaction.TransactionStatus;
 import org.springframework.transaction.support.TransactionCallbackWithoutResult;
 import org.springframework.transaction.support.TransactionTemplate;
+
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+
 
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -23,6 +28,8 @@ public class SiteManagerImpl extends AbstractManager implements SiteManager {
 
     @Inject
     private ElementDao elementDao;
+
+    static final Log logger = LogFactory.getLog(SiteManagerImpl.class);
 
     /**
      * For get All site on a list
@@ -169,5 +176,133 @@ public class SiteManagerImpl extends AbstractManager implements SiteManager {
                 siteDao.deleteTagForOfficialSite(pId);
             }
         });
+    }
+
+    /**
+     * For have a site List with filter
+     *
+     * @param pCountry -> filter by country
+     * @param pDepartment -> filter by department
+     * @param pNbrSectors -> filter by sectors numbers
+     * @param pSiteName -> filter by SiteName
+     * @return -> list of site with filter
+     */
+    @Override
+    public List<Site> getListSiteWithFilterMultiChoice(String pCountry, String pDepartment, Integer pNbrSectors, String pSiteName, int pNbrMax) {
+        TransactionTemplate vTransactionTemplate = new TransactionTemplate(getPlatformTransactionManager());
+
+        List<Site> vListSite = vTransactionTemplate.execute(transactionStatus -> {
+
+            List<Site> vListSiteTransaction = new ArrayList<>();
+            vListSiteTransaction = siteDao.getListSiteWithFilterMultiChoice(pCountry, pDepartment, pNbrSectors, pSiteName, pNbrMax);
+
+            return vListSiteTransaction;
+        });
+        return vListSite;
+    }
+
+    /**
+     * For delete on site list country repetition
+     * @param pListFull
+     * @return
+     */
+    @Override
+    public List<Site> getListwithoutRepetitionOfCountry(List<Site> pListFull) {
+        List<Site> listwithoutRepetition = pListFull;
+        String country = "";
+        int count = 0;
+
+
+        if (pListFull != null) {
+            for (int i = 0; i < pListFull.size(); i++) {
+                country = pListFull.get(i).getLocalisationPays();
+                //for remove repetition
+                for (int j = 0; j < listwithoutRepetition.size() ; j++) {
+                    if (listwithoutRepetition.get(j).getLocalisationPays().equals(country)) {
+
+                        if (count >= 1) {
+                            listwithoutRepetition.remove(j);
+                            logger.info("repetition effacé pour affichage multicritére");
+                        }
+                        count++;
+                    }
+                }
+                count = 0;
+            }
+
+
+
+        }
+
+        return listwithoutRepetition;
+    }
+
+    /**
+     * For delete on site list department repetition
+     *
+     * @param pListFull
+     * @return
+     */
+    @Override
+    public List<Site> getListwithoutRepetitionOfDepartment(List<Site> pListFull) {
+        List<Site> listwithoutRepetition = pListFull;
+        String department = "";
+        int count = 0;
+
+
+        if (pListFull != null) {
+            for (int i = 0; i < pListFull.size(); i++) {
+                department = pListFull.get(i).getLocalisationDepartement();
+                //for remove repetition
+                for (int j = 0; j < listwithoutRepetition.size() ; j++) {
+                    if (listwithoutRepetition.get(j).getLocalisationDepartement().equals(department)) {
+
+                        if (count >= 1) {
+                            listwithoutRepetition.remove(j);
+                        }
+                        count++;
+                    }
+                }
+                count = 0;
+            }
+
+
+
+        }
+
+        return listwithoutRepetition;
+    }
+
+    /**
+     * for delete on site list sector number repetition
+     * @param pListFull
+     * @return
+     */
+    @Override
+    public List<Site> getListwithoutRepetitionOfSectorNumber(List<Site> pListFull) {
+        List<Site> listwithoutRepetition = pListFull;
+        int nbrSecteur;
+        int count = 0;
+
+
+        if (pListFull != null) {
+            for (int i = 0; i < pListFull.size(); i++) {
+                nbrSecteur = pListFull.get(i).getNombreDeSecteur();
+                //for remove repetition
+                for (int j = 0; j < listwithoutRepetition.size() ; j++) {
+                    if (listwithoutRepetition.get(j).getNombreDeSecteur().equals(nbrSecteur)) {
+
+                        if (count >= 1) {
+                            listwithoutRepetition.remove(j);
+                        }
+                        count++;
+                    }
+                }
+                count = 0;
+            }
+
+        }
+
+        return listwithoutRepetition;
     }
 }

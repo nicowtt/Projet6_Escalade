@@ -33,7 +33,69 @@
 
     <!-- display for search climbing Site -->
     <br>
-    <div id="searchClimbingSite">
+    <%--<div id="searchClimbingSite">--%>
+        <%--<f:form modelAttribute="search" method="post" action="/home">--%>
+            <%--<p></p>--%>
+            <%--&lt;%&ndash;<!-- search by country -->&ndash;%&gt;--%>
+            <%--<h3>Recherche Site d'escalade:</h3>--%>
+            <%--<p></p>--%>
+            <%--</br>--%>
+            <%--&lt;%&ndash;<p>Par Pays:</p>&ndash;%&gt;--%>
+            <%--<f:select path="localisationPays">--%>
+                <%--<c:forEach items="${site}" var="si">--%>
+                    <%--<f:option value="${si.localisationPays}">${si.localisationPays}</f:option>--%>
+                <%--</c:forEach>--%>
+            <%--</f:select>--%>
+            <%--<p></p>--%>
+            <%--<input type="submit" value="Rechercher par pays">--%>
+            <%--<p></p>--%>
+        <%--</f:form>--%>
+
+        <%--<f:form modelAttribute="search" method="post" action="/home">--%>
+            <%--&lt;%&ndash;<!-- search by departement -->&ndash;%&gt;--%>
+            <%--<p>----------------------</p>--%>
+            <%--<f:select path="localisationDepartement">--%>
+                <%--<c:forEach items="${site}" var="si">--%>
+                    <%--<f:option value="${si.localisationDepartement}">${si.localisationDepartement}</f:option>--%>
+                <%--</c:forEach>--%>
+            <%--</f:select>--%>
+            <%--<p></p>--%>
+            <%--<input type="submit" value="Rechercher par departement">--%>
+            <%--<p></p>--%>
+        <%--</f:form>--%>
+
+        <%--<f:form modelAttribute="search" method="post" action="/home">--%>
+
+            <%--&lt;%&ndash;<!-- search by sector number -->&ndash;%&gt;--%>
+            <%--<p>----------------------</p>--%>
+            <%--<f:select path="nombreDeSecteur">--%>
+                <%--<c:forEach items="${site}" var="si">--%>
+                    <%--<f:option value="${si.nombreDeSecteur}">${si.nombreDeSecteur}</f:option>--%>
+                <%--</c:forEach>--%>
+            <%--</f:select>--%>
+            <%--<p></p>--%>
+            <%--<input type="submit" value="Rechercher par nombre de secteur">--%>
+            <%--<p></p>--%>
+
+        <%--</f:form>--%>
+
+
+        <%--<f:form modelAttribute="search" method="post" action="/home">--%>
+
+            <%--&lt;%&ndash;<!-- search by site name -->&ndash;%&gt;--%>
+            <%--<p>----------------------</p>--%>
+            <%--<f:select path="nomSite">--%>
+                <%--<c:forEach items="${site}" var="si">--%>
+                    <%--<f:option value="${si.nomSite}">${si.nomSite}</f:option>--%>
+                <%--</c:forEach>--%>
+            <%--</f:select>--%>
+            <%--<p></p>--%>
+            <%--<input type="submit" value="Rechercher par nom de site d'escalade">--%>
+
+        <%--</f:form>--%>
+    <%--</div>--%>
+
+    <div id="searchClimbingSite2">
         <f:form modelAttribute="search" method="post" action="/home">
             <p></p>
             <%--<!-- search by country -->--%>
@@ -41,56 +103,46 @@
             <p></p>
             </br>
             <%--<p>Par Pays:</p>--%>
+            <p>Pays:</p>
             <f:select path="localisationPays">
-                <c:forEach items="${site}" var="si">
-                    <f:option value="${si.localisationPays}">${si.localisationPays}</f:option>
+                <f:option value=""/>
+                <c:forEach items="${pays}" var="pa">
+                    <f:option value="${pa.localisationPays}">${pa.localisationPays}</f:option>
                 </c:forEach>
             </f:select>
             <p></p>
-            <input type="submit" value="Rechercher par pays">
-            <p></p>
-        </f:form>
 
-        <f:form modelAttribute="search" method="post" action="/home">
             <%--<!-- search by departement -->--%>
-            <p>----------------------</p>
+            <p>Departement:</p>
             <f:select path="localisationDepartement">
-                <c:forEach items="${site}" var="si">
-                    <f:option value="${si.localisationDepartement}">${si.localisationDepartement}</f:option>
+                <f:option value=""/>
+                <c:forEach items="${departements}" var="de">
+                    <f:option value="${de.localisationDepartement}">${de.localisationDepartement}</f:option>
                 </c:forEach>
             </f:select>
             <p></p>
-            <input type="submit" value="Rechercher par departement">
-            <p></p>
-        </f:form>
-
-        <f:form modelAttribute="search" method="post" action="/home">
 
             <%--<!-- search by sector number -->--%>
-            <p>----------------------</p>
+            <p>Nombre de secteur:</p>
             <f:select path="nombreDeSecteur">
-                <c:forEach items="${site}" var="si">
-                    <f:option value="${si.nombreDeSecteur}">${si.nombreDeSecteur}</f:option>
+                <f:option value=""/>
+                <c:forEach items="${sectorNumber}" var="se">
+                    <f:option value="${se.nombreDeSecteur}">${se.nombreDeSecteur}</f:option>
                 </c:forEach>
             </f:select>
             <p></p>
-            <input type="submit" value="Rechercher par nombre de secteur">
-            <p></p>
-
-        </f:form>
-
-
-        <f:form modelAttribute="search" method="post" action="/home">
 
             <%--<!-- search by site name -->--%>
-            <p>----------------------</p>
+            <p>Nom du site:</p>
             <f:select path="nomSite">
+                <f:option value=""/>
                 <c:forEach items="${site}" var="si">
                     <f:option value="${si.nomSite}">${si.nomSite}</f:option>
                 </c:forEach>
             </f:select>
             <p></p>
-            <input type="submit" value="Rechercher par nom de site d'escalade">
+
+            <input type="submit" value="Rechercher">
 
         </f:form>
     </div>

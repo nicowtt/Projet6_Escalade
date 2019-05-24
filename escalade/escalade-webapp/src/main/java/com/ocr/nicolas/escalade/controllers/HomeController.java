@@ -49,15 +49,24 @@ public class HomeController {
      */
     @RequestMapping(value="/home", method = RequestMethod.POST)
     public String homePost(@Valid Site site, BindingResult bindingResult, Model model, @SessionAttribute(value = "Utilisateur", required = false) Utilisateur utilisateur) {
+        int nbrMaxSecteur = 10000;
+        int nbrMinSecteur = 1;
 
         // model for "log"
         if (utilisateur != null) {
             model.addAttribute("log", utilisateur.getEmail());
         }
 
-        //method for display climbing site with filter -> to check !!!
-        model.addAttribute("site", siteManager.getListSiteWithFilter(site.getLocalisationPays(), site.getLocalisationDepartement(), site.getNombreDeSecteur(), site.getNomSite()));
+        //for bean preparation before send to SQL request (multi critere search)
+        if (site.getLocalisationPays() == "" ) {site.setLocalisationPays("%");}
+        if (site.getLocalisationDepartement() == "") {site.setLocalisationDepartement("%");}
+        if (site.getNomSite() == "") {site.setNomSite("%");}
 
+        if (site.getNombreDeSecteur() != null) {nbrMaxSecteur = site.getNombreDeSecteur();}
+        if (site.getNombreDeSecteur() == null) {site.setNombreDeSecteur(nbrMinSecteur);}
+
+        //for display climbing site with filter (multi critere search)
+        model.addAttribute("site", siteManager.getListSiteWithFilterMultiChoice(site.getLocalisationPays(), site.getLocalisationDepartement(), site.getNombreDeSecteur(), site.getNomSite(), nbrMaxSecteur));
 
         return "home";
     }

@@ -13,4 +13,8 @@ public interface SiteManager {
     void addTagForOfficialSite(int pId);
     void writeSiteOnBdd(Site site, int pUserId);
     void deleteTagForOfficialSite(int pId);
+    List<Site> getListSiteWithFilterMultiChoice(String pCountry, String pDepartment, Integer pNbrSectors, String pSiteName, int pNbrMax);
+    List<Site> getListwithoutRepetitionOfCountry(List<Site> pListFull);
+    List<Site> getListwithoutRepetitionOfDepartment(List<Site> pListFull);
+    List<Site> getListwithoutRepetitionOfSectorNumber(List<Site> pListFull);
 }

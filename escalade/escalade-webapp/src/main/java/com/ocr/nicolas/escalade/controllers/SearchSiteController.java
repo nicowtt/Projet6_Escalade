@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import javax.inject.Inject;
+import java.util.ArrayList;
+import java.util.List;
 
 
 @Controller
@@ -27,7 +29,7 @@ public class SearchSiteController {
 
 
     /**
-     * For search a climbing site
+     * For display multi critere search of climbing site
      *
      * @param model
      * @return -> page for search
@@ -35,6 +37,12 @@ public class SearchSiteController {
     @RequestMapping(value="/searchSite", method = RequestMethod.GET)
     public String searchSite (Model model,  @SessionAttribute(value = "Utilisateur", required = false) Utilisateur utilisateur) {
         model.addAttribute("search", new Site());
+
+        //model with no repetition system
+        model.addAttribute("pays", siteManager.getListwithoutRepetitionOfCountry(siteManager.getListAllSite()));
+        model.addAttribute("departements", siteManager.getListwithoutRepetitionOfDepartment(siteManager.getListAllSite()));
+        model.addAttribute("sectorNumber", siteManager.getListwithoutRepetitionOfSectorNumber(siteManager.getListAllSite()));
+        // model for siteName
         model.addAttribute("site", siteManager.getListAllSite());
 
         // model for "log"

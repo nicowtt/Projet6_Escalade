@@ -191,4 +191,40 @@ public class SiteDaoImpl extends AbstractDAoImpl implements SiteDao {
         vJdbcTemplate.update(vSQL, vParams);
 
     }
+
+    /**
+     * For have a site List with filter
+     *
+     * @param pCountry -> filter by country
+     * @param pDepartment -> filter by department
+     * @param pNbrSectors -> filter by sectors numbers
+     * @param pSiteName -> filter by SiteName
+     * @return -> list of site with filter
+     */
+    @Override
+    public List<Site> getListSiteWithFilterMultiChoice(String pCountry, String pDepartment, Integer pNbrSectors, String pSiteName, int pNbrMax){
+
+        String vSQL
+                = "SELECT * FROM site"
+                + " WHERE ( localisationpays like :Country OR localisationpays IS NULL)"
+                + " AND (localisationdepartement like :Department OR localisationdepartement IS NULL) "
+                + " AND (nombredesecteur BETWEEN :NbrSectors AND :NbrMax ) "
+                + " AND (nomsite like :SiteName OR nomsite IS NULL) ";
+
+        NamedParameterJdbcTemplate vJdbcTemplate = new NamedParameterJdbcTemplate(getDatasource());
+
+        MapSqlParameterSource vParams = new MapSqlParameterSource();
+        vParams.addValue("Country", pCountry, Types.VARCHAR);
+        vParams.addValue("Department", pDepartment, Types.VARCHAR);
+        vParams.addValue("NbrSectors", pNbrSectors, Types.INTEGER);
+        vParams.addValue("NbrMax", pNbrMax, Types.INTEGER);
+        vParams.addValue("SiteName", pSiteName, Types.VARCHAR);
+
+        RowMapper<Site> vRowMapper = new SiteRowMapper();
+
+        List<Site> vListeSite = vJdbcTemplate.query(vSQL, vParams, vRowMapper);
+
+        return vListeSite;
+    }
+
 }
