@@ -39,6 +39,10 @@
     <h1><c:out value="${si.nomSite}" /></h1>
       <p></p>
 
+      <p><b>Pays: </b><c:out value="${si.localisationPays}" /></p>
+      <p><b>Departement: </b><c:out value="${si.localisationDepartement}" /></p>
+      <p><b>Nombre de secteur: </b><c:out value="${si.nombreDeSecteur}" /></p>
+
     <!-- Site Description-->
       <c:out value="${si.descriptionSite}" /><br>
 
