@@ -26,8 +26,9 @@ public class HomeController {
 
 
     /**
-     * Redirection index.jsp to home.jsp
-     * @param model model
+     * For display home page
+     *
+     * @param model model for all climbing site
      * @return home.jsp
      */
     @RequestMapping(value="/home", method = RequestMethod.GET )
@@ -43,8 +44,9 @@ public class HomeController {
     }
 
     /**
-     * Redirection index.jsp to home.jsp
-     * @param model model
+     * For display home page after a multi criteria search
+     *
+     * @param model model for filter climbing site
      * @return home.jsp
      */
     @RequestMapping(value="/home", method = RequestMethod.POST)

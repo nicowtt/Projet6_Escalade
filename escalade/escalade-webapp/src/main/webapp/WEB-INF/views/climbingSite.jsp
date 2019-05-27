@@ -32,7 +32,7 @@
       <p></p>
 
       <p><b>Pays: </b><c:out value="${si.localisationPays}" /></p>
-      <p><b>Departement: </b><c:out value="${si.localisationDepartement}" /></p>
+      <p><b>Département: </b><c:out value="${si.localisationDepartement}" /></p>
       <p><b>Nombre de secteur: </b><c:out value="${si.nombreDeSecteur}" /></p>
 
     <!-- Site Description-->

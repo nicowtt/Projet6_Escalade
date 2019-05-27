@@ -1,7 +1,7 @@
 # OC_Projet6_Escalade
 
 Voici un site communautaire autour de l'escalade qui répond 
-aux besoins de l'association **"Les amis de l'escalade"**
+aux besoins de l'association **"Les amis de l'escalade".**
 
 Le but est la mise en relation et le partage d'informations. 
 Il donnera de la visibilité à l'association et encouragera 
@@ -63,8 +63,8 @@ Les fonctions en plus:
 - Le site est responsive.
 - le site est sécurisé. (aucun mot de passe en cler)
 
-## déployment
-Ce projet a été réalisé en Java avec Maven.
+## Déployment
+Ce projet a été réalisé en Java avec Maven. <br>
 Utilisation de Spring / Spring MVC / Spring security / (ORM) Spring JDBC.
 
 Base de donnée: PostgreSQL
@@ -73,11 +73,11 @@ Afin de lancer l'application web sur un serveur apache:
 
 - Exécutez la commande maven suivante pour créer le package de déploiement :
     
-    mvn package
+    ** mvn package **
     
 - Copier / coller le fichier **escalade-webapp.war** dans le dossier webapps de tomcat.
 
-- Lancer votre serveur Tomcat et aller à l'adresse :
+- Lancer votre serveur Tomcat et rendez-vous à l'adresse :
 
     http://localhost:8080/escalade-webapp/home
     
