@@ -230,22 +230,22 @@
     <build>
         <finalName>escalade-webapp</finalName>
 
-        <plugins>
-            <!-- ===== Packaging WAR ===== -->
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-war-plugin</artifactId>
-                <configuration>
-                    <webResources>
-                        <resource>
-                            <filtering>true</filtering>
-                            <directory>src/main/webapp</directory>
-                        </resource>
-                    </webResources>
-                </configuration>
-            </plugin>
+        <!--<plugins>-->
+            <!--&lt;!&ndash; ===== Packaging WAR ===== &ndash;&gt;-->
+            <!--<plugin>-->
+                <!--<groupId>org.apache.maven.plugins</groupId>-->
+                <!--<artifactId>maven-war-plugin</artifactId>-->
+                <!--<configuration>-->
+                    <!--<webResources>-->
+                        <!--<resource>-->
+                            <!--<filtering>true</filtering>-->
+                            <!--<directory>src/main/webapp</directory>-->
+                        <!--</resource>-->
+                    <!--</webResources>-->
+                <!--</configuration>-->
+            <!--</plugin>-->
 
-        </plugins>
+        <!--</plugins>-->
     </build>
 
 </project>

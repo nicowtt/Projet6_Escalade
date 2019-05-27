@@ -15,7 +15,7 @@
 
   <!-- ===== Informations générales ===== -->
   <name>${projectName}</name>
-  <url>http://localhost:8080/</url>
+  <url>http://localhost:8080/escalade-webapp/</url>
   <description>
     Un site communautaire autour de l'escalade
   </description>
@@ -34,7 +34,7 @@
   <!-- Propriétés -->
   <!-- =============================================================== -->
   <properties>
-    <projectName>OC P6-Escalade par Bodelle nicolas</projectName>
+    <projectName>OC P6-Escalade</projectName>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.source>1.8</maven.compiler.source>
     <maven.compiler.target>1.8</maven.compiler.target>

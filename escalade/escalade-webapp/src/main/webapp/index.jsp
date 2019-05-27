@@ -18,15 +18,9 @@
     <spring:url value="/resources/css/style.css " var="stylecss" />
     <link href="${stylecss}" rel="stylesheet" />
 
-    <%--<link rel="stylesheet" type="text/css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css" href="<%=request.getContextPath()%>resources/css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css/style.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css">--%>
-
-    <%--<link rel="stylesheet" media="screen" type="text/css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css" title="main_css"--%>
-          <%--href="resources/css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css/style.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css.css" />--%>
 
 </head>
 <c:redirect url="/home"/>
-
-
 
 
 <!-- jQuery -->
@@ -37,16 +31,3 @@
 
 
 </html>
-
-
-
-
-<%--<%@ page contentType="text/html;charset=UTF-8" language="java" %>--%>
-<%--<html>--%>
-<%--<head>--%>
-    <%--<title>Index Page</title>--%>
-<%--</head>--%>
-<%--<body>--%>
-<%--<a href="/index">Go To Home Page</a>--%>
-<%--</body>--%>
-<%--</html>--%>
