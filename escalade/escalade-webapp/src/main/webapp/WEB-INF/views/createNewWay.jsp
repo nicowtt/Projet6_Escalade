@@ -27,7 +27,7 @@
         <h3>Enregistrement d'une nouvelle voie d'escalade:</h3>
 
         <p></p>
-        <f:form modelAttribute="voie" method="post" action="/createNewWayPost/${voie.secteur_id}">
+        <f:form modelAttribute="voie" method="post" action="${pageContext.request.contextPath}/createNewWayPost/${voie.secteur_id}">
             <table class="lignesEspacees">
                 <tr>
                     <!-- display for "numero" -->

@@ -27,7 +27,7 @@
         <h3>Enregistrement d'un nouveau Secteur d'escalade:</h3>
 
         <p></p>
-        <f:form modelAttribute="secteur" method="post" action="/createNewSectorPost/${secteur.site_id}">
+        <f:form modelAttribute="secteur" method="post" action="${pageContext.request.contextPath}/createNewSectorPost/${secteur.site_id}">
             <table class="lignesEspacees">
                 <tr>
                     <!-- display for "nom secteur" -->

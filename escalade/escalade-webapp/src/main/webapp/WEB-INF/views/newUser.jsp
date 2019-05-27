@@ -26,7 +26,7 @@
     <div id="NewUser">
         <h3>Inscription nouvel utilisateur:</h3>
         <p></p>
-        <f:form modelAttribute="utilisateur" method="post" action="/newUser">
+        <f:form modelAttribute="utilisateur" method="post" action="${pageContext.request.contextPath}/newUser">
             <table class="lignesEspacees">
                 <tr>
                     <!-- display for "raison sociale" -->

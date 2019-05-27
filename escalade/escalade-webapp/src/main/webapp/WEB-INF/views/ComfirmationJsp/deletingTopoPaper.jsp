@@ -24,7 +24,7 @@
     <!-- display site -->
     <p></p>
     <p><b>Voulez-vous vraiment supprimer le topo Papier ?</b></p>
-    <p><a href="/DeleteTopoPaper/${topopapier.id}" >Oui</a></p>
+    <p><a href="<%=pathWebcontent%>/DeleteTopoPaper/${topopapier.id}" >Oui</a></p>
 
 </div>
 

@@ -47,8 +47,8 @@
                     <td>${to.dateCreation}</td>
                     <td>${to.dateMaj}</td>
                     <td>${to.disponibilite ? "oui" : "non"} </td>
-                    <td><a href="/availabilityTopoPapier/${to.id}">modifier la diponibilité </a></td>
-                    <td><a href="/comfirmationForDeleteTopoPaper/${to.id}">Je ne le possède plus </a></td>
+                    <td><a href="<%=pathWebcontent%>/availabilityTopoPapier/${to.id}">modifier la diponibilité </a></td>
+                    <td><a href="<%=pathWebcontent%>/comfirmationForDeleteTopoPaper/${to.id}">Je ne le possède plus </a></td>
                 </tr>
             </c:forEach>
         </table>
@@ -84,7 +84,7 @@
             <tr>
                 <td>${re.id}</td>
                 <td>${re.topopapier.nomTopo}</td>
-                <td><a href="/acceptBooking/${re.id}/${re.topoPapier_id}">Accepter la demande</a> </td>
+                <td><a href="<%=pathWebcontent%>/acceptBooking/${re.id}/${re.topoPapier_id}">Accepter la demande</a> </td>
             </tr>
             </c:forEach>
         </table>

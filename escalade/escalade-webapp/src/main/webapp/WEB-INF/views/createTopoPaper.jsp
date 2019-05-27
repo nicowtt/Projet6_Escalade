@@ -27,7 +27,7 @@
         <h3>Enregistrement d'un nouveau topo papier:</h3>
 
         <p></p>
-        <f:form modelAttribute="topopapier" method="post" action="/createTopoPaper/${topopapier.site_id}">
+        <f:form modelAttribute="topopapier" method="post" action="${pageContext.request.contextPath}/createTopoPaper/${topopapier.site_id}">
             <table class="lignesEspacees">
                 <tr>
                     <!-- display for "nom secteur" -->

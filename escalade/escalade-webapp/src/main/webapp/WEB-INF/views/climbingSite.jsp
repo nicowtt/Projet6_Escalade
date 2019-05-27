@@ -40,27 +40,27 @@
 
       <!-- Site action: display or write comment-->
       <p></p>
-      <a href="/commentRead/${si.element_id}">Voir les commentaires sur ce site</a><br>
-      <a href="/commentWrite/${si.element_id}">Ecrire un commentaire sur ce site</a><br>
+      <a href="<%=pathWebcontent%>/commentRead/${si.element_id}">Voir les commentaires sur ce site</a><br>
+      <a href="<%=pathWebcontent%>/commentWrite/${si.element_id}">Ecrire un commentaire sur ce site</a><br>
 
       <!-- Site action: add site to personnal space-->
       <p></p>
-      <a href="/createTopoPaper/${si.id}">Déclarer un topo papier possédé pour ce site</a>
+      <a href="<%=pathWebcontent%>/createTopoPaper/${si.id}">Déclarer un topo papier possédé pour ce site</a>
 
       <!-- Site action: tag site "officiel les amis de l'escalade ** see only by member associative-->
       <p></p>
       <!-- if no tag-->
       <c:if test="${!si.officelSite}">
-      <c:if test="${user.membreAssociation}"><a href="/addTagForOfficialSite/${si.id}">Tagger ce site "Officiel Les amis de l'escalade !"</a></c:if>
+      <c:if test="${user.membreAssociation}"><a href="<%=pathWebcontent%>/addTagForOfficialSite/${si.id}">Tagger ce site "Officiel Les amis de l'escalade !"</a></c:if>
       </c:if>
       <!-- if tag is present-->
       <c:if test="${si.officelSite}">
-      <c:if test="${user.membreAssociation}"><a href="/deleteTagForOfficialSite/${si.id}">Enlever le tag "Officiel Les amis de l'escalade !"</a></c:if>
+      <c:if test="${user.membreAssociation}"><a href="<%=pathWebcontent%>/deleteTagForOfficialSite/${si.id}">Enlever le tag "Officiel Les amis de l'escalade !"</a></c:if>
       </c:if>
       <p></p>
 
       <!-- Site action: delete site ** see only by member associative-->
-      <c:if test="${user.membreAssociation}"><a href="/comfirmDeleteSite/${si.id}">supprimer le site</a></c:if>
+      <c:if test="${user.membreAssociation}"><a href="<%=pathWebcontent%>/comfirmDeleteSite/${si.id}">supprimer le site</a></c:if>
 
       <p></p>
 
@@ -68,7 +68,7 @@
       <img src="${si.urlPhotoSite}" alt="${si.urlPhotoSite}" style="width:500px;height:500px;border:0;">
       <!-- lien pour crée un nouveau secteur-->
     <p></p>
-      <p><a href="/createNewSector/${si.id}">Ajouter un nouveau secteur sur ce site </a></p>
+      <p><a href="<%=pathWebcontent%>/createNewSector/${si.id}">Ajouter un nouveau secteur sur ce site </a></p>
     </c:forEach>
 
 
@@ -103,9 +103,9 @@
         <td>${s.nombreDeVoies}</td>
         <td>${s.cotation}</td>
         <td>${s.coordonneGps}</td>
-        <td><a href="/createNewWay/${s.id}">Ajouter une nouvelle voie</a></td>
-        <td><a href="/commentRead/${s.element_id}">Voir</a></td>
-        <td><a href="/commentWrite/${s.element_id}">Ecrire</a></td>
+        <td><a href="<%=pathWebcontent%>/createNewWay/${s.id}">Ajouter une nouvelle voie</a></td>
+        <td><a href="<%=pathWebcontent%>/commentRead/${s.element_id}">Voir</a></td>
+        <td><a href="<%=pathWebcontent%>/commentWrite/${s.element_id}">Ecrire</a></td>
       </tr>
         </c:forEach>
       </table>
@@ -153,8 +153,8 @@
           <td>${v.ouvertureEtEquipement}</td>
           <td>${v.dateOuverture}</td>
           <td>${v.statut}</td>
-          <td><a href="/commentRead/${v.element_id}">Voir</a></td>
-          <td><a href="/commentWrite/${v.element_id}">Ecrire</a></td>
+          <td><a href="<%=pathWebcontent%>/commentRead/${v.element_id}">Voir</a></td>
+          <td><a href="<%=pathWebcontent%>/commentWrite/${v.element_id}">Ecrire</a></td>
         </tr>
       </c:forEach>
     </table>

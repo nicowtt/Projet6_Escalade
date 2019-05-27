@@ -24,7 +24,7 @@
     <!-- display site -->
     <p></p>
     <p><b>Voulez-vous vraiment supprimer le site ? (ainsi que les secteurs, voies et commentaires liés à ce site)</b></p>
-    <p><a href="/deleteSite/${site.id}" >Oui</a></p>
+    <p><a href="<%=pathWebcontent%>/deleteSite/${site.id}" >Oui</a></p>
 
 </div>
 

@@ -32,7 +32,7 @@
     <br>
     <div id="changeAvailability">
         <c:forEach items="${topoPapier}" var="to">
-        <f:form modelAttribute="updateTopoPapier" method="post" action="/changeAvailabilityTopoPapier/${to.id}">
+        <f:form modelAttribute="updateTopoPapier" method="post" action="${pageContext.request.contextPath}/changeAvailabilityTopoPapier/${to.id}">
             <p> mettre la disponiblité sur:</p>
             <f:select path="disponibilite" id="availability">
                 <f:option value="true">Oui</f:option>

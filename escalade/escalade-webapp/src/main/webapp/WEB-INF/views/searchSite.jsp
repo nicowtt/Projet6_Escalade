@@ -25,7 +25,7 @@
     <br>
 
     <div id="searchClimbingSite2">
-        <f:form modelAttribute="search" method="post" action="/home">
+        <f:form modelAttribute="search" method="post" action="${pageContext.request.contextPath}/home">
             <p></p>
             <%--<!-- search by country -->--%>
             <h3>Recherche Site d'escalade:</h3>

@@ -3,6 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="f" %>
+
 <html>
 
 <head>
@@ -29,7 +30,7 @@
     <p></p>
     <p><c:forEach items="${site}" var="si">
         <div class="col-xs-6 col-sm-4 col-md-3">
-            <a href="/climbingSite/${si.id}" class="thumbnail">
+            <a href="<%=pathWebcontent%>/climbingSite/${si.id}" class="thumbnail">
             <img src="${si.urlPhotoSite}" alt="${si.urlPhotoSite}" style="width:250px;height:250px; border:0px;" class="img-rounded">
             </a>
                 <span class="label label-default"><c:out value="${si.localisationPays}"/></span>

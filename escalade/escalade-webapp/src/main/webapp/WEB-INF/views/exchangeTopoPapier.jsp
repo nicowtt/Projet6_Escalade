@@ -46,7 +46,7 @@
                     <td>${to.dateCreation}</td>
                     <td>${to.dateMaj}</td>
                     <td>${to.disponibilite ? "oui" : "non"} </td>
-                    <td><a href="/askForBooking/${to.id}">faire un demande de reservation </a></td>
+                    <td><a href="<%=pathWebcontent%>/askForBooking/${to.id}">faire un demande de reservation </a></td>
                 </tr>
             </c:forEach>
         </table>

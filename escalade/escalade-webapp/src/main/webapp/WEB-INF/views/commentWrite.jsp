@@ -31,7 +31,7 @@
     <!-- display for write comment -->
     <br>
     <div id="EcrireCommentaire">
-        <f:form modelAttribute="commentaire" method="post" action="/commentWrite">
+        <f:form modelAttribute="commentaire" method="post" action="${pageContext.request.contextPath}/commentWrite">
             <p>
                 <label for="EcrireCommentaire">Voulez-vous écrire un commentaire ?</label><br/>
                 <f:input size="60" path="commentaire" cssStyle=""/>

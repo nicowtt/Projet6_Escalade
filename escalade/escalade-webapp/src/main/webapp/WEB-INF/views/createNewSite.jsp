@@ -27,7 +27,7 @@
         <h3>Enregistrement d'un nouveau Site d'escalade:</h3>
 
         <p></p>
-        <f:form modelAttribute="site" method="post" action="/createClimbingSite">
+        <f:form modelAttribute="site" method="post" action="${pageContext.request.contextPath}/createClimbingSite">
             <table class="lignesEspacees">
                 <tr>
                     <!-- display for "nomSite" -->

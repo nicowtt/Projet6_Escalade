@@ -26,7 +26,7 @@ public class SiteDaoImpl extends AbstractDAoImpl implements SiteDao {
 
 
     /**
-     * For get All site on a list
+     * For list all climbing site
      *
      * @return all site list
      */
