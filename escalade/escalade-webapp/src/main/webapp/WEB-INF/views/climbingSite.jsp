@@ -27,28 +27,25 @@
       <c:if test="${si.officelSite}"><img src="https://image.noelshack.com/fichiers/2019/19/4/1557415844-officiel-logo-les-amis-de-lescalade-vide.png" alt="logo escalade officiel" style="width:191px;height:92px;border:0;"></c:if>
       </p>
       <%--<b>TAG: Site Officiel Les amis de l'esclade !</b>--%>
-      <p></p>
-    <h1><c:out value="${si.nomSite}" /></h1>
-      <p></p>
+      <p><h1><c:out value="${si.nomSite}" /></h1></p>
 
       <p><b>Pays: </b><c:out value="${si.localisationPays}" /></p>
       <p><b>Département: </b><c:out value="${si.localisationDepartement}" /></p>
       <p><b>Nombre de secteur: </b><c:out value="${si.nombreDeSecteur}" /></p>
 
     <!-- Site Description-->
-      <c:out value="${si.descriptionSite}" /><br>
+      <p><c:out value="${si.descriptionSite}" /><br></p>
 
       <!-- Site action: display or write comment-->
-      <p></p>
+      <p>
       <a href="<%=pathWebcontent%>/commentRead/${si.element_id}">Voir les commentaires sur ce site</a><br>
-      <a href="<%=pathWebcontent%>/commentWrite/${si.element_id}">Ecrire un commentaire sur ce site</a><br>
+      <a href="<%=pathWebcontent%>/commentWrite/${si.element_id}">Ecrire un commentaire sur ce site</a><br></p>
 
       <!-- Site action: add site to personnal space-->
-      <p></p>
-      <a href="<%=pathWebcontent%>/createTopoPaper/${si.id}">Déclarer un topo papier possédé pour ce site</a>
+      <p><a href="<%=pathWebcontent%>/createTopoPaper/${si.id}">Déclarer un topo papier possédé pour ce site</a></p>
 
       <!-- Site action: tag site "officiel les amis de l'escalade ** see only by member associative-->
-      <p></p>
+      <p>
       <!-- if no tag-->
       <c:if test="${!si.officelSite}">
       <c:if test="${user.membreAssociation}"><a href="<%=pathWebcontent%>/addTagForOfficialSite/${si.id}">Tagger ce site "Officiel Les amis de l'escalade !"</a></c:if>
@@ -57,17 +54,14 @@
       <c:if test="${si.officelSite}">
       <c:if test="${user.membreAssociation}"><a href="<%=pathWebcontent%>/deleteTagForOfficialSite/${si.id}">Enlever le tag "Officiel Les amis de l'escalade !"</a></c:if>
       </c:if>
-      <p></p>
+      </p>
 
       <!-- Site action: delete site ** see only by member associative-->
-      <c:if test="${user.membreAssociation}"><a href="<%=pathWebcontent%>/comfirmDeleteSite/${si.id}">supprimer le site</a></c:if>
-
-      <p></p>
+      <p><c:if test="${user.membreAssociation}"><a href="<%=pathWebcontent%>/comfirmDeleteSite/${si.id}">supprimer le site</a></c:if></p>
 
       <!-- Picture-->
-      <img src="${si.urlPhotoSite}" alt="${si.urlPhotoSite}" style="width:500px;height:500px;border:0;">
+      <p><img src="${si.urlPhotoSite}" alt="${si.urlPhotoSite}" style="width:500px;height:500px;border:0;"></p>
       <!-- lien pour crée un nouveau secteur-->
-    <p></p>
       <p><a href="<%=pathWebcontent%>/createNewSector/${si.id}">Ajouter un nouveau secteur sur ce site </a></p>
     </c:forEach>
 
@@ -114,9 +108,9 @@
       <h3>Les voies:</h3>
 
       <!-- Way pictures (depend of sectors number) -->
-        <c:forEach items="${secteur}" var="s">
+        <p><c:forEach items="${secteur}" var="s">
       <img src="${s.urlPhotoSecteur}" alt="${s.urlPhotoSecteur}" style="width:500px;height:500px;border:0;">
-        </c:forEach>
+        </c:forEach></p>
 
 
     <!-- Way table

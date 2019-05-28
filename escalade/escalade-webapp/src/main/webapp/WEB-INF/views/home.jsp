@@ -27,18 +27,15 @@
     ================================================== -->
 
     <!-- display site -->
-    <p></p>
-    <p><c:forEach items="${site}" var="si">
+    <c:forEach items="${site}" var="si">
         <div class="col-xs-6 col-sm-4 col-md-3">
-            <a href="<%=pathWebcontent%>/climbingSite/${si.id}" class="thumbnail">
+        <a href="<%=pathWebcontent%>/climbingSite/${si.id}" class="thumbnail">
             <img src="${si.urlPhotoSite}" alt="${si.urlPhotoSite}" style="width:250px;height:250px; border:0px;" class="img-rounded">
-            </a>
-                <span class="label label-default"><c:out value="${si.localisationPays}"/></span>
-                <span class="label label-info"><c:out value="Nom: ${si.nomSite}"/></span>
-                <p></p>
-                <span class="label label-info"><c:out value="Nombre de secteur: ${si.nombreDeSecteur}"/></span>
-                <p></p>
-
+        </a>
+        <span class="label label-default"><c:out value="${si.localisationPays}"/></span>
+        <span class="label label-info"><c:out value="Nom: ${si.nomSite}"/></span><br>
+            <p></p>
+        <span class="label label-info"><c:out value="Nombre de secteur: ${si.nombreDeSecteur}"/></span>
         </div>
     </c:forEach>
 

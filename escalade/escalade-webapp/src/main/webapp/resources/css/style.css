@@ -22,9 +22,13 @@ a.thumbnail:link{
     /*text-decoration: none;*/
 }
 
+.thumbnail{
+    margin-top: 10px;
+    margin-bottom: -25px;
+}
 span.label{
     position:relative;
-    top: -80px;
+    top: -40px;
     left: 20px;
 }
 
