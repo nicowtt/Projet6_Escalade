@@ -108,9 +108,11 @@
       <h3>Les voies:</h3>
 
       <!-- Way pictures (depend of sectors number) -->
+    <div class="sectorPictures">
         <p><c:forEach items="${secteur}" var="s">
-      <img src="${s.urlPhotoSecteur}" alt="${s.urlPhotoSecteur}" style="width:500px;height:500px;border:0;">
+      <img src="${s.urlPhotoSecteur}" alt="${s.urlPhotoSecteur}" style="width:500px;height:500px;border-width:1px;border-style:solid;border-color:black;">
         </c:forEach></p>
+    </div>
 
 
     <!-- Way table
