@@ -94,4 +94,25 @@ public class SectorManagerImpl extends AbstractManager implements SectorManager 
             }
         });
     }
+
+    /**
+     * For get one sector list
+     * @param pId
+     * @return
+     */
+    @Override
+    public List<Secteur> getOneSector(int pId) {
+        TransactionTemplate vTransactionTemplate = new TransactionTemplate(getPlatformTransactionManager());
+
+        List<Secteur> vListSector = vTransactionTemplate.execute(transactionStatus -> {
+
+            List<Secteur> vListSectorTransaction = new ArrayList<>();
+            vListSectorTransaction = sectorDao.getOneSector(pId);
+
+            return vListSectorTransaction;
+        });
+
+        return vListSector;
+
+    }
 }

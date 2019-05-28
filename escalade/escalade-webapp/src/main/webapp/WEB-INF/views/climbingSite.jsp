@@ -5,6 +5,8 @@
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="f" %>
 <html>
 
+<c:set var = "createur" scope = "session" value = "${element.utilisateur_id}"/>
+
   <head>
 
     <%@include file="_include/head.jsp"%>
@@ -60,8 +62,6 @@
       <p><c:if test="${user.membreAssociation}"><a href="<%=pathWebcontent%>/comfirmDeleteSite/${si.id}">supprimer le site</a></c:if></p>
 
       <!-- Site action: update site ** see only by member associative or user who create site-->
-      <c:set var = "createur" scope = "session" value = "${element.utilisateur_id}"/>
-
       <c:if test="${createur eq user.id or user.membreAssociation}">
       <p><a href="<%=pathWebcontent%>/updateSite/${si.id}">modifier le site</a></p>
       </c:if>
@@ -89,7 +89,7 @@
         <th>Nombre de voies</th>
         <th>cotation</th>
         <th>Coordonnés GPS</th>
-        <th>Modification</th>
+        <th>Ajout</th>
         <th colspan="2">Commentaires</th>
       </tr>
 
@@ -104,9 +104,12 @@
         <td>${s.nombreDeVoies}</td>
         <td>${s.cotation}</td>
         <td>${s.coordonneGps}</td>
-        <td><a href="<%=pathWebcontent%>/createNewWay/${s.id}">Ajouter une nouvelle voie</a></td>
+        <td><a href="<%=pathWebcontent%>/createNewWay/${s.id}">Ajouter une nouvelle voie pour ce secteur</a></td>
         <td><a href="<%=pathWebcontent%>/commentRead/${s.element_id}">Voir</a></td>
         <td><a href="<%=pathWebcontent%>/commentWrite/${s.element_id}">Ecrire</a></td>
+        <c:if test="${createur eq user.id or user.membreAssociation}">
+          <td><a href="<%=pathWebcontent%>/updateSector/${s.id}">modifier le secteur</a></td>
+        </c:if>
       </tr>
         </c:forEach>
       </table>

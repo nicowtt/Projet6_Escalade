@@ -10,4 +10,5 @@ public interface SectorDao {
     List<Secteur> getListAllSectorForOneSite(int pSite);
     int getNbrSecteur(String pNom);
     void writeSectorOnBdd(Secteur pSector) throws SectorException;
+    List<Secteur> getOneSector(int pId);
 }

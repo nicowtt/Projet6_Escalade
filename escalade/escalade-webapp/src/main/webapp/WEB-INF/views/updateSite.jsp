@@ -28,7 +28,7 @@
     <!-- Body
     ================================================== -->
 
-    <!-- display for update site -->
+    <!-- display for see site to update-->
     <br>
     <div id="listerSite">
         <table class="table">
@@ -54,7 +54,7 @@
         </table>
     </div>
 
-
+    <!-- form for update site -->
     <div id="updateSite">
         <h3>Modification d'un nouveau Site d'escalade:</h3>
 

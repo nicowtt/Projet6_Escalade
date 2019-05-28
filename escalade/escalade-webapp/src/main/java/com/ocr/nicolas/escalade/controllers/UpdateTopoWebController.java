@@ -23,10 +23,6 @@ public class UpdateTopoWebController {
     @Inject
     private SiteManager siteManager;
 
-    @Inject
-    private UserManager userManager;
-
-
     /**
      * For display updateSite.jsp
      *

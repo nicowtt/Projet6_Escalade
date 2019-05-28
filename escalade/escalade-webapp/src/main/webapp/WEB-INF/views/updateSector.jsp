@@ -21,13 +21,47 @@
     <!-- Body
     ================================================== -->
 
-    <!-- display for write new sector -->
+    <!-- display for see sector -->
+
     <br>
+    <div id="listerSecteur">
+        <table class="table">
+            <tr>
+                <th>Nom</th>
+                <th>Description</th>
+                <th>Accés</th>
+                <th>Altitude base</th>
+                <th>orientation</th>
+                <th>Type de roche</th>
+                <th>Nombre de voies</th>
+                <th>cotation</th>
+                <th>Coordonnés GPS</th>
+            </tr>
+
+            <c:forEach items="${sectorToUpdate}" var="s">
+                <tr>
+                    <td>${s.nomSecteur}</td>
+                    <td>${s.descriptionSecteur}</td>
+                    <td>${s.acces}</td>
+                    <td>${s.altitudeBase}m</td>
+                    <td>${s.orientation}</td>
+                    <td>${s.typeRoche}</td>
+                    <td>${s.nombreDeVoies}</td>
+                    <td>${s.cotation}</td>
+                    <td>${s.coordonneGps}</td>
+                </tr>
+            </c:forEach>
+        </table>
+    </div>
+
+    <!-- Form for update sector -->
+
     <div id="NewSite">
-        <h3>Enregistrement d'un nouveau Secteur d'escalade:</h3>
+        <h3>Modification d'un Secteur d'escalade:</h3>
 
         <p></p>
-        <f:form modelAttribute="secteur" method="post" action="${pageContext.request.contextPath}/createNewSectorPost/${secteur.site_id}">
+        <c:forEach items="${sectorToUpdate}" var="s">
+        <f:form modelAttribute="secteur" method="post" action="${pageContext.request.contextPath}/updateSector/${s.id}">
             <table class="lignesEspacees">
                 <tr>
                     <!-- display for "nom secteur" -->
@@ -95,6 +129,7 @@
             <p></p>
             <input type="submit" value="Envoyer">
         </f:form>
+        </c:forEach>
     </div>
 
 
@@ -118,5 +153,6 @@
 
 </body>
 </html>
+
 
 

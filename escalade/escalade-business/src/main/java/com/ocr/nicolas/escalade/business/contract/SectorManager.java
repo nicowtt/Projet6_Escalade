@@ -10,4 +10,5 @@ public interface SectorManager {
     List<Secteur> getListAllSectorForOneSite(int pSite);
     int getNbrSecteur(String pNom);
     void writeSectorOnBdd(Secteur pSector, int pUserId);
+    List<Secteur> getOneSector(int pId);
 }

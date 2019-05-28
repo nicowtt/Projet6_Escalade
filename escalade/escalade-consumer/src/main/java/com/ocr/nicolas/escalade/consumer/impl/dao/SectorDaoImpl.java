@@ -104,4 +104,25 @@ public class SectorDaoImpl extends AbstractDAoImpl implements SectorDao {
         }
 
     }
+
+    /**
+     * For get a list with one sector
+     * @param pId
+     * @return
+     */
+    @Override
+    public List<Secteur> getOneSector(int pId) {
+        String vSQL = "SELECT * FROM secteur WHERE id = :id";
+
+        NamedParameterJdbcTemplate vJdbcTemplate = new NamedParameterJdbcTemplate(getDatasource());
+
+        MapSqlParameterSource vParams = new MapSqlParameterSource();
+        vParams.addValue("id", pId, Types.INTEGER);
+
+        RowMapper<Secteur> vRowMapper = new SectorRowMapper();
+
+        List<Secteur> vListSecteur = vJdbcTemplate.query(vSQL, vParams, vRowMapper);
+
+        return vListSecteur;
+    }
 }
