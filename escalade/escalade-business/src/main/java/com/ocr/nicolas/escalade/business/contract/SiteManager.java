@@ -17,4 +17,5 @@ public interface SiteManager {
     List<Site> getListwithoutRepetitionOfCountry(List<Site> pListFull);
     List<Site> getListwithoutRepetitionOfDepartment(List<Site> pListFull);
     List<Site> getListwithoutRepetitionOfSectorNumber(List<Site> pListFull);
+    void updateSite(Site pSite);
 }

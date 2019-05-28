@@ -4,7 +4,9 @@ import com.ocr.nicolas.escalade.consumer.contract.dao.SiteDao;
 import com.ocr.nicolas.escalade.consumer.impl.rowmapper.SiteRowMapper;
 import com.ocr.nicolas.escalade.model.bean.Site;
 
+import com.ocr.nicolas.escalade.model.exception.CommentException;
 import com.ocr.nicolas.escalade.model.exception.SiteException;
+import org.springframework.dao.DataAccessException;
 import org.springframework.dao.DuplicateKeyException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
@@ -15,6 +17,7 @@ import javax.inject.Named;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.springframework.jdbc.support.KeyHolder;
 
 import java.sql.Types;
 import java.util.List;
@@ -226,6 +229,48 @@ public class SiteDaoImpl extends AbstractDAoImpl implements SiteDao {
         List<Site> vListeSite = vJdbcTemplate.query(vSQL, vParams, vRowMapper);
 
         return vListeSite;
+    }
+
+
+    /**
+     * For update one site
+     *
+     * @Param pSite -> site to update
+     */
+    @Override
+    public void updateSite(Site pSite) throws CommentException {
+
+        String vSQL
+                = "UPDATE site SET"
+                + " nomsite = :nomsite,"
+                + " descriptionsite = :descriptionsite,"
+                + " localisationdepartement = :localisationdepartement,"
+                + " localisationpays = :localisationpays,"
+                + " urlphotosite = :urlphotosite,"
+                + " nombredesecteur = :nombredesecteur"
+                + "  WHERE id = :id";
+
+        NamedParameterJdbcTemplate vJdbcTemplate = new NamedParameterJdbcTemplate(getDatasource());
+
+        MapSqlParameterSource vParams = new MapSqlParameterSource();
+        vParams.addValue("nomsite", pSite.getNomSite(), Types.VARCHAR);
+        vParams.addValue("descriptionsite", pSite.getDescriptionSite(), Types.VARCHAR);
+        vParams.addValue("localisationdepartement", pSite.getLocalisationDepartement(), Types.VARCHAR);
+        vParams.addValue("localisationpays", pSite.getLocalisationPays(), Types.VARCHAR);
+        vParams.addValue("urlphotosite", pSite.getUrlPhotoSite(), Types.VARCHAR);
+        vParams.addValue("nombredesecteur", pSite.getNombreDeSecteur(), Types.INTEGER);
+        vParams.addValue("id", pSite.getId(), Types.INTEGER);
+
+        try {
+            vJdbcTemplate.update(vSQL,vParams);
+
+        } catch (DataAccessException vEx) {
+
+            //vEx.printStackTrace();
+            logger.debug(" problème accés BDD");
+            //return pUtilisateur;
+            throw new CommentException(" problème accés BDD");
+        }
     }
 
 }

@@ -3,9 +3,9 @@ package com.ocr.nicolas.escalade.business.impl;
 import com.ocr.nicolas.escalade.business.contract.SiteManager;
 import com.ocr.nicolas.escalade.consumer.contract.dao.ElementDao;
 import com.ocr.nicolas.escalade.consumer.contract.dao.SiteDao;
-import com.ocr.nicolas.escalade.consumer.impl.dao.SiteDaoImpl;
 import com.ocr.nicolas.escalade.model.bean.Element;
 import com.ocr.nicolas.escalade.model.bean.Site;
+import com.ocr.nicolas.escalade.model.exception.CommentException;
 import com.ocr.nicolas.escalade.model.exception.SiteException;
 import org.springframework.transaction.TransactionStatus;
 import org.springframework.transaction.support.TransactionCallbackWithoutResult;
@@ -304,5 +304,26 @@ public class SiteManagerImpl extends AbstractManager implements SiteManager {
         }
 
         return listwithoutRepetition;
+    }
+
+    /**
+     * For update site
+     *
+     * @param pSite-> site to update
+     */
+    @Override
+    public void updateSite(Site pSite) {
+        TransactionTemplate vTransactionTemplate = new TransactionTemplate(getPlatformTransactionManager());
+
+        vTransactionTemplate.execute(new TransactionCallbackWithoutResult() {
+            @Override
+            protected void doInTransactionWithoutResult(TransactionStatus transactionStatus) {
+                try {
+                    siteDao.updateSite(pSite);
+                } catch (CommentException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
     }
 }

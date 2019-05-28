@@ -63,9 +63,8 @@
       <c:set var = "createur" scope = "session" value = "${element.utilisateur_id}"/>
 
       <c:if test="${createur eq user.id or user.membreAssociation}">
-      <a href="<%=pathWebcontent%>/updateSite">modifier le site</a>
+      <p><a href="<%=pathWebcontent%>/updateSite/${si.id}">modifier le site</a></p>
       </c:if>
-
 
       <!-- Picture-->
       <p><img src="${si.urlPhotoSite}" alt="${si.urlPhotoSite}" style="width:500px;height:500px;border:0;"></p>

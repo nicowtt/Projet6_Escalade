@@ -1,6 +1,7 @@
 package com.ocr.nicolas.escalade.consumer.contract.dao;
 
 import com.ocr.nicolas.escalade.model.bean.Site;
+import com.ocr.nicolas.escalade.model.exception.CommentException;
 import com.ocr.nicolas.escalade.model.exception.SiteException;
 
 import java.util.List;
@@ -15,4 +16,5 @@ public interface SiteDao {
     void writeSiteOnBdd(Site site) throws SiteException;
     void deleteTagForOfficialSite(int pId);
     List<Site> getListSiteWithFilterMultiChoice(String pCountry, String pDepartment, Integer pNbrSectors, String pSiteName, int pNbrMax);
+    void updateSite(Site pSite) throws CommentException;
 }
