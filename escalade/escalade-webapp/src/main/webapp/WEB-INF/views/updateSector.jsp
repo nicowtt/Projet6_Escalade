@@ -35,7 +35,9 @@
                 <th>Type de roche</th>
                 <th>Nombre de voies</th>
                 <th>cotation</th>
+                <th>Url photo secteur(voies visibles)</th>
                 <th>Coordonnés GPS</th>
+
             </tr>
 
             <c:forEach items="${sectorToUpdate}" var="s">
@@ -48,6 +50,7 @@
                     <td>${s.typeRoche}</td>
                     <td>${s.nombreDeVoies}</td>
                     <td>${s.cotation}</td>
+                    <td>${s.urlPhotoSecteur}</td>
                     <td>${s.coordonneGps}</td>
                 </tr>
             </c:forEach>

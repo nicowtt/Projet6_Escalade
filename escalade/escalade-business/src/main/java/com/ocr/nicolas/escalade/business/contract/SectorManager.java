@@ -11,4 +11,5 @@ public interface SectorManager {
     int getNbrSecteur(String pNom);
     void writeSectorOnBdd(Secteur pSector, int pUserId);
     List<Secteur> getOneSector(int pId);
+    void updateSector(Secteur pSector);
 }

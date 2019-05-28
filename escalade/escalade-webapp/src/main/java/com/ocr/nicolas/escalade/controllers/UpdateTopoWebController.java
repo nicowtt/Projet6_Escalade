@@ -72,7 +72,7 @@ public class UpdateTopoWebController {
             return "updateSite";
         } else {
 
-            //update new climbin site on bdd
+            //update new climbing site on bdd
             siteManager.updateSite(site);
 
             //for "log" session

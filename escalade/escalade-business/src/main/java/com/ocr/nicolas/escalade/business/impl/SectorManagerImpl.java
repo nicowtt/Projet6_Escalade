@@ -5,6 +5,7 @@ import com.ocr.nicolas.escalade.consumer.contract.dao.ElementDao;
 import com.ocr.nicolas.escalade.consumer.contract.dao.SectorDao;
 import com.ocr.nicolas.escalade.model.bean.Element;
 import com.ocr.nicolas.escalade.model.bean.Secteur;
+import com.ocr.nicolas.escalade.model.exception.CommentException;
 import com.ocr.nicolas.escalade.model.exception.SectorException;
 import org.springframework.transaction.TransactionStatus;
 import org.springframework.transaction.support.TransactionCallbackWithoutResult;
@@ -114,5 +115,26 @@ public class SectorManagerImpl extends AbstractManager implements SectorManager 
 
         return vListSector;
 
+    }
+
+    /**
+     * For update one sector
+     *
+     * @param pSector -> sector to update
+     */
+    @Override
+    public void updateSector(Secteur pSector) {
+        TransactionTemplate vTransactionTemplate = new TransactionTemplate(getPlatformTransactionManager());
+
+        vTransactionTemplate.execute(new TransactionCallbackWithoutResult() {
+            @Override
+            protected void doInTransactionWithoutResult(TransactionStatus transactionStatus) {
+                try {
+                    sectorDao.updateSector(pSector);
+                } catch (CommentException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
     }
 }

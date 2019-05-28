@@ -1,11 +1,13 @@
 package com.ocr.nicolas.escalade.consumer.impl.dao;
 
+import com.ocr.nicolas.escalade.model.exception.CommentException;
 import com.ocr.nicolas.escalade.model.exception.SectorException;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import com.ocr.nicolas.escalade.consumer.contract.dao.SectorDao;
 import com.ocr.nicolas.escalade.consumer.impl.rowmapper.SectorRowMapper;
 import com.ocr.nicolas.escalade.model.bean.Secteur;
+import org.springframework.dao.DataAccessException;
 import org.springframework.dao.DuplicateKeyException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
@@ -124,5 +126,55 @@ public class SectorDaoImpl extends AbstractDAoImpl implements SectorDao {
         List<Secteur> vListSecteur = vJdbcTemplate.query(vSQL, vParams, vRowMapper);
 
         return vListSecteur;
+    }
+
+    /**
+     * For update one sector on bdd
+     *
+     * @param pSector -> sector to update
+     * @throws CommentException
+     */
+    @Override
+    public void updateSector(Secteur pSector) throws CommentException {
+        String vSQL
+                = "UPDATE secteur SET"
+                + " nomsecteur = :nomsecteur,"
+                + " descriptionsecteur = :descriptionsecteur,"
+                + " acces = :acces,"
+                + " altitudebase = :altitudebase,"
+                + " orientation = :orientation,"
+                + " typeroche = :typeroche,"
+                + " nombredevoies = :nombredevoies,"
+                + " cotation = :cotation,"
+                + " urlphotosecteur = :urlphotosecteur,"
+                + " coordonnegps = :coordonnegps"
+                + " WHERE id = :id";
+
+        NamedParameterJdbcTemplate vJdbcTemplate = new NamedParameterJdbcTemplate(getDatasource());
+
+        MapSqlParameterSource vParams = new MapSqlParameterSource();
+        vParams.addValue("nomsecteur", pSector.getNomSecteur(), Types.VARCHAR);
+        vParams.addValue("descriptionsecteur", pSector.getDescriptionSecteur(), Types.VARCHAR);
+        vParams.addValue("acces", pSector.getAcces(), Types.VARCHAR);
+        vParams.addValue("altitudebase", pSector.getAltitudeBase(), Types.INTEGER);
+        vParams.addValue("orientation", pSector.getOrientation(), Types.VARCHAR);
+        vParams.addValue("typeroche", pSector.getTypeRoche(), Types.VARCHAR);
+        vParams.addValue("nombredevoies", pSector.getNombreDeVoies(), Types.INTEGER);
+        vParams.addValue("cotation", pSector.getCotation(), Types.VARCHAR);
+        vParams.addValue("urlphotosecteur", pSector.getUrlPhotoSecteur(), Types.VARCHAR);
+        vParams.addValue("coordonnegps", pSector.getCoordonneGps(), Types.VARCHAR);
+        vParams.addValue("id", pSector.getId(), Types.INTEGER);
+
+        try {
+            vJdbcTemplate.update(vSQL,vParams);
+
+        } catch (DataAccessException vEx) {
+
+            //vEx.printStackTrace();
+            logger.debug(" problème accés BDD");
+            //return pUtilisateur;
+            throw new CommentException(" problème accés BDD");
+        }
+
     }
 }
