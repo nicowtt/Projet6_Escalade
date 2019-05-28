@@ -81,4 +81,30 @@ public class ElementDaoImpl extends AbstractDAoImpl implements ElementDao {
         vJdbcTemplate.update(vSQL, vParams);
 
     }
+
+    /**
+     * For get one Element
+     *
+     * @param pId
+     * @return
+     */
+    @Override
+    public Element getOneElement(Integer pId) {
+        String vSQL
+                = "SELECT * FROM public.element"
+                + " WHERE id = :id";
+
+        NamedParameterJdbcTemplate vJdbcTemplate = new NamedParameterJdbcTemplate(getDatasource());
+        MapSqlParameterSource vParams = new MapSqlParameterSource();
+        vParams.addValue("id", pId, Types.INTEGER);
+
+        RowMapper vRowMapper = new ElementRowMapper();
+
+        Element vElement = new Element();
+
+        vElement = (Element) vJdbcTemplate.query(vSQL, vParams, vRowMapper).get(0);
+
+
+        return vElement;
+    }
 }

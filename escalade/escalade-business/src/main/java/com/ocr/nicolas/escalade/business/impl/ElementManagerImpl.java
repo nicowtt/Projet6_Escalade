@@ -3,10 +3,7 @@ package com.ocr.nicolas.escalade.business.impl;
 import com.ocr.nicolas.escalade.business.contract.ElementManager;
 import com.ocr.nicolas.escalade.consumer.contract.dao.*;
 import com.ocr.nicolas.escalade.consumer.impl.dao.TopoPapierDaoImpl;
-import com.ocr.nicolas.escalade.model.bean.Secteur;
-import com.ocr.nicolas.escalade.model.bean.Site;
-import com.ocr.nicolas.escalade.model.bean.Topopapier;
-import com.ocr.nicolas.escalade.model.bean.Voie;
+import com.ocr.nicolas.escalade.model.bean.*;
 import org.springframework.transaction.TransactionStatus;
 import org.springframework.transaction.support.TransactionCallbackWithoutResult;
 import org.springframework.transaction.support.TransactionTemplate;
@@ -138,5 +135,22 @@ public class ElementManagerImpl extends AbstractManager implements ElementManage
 
             }
         });
+    }
+
+    /**
+     * For get one element from bdd
+     * @param pId -> element id
+     * @return
+     */
+    @Override
+    public Element getOneElement(Integer pId) {
+        TransactionTemplate vTransactionTemplate = new TransactionTemplate(getPlatformTransactionManager());
+        Element vElement = vTransactionTemplate.execute(transactionStatus -> {
+            Element vElementTransaction = null;
+            vElementTransaction = elementDao.getOneElement(pId);
+
+            return vElementTransaction;
+        });
+        return vElement;
     }
 }

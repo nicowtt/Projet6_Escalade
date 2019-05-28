@@ -11,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.inject.Inject;
+import java.util.List;
 
 @Controller
 @SessionAttributes("Utilisateur")
@@ -44,12 +45,18 @@ public class SiteController {
     public String index(Model model, @PathVariable Integer id, @SessionAttribute(value = "Utilisateur", required = false) Utilisateur userSession) {
         Utilisateur newUser = new Utilisateur();
 
+        //get bean of climbing site displayed
+        List<Site> listSite = siteManager.getListOneSite(id);
+
         // Models for display all information about one climbing site
         model.addAttribute("site", siteManager.getListOneSite(id));
         model.addAttribute("secteur", sectorManager.getListAllSectorForOneSite(id));
         model.addAttribute("voie", wayManager.getListAllWaysForOneSite(id));
 
-        // model for "log"
+        // Model for check if user in session have create element asking
+        model.addAttribute("element", elementManager.getOneElement(listSite.get(0).getElement_id()));
+
+        // model for display "log"
         if (userSession != null) {
             model.addAttribute("log", userSession.getEmail());
 

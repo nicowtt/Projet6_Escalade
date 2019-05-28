@@ -59,6 +59,14 @@
       <!-- Site action: delete site ** see only by member associative-->
       <p><c:if test="${user.membreAssociation}"><a href="<%=pathWebcontent%>/comfirmDeleteSite/${si.id}">supprimer le site</a></c:if></p>
 
+      <!-- Site action: update site ** see only by member associative or user who create site-->
+      <c:set var = "createur" scope = "session" value = "${element.utilisateur_id}"/>
+
+      <c:if test="${createur eq user.id or user.membreAssociation}">
+      <a href="<%=pathWebcontent%>/updateSite">modifier le site</a>
+      </c:if>
+
+
       <!-- Picture-->
       <p><img src="${si.urlPhotoSite}" alt="${si.urlPhotoSite}" style="width:500px;height:500px;border:0;"></p>
       <!-- lien pour crée un nouveau secteur-->

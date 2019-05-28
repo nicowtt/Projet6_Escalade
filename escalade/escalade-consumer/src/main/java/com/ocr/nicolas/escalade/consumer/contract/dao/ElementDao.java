@@ -8,4 +8,5 @@ public interface ElementDao {
     void writeNewElement(Integer pId);
     Element getLastElement();
     void deleteOneElement(Integer pId);
+    Element getOneElement(Integer pId);
 }
