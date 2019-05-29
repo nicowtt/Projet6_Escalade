@@ -5,6 +5,7 @@ import com.ocr.nicolas.escalade.consumer.contract.dao.ElementDao;
 import com.ocr.nicolas.escalade.consumer.contract.dao.WayDao;
 import com.ocr.nicolas.escalade.model.bean.Element;
 import com.ocr.nicolas.escalade.model.bean.Voie;
+import com.ocr.nicolas.escalade.model.exception.CommentException;
 import com.ocr.nicolas.escalade.model.exception.WayException;
 import org.springframework.transaction.TransactionStatus;
 import org.springframework.transaction.support.TransactionCallbackWithoutResult;
@@ -90,6 +91,46 @@ public class WayManagerImpl extends AbstractManager implements WayManager {
                 try {
                     wayDao.writeWayOnBdd(pWay);
                 } catch (WayException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+    }
+
+    /**
+     * for get a list with one way
+     * @param pId
+     * @return
+     */
+    @Override
+    public List<Voie> getListOneWay(int pId) {
+        TransactionTemplate vTransactionTemplate = new TransactionTemplate(getPlatformTransactionManager());
+
+        List<Voie> vVoie = vTransactionTemplate.execute(transactionStatus -> {
+
+            List<Voie> vVoieTransaction = new ArrayList<>();
+            vVoieTransaction = wayDao.getListOneWay(pId);
+
+            return vVoieTransaction;
+        });
+        return vVoie;
+    }
+
+    /**
+     * For update one way
+     *
+     * @param pWay -> way to update
+     */
+    @Override
+    public void updateWay(Voie pWay) {
+        TransactionTemplate vTransactionTemplate = new TransactionTemplate(getPlatformTransactionManager());
+
+        vTransactionTemplate.execute(new TransactionCallbackWithoutResult() {
+            @Override
+            protected void doInTransactionWithoutResult(TransactionStatus transactionStatus) {
+                try {
+                    wayDao.updateWay(pWay);
+                } catch (CommentException e) {
                     e.printStackTrace();
                 }
             }

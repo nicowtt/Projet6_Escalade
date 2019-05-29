@@ -161,6 +161,9 @@
           <td>${v.statut}</td>
           <td><a href="<%=pathWebcontent%>/commentRead/${v.element_id}">Voir</a></td>
           <td><a href="<%=pathWebcontent%>/commentWrite/${v.element_id}">Ecrire</a></td>
+          <c:if test="${createur eq user.id or user.membreAssociation}">
+            <td><a href="<%=pathWebcontent%>/updateWay/${v.id}">modifier la voie</a></td>
+          </c:if>
         </tr>
       </c:forEach>
     </table>

@@ -1,7 +1,6 @@
 package com.ocr.nicolas.escalade.controllers;
 
 import com.ocr.nicolas.escalade.business.contract.SiteManager;
-import com.ocr.nicolas.escalade.business.contract.UserManager;
 import com.ocr.nicolas.escalade.model.bean.Site;
 import com.ocr.nicolas.escalade.model.bean.Utilisateur;
 import org.springframework.stereotype.Controller;

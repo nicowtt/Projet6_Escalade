@@ -1,11 +1,13 @@
 package com.ocr.nicolas.escalade.consumer.impl.dao;
 
+import com.ocr.nicolas.escalade.model.exception.CommentException;
 import com.ocr.nicolas.escalade.model.exception.WayException;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import com.ocr.nicolas.escalade.consumer.contract.dao.WayDao;
 import com.ocr.nicolas.escalade.consumer.impl.rowmapper.WayRowMapper;
 import com.ocr.nicolas.escalade.model.bean.Voie;
+import org.springframework.dao.DataAccessException;
 import org.springframework.dao.DuplicateKeyException;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
@@ -108,6 +110,82 @@ public class WayDaoImpl extends AbstractDAoImpl implements WayDao {
             logger.debug("La voie existe déjà !");
             //return for user
             throw new WayException("La voie existe déjà !");
+        }
+
+    }
+
+    /**
+     * For get One Way
+     * @param pId -> id of way
+     * @return
+     */
+    @Override
+    public List<Voie> getListOneWay(int pId) {
+        String vSQL
+                = "SELECT * FROM voie"
+                + " JOIN secteur ON secteur.id = voie.secteur_id"
+                + "  WHERE voie.id = :id";
+
+        NamedParameterJdbcTemplate vJdbcTemplate = new NamedParameterJdbcTemplate(getDatasource());
+
+        MapSqlParameterSource vParams = new MapSqlParameterSource();
+        vParams.addValue("id", pId, Types.INTEGER);
+
+        RowMapper<Voie> vRowMapper = new WayRowMapper();
+
+        List<Voie> vListSecteur = vJdbcTemplate.query(vSQL, vParams, vRowMapper);
+
+        return vListSecteur;
+
+    }
+
+    /**
+     * For update one way
+     * @param pWay -> bean way to update
+     * @throws CommentException
+     */
+    @Override
+    public void updateWay(Voie pWay) throws CommentException {
+        String vSQL
+                = "UPDATE voie SET"
+                + " numero = :numero,"
+                + " nomvoie = :nomvoie,"
+                + " tempdescalade = :tempdescalade,"
+                + " descriptionvoie = :descriptionvoie,"
+                + " longueur = :longueur,"
+                + " cotation = :cotation,"
+                + " hauteur = :hauteur,"
+                + " precisionequipement = :precisionequipement,"
+                + " ouvertureetequipement = :ouvertureetequipement,"
+                + " dateouverture = :dateouverture,"
+                + " statut = :statut"
+                + "  WHERE id = :id";
+
+        NamedParameterJdbcTemplate vJdbcTemplate = new NamedParameterJdbcTemplate(getDatasource());
+
+        MapSqlParameterSource vParams = new MapSqlParameterSource();
+        vParams.addValue("numero", pWay.getNumero(), Types.INTEGER);
+        vParams.addValue("nomvoie", pWay.getNomVoie(),Types.VARCHAR);
+        vParams.addValue("tempdescalade", pWay.getTempDescalade(), Types.INTEGER);
+        vParams.addValue("descriptionvoie", pWay.getDescriptionVoie(), Types.VARCHAR);
+        vParams.addValue("longueur", pWay.getLongueur(), Types.VARCHAR);
+        vParams.addValue("cotation", pWay.getCotation(), Types.VARCHAR);
+        vParams.addValue("hauteur", pWay.getHauteur(), Types.INTEGER);
+        vParams.addValue("precisionequipement", pWay.getPrecisionEquipement(), Types.VARCHAR);
+        vParams.addValue("ouvertureetequipement", pWay.getOuvertureEtEquipement(), Types.VARCHAR);
+        vParams.addValue("dateouverture", pWay.getDateOuverture(), Types.VARCHAR);
+        vParams.addValue("statut", pWay.getStatut(), Types.VARCHAR);
+        vParams.addValue("id", pWay.getId(), Types.INTEGER);
+
+        try {
+            vJdbcTemplate.update(vSQL,vParams);
+
+        } catch (DataAccessException vEx) {
+
+            //vEx.printStackTrace();
+            logger.debug(" problème accés BDD");
+            //return pUtilisateur;
+            throw new CommentException(" problème accés BDD");
         }
 
     }

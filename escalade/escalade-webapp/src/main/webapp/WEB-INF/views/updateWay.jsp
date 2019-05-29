@@ -11,23 +11,67 @@
 
 </head>
 
+<body data-spy="scroll" data-target=".navbar">
+
+<body>
 <header class="raw">
 
     <%@include file="_include/header.jsp"%>
 
 </header>
+</body>
+</body>
+
+
 <div class="container">
 
     <!-- Body
     ================================================== -->
 
-    <!-- display for write new climbing site -->
+    <!-- display for see way to update-->
     <br>
+    <div id="listerVoie">
+        <table class="table">
+            <tr>
+                <th>Nom du secteur</th>
+                <th>Numero de voie</th>
+                <th>Nom de la voie</th>
+                <th>Temp d'escalade</th>
+                <th>description</th>
+                <th>longueur</th>
+                <th>cotation</th>
+                <th>hauteur</th>
+                <th>Precision equipement</th>
+                <th>Nom de l'ouvreur</th>
+                <th>Date ouverture</th>
+                <th>status</th>
+            </tr>
+            <c:forEach items="${wayToUpdate}" var="w">
+                <tr>
+                    <td>${w.secteur.nomSecteur}</td>
+                    <td>${w.numero}</td>
+                    <td>${w.nomVoie}</td>
+                    <td>${w.tempDescalade}h</td>
+                    <td>${w.descriptionVoie}</td>
+                    <td>${w.longueur}</td>
+                    <td>${w.cotation}</td>
+                    <td>${w.hauteur}m</td>
+                    <td>${w.precisionEquipement}</td>
+                    <td>${w.ouvertureEtEquipement}</td>
+                    <td>${w.dateOuverture}</td>
+                    <td>${w.statut}</td>
+                </tr>
+            </c:forEach>
+        </table>
+    </div>
+
+    <!-- form for update way -->
     <div id="NewWay">
-        <h3>Enregistrement d'une nouvelle voie d'escalade:</h3>
+        <h3>Modifictation d'une voie d'escalade:</h3>
 
         <p></p>
-        <f:form modelAttribute="voie" method="post" action="${pageContext.request.contextPath}/createNewWayPost/${voie.secteur_id}">
+        <c:forEach items="${wayToUpdate}" var="v">
+        <f:form modelAttribute="voie" method="post" action="${pageContext.request.contextPath}/updateWay/${v.id}">
             <table class="lignesEspacees">
                 <tr>
                     <!-- display for "numero" -->
@@ -101,12 +145,9 @@
             <p></p>
             <input type="submit" value="Envoyer">
         </f:form>
+        </c:forEach>
     </div>
-
-
-
 </div>
-
 
 <!-- jQuery -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
@@ -119,10 +160,9 @@
 <%--<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>--%>
 <%--<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>--%>
 
-
-
-
 </body>
 </html>
+
+
 
 
