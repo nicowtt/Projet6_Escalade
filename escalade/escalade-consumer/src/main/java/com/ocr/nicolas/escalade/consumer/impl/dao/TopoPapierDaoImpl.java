@@ -8,6 +8,7 @@ import javax.inject.Named;
 
 import com.ocr.nicolas.escalade.consumer.impl.rowmapper.TopoPapierRowMapper;
 import com.ocr.nicolas.escalade.model.bean.Topopapier;
+import com.ocr.nicolas.escalade.model.exception.CommentException;
 import com.ocr.nicolas.escalade.model.exception.TopoPapierException;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -241,6 +242,44 @@ public class TopoPapierDaoImpl extends AbstractDAoImpl implements TopoPapierDao 
         }
 
         return newTopoPaper;
+    }
+
+
+    /**
+     * For update one topo paper
+     * @param pTopoPapier -> bean topo paper to update
+     */
+    @Override
+    public void updateTopoPaper(Topopapier pTopoPapier) throws TopoPapierException {
+        String vSQL
+                = "UPDATE topopapier SET"
+                + " nomtopo = :nomtopo,"
+                + " description = :description,"
+                + " nomcreateur = :nomcreateur,"
+                + " datecreation = :datecreation,"
+                + " datemaj = :datemaj"
+                + "  WHERE id = :id";
+
+        NamedParameterJdbcTemplate vJdbcTemplate = new NamedParameterJdbcTemplate(getDatasource());
+
+        MapSqlParameterSource vParams = new MapSqlParameterSource();
+        vParams.addValue("nomtopo", pTopoPapier.getNomTopo(), Types.VARCHAR);
+        vParams.addValue("description", pTopoPapier.getDescription(), Types.VARCHAR);
+        vParams.addValue("nomcreateur", pTopoPapier.getNomCreateur(), Types.VARCHAR);
+        vParams.addValue("datecreation", pTopoPapier.getDateCreation(), Types.VARCHAR);
+        vParams.addValue("datemaj", pTopoPapier.getDateMaj(), Types.VARCHAR);
+        vParams.addValue("id", pTopoPapier.getId(), Types.INTEGER);
+
+        try {
+            vJdbcTemplate.update(vSQL,vParams);
+
+        } catch (DataAccessException vEx) {
+
+            //vEx.printStackTrace();
+            logger.debug(" problème accés BDD");
+            //return pUtilisateur;
+            throw new TopoPapierException(" problème accés BDD");
+        }
     }
 
 

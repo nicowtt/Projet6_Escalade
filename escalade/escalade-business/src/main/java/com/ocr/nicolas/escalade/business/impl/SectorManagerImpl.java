@@ -131,7 +131,7 @@ public class SectorManagerImpl extends AbstractManager implements SectorManager 
             protected void doInTransactionWithoutResult(TransactionStatus transactionStatus) {
                 try {
                     sectorDao.updateSector(pSector);
-                } catch (CommentException e) {
+                } catch (SectorException e) {
                     e.printStackTrace();
                 }
             }

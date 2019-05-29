@@ -238,7 +238,7 @@ public class SiteDaoImpl extends AbstractDAoImpl implements SiteDao {
      * @Param pSite -> site to update
      */
     @Override
-    public void updateSite(Site pSite) throws CommentException {
+    public void updateSite(Site pSite) throws SiteException {
 
         String vSQL
                 = "UPDATE site SET"
@@ -269,7 +269,7 @@ public class SiteDaoImpl extends AbstractDAoImpl implements SiteDao {
             //vEx.printStackTrace();
             logger.debug(" problème accés BDD");
             //return pUtilisateur;
-            throw new CommentException(" problème accés BDD");
+            throw new SiteException(" problème accés BDD");
         }
     }
 

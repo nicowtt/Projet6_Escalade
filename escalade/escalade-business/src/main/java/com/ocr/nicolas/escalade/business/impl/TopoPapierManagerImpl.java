@@ -1,12 +1,11 @@
 package com.ocr.nicolas.escalade.business.impl;
 
 import com.ocr.nicolas.escalade.business.contract.TopoPapierManager;
-import com.ocr.nicolas.escalade.consumer.contract.dao.BookingDao;
 import com.ocr.nicolas.escalade.consumer.contract.dao.ElementDao;
 import com.ocr.nicolas.escalade.consumer.contract.dao.TopoPapierDao;
 import com.ocr.nicolas.escalade.model.bean.Element;
 import com.ocr.nicolas.escalade.model.bean.Topopapier;
-import com.ocr.nicolas.escalade.model.exception.SectorException;
+import com.ocr.nicolas.escalade.model.exception.CommentException;
 import com.ocr.nicolas.escalade.model.exception.TopoPapierException;
 import org.springframework.transaction.TransactionStatus;
 import org.springframework.transaction.support.TransactionCallbackWithoutResult;
@@ -138,5 +137,28 @@ public class TopoPapierManagerImpl extends AbstractManager implements TopoPapier
 
         });
         return  vTopoPapierList;
+    }
+
+    /**
+     * For update topo paper
+     *
+     * @param pTopoPapier
+     */
+    @Override
+    public void updateTopoPaper(Topopapier pTopoPapier) {
+        TransactionTemplate vTransactionTemplate = new TransactionTemplate(getPlatformTransactionManager());
+
+        vTransactionTemplate.execute(new TransactionCallbackWithoutResult() {
+            @Override
+            protected void doInTransactionWithoutResult(TransactionStatus transactionStatus) {
+
+                try {
+                    topoPapierDao.updateTopoPaper(pTopoPapier);
+                } catch (TopoPapierException e) {
+                    e.printStackTrace();
+                }
+
+            }
+        });
     }
 }

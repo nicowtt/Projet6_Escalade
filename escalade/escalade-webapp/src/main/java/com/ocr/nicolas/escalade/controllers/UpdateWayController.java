@@ -16,9 +16,9 @@ import javax.validation.Valid;
 
 @Controller
 @SessionAttributes("Utilisateur")
-public class updateWayController {
+public class UpdateWayController {
 
-    static final Log logger = LogFactory.getLog(updateWayController.class);
+    static final Log logger = LogFactory.getLog(UpdateWayController.class);
 
     @Inject
     private WayManager wayManager;

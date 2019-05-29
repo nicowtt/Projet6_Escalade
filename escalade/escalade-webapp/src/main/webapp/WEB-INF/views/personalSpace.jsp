@@ -35,8 +35,7 @@
                 <th>Date de creation</th>
                 <th>Date de maj</th>
                 <th>Disponibilité</th>
-                <th>Modification</th>
-                <th>Modification</th>
+
             </tr>
             <c:forEach items="${topoPapier}" var="to">
                 <tr>
@@ -47,8 +46,9 @@
                     <td>${to.dateCreation}</td>
                     <td>${to.dateMaj}</td>
                     <td>${to.disponibilite ? "oui" : "non"} </td>
-                    <td><a href="<%=pathWebcontent%>/availabilityTopoPapier/${to.id}">modifier la diponibilité </a></td>
-                    <td><a href="<%=pathWebcontent%>/comfirmationForDeleteTopoPaper/${to.id}">Je ne le possède plus </a></td>
+                    <td><a href="<%=pathWebcontent%>/availabilityTopoPapier/${to.id}">Changer la diponibilité </a></td>
+                    <td><a href="<%=pathWebcontent%>/updatePaperTopo/${to.id}">modifier </a></td>
+                    <td><a href="<%=pathWebcontent%>/comfirmationForDeleteTopoPaper/${to.id}">supprimer </a></td>
                 </tr>
             </c:forEach>
         </table>

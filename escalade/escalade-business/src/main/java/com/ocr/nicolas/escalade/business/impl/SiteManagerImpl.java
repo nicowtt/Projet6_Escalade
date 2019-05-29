@@ -350,7 +350,7 @@ public class SiteManagerImpl extends AbstractManager implements SiteManager {
             protected void doInTransactionWithoutResult(TransactionStatus transactionStatus) {
                 try {
                     siteDao.updateSite(pSite);
-                } catch (CommentException e) {
+                } catch (SiteException e) {
                     e.printStackTrace();
                 }
             }

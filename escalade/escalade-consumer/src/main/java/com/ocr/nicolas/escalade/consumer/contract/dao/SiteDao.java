@@ -16,5 +16,5 @@ public interface SiteDao {
     void writeSiteOnBdd(Site site) throws SiteException;
     void deleteTagForOfficialSite(int pId);
     List<Site> getListSiteWithFilterMultiChoice(String pCountry, String pDepartment, Integer pNbrSectors, String pSiteName, int pNbrMax);
-    void updateSite(Site pSite) throws CommentException;
+    void updateSite(Site pSite) throws SiteException;
 }

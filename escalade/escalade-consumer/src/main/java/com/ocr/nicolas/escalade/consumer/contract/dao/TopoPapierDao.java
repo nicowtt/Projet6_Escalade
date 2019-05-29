@@ -15,4 +15,5 @@ public interface TopoPapierDao {
     void changeBookingRequest(Topopapier pTopoPapier, int pElementId);
     Topopapier getOnlyOneTopopaper(int pId);
     Topopapier getTopopaperLinkToOneSite(int pSiteId);
+    void updateTopoPaper(Topopapier pTopoPapier) throws TopoPapierException;
 }

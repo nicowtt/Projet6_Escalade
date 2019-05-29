@@ -135,7 +135,7 @@ public class SectorDaoImpl extends AbstractDAoImpl implements SectorDao {
      * @throws CommentException
      */
     @Override
-    public void updateSector(Secteur pSector) throws CommentException {
+    public void updateSector(Secteur pSector) throws SectorException {
         String vSQL
                 = "UPDATE secteur SET"
                 + " nomsecteur = :nomsecteur,"
@@ -173,7 +173,7 @@ public class SectorDaoImpl extends AbstractDAoImpl implements SectorDao {
             //vEx.printStackTrace();
             logger.debug(" problème accés BDD");
             //return pUtilisateur;
-            throw new CommentException(" problème accés BDD");
+            throw new SectorException(" problème accés BDD");
         }
 
     }

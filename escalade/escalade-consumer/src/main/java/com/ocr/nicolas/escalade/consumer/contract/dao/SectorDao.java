@@ -12,5 +12,5 @@ public interface SectorDao {
     int getNbrSecteur(String pNom);
     void writeSectorOnBdd(Secteur pSector) throws SectorException;
     List<Secteur> getOneSector(int pId);
-    void updateSector(Secteur pSector) throws CommentException;
+    void updateSector(Secteur pSector) throws SectorException;
 }
