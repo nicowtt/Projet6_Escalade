@@ -239,11 +239,7 @@ public class SiteManagerImpl extends AbstractManager implements SiteManager {
                 }
                 count = 0;
             }
-
-
-
         }
-
         return listwithoutRepetition;
     }
 

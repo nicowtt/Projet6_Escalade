@@ -37,7 +37,7 @@
                 </tr>
                 <tr>
                     <!-- display for "description" -->
-                    <td>Description:*</td>
+                    <td>Description (Autres sites couverts):*</td>
                     <td><f:input path="description" type="text" id="description" size="40" placeholder="obligatoire"  cssStyle=""/></td>
                     <td><f:errors path="description" cssClass="errors"/></td>
                 </tr>

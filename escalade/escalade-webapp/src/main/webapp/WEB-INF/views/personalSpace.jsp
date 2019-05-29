@@ -30,7 +30,7 @@
             <tr>
                 <th>Nom du topo</th>
                 <th>Site couvert</th>
-                <th>Description</th>
+                <th>Description (Autres sites couverts):</th>
                 <th>Nom createur</th>
                 <th>Date de creation</th>
                 <th>Date de maj</th>

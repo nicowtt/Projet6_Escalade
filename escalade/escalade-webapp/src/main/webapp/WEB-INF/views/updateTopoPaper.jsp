@@ -35,7 +35,7 @@
             <tr>
                 <th>Nom du topo</th>
                 <th>Site couvert</th>
-                <th>Description</th>
+                <th>Description (Autres sites couverts):</th>
                 <th>Nom createur</th>
                 <th>Date de creation</th>
                 <th>Date de maj</th>
@@ -71,7 +71,7 @@
                 </tr>
                 <tr>
                     <!-- display for "description" -->
-                    <td>Description:*</td>
+                    <td>Description (Autres sites couverts):*</td>
                     <td><f:input path="description" type="text" id="description" size="40" placeholder="obligatoire"  cssStyle=""/></td>
                     <td><f:errors path="description" cssClass="errors"/></td>
                 </tr>
