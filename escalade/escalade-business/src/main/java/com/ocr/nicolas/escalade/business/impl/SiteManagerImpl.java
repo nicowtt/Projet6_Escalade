@@ -4,6 +4,7 @@ import com.ocr.nicolas.escalade.business.contract.SiteManager;
 import com.ocr.nicolas.escalade.consumer.contract.dao.ElementDao;
 import com.ocr.nicolas.escalade.consumer.contract.dao.SiteDao;
 import com.ocr.nicolas.escalade.model.bean.Element;
+import com.ocr.nicolas.escalade.model.bean.Secteur;
 import com.ocr.nicolas.escalade.model.bean.Site;
 import com.ocr.nicolas.escalade.model.exception.CommentException;
 import com.ocr.nicolas.escalade.model.exception.SiteException;
@@ -208,11 +209,20 @@ public class SiteManagerImpl extends AbstractManager implements SiteManager {
      */
     @Override
     public List<Site> getListwithoutRepetitionOfCountry(List<Site> pListFull) {
-        List<Site> listwithoutRepetition = pListFull;
+        List<Site> listwithoutRepetition = new ArrayList<>();
+        Site site = new Site();
         String country = "";
         int count = 0;
 
+        // create new list (same as pListFull)
+        if (pListFull != null) {
+            for (int i = 0; i < pListFull.size(); i++) {
+                site = pListFull.get(i);
+                listwithoutRepetition.add(site);
+            }
+        }
 
+        // delete repetition
         if (pListFull != null) {
             for (int i = 0; i < pListFull.size(); i++) {
                 country = pListFull.get(i).getLocalisationPays();
@@ -222,7 +232,7 @@ public class SiteManagerImpl extends AbstractManager implements SiteManager {
 
                         if (count >= 1) {
                             listwithoutRepetition.remove(j);
-                            logger.info("repetition effacé pour affichage multicritére");
+                            logger.info("repetition effacé (choix recherche): pays");
                         }
                         count++;
                     }
@@ -245,11 +255,20 @@ public class SiteManagerImpl extends AbstractManager implements SiteManager {
      */
     @Override
     public List<Site> getListwithoutRepetitionOfDepartment(List<Site> pListFull) {
-        List<Site> listwithoutRepetition = pListFull;
+        List<Site> listwithoutRepetition = new ArrayList<>();
+        Site site = new Site();
         String department = "";
         int count = 0;
 
+        // create new list (same as pListFull)
+        if (pListFull != null) {
+            for (int i = 0; i < pListFull.size(); i++) {
+                site = pListFull.get(i);
+                listwithoutRepetition.add(site);
+            }
+        }
 
+        // delete repetition
         if (pListFull != null) {
             for (int i = 0; i < pListFull.size(); i++) {
                 department = pListFull.get(i).getLocalisationDepartement();
@@ -259,6 +278,7 @@ public class SiteManagerImpl extends AbstractManager implements SiteManager {
 
                         if (count >= 1) {
                             listwithoutRepetition.remove(j);
+                            logger.info("repetition effacé (choix recherche): departement");
                         }
                         count++;
                     }
@@ -280,11 +300,20 @@ public class SiteManagerImpl extends AbstractManager implements SiteManager {
      */
     @Override
     public List<Site> getListwithoutRepetitionOfSectorNumber(List<Site> pListFull) {
-        List<Site> listwithoutRepetition = pListFull;
+        List<Site> listwithoutRepetition = new ArrayList<>();
+        Site site = new Site();
         int nbrSecteur;
         int count = 0;
 
+        // create new list (same as pListFull)
+        if (pListFull != null) {
+            for (int i = 0; i < pListFull.size(); i++) {
+                site = pListFull.get(i);
+                listwithoutRepetition.add(site);
+            }
+        }
 
+        // delete repetition
         if (pListFull != null) {
             for (int i = 0; i < pListFull.size(); i++) {
                 nbrSecteur = pListFull.get(i).getNombreDeSecteur();
@@ -294,6 +323,7 @@ public class SiteManagerImpl extends AbstractManager implements SiteManager {
 
                         if (count >= 1) {
                             listwithoutRepetition.remove(j);
+                            logger.info("repetition effacé (choix recherche): nombre de secteur");
                         }
                         count++;
                     }
