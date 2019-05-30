@@ -4,6 +4,7 @@ import com.ocr.nicolas.escalade.business.contract.ElementManager;
 import com.ocr.nicolas.escalade.consumer.contract.dao.*;
 import com.ocr.nicolas.escalade.consumer.impl.dao.TopoPapierDaoImpl;
 import com.ocr.nicolas.escalade.model.bean.*;
+import com.ocr.nicolas.escalade.model.exception.CommentException;
 import org.springframework.transaction.TransactionStatus;
 import org.springframework.transaction.support.TransactionCallbackWithoutResult;
 import org.springframework.transaction.support.TransactionTemplate;
@@ -32,6 +33,9 @@ public class ElementManagerImpl extends AbstractManager implements ElementManage
 
     @Inject
     private ElementDao elementDao;
+
+    @Inject
+    private CommentDao commentDao;
 
     static final Log logger = LogFactory.getLog(ElementManagerImpl.class);
 
@@ -171,6 +175,12 @@ public class ElementManagerImpl extends AbstractManager implements ElementManage
                 //get element_id of way to delete
                 wayToDelete = wayDao.getListOneWay(pWayId);
                 wayElementId = wayToDelete.get(0).getElement_id();
+                //deleting comments for this element id
+                try {
+                    commentDao.deleteComment(pWayId);
+                } catch (CommentException e) {
+                    e.printStackTrace();
+                }
                 //deleting element of way
                 elementDao.deleteOneElement(wayElementId);
 

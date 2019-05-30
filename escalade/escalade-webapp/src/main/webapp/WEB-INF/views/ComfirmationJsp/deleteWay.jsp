@@ -23,7 +23,7 @@
 
     <!-- display Way -->
     <p></p>
-    <p><b>Voulez-vous vraiment supprimer la voie ?</b></p>
+    <p><b>Voulez-vous vraiment supprimer la voie ? (Tous les commentaires associés à cette voie seront supprimés)</b></p>
     <p><a href="<%=pathWebcontent%>/confirmDeleteWay/${voie.id}" >Oui</a></p>
 
 </div>
