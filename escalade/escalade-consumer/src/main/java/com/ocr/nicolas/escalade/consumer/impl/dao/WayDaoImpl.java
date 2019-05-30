@@ -61,7 +61,10 @@ public class WayDaoImpl extends AbstractDAoImpl implements WayDao {
     @Override
     public List<Voie> getListVoie(int pSecteur) {
 
-        String vSQL = "SELECT * FROM voie WHERE secteur_id = :secteur_id";
+        String vSQL
+                = "SELECT * FROM voie "
+                + "JOIN secteur ON secteur.id = voie.secteur_id"
+                + " WHERE secteur_id = :secteur_id";
 
         NamedParameterJdbcTemplate vJdbcTemplate = new NamedParameterJdbcTemplate(getDatasource());
 

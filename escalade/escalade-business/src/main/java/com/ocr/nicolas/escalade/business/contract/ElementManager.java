@@ -7,4 +7,5 @@ public interface ElementManager {
     void deleteElementsLinkSite(int pId);
     Element getOneElement(Integer pId);
     void deleteOneElementLinkWay(int pWayId);
+    void deleteOneElementLinkSector(int pSectorId);
 }

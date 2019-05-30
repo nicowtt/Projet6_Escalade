@@ -2,7 +2,6 @@ package com.ocr.nicolas.escalade.controllers;
 
 import com.ocr.nicolas.escalade.business.contract.ElementManager;
 import com.ocr.nicolas.escalade.business.contract.SiteManager;
-import com.ocr.nicolas.escalade.consumer.contract.dao.ElementDao;
 import com.ocr.nicolas.escalade.model.bean.Utilisateur;
 import com.ocr.nicolas.escalade.model.bean.Voie;
 import org.springframework.stereotype.Controller;

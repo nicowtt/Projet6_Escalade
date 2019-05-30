@@ -187,4 +187,54 @@ public class ElementManagerImpl extends AbstractManager implements ElementManage
             }
         });
     }
+
+    /**
+     * For delete one sector (Serveur cascade delete all way associate)
+     * This method delete all sector and way comments associate to this sector)
+     *
+     * @param pSectorId -> sector id to delete
+     */
+    @Override
+    public void deleteOneElementLinkSector(int pSectorId) {
+        TransactionTemplate vTransactionTemplate = new TransactionTemplate(getPlatformTransactionManager());
+        vTransactionTemplate.execute(new TransactionCallbackWithoutResult() {
+            @Override
+            protected void doInTransactionWithoutResult(TransactionStatus transactionStatus) {
+                List<Secteur> listSectorToDelete = new ArrayList<>();
+                Integer sectorElementId;
+                List<Voie> fullWaysList = new ArrayList<>();
+                Integer elementId;
+                List<Integer> listElements = new ArrayList<>();
+
+                //get element_id of sector to delete
+                listSectorToDelete = sectorDao.getOneSector(pSectorId);
+                sectorElementId = listSectorToDelete.get(0).getElement_id();
+
+                //get element id for all ways of sector
+                fullWaysList = wayDao.getListVoie(pSectorId);
+                for (int i = 0; i < fullWaysList.size(); i++) {
+                    elementId = fullWaysList.get(i).getElement_id();
+                    listElements.add(elementId);
+                }
+
+                //deleting comments for this sector (sectorElementId)
+                try {
+                    commentDao.deleteComment(pSectorId);
+                } catch (CommentException e) {
+                    e.printStackTrace();
+                }
+                //deleting comments for all ways under this sector
+                if (listElements.isEmpty()) {
+                    logger.info("il n'y a aucun commentaire (sur les voie associés) a supprimer pour le secteur");
+                } else {
+                    for (int i = 0; i <  listElements.size(); i++) {
+                        elementDao.deleteOneElement(listElements.get(i));
+                    }
+                }
+
+                //deleting element of sector
+                elementDao.deleteOneElement(sectorElementId); // serveur cascade all way associate is deleting
+            }
+        });
+    }
 }

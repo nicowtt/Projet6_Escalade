@@ -110,6 +110,9 @@
         <c:if test="${createur eq user.id or user.membreAssociation}">
           <td><a href="<%=pathWebcontent%>/updateSector/${s.id}">modifier le secteur</a></td>
         </c:if>
+        <c:if test="${createur eq user.id or user.membreAssociation}">
+          <td><a href="<%=pathWebcontent%>/deleteSector/${s.id}">supprimer le secteur</a></td>
+        </c:if>
       </tr>
         </c:forEach>
       </table>
