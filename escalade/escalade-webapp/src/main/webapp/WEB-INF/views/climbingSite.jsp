@@ -164,6 +164,9 @@
           <c:if test="${createur eq user.id or user.membreAssociation}">
             <td><a href="<%=pathWebcontent%>/updateWay/${v.id}">modifier la voie</a></td>
           </c:if>
+          <c:if test="${createur eq user.id or user.membreAssociation}">
+            <td><a href="<%=pathWebcontent%>/deleteWay/${v.id}">supprimer la voie</a></td>
+          </c:if>
         </tr>
       </c:forEach>
     </table>

@@ -153,4 +153,28 @@ public class ElementManagerImpl extends AbstractManager implements ElementManage
         });
         return vElement;
     }
+
+    /**
+     * For delete one element link to one way
+     *
+     * @param pWayId -> way id to delete
+     */
+    @Override
+    public void deleteOneElementLinkWay(int pWayId) {
+        TransactionTemplate vTransactionTemplate = new TransactionTemplate(getPlatformTransactionManager());
+        vTransactionTemplate.execute(new TransactionCallbackWithoutResult() {
+            @Override
+            protected void doInTransactionWithoutResult(TransactionStatus transactionStatus) {
+                List<Voie> wayToDelete = new ArrayList<>();
+                Integer wayElementId;
+
+                //get element_id of way to delete
+                wayToDelete = wayDao.getListOneWay(pWayId);
+                wayElementId = wayToDelete.get(0).getElement_id();
+                //deleting element of way
+                elementDao.deleteOneElement(wayElementId);
+
+            }
+        });
+    }
 }
