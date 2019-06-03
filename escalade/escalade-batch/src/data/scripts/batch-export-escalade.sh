@@ -10,7 +10,7 @@ __script_root=$(dirname "${__script_root}")
 #-------------------------------------------------------------------------------------------------------------
 function usage {
     cat <<EOF_STR
-Objet : Script de lancement du batch d'exportation des status de ticket
+Objet : Script de lancement du batch d'exportation du site escalade
 
 Usage :
     ${__script_name} [OPTIONS]
@@ -54,4 +54,4 @@ fi
 
 # ===== Lancement du batch Java
 cd "${batch_root}"
-${java_cmd} -Dapplication.home="${batch_root}" -jar lib/ticket-batch*.jar "ExportTicketStatus" $@
+${java_cmd} -Dapplication.home="${batch_root}" -jar lib/escalade-batch*.jar "ExportEscaladeStatus" $@
