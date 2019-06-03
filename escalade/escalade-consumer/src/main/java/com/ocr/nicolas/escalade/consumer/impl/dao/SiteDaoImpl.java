@@ -20,6 +20,7 @@ import org.apache.commons.logging.LogFactory;
 import org.springframework.jdbc.support.KeyHolder;
 
 import java.sql.Types;
+import java.util.ArrayList;
 import java.util.List;
 
 @Named
@@ -86,40 +87,6 @@ public class SiteDaoImpl extends AbstractDAoImpl implements SiteDao {
 
         return vNbrSite;
 
-    }
-
-    /**
-     * For have a site List with filter
-     *
-     * @param pCountry -> filter by country
-     * @param pDepartment -> filter by department
-     * @param pNbrSectors -> filter by sectors numbers
-     * @param pSiteName -> filter by SiteName
-     * @return -> list of site with filter
-     */
-    @Override
-    public List<Site> getListSiteWithFilter(String pCountry, String pDepartment, Integer pNbrSectors, String pSiteName){
-
-        String vSQL
-                = "SELECT * FROM site"
-                + " WHERE ( localisationpays = :Country OR localisationdepartement = :Department OR nombredesecteur = :NbrSectors OR nomsite = :SiteName) "
-                + "  OR ( localisationpays = :Country OR localisationdepartement = :Department OR nombredesecteur = :NbrSectors) "
-                + "   OR (localisationpays = :Country OR localisationdepartement = :Department)"
-                + "    OR ( localisationpays = :Country)";
-
-        NamedParameterJdbcTemplate vJdbcTemplate = new NamedParameterJdbcTemplate(getDatasource());
-
-        MapSqlParameterSource vParams = new MapSqlParameterSource();
-        vParams.addValue("Country", pCountry, Types.VARCHAR);
-        vParams.addValue("Department", pDepartment, Types.VARCHAR);
-        vParams.addValue("NbrSectors", pNbrSectors, Types.INTEGER);
-        vParams.addValue("SiteName", pSiteName, Types.VARCHAR);
-
-        RowMapper<Site> vRowMapper = new SiteRowMapper();
-
-        List<Site> vListeSite = vJdbcTemplate.query(vSQL, vParams, vRowMapper);
-
-        return vListeSite;
     }
 
     /**
@@ -271,6 +238,76 @@ public class SiteDaoImpl extends AbstractDAoImpl implements SiteDao {
             //return pUtilisateur;
             throw new SiteException(" problème accés BDD");
         }
+    }
+
+    /**
+     * to get a no repeat list of country (all climbing site)
+     *
+     * @return
+     */
+    @Override
+    public List<String> getListAllSiteCountryNoRepeat() {
+        List<String> countryList = new ArrayList();
+
+        String vSQL = "SELECT DISTINCT localisationpays FROM site ";
+
+        JdbcTemplate vJdbcTemplate = new JdbcTemplate(getDatasource());
+
+        countryList = vJdbcTemplate.queryForList(vSQL, String.class);
+
+        return countryList;
+    }
+
+    /**
+     * To get a no repeat list of department (all climbing site)
+     * @return
+     */
+    @Override
+    public List<String> getListAllSiteDepartmentNoRepeat() {
+        List<String> departmentList = new ArrayList<>();
+
+        String vSQL = "SELECT DISTINCT localisationdepartement FROM site";
+
+        JdbcTemplate vJdbcTemplate = new JdbcTemplate(getDatasource());
+
+        departmentList = vJdbcTemplate.queryForList(vSQL, String.class);
+
+        return departmentList;
+
+    }
+
+    /**
+     * To get a no repeat list of sector Number (all climbing site)
+     * @return
+     */
+    @Override
+    public List<Integer> getListAllSiteSectorNumberNoRepeat() {
+        List<Integer> sectorNumberList = new ArrayList<>();
+
+        String vSQL = "SELECT DISTINCT nombredesecteur FROM site";
+
+        JdbcTemplate vJdbcTemplate = new JdbcTemplate(getDatasource());
+
+        sectorNumberList = vJdbcTemplate.queryForList(vSQL, Integer.class);
+
+        return sectorNumberList;
+    }
+
+    /**
+     * To get a no repeat list of site name (all climbing site)
+     * @return
+     */
+    @Override
+    public List<String> getListAllSiteNameNoRepeat() {
+        List<String> siteNameList = new ArrayList<>();
+
+        String vSQL = "SELECT DISTINCT nomsite FROM site";
+
+        JdbcTemplate vJdbcTemplate = new JdbcTemplate(getDatasource());
+
+        siteNameList = vJdbcTemplate.queryForList(vSQL, String.class);
+
+        return siteNameList;
     }
 
 }

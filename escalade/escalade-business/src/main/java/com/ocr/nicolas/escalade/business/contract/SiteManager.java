@@ -9,13 +9,13 @@ public interface SiteManager {
     List<Site> getListAllSite();
     List<Site> getListOneSite(int pSite);
     int getNbrAllSite();
-    List<Site> getListSiteWithFilter(String pCountry, String pDepartment, Integer pNbrSectors, String pSiteName);
     void addTagForOfficialSite(int pId);
     void writeSiteOnBdd(Site site, int pUserId);
     void deleteTagForOfficialSite(int pId);
     List<Site> getListSiteWithFilterMultiChoice(String pCountry, String pDepartment, Integer pNbrSectors, String pSiteName, int pNbrMax);
-    List<Site> getListwithoutRepetitionOfCountry(List<Site> pListFull);
-    List<Site> getListwithoutRepetitionOfDepartment(List<Site> pListFull);
-    List<Site> getListwithoutRepetitionOfSectorNumber(List<Site> pListFull);
     void updateSite(Site pSite);
+    List<String> getListAllSiteCountryNoRepeat();
+    List<String> getListAllSiteDepartmentNoRepeat();
+    List<Integer> getListAllSiteSectorNumberNoRepeat();
+    List<String> getListAllSiteNameNoRepeat();
 }

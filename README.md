@@ -61,13 +61,17 @@ Les fonctions en plus:
 
 - Vocabulaire de l'escalade utilisé.
 - Le site est responsive.
-- le site est sécurisé. (aucun mot de passe en cler)
+- le site est sécurisé. (aucun mot de passe est stocké en clair dans la BDD)
 
 ## Déployment
 Ce projet a été réalisé en Java avec Maven. <br>
-Utilisation de Spring / Spring MVC / Spring security / (ORM) Spring JDBC.
+Utilisation du framework Spring :
+ - Spring MVC 
+ - Spring tx
+ - Spring security 
+ - Integration BDD via ORM: Spring JDBC.
 
-Base de donnée: PostgreSQL
+Base de donnée: PostgreSQL 9.6.12
 
 Afin de lancer l'application web sur un serveur apache:
 

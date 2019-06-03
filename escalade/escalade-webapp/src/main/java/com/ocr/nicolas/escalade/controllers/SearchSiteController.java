@@ -38,12 +38,14 @@ public class SearchSiteController {
     public String searchSite (Model model,  @SessionAttribute(value = "Utilisateur", required = false) Utilisateur utilisateur) {
         model.addAttribute("search", new Site());
 
-        //model with no repetition system
-        model.addAttribute("pays", siteManager.getListwithoutRepetitionOfCountry(siteManager.getListAllSite()));
-        model.addAttribute("departements", siteManager.getListwithoutRepetitionOfDepartment(siteManager.getListAllSite()));
-        model.addAttribute("sectorNumber", siteManager.getListwithoutRepetitionOfSectorNumber(siteManager.getListAllSite()));
+        //model with no repetition
+        model.addAttribute("pays", siteManager.getListAllSiteCountryNoRepeat());
+        model.addAttribute("departements", siteManager.getListAllSiteDepartmentNoRepeat());
+        model.addAttribute("sectorNumber", siteManager.getListAllSiteSectorNumberNoRepeat());
+
         // model for siteName
-        model.addAttribute("site", siteManager.getListAllSite());
+//        model.addAttribute("site", siteManager.getListAllSite());
+        model.addAttribute("site", siteManager.getListAllSiteNameNoRepeat());
 
         // model for "log"
         if (utilisateur != null) {

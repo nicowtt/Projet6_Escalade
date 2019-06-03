@@ -36,7 +36,7 @@
             <f:select path="localisationPays">
                 <f:option value=""/>
                 <c:forEach items="${pays}" var="pa">
-                    <f:option value="${pa.localisationPays}">${pa.localisationPays}</f:option>
+                    <f:option value="${pa}">${pa}</f:option>
                 </c:forEach>
             </f:select>
             <p></p>
@@ -46,7 +46,7 @@
             <f:select path="localisationDepartement">
                 <f:option value=""/>
                 <c:forEach items="${departements}" var="de">
-                    <f:option value="${de.localisationDepartement}">${de.localisationDepartement}</f:option>
+                    <f:option value="${de}">${de}</f:option>
                 </c:forEach>
             </f:select>
             <p></p>
@@ -56,7 +56,7 @@
             <f:select path="nombreDeSecteur">
                 <f:option value=""/>
                 <c:forEach items="${sectorNumber}" var="se">
-                    <f:option value="${se.nombreDeSecteur}">${se.nombreDeSecteur}</f:option>
+                    <f:option value="${se}">${se}</f:option>
                 </c:forEach>
             </f:select>
             <p></p>
@@ -66,7 +66,7 @@
             <f:select path="nomSite">
                 <f:option value=""/>
                 <c:forEach items="${site}" var="si">
-                    <f:option value="${si.nomSite}">${si.nomSite}</f:option>
+                    <f:option value="${si}">${si}</f:option>
                 </c:forEach>
             </f:select>
             <p></p>

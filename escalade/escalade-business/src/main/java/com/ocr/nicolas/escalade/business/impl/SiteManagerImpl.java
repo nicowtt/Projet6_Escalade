@@ -90,29 +90,6 @@ public class SiteManagerImpl extends AbstractManager implements SiteManager {
     }
 
     /**
-     * For have a site List with filter
-     *
-     * @param pCountry -> filter by country
-     * @param pDepartment -> filter by department
-     * @param pNbrSectors -> filter by sectors numbers
-     * @param pSiteName -> filter by SiteName
-     * @return -> list of site with filter
-     */
-    @Override
-    public List<Site> getListSiteWithFilter(String pCountry, String pDepartment, Integer pNbrSectors, String pSiteName) {
-        TransactionTemplate vTransactionTemplate = new TransactionTemplate(getPlatformTransactionManager());
-
-        List<Site> vListSite = vTransactionTemplate.execute(transactionStatus -> {
-
-            List<Site> vListSiteTransaction = new ArrayList<>();
-            vListSiteTransaction = siteDao.getListSiteWithFilter(pCountry, pDepartment, pNbrSectors, pSiteName);
-
-            return vListSiteTransaction;
-        });
-        return vListSite;
-    }
-
-    /**
      * For tag Official site of climbing friend
      *
      * @param pId -> site id
@@ -203,136 +180,6 @@ public class SiteManagerImpl extends AbstractManager implements SiteManager {
     }
 
     /**
-     * For delete on site list country repetition
-     * @param pListFull
-     * @return
-     */
-    @Override
-    public List<Site> getListwithoutRepetitionOfCountry(List<Site> pListFull) {
-        List<Site> listwithoutRepetition = new ArrayList<>();
-        Site site = new Site();
-        String country = "";
-        int count = 0;
-
-        // create new list (same as pListFull)
-        if (pListFull != null) {
-            for (int i = 0; i < pListFull.size(); i++) {
-                site = pListFull.get(i);
-                listwithoutRepetition.add(site);
-            }
-        }
-
-        // delete repetition
-        if (pListFull != null) {
-            for (int i = 0; i < pListFull.size(); i++) {
-                country = pListFull.get(i).getLocalisationPays();
-                //for remove repetition
-                for (int j = 0; j < listwithoutRepetition.size() ; j++) {
-                    if (listwithoutRepetition.get(j).getLocalisationPays().equals(country)) {
-
-                        if (count >= 1) {
-                            listwithoutRepetition.remove(j);
-                            logger.info("repetition effacé (choix recherche): pays");
-                        }
-                        count++;
-                    }
-                }
-                count = 0;
-            }
-        }
-        return listwithoutRepetition;
-    }
-
-    /**
-     * For delete on site list department repetition
-     *
-     * @param pListFull
-     * @return
-     */
-    @Override
-    public List<Site> getListwithoutRepetitionOfDepartment(List<Site> pListFull) {
-        List<Site> listwithoutRepetition = new ArrayList<>();
-        Site site = new Site();
-        String department = "";
-        int count = 0;
-
-        // create new list (same as pListFull)
-        if (pListFull != null) {
-            for (int i = 0; i < pListFull.size(); i++) {
-                site = pListFull.get(i);
-                listwithoutRepetition.add(site);
-            }
-        }
-
-        // delete repetition
-        if (pListFull != null) {
-            for (int i = 0; i < pListFull.size(); i++) {
-                department = pListFull.get(i).getLocalisationDepartement();
-                //for remove repetition
-                for (int j = 0; j < listwithoutRepetition.size() ; j++) {
-                    if (listwithoutRepetition.get(j).getLocalisationDepartement().equals(department)) {
-
-                        if (count >= 1) {
-                            listwithoutRepetition.remove(j);
-                            logger.info("repetition effacé (choix recherche): departement");
-                        }
-                        count++;
-                    }
-                }
-                count = 0;
-            }
-
-
-
-        }
-
-        return listwithoutRepetition;
-    }
-
-    /**
-     * for delete on site list sector number repetition
-     * @param pListFull
-     * @return
-     */
-    @Override
-    public List<Site> getListwithoutRepetitionOfSectorNumber(List<Site> pListFull) {
-        List<Site> listwithoutRepetition = new ArrayList<>();
-        Site site = new Site();
-        int nbrSecteur;
-        int count = 0;
-
-        // create new list (same as pListFull)
-        if (pListFull != null) {
-            for (int i = 0; i < pListFull.size(); i++) {
-                site = pListFull.get(i);
-                listwithoutRepetition.add(site);
-            }
-        }
-
-        // delete repetition
-        if (pListFull != null) {
-            for (int i = 0; i < pListFull.size(); i++) {
-                nbrSecteur = pListFull.get(i).getNombreDeSecteur();
-                //for remove repetition
-                for (int j = 0; j < listwithoutRepetition.size() ; j++) {
-                    if (listwithoutRepetition.get(j).getNombreDeSecteur().equals(nbrSecteur)) {
-
-                        if (count >= 1) {
-                            listwithoutRepetition.remove(j);
-                            logger.info("repetition effacé (choix recherche): nombre de secteur");
-                        }
-                        count++;
-                    }
-                }
-                count = 0;
-            }
-
-        }
-
-        return listwithoutRepetition;
-    }
-
-    /**
      * For update site
      *
      * @param pSite-> site to update
@@ -351,5 +198,81 @@ public class SiteManagerImpl extends AbstractManager implements SiteManager {
                 }
             }
         });
+    }
+
+    /**
+     * get list of site with no country repetition
+     *
+     * @return
+     */
+    @Override
+    public List<String> getListAllSiteCountryNoRepeat() {
+        TransactionTemplate vTransactionTemplate = new TransactionTemplate(getPlatformTransactionManager());
+
+        List<String> vSite = vTransactionTemplate.execute(transactionStatus -> {
+
+            List<String> vSiteTransaction = new ArrayList<>();
+            vSiteTransaction = siteDao.getListAllSiteCountryNoRepeat();
+
+            return vSiteTransaction;
+        });
+        return  vSite;
+    }
+
+    /**
+     * get list of site with no department repetition
+     *
+     * @return
+     */
+    @Override
+    public List<String> getListAllSiteDepartmentNoRepeat() {
+        TransactionTemplate vTransactionTemplate = new TransactionTemplate(getPlatformTransactionManager());
+
+        List<String> vSite = vTransactionTemplate.execute(transactionStatus -> {
+
+            List<String> vSiteTransaction = new ArrayList<>();
+            vSiteTransaction = siteDao.getListAllSiteDepartmentNoRepeat();
+
+            return vSiteTransaction;
+        });
+        return  vSite;
+    }
+
+    /**
+     * get list of site with no sectorNumber repetition
+     *
+     * @return
+     */
+    @Override
+    public List<Integer> getListAllSiteSectorNumberNoRepeat() {
+        TransactionTemplate vTransactionTemplate = new TransactionTemplate(getPlatformTransactionManager());
+
+        List<Integer> vSite = vTransactionTemplate.execute(transactionStatus -> {
+
+            List<Integer> vSiteTransaction = new ArrayList<>();
+            vSiteTransaction = siteDao.getListAllSiteSectorNumberNoRepeat();
+
+            return vSiteTransaction;
+        });
+        return  vSite;
+    }
+
+    /**
+     * get list of site with no site name repetition
+     *
+     * @return
+     */
+    @Override
+    public List<String> getListAllSiteNameNoRepeat() {
+        TransactionTemplate vTransactionTemplate = new TransactionTemplate(getPlatformTransactionManager());
+
+        List<String> vSite = vTransactionTemplate.execute(transactionStatus -> {
+
+            List<String> vSiteTransaction = new ArrayList<>();
+            vSiteTransaction = siteDao.getListAllSiteNameNoRepeat();
+
+            return vSiteTransaction;
+        });
+        return  vSite;
     }
 }
