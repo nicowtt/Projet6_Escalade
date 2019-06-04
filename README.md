@@ -77,9 +77,9 @@ Base de donnée: PostgreSQL 9.6.12
 
 **Afin de lancer l'application web sur un serveur apache:**
 
-- Installer TomCat
+- Installez TomCat
 
-- Cloner le repository en local.
+- Clonez le repository en local.
 
 - Exécutez la commande maven suivante :
 
@@ -91,14 +91,14 @@ Base de donnée: PostgreSQL 9.6.12
     
 - Copier / coller ce fichier **escalade-webapp.war** dans le dossier webapps de tomcat.
 
-- Créez une base de données "escalade" (pgadmin) et lancer le script de création des tables.
+- Créez une base de données "escalade" (pgadmin).
 
-- Remplir la BDD avec le jeux de demo (script) ou le dump.
+- Restaurez la bdd avec le dump ou lancez le script de création des tables et celui du jeu de données de demo.
 
 - Afin d'autoriser la connexion de l'application a la BDD, vous devez declarer une 
 Data source nommé "jdbc/escalade" dans tomcat.
 
-Veuillez reglez cette data source dans le fichier context.xml (repertoire conf de tomcat) dans la balise ```<Context>```:
+Reglez cette data source dans le fichier context.xml (repertoire conf de tomcat) dans la balise ```<Context>```:
 ```
      <Resource name="jdbc/escalade" auth="Container" type="javax.sql.DataSource"
               username="username"

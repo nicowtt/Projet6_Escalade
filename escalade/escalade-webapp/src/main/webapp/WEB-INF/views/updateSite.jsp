@@ -56,7 +56,7 @@
 
     <!-- form for update site -->
     <div id="updateSite">
-        <h3>Modification d'un nouveau Site d'escalade:</h3>
+        <h3>Modification du Site d'escalade:</h3>
 
         <p></p>
         <c:forEach items="${siteToUpdate}" var="si">
@@ -64,7 +64,7 @@
             <table class="lignesEspacees">
                 <tr>
                     <!-- display for "nomSite" -->
-                    <td> Nom du nouveau site:* </td>
+                    <td> Nom du site:* </td>
                     <td><f:input path="nomSite" type="text" id="nomSite" size="20" placeholder="obligatoire"  cssStyle=""/></td>
                     <td><f:errors path="nomSite" cssClass="errors"/></td>
                 </tr>
