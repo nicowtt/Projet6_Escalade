@@ -63,8 +63,10 @@ Les fonctions en plus:
 - Le site est responsive.
 - le site est sécurisé. (aucun mot de passe est stocké en clair dans la BDD)
 
-## Déployment
-Ce projet a été réalisé en Java avec Maven. <br>
+## Déploiement
+
+Ce projet(maven) a été réalisé en Java.
+
 Utilisation du framework Spring :
  - Spring MVC 
  - Spring tx
@@ -73,22 +75,51 @@ Utilisation du framework Spring :
 
 Base de donnée: PostgreSQL 9.6.12
 
-Afin de lancer l'application web sur un serveur apache:
+**Afin de lancer l'application web sur un serveur apache:**
 
-- Exécutez la commande maven suivante pour créer le package de déploiement :
+- Installer TomCat
+
+- Cloner le repository en local.
+
+- Exécutez la commande maven suivante :
+
+```
+    mvn package
+```
+
+- Le fichier webapp-escalade.war devrait être crée dans le dossier target du module webApp.
     
-    ** mvn package **
-    
-- Copier / coller le fichier **escalade-webapp.war** dans le dossier webapps de tomcat.
+- Copier / coller ce fichier **escalade-webapp.war** dans le dossier webapps de tomcat.
+
+- Créez une base de données "escalade" (pgadmin) et lancer le script de création des tables.
+
+- Remplir la BDD avec le jeux de demo (script) ou le dump.
+
+- Afin d'autoriser la connexion de l'application a la BDD, vous devez declarer une 
+Data source nommé "jdbc/escalade" dans tomcat.
+
+Veuillez reglez cette data source dans le fichier context.xml (repertoire conf de tomcat) dans la balise ```<Context>```:
+```
+     <Resource name="jdbc/escalade" auth="Container" type="javax.sql.DataSource"
+              username="username"
+              password="password"
+              driverClassName="org.postgresql.Driver"
+              url="jdbc:postgresql://localhost:5432/escalade"
+              maxTotal="30"
+              maxIdle="10"
+              validationQuery="select 1" /> 
+             
+```
+(Pour plus d'information: https://tomcat.apache.org/tomcat-9.0-doc/jndi-resources-howto.html#context.xml_configuration)
 
 - Lancer votre serveur Tomcat et rendez-vous à l'adresse :
-
-    http://localhost:8080/escalade-webapp/home
-    
+```
+   http://localhost:8080/escalade-webapp/home
+``` 
 
 ## Contribution
 
-1: clone repositories
+1: clone repository
 
 2: Créer une nouvelle branche
 
