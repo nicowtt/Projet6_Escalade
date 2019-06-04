@@ -42,12 +42,18 @@ public class CommentController {
     @RequestMapping(value="/commentRead/{element_Id}", method = RequestMethod.GET )
     public String commentRead(Model model, @PathVariable Integer element_Id, @SessionAttribute(value = "Utilisateur", required = false) Utilisateur userSession) throws CommentException {
 
+        Utilisateur newUser = new Utilisateur();
+
         // Models for display comments
         model.addAttribute("commentaire", commentManager.getListAllCommentForOneElementId(element_Id));
 
         // model for "log"
         if (userSession != null) {
             model.addAttribute("log", userSession.getEmail());
+
+            // for display member function
+            newUser = userManager.getUserBean(userSession.getEmail());
+            model.addAttribute("user", newUser);
         }
 
         return "commentsRead";
@@ -136,9 +142,15 @@ public class CommentController {
      */
     @RequestMapping(value="/commentDelete/{element_id}/{id}", method = RequestMethod.GET)
     public String commentDelete(Model model, @PathVariable Integer element_id, @PathVariable Integer id, @SessionAttribute(value="Utilisateur", required = false) Utilisateur userSession) throws CommentException {
+        Utilisateur newUser = new Utilisateur();
+
         // model for "log"
         if (userSession != null) {
             model.addAttribute("log", userSession.getEmail());
+            // for display member function
+            newUser = userManager.getUserBean(userSession.getEmail());
+            model.addAttribute("user", newUser);
+
             // for write i set element_id user session
             userSession.setElement_id(element_id);
 
@@ -216,8 +228,14 @@ public class CommentController {
     @RequestMapping(value="/updateComment/{pId}", method = RequestMethod.POST)
     public String updateComment(@Valid Commentaire commentaire, BindingResult bindingResult, Model model, @PathVariable Integer pId, @SessionAttribute(value="Utilisateur", required = false) Utilisateur userSession) throws CommentException {
 
+        Utilisateur newUser = new Utilisateur();
         // model for "log"
+        
         model.addAttribute("log", userSession.getEmail());
+
+        // for display member function
+        newUser = userManager.getUserBean(userSession.getEmail());
+        model.addAttribute("user", newUser);
 
         if (bindingResult.hasErrors()) {
             model.addAttribute("commentaire", commentaire);

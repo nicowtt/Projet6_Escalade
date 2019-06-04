@@ -41,10 +41,10 @@
       <!-- Site action: display or write comment-->
       <p>
       <a href="<%=pathWebcontent%>/commentRead/${si.element_id}">Voir les commentaires sur ce site</a><br>
-      <a href="<%=pathWebcontent%>/commentWrite/${si.element_id}">Ecrire un commentaire sur ce site</a><br></p>
+        <c:if test="${user != null}"><a href="<%=pathWebcontent%>/commentWrite/${si.element_id}">Ecrire un commentaire sur ce site</a></c:if><br></p>
 
       <!-- Site action: add site to personnal space-->
-      <p><a href="<%=pathWebcontent%>/createTopoPaper/${si.id}">Déclarer un topo papier possédé pour ce site</a></p>
+      <p><c:if test="${user != null}"><a href="<%=pathWebcontent%>/createTopoPaper/${si.id}">Déclarer un topo papier possédé pour ce site</a></c:if></p>
 
       <!-- Site action: tag site "officiel les amis de l'escalade ** see only by member associative-->
       <p>
@@ -69,7 +69,7 @@
       <!-- Picture-->
       <p><img src="${si.urlPhotoSite}" alt="${si.urlPhotoSite}" style="width:500px;height:500px;border:0;"></p>
       <!-- lien pour crée un nouveau secteur-->
-      <p><a href="<%=pathWebcontent%>/createNewSector/${si.id}">Ajouter un nouveau secteur sur ce site </a></p>
+      <p><c:if test="${user != null}"><a href="<%=pathWebcontent%>/createNewSector/${si.id}">Ajouter un nouveau secteur sur ce site </a></c:if></p>
     </c:forEach>
 
 
@@ -89,8 +89,9 @@
         <th>Nombre de voies</th>
         <th>cotation</th>
         <th>Coordonnés GPS</th>
-        <th>Ajout</th>
-        <th colspan="2">Commentaires</th>
+        <c:if test="${user != null}"><th>Ajout</th></c:if>
+        <th>Commentaires</th>
+        <c:if test="${user != null}"><th>Commentaires</th></c:if>
       </tr>
 
         <c:forEach items="${secteur}" var="s">
@@ -104,9 +105,9 @@
         <td>${s.nombreDeVoies}</td>
         <td>${s.cotation}</td>
         <td>${s.coordonneGps}</td>
-        <td><a href="<%=pathWebcontent%>/createNewWay/${s.id}">Ajouter une nouvelle voie pour ce secteur</a></td>
+        <c:if test="${user != null}"><td><a href="<%=pathWebcontent%>/createNewWay/${s.id}">Ajouter une nouvelle voie pour ce secteur</a></td></c:if>
         <td><a href="<%=pathWebcontent%>/commentRead/${s.element_id}">Voir</a></td>
-        <td><a href="<%=pathWebcontent%>/commentWrite/${s.element_id}">Ecrire</a></td>
+        <c:if test="${user != null}"><td><a href="<%=pathWebcontent%>/commentWrite/${s.element_id}">Ecrire</a></td></c:if>
         <c:if test="${createur eq user.id or user.membreAssociation}">
           <td><a href="<%=pathWebcontent%>/updateSector/${s.id}">modifier le secteur</a></td>
         </c:if>
@@ -146,7 +147,8 @@
         <th>Nom de l'ouvreur</th>
         <th>Date ouverture</th>
         <th>status</th>
-        <th colspan="2">commentaire</th>
+        <th>commentaire</th>
+        <c:if test="${user != null}"><th>commentaire</th></c:if>
       </tr>
       <c:forEach items="${voie}" var="v">
         <tr>
@@ -163,7 +165,7 @@
           <td>${v.dateOuverture}</td>
           <td>${v.statut}</td>
           <td><a href="<%=pathWebcontent%>/commentRead/${v.element_id}">Voir</a></td>
-          <td><a href="<%=pathWebcontent%>/commentWrite/${v.element_id}">Ecrire</a></td>
+          <c:if test="${user != null}"><td><a href="<%=pathWebcontent%>/commentWrite/${v.element_id}">Ecrire</a></td></c:if>
           <c:if test="${createur eq user.id or user.membreAssociation}">
             <td><a href="<%=pathWebcontent%>/updateWay/${v.id}">modifier la voie</a></td>
           </c:if>

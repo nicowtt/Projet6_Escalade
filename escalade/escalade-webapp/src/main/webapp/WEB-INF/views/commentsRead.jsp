@@ -35,8 +35,8 @@
                     <td>${co.dateCommentaire}</td>
                     <td>${co.utilisateur.prenom}</td>
                     <td>${co.commentaire}</td>
-                    <td><a href="<%=pathWebcontent%>/commentDelete/${co.element_id}/${co.id}">effacer</a> </td>
-                    <td><a href="<%=pathWebcontent%>/oneCommentRead/${co.id}/">modifier</a> </td>
+                    <c:if test="${user.membreAssociation}"><td><a href="<%=pathWebcontent%>/commentDelete/${co.element_id}/${co.id}">effacer</a></td></c:if>
+                    <c:if test="${user.membreAssociation}"><td><a href="<%=pathWebcontent%>/oneCommentRead/${co.id}/">modifier</a> </td></c:if>
                 </tr>
             </c:forEach>
         </table>
