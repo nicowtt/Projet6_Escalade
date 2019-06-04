@@ -230,7 +230,7 @@ public class CommentController {
 
         Utilisateur newUser = new Utilisateur();
         // model for "log"
-        
+
         model.addAttribute("log", userSession.getEmail());
 
         // for display member function

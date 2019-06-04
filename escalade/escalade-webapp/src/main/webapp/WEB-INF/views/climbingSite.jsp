@@ -69,7 +69,7 @@
       <!-- Picture-->
       <p><img src="${si.urlPhotoSite}" alt="${si.urlPhotoSite}" style="width:500px;height:500px;border:0;"></p>
       <!-- lien pour crée un nouveau secteur-->
-      <p><c:if test="${user != null}"><a href="<%=pathWebcontent%>/createNewSector/${si.id}">Ajouter un nouveau secteur sur ce site </a></c:if></p>
+      <p><c:if test="${createur eq user.id or user.membreAssociation}"><a href="<%=pathWebcontent%>/createNewSector/${si.id}">Ajouter un nouveau secteur sur ce site </a></c:if></p>
     </c:forEach>
 
 
@@ -89,7 +89,7 @@
         <th>Nombre de voies</th>
         <th>cotation</th>
         <th>Coordonnés GPS</th>
-        <c:if test="${user != null}"><th>Ajout</th></c:if>
+        <c:if test="${createur eq user.id or user.membreAssociation}"><th>Ajout</th></c:if>
         <th>Commentaires</th>
         <c:if test="${user != null}"><th>Commentaires</th></c:if>
       </tr>
@@ -105,7 +105,7 @@
         <td>${s.nombreDeVoies}</td>
         <td>${s.cotation}</td>
         <td>${s.coordonneGps}</td>
-        <c:if test="${user != null}"><td><a href="<%=pathWebcontent%>/createNewWay/${s.id}">Ajouter une nouvelle voie pour ce secteur</a></td></c:if>
+        <c:if test="${createur eq user.id or user.membreAssociation}"><td><a href="<%=pathWebcontent%>/createNewWay/${s.id}">Ajouter une nouvelle voie pour ce secteur</a></td></c:if>
         <td><a href="<%=pathWebcontent%>/commentRead/${s.element_id}">Voir</a></td>
         <c:if test="${user != null}"><td><a href="<%=pathWebcontent%>/commentWrite/${s.element_id}">Ecrire</a></td></c:if>
         <c:if test="${createur eq user.id or user.membreAssociation}">

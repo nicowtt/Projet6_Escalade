@@ -53,7 +53,7 @@ public class SiteController {
         model.addAttribute("secteur", sectorManager.getListAllSectorForOneSite(id));
         model.addAttribute("voie", wayManager.getListAllWaysForOneSite(id));
 
-        // Model for check if user in session have create element asking
+        // Model for check if user in session have create site element asking
         model.addAttribute("element", elementManager.getOneElement(listSite.get(0).getElement_id()));
 
         // model for display "log"
