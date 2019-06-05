@@ -56,6 +56,14 @@ Les fonctions en plus:
 
 - F13: Un membre de l’association peut détagué un site.
 
+- F14: Un membre de l'association ou celui qui à crée l'élement (site/secteur/voie/TopoPapier)
+paut modifier les informations de cet élément.
+
+- F15: Un membre de l'association peut voir la liste des utilisateurs enregistrés et 
+supprimer un utilisateur au besoin (cela supprime aussi les commentaires de la personne en question).
+
+**Toutes les fonctions dans cette application respectent la logique de persistance
+des données (CRUD)**
 
 ## Les contraintes fonctionnelles
 
