@@ -153,4 +153,21 @@ public class CommentDaoImpl extends AbstractDAoImpl implements CommentDao {
 
     }
 
+
+    /**
+     * For delete comments
+     *
+     * @param pUserId -> user who write comments to delete
+     */
+    @Override
+    public void deleteCommentUser(Integer pUserId) {
+        String vSQL = "DELETE FROM commentaire WHERE utilisateur_id= :userId";
+
+        NamedParameterJdbcTemplate vJdbcTemplate = new NamedParameterJdbcTemplate(getDatasource());
+        MapSqlParameterSource vParams = new MapSqlParameterSource();
+        vParams.addValue("userId", pUserId, Types.INTEGER);
+
+        vJdbcTemplate.update(vSQL, vParams);
+    }
+
 }

@@ -7,13 +7,13 @@
 
 <head>
 
-    <%@include file="_include/head.jsp"%>
+    <%@include file="../_include/head.jsp"%>
 
 </head>
 
 <header class="raw">
 
-    <%@include file="_include/header.jsp"%>
+    <%@include file="../_include/header.jsp"%>
 
 </header>
 <div class="container">
@@ -21,29 +21,10 @@
     <!-- Body
     ================================================== -->
 
-    <!-- display for see user list -->
-    <br>
-
-    <div class="col-xs-6 col-sm-4 col-md-3" id="listOfUser">
-        <table class="table">
-            <tr>
-                <th>Nom</th>
-                <th>Prenom</th>
-                <th>Email</th>
-                <th>Membre de l'association</th>
-            <tr>
-            <c:forEach items="${listUser}" var="u">
-            <tr>
-                <td>${u.nom}</td>
-                <td>${u.prenom}</td>
-                <td>${u.email}</td>
-                <td>${u.membreAssociation ? "oui" : "non"} </td>
-                <td><a href="<%=pathWebcontent%>/comfirmationForDeleteUser/${u.id}">supprimer</a></td>
-            </tr>
-            </c:forEach>
-
-    </div>
-
+    <!-- display confirmation-->
+    <p></p>
+    <p><b>Voulez-vous vraiment supprimer cet utilisateur ? </b></p>
+    <p><a href="<%=pathWebcontent%>/deleteUser/${user.id}" >Oui</a></p>
 
 </div>
 
@@ -60,7 +41,10 @@
 <%--<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>--%>
 
 
+
+
 </body>
 </html>
+
 
 

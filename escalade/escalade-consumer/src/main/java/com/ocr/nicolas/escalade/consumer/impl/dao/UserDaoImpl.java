@@ -174,4 +174,23 @@ public class UserDaoImpl extends AbstractDAoImpl implements UserDao {
 
         return vUtilisateur;
     }
+
+    /**
+     * For delete one user
+     *
+     * @param pId -> user id to delete
+     */
+    @Override
+    public void deleteUser(int pId) {
+
+        String vSQL
+                = " DELETE FROM public.utilisateur"
+                + "  WHERE id = :id";
+
+        NamedParameterJdbcTemplate vJdbcTemplate = new NamedParameterJdbcTemplate(getDatasource());
+        MapSqlParameterSource vParams = new MapSqlParameterSource();
+        vParams.addValue("id", pId, Types.INTEGER);
+
+        vJdbcTemplate.update(vSQL, vParams);
+    }
 }

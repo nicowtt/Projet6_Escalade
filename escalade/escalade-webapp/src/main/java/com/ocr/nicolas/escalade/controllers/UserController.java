@@ -46,4 +46,57 @@ public class UserController {
         return "userList";
     }
 
+    /**
+     * For display delete confirmation
+     *
+     * @param id -> user id to delete
+     * @param model -> model
+     * @param userSession -> user session
+     * @return
+     */
+    @RequestMapping(value = "/comfirmationForDeleteUser/{id}", method = RequestMethod.GET)
+    public String comfirmationForDeleteUser(@PathVariable Integer id, Model model, @SessionAttribute(value = "Utilisateur", required = false) Utilisateur userSession) {
+        Utilisateur userToDelete = new Utilisateur();
+
+        //set user to delete
+        userToDelete.setId(id);
+
+        // model for display "log"
+        if (userSession != null) {
+            model.addAttribute("log", userSession.getEmail());
+            //model for user to delete
+            model.addAttribute("user", userToDelete);
+        }
+
+        return "/ComfirmationJsp/deletingUser";
+    }
+
+    /**
+     * For delete user and comments associate
+     * @param id -> id of user to delete
+     * @param model -> model
+     * @param userSession -> user session
+     * @return
+     */
+    @RequestMapping(value = "/deleteUser/{id}", method = RequestMethod.GET)
+    public String deleteUser(@PathVariable Integer id, Model model, @SessionAttribute(value = "Utilisateur", required = false) Utilisateur userSession) {
+        Utilisateur newUser = new Utilisateur();
+
+        // model for display "log"
+        if (userSession != null) {
+            model.addAttribute("log", userSession.getEmail());
+
+            //delete user (and user comments)
+            userManager.deleteUser(id);
+
+            // for display member function
+            newUser = userManager.getUserBean(userSession.getEmail());
+            model.addAttribute("user", newUser);
+            //for display user list
+            model.addAttribute("listUser", userManager.getAllUsers());
+        }
+
+        return "userList";
+    }
+
 }

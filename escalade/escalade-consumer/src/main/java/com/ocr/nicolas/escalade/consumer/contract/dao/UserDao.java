@@ -13,5 +13,6 @@ public interface UserDao {
     Utilisateur writeNewUser(Utilisateur pUser) throws UserException;
     String getUserBean(Topopapier pTopoPapier);
     List<Utilisateur> getAllUsers();
+    void deleteUser(int pId);
 
 }

@@ -11,4 +11,5 @@ public interface UserManager {
     Utilisateur getUserBean(String pEmail);
     Utilisateur writeNewUser(Utilisateur pUser);
     List<Utilisateur> getAllUsers();
+    void deleteUser(int pId);
 }

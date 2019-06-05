@@ -1,9 +1,13 @@
 package com.ocr.nicolas.escalade.business.impl;
 
 import com.ocr.nicolas.escalade.business.contract.UserManager;
+import com.ocr.nicolas.escalade.consumer.contract.dao.CommentDao;
 import com.ocr.nicolas.escalade.consumer.contract.dao.UserDao;
 import com.ocr.nicolas.escalade.model.bean.Utilisateur;
+import com.ocr.nicolas.escalade.model.exception.CommentException;
 import com.ocr.nicolas.escalade.model.exception.UserException;
+import org.springframework.transaction.TransactionStatus;
+import org.springframework.transaction.support.TransactionCallbackWithoutResult;
 import org.springframework.transaction.support.TransactionTemplate;
 
 import javax.inject.Inject;
@@ -16,6 +20,9 @@ public class UserManagerImpl extends AbstractManager implements UserManager {
 
     @Inject
     private UserDao userDao;
+
+    @Inject
+    private CommentDao commentDao;
 
     /**
      * For get User name of one comment.
@@ -108,5 +115,26 @@ public class UserManagerImpl extends AbstractManager implements UserManager {
         return vUserList;
     }
 
+    /**
+     * For delete user and comment associate
+     *
+     * @param pId -> user id to delete
+     */
+    @Override
+    public void deleteUser(int pId) {
+        TransactionTemplate vTransactionTemplate = new TransactionTemplate(getPlatformTransactionManager());
+
+        vTransactionTemplate.execute(new TransactionCallbackWithoutResult() {
+            @Override
+            protected void doInTransactionWithoutResult(TransactionStatus transactionStatus) {
+
+                // delete comment associate of user
+                commentDao.deleteCommentUser(pId);
+
+                // delete user
+                userDao.deleteUser(pId);
+            }
+        });
+    }
 
 }

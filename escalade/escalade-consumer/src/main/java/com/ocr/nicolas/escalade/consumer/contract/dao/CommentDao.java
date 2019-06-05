@@ -12,4 +12,5 @@ public interface CommentDao {
     void deleteComment(Integer pId) throws CommentException;
     List<Commentaire> displayOneComment(int pId);
     Commentaire updateComment(Commentaire pCommentaire) throws CommentException;
+    void deleteCommentUser(Integer pUserId);
 }
