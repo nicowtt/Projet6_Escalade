@@ -22,7 +22,11 @@
     ================================================== -->
 
     <!-- display site -->
-    <br>
+    <!-- delete user function -->
+    <p></p>
+    <c:if test="${user.membreAssociation}"><a href="<%=pathWebcontent%>/displayListMember/">Afficher la liste des utilisateurs du site</a></c:if>
+    <!-- own topo paper -->
+    <p></p>
     <p>Topo papier possédé(s):</p>
 
     <div id="listerTopoPapier">
@@ -53,6 +57,8 @@
             </c:forEach>
         </table>
     </div>
+
+    <!-- booking paper topo -->
 
     <div id="TopoPapierDemandeReserveration">
         <p>Demande de réservation en cours:</p>

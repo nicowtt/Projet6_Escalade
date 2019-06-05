@@ -54,6 +54,9 @@ public class PersonalSpaceController {
             //search for user id
             userOnBdd = userManager.getUserBean(userSession.getEmail());
 
+            //model for userSession (for know if user is member associative)
+            model.addAttribute("user", userOnBdd);
+
             //display user "topoPapier"
             model.addAttribute("topoPapier", topoPapierManager.getListTopoPapier(userOnBdd.getId()));
 
