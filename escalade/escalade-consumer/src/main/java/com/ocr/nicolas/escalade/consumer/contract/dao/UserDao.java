@@ -12,5 +12,6 @@ public interface UserDao {
     Utilisateur getUserBean(String pEmail) throws UserException;
     Utilisateur writeNewUser(Utilisateur pUser) throws UserException;
     String getUserBean(Topopapier pTopoPapier);
+    List<Utilisateur> getAllUsers();
 
 }

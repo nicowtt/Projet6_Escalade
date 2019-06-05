@@ -10,4 +10,5 @@ public interface UserManager {
     List<Utilisateur> getUserNameOfComment(int pElement_id);
     Utilisateur getUserBean(String pEmail);
     Utilisateur writeNewUser(Utilisateur pUser);
+    List<Utilisateur> getAllUsers();
 }

@@ -88,4 +88,25 @@ public class UserManagerImpl extends AbstractManager implements UserManager {
         });
         return  vUser;
     }
+
+    /**
+     * to get all user list
+     *
+     * @return
+     */
+    @Override
+    public List<Utilisateur> getAllUsers() {
+        TransactionTemplate vTransactionTemplate = new TransactionTemplate(getPlatformTransactionManager());
+
+        List<Utilisateur> vUserList = vTransactionTemplate.execute(transactionStatus -> {
+
+            List<Utilisateur> vUserTransactionList = null;
+            vUserTransactionList = userDao.getAllUsers();
+
+            return vUserTransactionList;
+        });
+        return vUserList;
+    }
+
+
 }

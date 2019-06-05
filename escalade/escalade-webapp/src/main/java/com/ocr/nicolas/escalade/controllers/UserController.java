@@ -22,6 +22,12 @@ public class UserController {
     private UserManager userManager;
 
 
+    /**
+     * For display userList.jsp
+     * @param model -> model
+     * @param userSession -> user session
+     * @return
+     */
     @RequestMapping(value = "/displayListMember", method = RequestMethod.GET)
     public String displayListMember(Model model, @SessionAttribute(value = "Utilisateur", required = false) Utilisateur userSession) {
         Utilisateur newUser = new Utilisateur();
@@ -33,7 +39,8 @@ public class UserController {
             // for display member function
             newUser = userManager.getUserBean(userSession.getEmail());
             model.addAttribute("user", newUser);
-            //todo method for see all users
+            // for see all users
+            model.addAttribute("listUser", userManager.getAllUsers());
         }
 
         return "userList";

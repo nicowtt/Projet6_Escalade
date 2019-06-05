@@ -28,10 +28,12 @@
         <table class="table">
             <tr>
                 <th>Utilisateur</th>
+                <th>Membre de l'association</th>
             <tr>
             <c:forEach items="${listUser}" var="u">
             <tr>
                 <td>${u.email}</td>
+                <td>${u.membreAssociation ? "oui" : "non"} </td>
                 <%--<td><a href="<%=pathWebcontent%>/comfirmationForDeleteTopoPaper/${to.id}">supprimer </a></td>--%>
             </tr>
             </c:forEach>

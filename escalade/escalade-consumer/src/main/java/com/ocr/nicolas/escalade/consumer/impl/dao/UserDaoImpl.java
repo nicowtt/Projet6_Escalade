@@ -7,6 +7,7 @@ import com.ocr.nicolas.escalade.model.bean.Utilisateur;
 import com.ocr.nicolas.escalade.model.exception.UserException;
 import org.springframework.dao.DuplicateKeyException;
 import org.springframework.dao.EmptyResultDataAccessException;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
@@ -152,5 +153,25 @@ public class UserDaoImpl extends AbstractDAoImpl implements UserDao {
 
         return vEmail;
 
+    }
+
+    /**
+     * to get all user list
+     *
+     * @return
+     */
+    @Override
+    public List<Utilisateur> getAllUsers() {
+
+        String vSQL
+                = "SELECT * FROM utilisateur";
+
+        JdbcTemplate vJdbcTemplate = new JdbcTemplate(getDatasource());
+
+        RowMapper<Utilisateur> vRowMapper = new UserRowMapper();
+
+        List<Utilisateur> vUtilisateur = vJdbcTemplate.query(vSQL, vRowMapper);
+
+        return vUtilisateur;
     }
 }
