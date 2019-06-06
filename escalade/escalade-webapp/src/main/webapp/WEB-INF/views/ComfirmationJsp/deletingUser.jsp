@@ -23,7 +23,7 @@
 
     <!-- display confirmation-->
     <p></p>
-    <p><b>Voulez-vous vraiment supprimer cet utilisateur ? </b></p>
+    <p><b>Voulez-vous vraiment supprimer cet utilisateur ? (Les Sites (secteurs/voies), topoPapiers, reservations et commentaires seront supprimer)</b></p>
     <p><a href="<%=pathWebcontent%>/deleteUser/${user.id}" >Oui</a></p>
 
 </div>

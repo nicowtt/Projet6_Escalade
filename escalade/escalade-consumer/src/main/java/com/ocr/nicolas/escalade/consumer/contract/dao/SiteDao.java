@@ -20,4 +20,5 @@ public interface SiteDao {
     List<String> getListAllSiteDepartmentNoRepeat();
     List<Integer> getListAllSiteSectorNumberNoRepeat();
     List<String> getListAllSiteNameNoRepeat();
+    boolean checkIfElementIsSite(int pElement_id);
 }

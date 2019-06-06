@@ -62,6 +62,9 @@ public class LoginController {
             userBdd = userManager.getUserBean(userSession.getEmail());
             //User not recognize on bdd
             if (userBdd == null) {
+                // for fix bug after deleting user (go to error page and clic home (old user is log)
+                status.setComplete();
+                request.removeAttribute("Utilisateur", WebRequest.SCOPE_SESSION);
                 return "ErrorJsp/errorLogin";
             }
             //method for check if password is good

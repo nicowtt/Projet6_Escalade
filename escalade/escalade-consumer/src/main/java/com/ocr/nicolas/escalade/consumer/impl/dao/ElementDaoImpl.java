@@ -11,7 +11,8 @@ import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import javax.inject.Named;
 import java.sql.Types;
-
+import java.util.ArrayList;
+import java.util.List;
 
 
 @Named
@@ -106,5 +107,29 @@ public class ElementDaoImpl extends AbstractDAoImpl implements ElementDao {
 
 
         return vElement;
+    }
+
+    /**
+     * for have a list of element by user
+     *
+     * @param pId -> id of user
+     * @return
+     */
+    @Override
+    public List<Element> getListElementByUser (Integer pId) {
+        List vListElement = new ArrayList<>();
+        String vSQL
+                = "SELECT * FROM public.element"
+                + " WHERE utilisateur_id = :id";
+
+        NamedParameterJdbcTemplate vJdbcTemplate = new NamedParameterJdbcTemplate(getDatasource());
+        MapSqlParameterSource vParams = new MapSqlParameterSource();
+        vParams.addValue("id", pId, Types.INTEGER);
+
+        RowMapper vRowMapper = new ElementRowMapper();
+
+        vListElement = vJdbcTemplate.query(vSQL, vParams, vRowMapper);
+
+        return vListElement;
     }
 }

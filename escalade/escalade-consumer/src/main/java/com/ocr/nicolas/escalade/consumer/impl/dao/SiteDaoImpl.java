@@ -3,8 +3,6 @@ package com.ocr.nicolas.escalade.consumer.impl.dao;
 import com.ocr.nicolas.escalade.consumer.contract.dao.SiteDao;
 import com.ocr.nicolas.escalade.consumer.impl.rowmapper.SiteRowMapper;
 import com.ocr.nicolas.escalade.model.bean.Site;
-
-import com.ocr.nicolas.escalade.model.exception.CommentException;
 import com.ocr.nicolas.escalade.model.exception.SiteException;
 import org.springframework.dao.DataAccessException;
 import org.springframework.dao.DuplicateKeyException;
@@ -17,7 +15,7 @@ import javax.inject.Named;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.springframework.jdbc.support.KeyHolder;
+
 
 import java.sql.Types;
 import java.util.ArrayList;
@@ -308,6 +306,35 @@ public class SiteDaoImpl extends AbstractDAoImpl implements SiteDao {
         siteNameList = vJdbcTemplate.queryForList(vSQL, String.class);
 
         return siteNameList;
+    }
+
+    /**
+     * To check if element is a climbing site
+     *
+     * @param pElement_id -> element id
+     * @return -> boolean
+     */
+    @Override
+    public boolean checkIfElementIsSite(int pElement_id) {
+        boolean elementIsSite = false;
+
+        String vSQL
+                = "SELECT * FROM public.site"
+                + " WHERE element_id = :pElement_id";
+
+        NamedParameterJdbcTemplate vJdbcTemplate = new NamedParameterJdbcTemplate(getDatasource());
+        MapSqlParameterSource vParams = new MapSqlParameterSource();
+        vParams.addValue("pElement_id", pElement_id, Types.INTEGER);
+
+        RowMapper vRowMapper = new SiteRowMapper();
+
+        List<Site> vListOneSite = vJdbcTemplate.query(vSQL, vParams, vRowMapper);
+
+        if (vListOneSite.isEmpty()) {
+        } else {
+            elementIsSite = true;
+        }
+        return elementIsSite;
     }
 
 }

@@ -9,4 +9,5 @@ public interface ElementDao {
     Element getLastElement();
     void deleteOneElement(Integer pId);
     Element getOneElement(Integer pId);
+    List<Element> getListElementByUser (Integer pId);
 }
