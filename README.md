@@ -139,6 +139,10 @@ Réglez cette data source dans le fichier context.xml (repertoire conf de tomcat
 
 5: Créer une nouvelle "pull request"
 
+## Aperçu du site
+
+![alt text](https://image.noelshack.com/fichiers/2019/23/5/1559898563-view-site.jpg)
+
 ## Auteur
 Nicow
 
