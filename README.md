@@ -57,10 +57,10 @@ Les fonctions en plus:
 - F13: Un membre de l’association peut détagué un site.
 
 - F14: Un membre de l'association ou celui qui à crée l'élement (site/secteur/voie/TopoPapier)
-paut modifier les informations de cet élément.
+peut modifier les informations de cet élément.
 
 - F15: Un membre de l'association peut voir la liste des utilisateurs enregistrés et 
-supprimer un utilisateur au besoin (cela supprime aussi les commentaires de la personne en question).
+supprimer un utilisateur au besoin (cela supprime aussi tout ce qui à été crée par cette personne).
 
 **Toutes les fonctions dans cette application respectent la logique de persistance
 des données (CRUD)**
@@ -106,7 +106,7 @@ Base de donnée: PostgreSQL 9.6.12
 - Afin d'autoriser la connexion de l'application a la BDD, vous devez declarer une 
 Data source nommé "jdbc/escalade" dans tomcat.
 
-Reglez cette data source dans le fichier context.xml (repertoire conf de tomcat) dans la balise ```<Context>```:
+Réglez cette data source dans le fichier context.xml (repertoire conf de tomcat) dans la balise ```<Context>```:
 ```
      <Resource name="jdbc/escalade" auth="Container" type="javax.sql.DataSource"
               username="username"
