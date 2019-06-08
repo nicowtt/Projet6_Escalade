@@ -79,7 +79,7 @@ Utilisation du framework Spring :
  - Spring MVC 
  - Spring tx
  - Spring security 
- - Integration BDD via ORM: Spring JDBC.
+ - Integration BDD: Spring JDBC.
 
 Base de donnée: PostgreSQL 9.6.12
 
