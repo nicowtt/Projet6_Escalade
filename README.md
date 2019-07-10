@@ -141,7 +141,7 @@ Réglez cette data source dans le fichier context.xml (repertoire conf de tomcat
 
 ## Aperçu du site
 
-![alt text](https://image.noelshack.com/fichiers/2019/28/3/1562746558-view-site.jpg)
+![alt text](https://github.com/nicowtt/Projet6_Escalade/blob/master/ViewSite.jpg)
 
 ## Auteur
 Nicow
