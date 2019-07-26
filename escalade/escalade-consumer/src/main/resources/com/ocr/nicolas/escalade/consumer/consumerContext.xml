@@ -11,19 +11,9 @@
        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
     <!-- Scanne les packages pour trouver les beans qui se déclarent (@Named...) -->
-    <context:component-scan base-package="com.ocr.nicolas.escalade.consumer.com.ocr.nicolas.escalade.business.impl.dao"/>
-
+    <context:component-scan base-package="com.ocr.nicolas.*"/>
     <!-- Prend en compte la configuration des injections (@Inject...) -->
     <context:annotation-config/>
-
-    <!--&lt;!&ndash; ==== Déclaration des DAO ===== &ndash;&gt;-->
-    <!--<bean id="metier" class="com.ocr.nicolas.escalade.consumer.com.ocr.nicolas.escalade.business.impl.dao.EscaladeDaoImpl"/>-->
-
-
-    <!--&lt;!&ndash; === REssource JNDI ===== &ndash;&gt;-->
-    <!--<bean id="dataSourceEscalade" class="org.springframework.jndi.JndiObjectFactoryBean">-->
-        <!--<property name="jndiName" value="java:comp/env/jdbc/escalade" />-->
-    <!--</bean>-->
 
     <!--=== initialisation dataSource  ===== -->
    <jee:jndi-lookup id="dataSourceEscalade" jndi-name="jdbc/escalade" expected-type="javax.sql.DataSource"/>
